@@ -1,14 +1,15 @@
-============
-Development
-============
-
 Development Checklist
 ======================
+
+This list is inspired by the classic article by Joel Spolsky entitled `The Joel Test 12 Steps to Better Code`_. 
+
+.. _The Joel Test 12 Steps to Better Code: https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+
 
 Using Virtual Environments used by Application
 -----------------------------------------------
 
-Virtual environments is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.
+Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.
 
 This is particularly true with the Apache Web server and mod_wsgi module, when the module is compiled against specific Python version, and loaded as per Apache procedure.
 
@@ -21,58 +22,29 @@ the new environment must be "sourced", and all packages installed with pip:
     pip install jam.py
     pip install pandas
 
-The above command will install jam.py and pandas packages into ``~/Downloads/py3.9/site-packages`` directory.
+
+The above command will install jam.py and pandas packages into ``~/Downloads/py3.9/lib/python3.9/site-packages/`` directory. We can have as many virtual environments as needed.
+
+.. note::
+    It is advisable to have Production and Development environments. 
 
 
 
 Using the Source Control
 -----------------------------------------
 
-This is the recommended way to install Jam.py.
+Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database.
 
-1. Install pip_. The easiest is to use the `standalone pip installer`_. If your
-   distribution already has ``pip`` installed, you might need to update it if
-   it's outdated. (If it's outdated, you'll know because installation won't
-   work.)
-
-2. If you're using Linux, Mac OS X or some other flavor of Unix, enter the
-   command 
-   
-   .. code-block:: console
-   
-    sudo pip install jam.py 
-    
-   at the shell prompt. 
-   
-   If you're using Windows, start a command shell with administrator privileges 
-   and run the command 
-   
-   .. code-block:: console
-   
-    pip install jam.py 
-   
-   This will install Jam.py in your Python installation's ``site-packages`` directory.
+However, for the static files, for example external JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. 
 
 
-.. _pip: http://www.pip-installer.org/
-.. _standalone pip installer: http://www.pip-installer.org/en/latest/installing.html#install-pip
+Unit Testing 
+-------------
+
+Currently, Jam.py is using ``pytest`` and Chai/Mocha
 
 
-Installing an official release manually
----------------------------------------
+.. _pytest: https://docs.pytest.org/en/latest/
 
-1. Download the package archive. 
 
-2. Create a new directory and unpack the archive there. 
 
-3. Go into the directory and run the setup command from command line
-
-.. code-block:: console
-
-   $ python setup.py install
-    
-This will install Jam.py in your Python installation’s site-packages directory.
-
-.. note::
-	on some unix like systems you may need to switch to root or run: 
-	sudo python setup.py install
