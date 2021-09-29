@@ -1,0 +1,31 @@
+==========================
+Jam.py Application Design 
+==========================
+
+How the documentation is organized
+==================================
+
+This Documentation follows official Jam.py documentation, keeping similar concepts and looks:
+
+:doc:`Getting started <intro/index>` topic touches on Application design principles. We also touch on differences between Django and Jam.py.
+
+:doc:`Programming guides<programming/index>`
+discuss key topics and concepts at a fairly high level and provide useful 
+background information and explanation.
+
+:doc:`Business application builder <admin/index>` is a detailed description of 
+the Application Builder used for application development and database 
+administration.
+
+:doc:`Class reference guides <refs/index>` contain technical reference for 
+Jam.py classes APIs
+
+:doc:`FAQ <faq/index>` topics covers most frequently asked questions.
+
+:doc:`How to <how_to/index>` contains code examples that can be useful to quickly
+accomplish common tasks
+
+Or you can go to the
+:doc:`table of contents <contents>`
+
+
