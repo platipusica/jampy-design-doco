@@ -7,7 +7,7 @@ How the documentation is organized
 
 This Documentation follows official Jam.py documentation, keeping similar concepts and looks:
 
-:doc:`Getting started <intro/index>` topic touches on Application design principles. We also touch on differences between Django and Jam.py.
+:doc:`Getting started <intro/index>` topic touches on Development Checklist principles. We also touch on differences between Django and Jam.py.
 
 :doc:`Programming guides<programming/index>`
 discuss key topics and concepts at a fairly high level and provide useful 
