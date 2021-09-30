@@ -1,3 +1,3 @@
 ---
-permalink: /docs/contents.html
+permalink: /index.html
 ---
