@@ -1,6 +1,6 @@
-=============================
-Jam.py documentation contents
-=============================
+=======================================
+Jam.py Application Design Tips contents
+=======================================
 
 .. toctree:: 
     :hidden:
@@ -11,9 +11,5 @@ Jam.py documentation contents
     :maxdepth: 3
 
     intro/index
-    programming/index
-    faq/index
-    how_to/index
-    admin/index
-    refs/index
-    releases/index
+    design/index
+
