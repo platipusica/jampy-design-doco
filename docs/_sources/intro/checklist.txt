@@ -1,0 +1,160 @@
+======================
+Development Checklist
+======================
+
+This list is inspired by the classic article by Joel Spolsky entitled `The Joel Test 12 Steps to Better Code`_. 
+
+.. _The Joel Test 12 Steps to Better Code: https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+
+
+Using Virtual Environments used by Application
+==============================================
+
+Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.
+
+This is particularly true with the Apache Web server and mod_wsgi module, when the module is compiled against specific Python version, and loaded as per Apache procedure.
+
+Standard Python library is used to create a virtual environment. After creation, 
+the new environment must be "sourced", and all packages installed with pip:
+
+   .. code-block:: console
+
+    source ~/Downloads/py3.9/bin/activate
+    pip install jam.py
+    pip install pandas
+
+
+The above command will install jam.py and pandas packages into ``~/Downloads/py3.9/lib/python3.9/site-packages/`` directory. We can have as many virtual environments as needed.
+
+.. note::
+    It is advisable to have Production and Development environments. 
+
+
+
+Using the Source Control
+=========================
+
+Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it's content.
+
+However, for the static files, for example external JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:
+
+`Automated config backup`_
+
+.. _Automated config backup: https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ
+
+The Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.
+
+Unit Testing 
+====================
+
+Jam.py version higher than v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is also possible to use Selenium IDE for the browser.
+
+Please visit posted video `Jam.py Application Builder automated testing with pytest and Mocha/Chai`_, and
+`Simple CRM with jam.py and Selenium IDE in 2.45minutes!`_.
+
+All necessary tools and libraries for testing should be installed in the same Python virtual environment where Jam.py libraries are.
+
+.. _pytest: https://docs.pytest.org/en/latest/
+
+.. _Chai: https://www.chaijs.com/
+
+.. _Mocha: https://mochajs.org/
+
+.. _Jam.py Application Builder automated testing with pytest and Mocha/Chai: https://www.youtube.com/watch?v=ftGkrxNEwTw
+
+.. _Simple CRM with jam.py and Selenium IDE in 2.45minutes!: https://www.youtube.com/watch?v=Sv_IllxQ_RY&t=14s
+
+
+Continuous Integration (CI)
+===========================
+
+It is possible to use Continuous Integration as we would with Django. 
+
+
+
+Generating Documentation 
+========================
+
+`Sphinx`_ is used as an defacto Python standard. It is very simple to start with using what is already provided with Jam.py.
+
+.. _Sphinx: http://www.sphinx-doc.org/en/stable/
+
+As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documantation:
+
+    .. code-block:: 
+
+        conf.py       index.txt  Makefile    README.md
+        contents.txt  make.bat   prepare.py  set_scale.py
+
+        intro:
+        checklist.txt  index.txt
+
+        _static:
+        favicon.ico  jquery.js
+
+        _templates:
+        jamdocs
+
+
+
+Modify all files for your preference and build the documentation. For example, the below command will build one **single** html file:
+
+.. code-block:: console
+
+    $  make singlehtml
+
+
+For more professional look, the **latexpdf** option might be used.
+
+
+.. code-block:: console
+
+    $  make latexpdf
+
+.. note::
+    **Latex** libraries are quite large and the installation is on the OS level. **Sphinx** can be installed inside Python virtual environment.
+
+
+
+Limited introduction to the tool 
+========================================
+
+Jam.py is using **jam-project.py** with no options to create a new project, and **server.py** to run the project on default port 8080, optionally providing the port number. 
+
+Django is using a few different commands, for example **manage.py** with options, or **django-admin** with options, etc.
+
+Hence, there are no options to run management commands from the code in Jam.py as in Django.
+
+
+After running the **server.py** command,  everything is continued in the Web browser, e.g., 
+http://127.0.0.1:8080/builder.html. 
+
+
+.. code-block:: console
+
+    127.0.0.1:8080/builder.html
+    
+Debugging
+=========
+
+Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with **print** command as usual.
+
+Profiling
+=========
+
+It is strongly suggested not to run production Applications with the **server.py** command only. Instead, a proper Web server should be configured. Most of the speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
+In addition, Jam.py has a special **static** folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.
+
+
+Docker
+======
+
+To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
+If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate admin.sqlite and langs.sqlite internal database.
+
+Please refer to more info in here: https://github.com/jam-py/jam-py/issues/208
+
+It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less. 
+
+Please refer to more info in here: https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ
+

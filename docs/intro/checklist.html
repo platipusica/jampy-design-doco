@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Checklist &#8212; Jam.py  documentation</title>
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Application Design" href="../design/index.html" />
+    <link rel="prev" title="Development Checklist" href="index.html" />
+    <link rel="shortcut icon" type="image/png" href="../_static/py.png" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+     
+
+  </head><body>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../design/index.html" title="Application Design"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Development Checklist"
+             accesskey="P">previous</a> |</li>
+    
+    
+    <a href="../index.html">Jam.py  documentation</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Development Checklist</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development Checklist</a></li>
+    <li class="right">
+        <a href="search.html" title="Search">search</a>
+         |
+    </li>
+
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="development-checklist">
+<h1>Development Checklist<a class="headerlink" href="#development-checklist" title="Permalink to this headline">¶</a></h1>
+<p>This list is inspired by the classic article by Joel Spolsky entitled <a class="reference external" href="https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/">The Joel Test 12 Steps to Better Code</a>.</p>
+<div class="section" id="using-virtual-environments-used-by-application">
+<h2>Using Virtual Environments used by Application<a class="headerlink" href="#using-virtual-environments-used-by-application" title="Permalink to this headline">¶</a></h2>
+<p>Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.</p>
+<p>This is particularly true with the Apache Web server and mod_wsgi module, when the module is compiled against specific Python version, and loaded as per Apache procedure.</p>
+<p>Standard Python library is used to create a virtual environment. After creation,
+the new environment must be “sourced”, and all packages installed with pip:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/Downloads/py3.9/bin/activate</span>
+<span class="go">pip install jam.py</span>
+<span class="go">pip install pandas</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The above command will install jam.py and pandas packages into <code class="docutils literal notranslate"><span class="pre">~/Downloads/py3.9/lib/python3.9/site-packages/</span></code> directory. We can have as many virtual environments as needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is advisable to have Production and Development environments.</p>
+</div>
+</div>
+<div class="section" id="using-the-source-control">
+<h2>Using the Source Control<a class="headerlink" href="#using-the-source-control" title="Permalink to this headline">¶</a></h2>
+<p>Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it’s content.</p>
+<p>However, for the static files, for example external JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:</p>
+<p><a class="reference external" href="https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ">Automated config backup</a></p>
+<p>The Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.</p>
+</div>
+<div class="section" id="unit-testing">
+<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h2>
+<p>Jam.py version higher than v5 is using <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> and <a class="reference external" href="https://www.chaijs.com/">Chai</a>/<a class="reference external" href="https://mochajs.org/">Mocha</a>. It is also possible to use Selenium IDE for the browser.</p>
+<p>Please visit posted video <a class="reference external" href="https://www.youtube.com/watch?v=ftGkrxNEwTw">Jam.py Application Builder automated testing with pytest and Mocha/Chai</a>, and
+<a class="reference external" href="https://www.youtube.com/watch?v=Sv_IllxQ_RY&amp;t=14s">Simple CRM with jam.py and Selenium IDE in 2.45minutes!</a>.</p>
+<p>All necessary tools and libraries for testing should be installed in the same Python virtual environment where Jam.py libraries are.</p>
+</div>
+<div class="section" id="continuous-integration-ci">
+<h2>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to use Continuous Integration as we would with Django.</p>
+</div>
+<div class="section" id="generating-documentation">
+<h2>Generating Documentation<a class="headerlink" href="#generating-documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> is used as an defacto Python standard. It is very simple to start with using what is already provided with Jam.py.</p>
+<p>As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documantation:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span><span class="o">.</span><span class="n">py</span>       <span class="n">index</span><span class="o">.</span><span class="n">txt</span>  <span class="n">Makefile</span>    <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">contents</span><span class="o">.</span><span class="n">txt</span>  <span class="n">make</span><span class="o">.</span><span class="n">bat</span>   <span class="n">prepare</span><span class="o">.</span><span class="n">py</span>  <span class="n">set_scale</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">intro</span><span class="p">:</span>
+<span class="n">checklist</span><span class="o">.</span><span class="n">txt</span>  <span class="n">index</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">_static</span><span class="p">:</span>
+<span class="n">favicon</span><span class="o">.</span><span class="n">ico</span>  <span class="n">jquery</span><span class="o">.</span><span class="n">js</span>
+
+<span class="n">_templates</span><span class="p">:</span>
+<span class="n">jamdocs</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Modify all files for your preference and build the documentation. For example, the below command will build one <strong>single</strong> html file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  make singlehtml
+</pre></div>
+</div>
+<p>For more professional look, the <strong>latexpdf</strong> option might be used.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  make latexpdf
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Latex</strong> libraries are quite large and the installation is on the OS level. <strong>Sphinx</strong> can be installed inside Python virtual environment.</p>
+</div>
+</div>
+<div class="section" id="limited-introduction-to-the-tool">
+<h2>Limited introduction to the tool<a class="headerlink" href="#limited-introduction-to-the-tool" title="Permalink to this headline">¶</a></h2>
+<p>Jam.py is using <strong>jam-project.py</strong> with no options to create a new project, and <strong>server.py</strong> to run the project on default port 8080, optionally providing the port number.</p>
+<p>Django is using a few different commands, for example <strong>manage.py</strong> with options, or <strong>django-admin</strong> with options, etc.</p>
+<p>Hence, there are no options to run management commands from the code in Jam.py as in Django.</p>
+<p>After running the <strong>server.py</strong> command,  everything is continued in the Web browser, e.g.,
+<a class="reference external" href="http://127.0.0.1:8080/builder.html">http://127.0.0.1:8080/builder.html</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">127.0.0.1:8080/builder.html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with <strong>print</strong> command as usual.</p>
+</div>
+<div class="section" id="profiling">
+<h2>Profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h2>
+<p>It is strongly suggested not to run production Applications with the <strong>server.py</strong> command only. Instead, a proper Web server should be configured. Most of the speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
+In addition, Jam.py has a special <strong>static</strong> folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.</p>
+</div>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
+If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate admin.sqlite and langs.sqlite internal database.</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://github.com/jam-py/jam-py/issues/208">https://github.com/jam-py/jam-py/issues/208</a></p>
+<p>It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less.</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ">https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ</a></p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Development Checklist</a><ul>
+<li><a class="reference internal" href="#using-virtual-environments-used-by-application">Using Virtual Environments used by Application</a></li>
+<li><a class="reference internal" href="#using-the-source-control">Using the Source Control</a></li>
+<li><a class="reference internal" href="#unit-testing">Unit Testing</a></li>
+<li><a class="reference internal" href="#continuous-integration-ci">Continuous Integration (CI)</a></li>
+<li><a class="reference internal" href="#generating-documentation">Generating Documentation</a></li>
+<li><a class="reference internal" href="#limited-introduction-to-the-tool">Limited introduction to the tool</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#profiling">Profiling</a></li>
+<li><a class="reference internal" href="#docker">Docker</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Development Checklist</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../design/index.html"
+                        title="next chapter">Application Design</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/intro/checklist.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<br />
+    
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../design/index.html" title="Application Design"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Development Checklist"
+             >previous</a> |</li>
+    
+    
+    <a href="../index.html">Jam.py  documentation</a> &#187;
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Development Checklist</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development Checklist</a></li>
+    <li class="right">
+        <a href="search.html" title="Search">search</a>
+         |
+    </li>
+
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Copyright</a> 2021, Drazen D. Babic.
+    <br />
+
+    Last updated on None.
+    
+    <br />
+
+    <img src="../_static/py.png" alt="" style="vertical-align: middle; margin-top: -1px" />
+    The <a href="https://www.python.org">Python</a> Software Foundation is a non-profit corporation.
+    <a href="https://www.python.org/psf/donations/">Please donate.</a>
+    <br />
+
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2
+        with <a href="https://github.com/oliver-zehentleitner/python-docs-theme-technopathy">python-docs-theme-technopathy</a>
+        by <a href="https://about.me/oliver-zehentleitner">Oliver Zehentleitner</a>.
+    <br />
+        <a href="https://www.technopathy.club/2019/11/03/use-python-sphinx-on-github-pages-with-html-and-an-indivdual-theme">
+    Create a GitHub Page like this one!</a>    <br />
+        Sponsored by <a href="https://www.lucit-development.co">LUCIT - Python Development</a>
+    </div>
+
+  </body>
+</html>

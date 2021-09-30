@@ -1,0 +1,10 @@
+=====================
+Application Design
+=====================
+
+There are number of Design decisions to make, before we dive into the Application development, namely what is the Authentication method the Application will use, the need for Users Registration and password reset, or forgotten password mechanism, default Language or translations, and what not.
+
+Authentication Decision
+========================
+
+
