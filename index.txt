@@ -1,6 +1,6 @@
-==========================
-Jam.py Application Tips 
-==========================
+==============================
+Jam.py Application Design Tips 
+==============================
 
 How the documentation is organised
 ==================================

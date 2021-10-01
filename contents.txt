@@ -4,11 +4,12 @@ Jam.py Application Design Tips contents
 
 .. toctree:: 
     :hidden:
+    :maxdepth: 3
 
     index
 
 .. toctree:: 
-    :maxdepth: 3
+    :maxdepth: 1
 
     intro/index
     design/index
