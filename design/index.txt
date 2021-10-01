@@ -2,7 +2,7 @@
 Application Design
 =====================
 
-Here we discuss some Application Design decisions.
+Here we discuss some Application Design terminology.
 
 .. toctree::
    :maxdepth: 1
