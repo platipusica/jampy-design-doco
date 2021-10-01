@@ -1,6 +1,6 @@
-===============
-Getting started
-===============
+=====================
+Development Checklist
+=====================
 
 Here we discuss some Jam.py Development environment issues and Python ecosystem.
 
