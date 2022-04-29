@@ -28,7 +28,11 @@ def process_html(file_name):
             lines.append('    <meta name="ROBOTS" content="ALL" />\n')
 #            lines.append('    <meta http-equiv="imagetoolbar" content="no" />\n')
 #            lines.append('    <meta name="MSSmartTagsPreventParsing" content="true" />\n')
+<<<<<<< HEAD
+            lines.append('    <meta name="Copyright" content="Jam.py Team" />\n')
+=======
             lines.append('    <meta name="Copyright" content="Drazen DEan Babic" />\n')
+>>>>>>> 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
             lines.append('    <meta name="keywords" content="Python, Javascript, Jam.py, framework, open-source"/>\n')
             lines.append('    <meta name="description" content="" />\n')
         else:

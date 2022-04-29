@@ -13,4 +13,8 @@ Jam.py Application Design Tips contents
 
     intro/index
     design/index
+<<<<<<< HEAD
+    howto/index
+=======
+>>>>>>> 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
 

@@ -47,7 +47,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'Jam.py'
-copyright = u'2021, Drazen Dean Babic'
+copyright = u'2021, Jam.py Team'
 author = u'Drazen Dean Babic'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -109,22 +109,28 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #html_theme = 'bootstrap'
-html_theme = 'python_docs_theme_technopathy'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {}
+html_theme_options = {
+    'analytics_id': 'UA-122962025-3',  #  Provided by Google in your dashboard
+    'analytics_anonymize_ip': False,
+    'logo_only': False,
+    'display_version': True
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_templates']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = 'Jam.py Application Builder'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-#html_short_title = None
+html_short_title = 'Jam.py'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -143,11 +149,11 @@ html_static_path = ['_static']
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
-#html_extra_path = []
+#html_extra_path = [/tips]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-#html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -224,7 +230,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   (master_doc, 'Jampydesigntips.tex', u'Jam.py Design Tips',
-   u'Drazen Dean Babic', 'manual'),
+   u'Jam.py Team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
