@@ -7,7 +7,6 @@ This list is inspired by the classic article by Joel Spolsky entitled `The Joel 
 .. _The Joel Test 12 Steps to Better Code: https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
 
 
-<<<<<<< HEAD
 Python version
 ==============
 
@@ -23,10 +22,6 @@ Get the latest version of Python at https://www.python.org/downloads/ or with yo
 
 Using Python Virtual Environments
 =================================
-=======
-Using Virtual Environments used by Application
-==============================================
->>>>>>> 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
 
 Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.
 
@@ -51,7 +46,6 @@ The above command will install jam.py and pandas packages into ``~/Downloads/py3
 
 Using the Source Control
 =========================
-<<<<<<< HEAD
 
 Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it's content by exporting the tables.
 
@@ -71,27 +65,6 @@ Jam.py version higher than v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is als
 Please visit posted video `Jam.py Application Builder automated testing with pytest and Mocha/Chai`_, and
 `Simple CRM with jam.py and Selenium IDE in 2.45minutes!`_.
 
-=======
-
-Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it's content.
-
-However, for the static files, for example external JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:
-
-`Automated config backup`_
-
-.. _Automated config backup: https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ
-
-The Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.
-
-Unit Testing 
-====================
-
-Jam.py version higher than v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is also possible to use Selenium IDE for the browser.
-
-Please visit posted video `Jam.py Application Builder automated testing with pytest and Mocha/Chai`_, and
-`Simple CRM with jam.py and Selenium IDE in 2.45minutes!`_.
-
->>>>>>> 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
 All necessary tools and libraries for testing should be installed in the same Python virtual environment where Jam.py libraries are.
 
 .. _pytest: https://docs.pytest.org/en/latest/
@@ -182,7 +155,6 @@ Since Jam.py is mostly JavaScript based, most of Debugging work is done via brow
 Profiling
 =========
 
-<<<<<<< HEAD
 It is strongly suggested not to run production Applications with the **server.py** command only. Instead, a proper Web server should be configured. Most of the Web server speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
 In addition, Jam.py has a special **static** folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.
 Serving the **static** might be possible with a separate Web server, similar to Django tactics. Jam.py has no utility as `collectstatic` Django command, and rsync might be used in this scenario.
@@ -332,21 +304,5 @@ Database sequences
 
 The database sequences are supported and Jam.py is providing an interface to use the `sequence generator`. Not all `sequence generators` can be used as this is specific to the database vendor. The Export file does not store the sequence definition, just the name of the sequence used.
 
-=======
-It is strongly suggested not to run production Applications with the **server.py** command only. Instead, a proper Web server should be configured. Most of the speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
-In addition, Jam.py has a special **static** folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.
 
-
-Docker
-======
-
-To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
-If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate admin.sqlite and langs.sqlite internal database.
-
-Please refer to more info in here: https://github.com/jam-py/jam-py/issues/208
-
-It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less. 
->>>>>>> 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
-
-Please refer to more info in here: https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ
 
