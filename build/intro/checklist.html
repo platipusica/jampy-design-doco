@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development Checklist &mdash; Jam.py Application Builder</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Application Design" href="../design/index.html" />
+    <link rel="prev" title="Development Checklist" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Jam.py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Jam.py Application Design Tips</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development Checklist</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Development Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-python-virtual-environments">Using Python Virtual Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-source-control">Using the Source Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing">Unit Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Unit Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-integration-ci">Continuous Integration (CI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limited-introduction-to-the-tool">Limited introduction to the tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profiling">Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-the-web-server">Choosing the Web Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apache-web-server-and-mod-wsgi">Apache Web Server and <code class="docutils literal notranslate"><span class="pre">mod_wsgi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iis-web-server">IIS Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpanel">CPanel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-the-database">Choosing the Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database-triggers">Database triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-views">Database views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-indexes">Database indexes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-sequences">Database sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Application Design</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Jam.py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Development Checklist</a> &raquo;</li>
+      <li>Development Checklist</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/intro/checklist.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="development-checklist">
+<h1>Development Checklist<a class="headerlink" href="#development-checklist" title="Permalink to this headline">¶</a></h1>
+<p>This list is inspired by the classic article by Joel Spolsky entitled <a class="reference external" href="https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/">The Joel Test 12 Steps to Better Code</a>.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Python version
+==============</p>
+<p>Since Jam.py is a Python Web Framework, we need Python installed on the target Operation System.
+Get the latest version of Python at <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> or with your operating system’s package manager.</p>
+<div class="admonition-python-on-windows admonition">
+<p class="admonition-title">Python on Windows</p>
+<p>If you are just starting with Jam.py and using Windows, you may find
+<span class="xref std std-doc">/howto/windows</span> useful.</p>
+</div>
+<div class="section" id="using-python-virtual-environments">
+<h2>Using Python Virtual Environments<a class="headerlink" href="#using-python-virtual-environments" title="Permalink to this headline">¶</a></h2>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad</p>
+<p>Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.</p>
+<p>This is particularly true with the Apache Web server and mod_wsgi module, when the module is compiled against specific Python version, and loaded as per Apache procedure.</p>
+<p>Standard Python library is used to create a virtual environment. After creation,
+the new environment must be “sourced”, and all packages installed with pip:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/Downloads/py3.9/bin/activate</span>
+<span class="go">pip install jam.py</span>
+<span class="go">pip install pandas</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The above command will install jam.py and pandas packages into <code class="docutils literal notranslate"><span class="pre">~/Downloads/py3.9/lib/python3.9/site-packages/</span></code> directory. We can have as many virtual environments as needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is advisable to have Production and Development environments.</p>
+</div>
+</div>
+<div class="section" id="using-the-source-control">
+<h2>Using the Source Control<a class="headerlink" href="#using-the-source-control" title="Permalink to this headline">¶</a></h2>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it’s content by exporting the tables.</p>
+<p>However, for the static files, for example JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:</p>
+<p><a class="reference external" href="https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ">Automated config backup</a></p>
+<p>The Application Builder Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.</p>
+</div>
+<div class="section" id="unit-testing">
+<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h2>
+<p>Jam.py version higher than v5 is using <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> and <a class="reference external" href="https://www.chaijs.com/">Chai</a>/<a class="reference external" href="https://mochajs.org/">Mocha</a>. It is also possible to use Selenium IDE for the browser.</p>
+<p>Please visit posted video <a class="reference external" href="https://www.youtube.com/watch?v=ftGkrxNEwTw">Jam.py Application Builder automated testing with pytest and Mocha/Chai</a>, and
+<a class="reference external" href="https://www.youtube.com/watch?v=Sv_IllxQ_RY&amp;t=14s">Simple CRM with jam.py and Selenium IDE in 2.45minutes!</a>.</p>
+<hr class="docutils" />
+<p>Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it’s content.</p>
+<p>However, for the static files, for example external JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:</p>
+<p><a class="reference external" href="https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ">Automated config backup</a></p>
+<p>The Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.</p>
+</div>
+<div class="section" id="id2">
+<h2>Unit Testing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Jam.py version higher than v5 is using <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> and <a class="reference external" href="https://www.chaijs.com/">Chai</a>/<a class="reference external" href="https://mochajs.org/">Mocha</a>. It is also possible to use Selenium IDE for the browser.</p>
+<p>Please visit posted video <a class="reference external" href="https://www.youtube.com/watch?v=ftGkrxNEwTw">Jam.py Application Builder automated testing with pytest and Mocha/Chai</a>, and
+<a class="reference external" href="https://www.youtube.com/watch?v=Sv_IllxQ_RY&amp;t=14s">Simple CRM with jam.py and Selenium IDE in 2.45minutes!</a>.</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad
+All necessary tools and libraries for testing should be installed in the same Python virtual environment where Jam.py libraries are.</p>
+</div>
+<div class="section" id="continuous-integration-ci">
+<h2>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to use Continuous Integration as we would with Django.</p>
+</div>
+<div class="section" id="generating-documentation">
+<h2>Generating Documentation<a class="headerlink" href="#generating-documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> is used as an defacto Python standard. It is very simple to start with using what is already provided with Jam.py.</p>
+<p>As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documantation:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span><span class="o">.</span><span class="n">py</span>       <span class="n">index</span><span class="o">.</span><span class="n">txt</span>  <span class="n">Makefile</span>    <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">contents</span><span class="o">.</span><span class="n">txt</span>  <span class="n">make</span><span class="o">.</span><span class="n">bat</span>   <span class="n">prepare</span><span class="o">.</span><span class="n">py</span>  <span class="n">set_scale</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">intro</span><span class="p">:</span>
+<span class="n">checklist</span><span class="o">.</span><span class="n">txt</span>  <span class="n">index</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">_static</span><span class="p">:</span>
+<span class="n">favicon</span><span class="o">.</span><span class="n">ico</span>  <span class="n">jquery</span><span class="o">.</span><span class="n">js</span>
+
+<span class="n">_templates</span><span class="p">:</span>
+<span class="n">jamdocs</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Modify all files for your preference and build the documentation. For example, the below command will build one <strong>single</strong> html file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  make singlehtml
+</pre></div>
+</div>
+<p>For more professional look, the <strong>latexpdf</strong> option might be used.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  make latexpdf
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Latex</strong> libraries are quite large and the installation is on the OS level. <strong>Sphinx</strong> can be installed inside Python virtual environment.</p>
+</div>
+</div>
+<div class="section" id="limited-introduction-to-the-tool">
+<h2>Limited introduction to the tool<a class="headerlink" href="#limited-introduction-to-the-tool" title="Permalink to this headline">¶</a></h2>
+<p>Jam.py is using <strong>jam-project.py</strong> with no options to create a new project, and <strong>server.py</strong> to run the project on default port 8080, optionally providing the port number.</p>
+<p>Django is using a few different commands, for example <strong>manage.py</strong> with options, or <strong>django-admin</strong> with options, etc.</p>
+<p>Hence, there are no options to run management commands from the code in Jam.py as in Django.</p>
+<p>After running the <strong>server.py</strong> command,  everything is continued in the Web browser, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">http://127.0.0.1:8080/builder.html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with <strong>print</strong> command as usual.</p>
+</div>
+<div class="section" id="profiling">
+<h2>Profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h2>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+It is strongly suggested not to run production Applications with the <strong>server.py</strong> command only. Instead, a proper Web server should be configured. Most of the Web server speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
+In addition, Jam.py has a special <strong>static</strong> folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.
+Serving the <strong>static</strong> might be possible with a separate Web server, similar to Django tactics. Jam.py has no utility as <cite>collectstatic</cite> Django command, and rsync might be used in this scenario.</p>
+</div>
+<div class="section" id="containers">
+<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
+<p>To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
+If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate Jam.py admin.sqlite and langs.sqlite internal database.</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://github.com/jam-py/jam-py/issues/208">Use external database for admin e langs</a></p>
+<p>It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less.</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ">Azure Deployment</a></p>
+</div>
+</div>
+<div class="section" id="choosing-the-web-server">
+<h1>Choosing the Web Server<a class="headerlink" href="#choosing-the-web-server" title="Permalink to this headline">¶</a></h1>
+<p>Jam.py is providing a lightweight internal Web server for the Development/Testing, just like Django. This means Jam.py is extremely portable and the Application can be shipped <cite>as is</cite>, with just <em>jam</em> folder from Jam.py distribution copied into the Application folder.</p>
+<div class="section" id="apache-web-server-and-mod-wsgi">
+<h2>Apache Web Server and <code class="docutils literal notranslate"><span class="pre">mod_wsgi</span></code><a class="headerlink" href="#apache-web-server-and-mod-wsgi" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-adapted-from-django-docs admonition">
+<p class="admonition-title">Adapted from <a class="reference external" href="https://docs.djangoproject.com/">Django Docs</a></p>
+<p><a class="reference external" href="https://docs.djangoproject.com/">Django Docs</a>: If you want to use Jam.py on a production site, use <a class="reference external" href="https://httpd.apache.org/">Apache</a> with
+<a class="reference external" href="https://modwsgi.readthedocs.io/en/develop/">mod_wsgi</a>. mod_wsgi operates in one of two modes: embedded
+mode or daemon mode. In embedded mode, mod_wsgi is similar to
+mod_perl – it embeds Python within Apache and loads Python code into
+memory when the server starts. Code stays in memory throughout the
+life of an Apache process, which leads to significant performance
+gains over other server arrangements. In daemon mode, mod_wsgi spawns
+an independent daemon process that handles requests. The daemon
+process can run as a different user than the web server, possibly
+leading to improved security. The daemon process can be restarted
+without restarting the entire Apache web server, possibly making
+refreshing your codebase more seamless. Consult the mod_wsgi
+documentation to determine which mode is right for your setup. Make
+sure you have Apache installed with the mod_wsgi module activated.
+Jam.py will work with any version of Apache that supports mod_wsgi.</p>
+<p>If you can’t use mod_wsgi for some reason, fear not: Jam.py supports many other
+deployment options. It works very well with <a class="reference external" href="https://nginx.org/">nginx</a>. Additionally, Jam.py follows the WSGI spec
+(<span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3333"><strong>PEP 3333</strong></a>), which allows it to run on a variety of server platforms.</p>
+</div>
+<p><a class="reference external" href="https://modwsgi.readthedocs.io/en/develop/">mod_wsgi</a> is tightly coupled with Python and quite often shipped as the default Python version installed on the Operation System. When developing Application in an Python Virtual Environment, for example on the Developer’s computer, it is possible that Python version does not match the <cite>mod_wsgi</cite> version activated in Apache due to Python mismatch. To solve any problems with Python differences, it is suggested to install <em>mod_wsgi</em> for Apache from the Virtual Environment which matches the Development/Test environment.</p>
+</div>
+<div class="section" id="iis-web-server">
+<h2>IIS Web Server<a class="headerlink" href="#iis-web-server" title="Permalink to this headline">¶</a></h2>
+<p>Using IIS Web with FastCGI is supported. Please visit <a class="reference external" href="https://groups.google.com/g/jam-py/c/RWj-OyCNLnQ/m/nVme6y7tCwAJ">JamPy deployment on Microsoft IIS</a> for more information.</p>
+</div>
+<div class="section" id="cpanel">
+<h2>CPanel<a class="headerlink" href="#cpanel" title="Permalink to this headline">¶</a></h2>
+<p>Using CPanel is supported. Please visit <a class="reference external" href="https://groups.google.com/g/jam-py/c/tkuc-dudmTA/m/0GL6mSEJCAAJ">Success with cPanel v82.0.12 and Jam.py</a> for more information.</p>
+</div>
+</div>
+<div class="section" id="choosing-the-database">
+<h1>Choosing the Database<a class="headerlink" href="#choosing-the-database" title="Permalink to this headline">¶</a></h1>
+<p>Similar to Django, Jam.py attempts to support as many features as possible for supported databases. However, not all database backends are alike, and Jam.py design decisions were made on which features to support.</p>
+<p>As contrary to Django, Jam.py has no models, classes, subclasses and attributes. Since Jam.py is exclusively using Application Builder, there is no code to develop <cite>model</cite> to database table relationship, or table fields specified as <cite>class</cite> attributes.</p>
+<div class="admonition-adapted-from-django-docs admonition">
+<p class="admonition-title">Adapted from <a class="reference external" href="https://docs.djangoproject.com/">Django Docs</a></p>
+<p><a class="reference external" href="https://docs.djangoproject.com/">Django Docs</a>: Jam.py supports many different database servers and is officially supported with <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a>, <a class="reference external" href="https://mariadb.org/">MariaDB</a>, <a class="reference external" href="https://www.mysql.com/">MySQL</a>, <a class="reference external" href="https://www.microsoft.com/en-au/sql-server/sql-server-downloads">MSSQL</a>, <a class="reference external" href="https://www.oracle.com/">Oracle</a>, <a class="reference external" href="https://firebirdsql.org/">Firebird</a> and <a class="reference external" href="https://www.sqlite.org/">SQLite</a>.</p>
+<p>If you are developing a small project or something you don’t plan to deploy in
+a production environment, SQLite is generally the best option as it doesn’t
+require running a separate server. However, SQLite has many differences from
+other databases, so if you are working on something substantial, it’s
+recommended to develop with the same database that you plan on using in
+production.</p>
+<p>In addition to a database backend, you’ll need to make sure your Python
+database bindings are installed.</p>
+<ul class="simple">
+<li><p>If you’re using PostgreSQL, you’ll need the <a class="reference external" href="https://www.psycopg.org/">psycopg2</a> package.</p></li>
+<li><p>If you’re using MySQL or MariaDB, you’ll need a <code class="docutils literal notranslate"><span class="pre">mysqlclient</span></code> for Python 2.x or <code class="docutils literal notranslate"><span class="pre">pymysql</span></code>  for Python 3.x.</p></li>
+<li><p>If you’re using Oracle, you’ll need a copy of <a class="reference external" href="https://oracle.github.io/python-cx_Oracle/">cx_Oracle</a>.</p></li>
+</ul>
+</div>
+<p>Even though Jam.py supports all databases from the above, there is no guarantee that some specific and/or propriety database functionality is supported. Here we name a few.</p>
+<div class="section" id="database-triggers">
+<h2>Database triggers<a class="headerlink" href="#database-triggers" title="Permalink to this headline">¶</a></h2>
+<p>Database triggers are specific to the database vendor and Jam.py does not support creation of triggers within the Application Builder. It is absolutely possible to use triggers, however, when moving the Application into the ie. Production, the Application Export file will not contain any information about the triggers and they need to be recreated manually.</p>
+</div>
+<div class="section" id="database-views">
+<h2>Database views<a class="headerlink" href="#database-views" title="Permalink to this headline">¶</a></h2>
+<p>The database views are specific to the vendor too, and Jam.py does not support it for now.
+The same applies as for database triggers.</p>
+</div>
+<div class="section" id="database-indexes">
+<h2>Database indexes<a class="headerlink" href="#database-indexes" title="Permalink to this headline">¶</a></h2>
+<p>Indexes creation/deletion is supported with Jam.py. The indexes information is stored in the Application Export file if the indexes were created by Application Builder interface. Not all vendor specific index functionality is supported, ie. Oracle <cite>function based</cite> index, etc. The Primary Key creation will result in creating an index.
+When working with <cite>legacy</cite> databases, meaning the tables were Imported and not created by the Application Builder, Jam.py does not import indexes information. This might lead into lost indexes if moving the Application to different environment by Jam.py Export/Import utility.</p>
+</div>
+<div class="section" id="database-sequences">
+<h2>Database sequences<a class="headerlink" href="#database-sequences" title="Permalink to this headline">¶</a></h2>
+<p>The database sequences are supported and Jam.py is providing an interface to use the <cite>sequence generator</cite>. Not all <cite>sequence generators</cite> can be used as this is specific to the database vendor. The Export file does not store the sequence definition, just the name of the sequence used.</p>
+</div>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
+If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate admin.sqlite and langs.sqlite internal database.</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://github.com/jam-py/jam-py/issues/208">https://github.com/jam-py/jam-py/issues/208</a></p>
+<p>It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2b0355d6d1aa00d98499f4eec8fcb4986d92f6ad</p>
+<p>Please refer to more info in here: <a class="reference external" href="https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ">https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Development Checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../design/index.html" class="btn btn-neutral float-right" title="Application Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Jam.py Team.
+      <span class="lastupdated">Last updated on Apr 29, 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122962025-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-122962025-3', {
+          'anonymize_ip': false,
+      });
+    </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>
