@@ -14,5 +14,6 @@ Jam.py Application Design Tips contents
     intro/index
     design/index
     howto/index
+    howDemo/index
 
 
