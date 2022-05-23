@@ -1,0 +1,421 @@
+============
+Demo project
+============
+
+After downloading the Jam.py package, and starting Demo, the application is accessible with typing 127.0.0.1:8080/index.html or just 127.0.0.1:8080 in the Browser:
+
+.. image:: _images/demo.png
+	:scale: 70 %
+	:align: center
+	:alt: Demo application
+
+
+The Application Builder is accessible with typing 127.0.0.1:8080/_`builder.html` in the Browser:
+
+.. image:: _images/demo_admin.png
+	:scale: 70 %
+	:align: center
+	:alt: Application builder of demo project
+
+
+The Application is derived from Open Source Chinook Database. It is an Invoicing example with music tracks as invoiced products,
+Customers, Albums, etc. Basically, the application creates a Customer details, product details, and raises Invoices for Customers. That is it.
+Cool little application, though.
+
+As mentioned, Demo application is derived from it, it is not a one-to-one mappings of all database fields and relations. We need to start from somewhere, right?
+
+
+Demo database
+=============
+
+To better understand the actual database, here is the original _`Chinook database` relational diagram:
+
+.. image:: _images/chinook.png
+	:scale: 50 %
+	:align: center
+	:alt: Chinook Database
+
+Why is the above diagram important? Because it is demonstrating the tables Primary and Foreign Keys, which are essentially a table Lookups used within Jam.py. More about that latter.
+
+So now that we know what the Demo application is all about, we can dive into more details. First, what can we actually expect from Jam.py?
+
+
+What to expect?
+================
+
+Low code is what everyone talks about. Below is what Jam.py provides with no coding needed at all, at least not for this Demo. The code does exist, it is there. Otherwise the application would no work at all. However, this only means that no coding is required by us to build similar applications. Because the code exist, and is available to us, this also means we can adapt the existing code for our requirements. Mostly, it is a copy/paste from this Demo, with some minor changes for the application we are building. This is important to understand. Jam.py is providing many bells and whistles, or so called batteries, out of shelf. However, Jam.py is not "Out of Shelf Application"! It is a framework, so we build applications within the constraints of the framework. 
+
+Just like Django's MVC. When building applications with Django, we operate within the similar constraints. Both frameworks are flexible enough for the job at hand. The main difference is the task, or the application. Django could build the Jam.py application, but it would be overkill, since Jam.py is way more specialised in doing so. Jam.py is a specialised framework. It is the right tool for the right job. Let's see what can we expect from it.
+
+
+DropDown Menu(s)
+----------------
+
+On the below menu all options on the left are created automatically. The "About" and "Jam.py" on the right side is a code. We can build complete menu manually, not to worry. Will get there soon.
+
+.. image:: _images/demo_menu.png
+	:scale: 70 %
+	:align: center
+	:alt: Automated Menu
+
+
+
+
+Data Grid(s)
+------------
+
+
+The Demo Invoices data grid is so called Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned off. If some none default button is needed, it can be added with a code though.
+Did I mentioned search for any field, and sorting for any field? It's automated.
+
+What is also done by Jam.py with no code is a summary for any numerical field or a number of records for other fields.
+As seen, the Invoices data grid is presented as Tab. As we open more, more Tabs will appear here.  
+
+.. image:: _images/demo_master.png
+	:scale: 70 %
+	:align: center
+	:alt: General Ledger tables
+
+More Data Grid(s)
+-----------------
+
+The Demo Invoices data has a Details grid. This are Invoices items details in Demo Application. They are created automatically and can contain summary fields and sorting. The Total field visible is a code! What is not visible is editing directly in the grid! There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? Will get there.
+
+As above grid, each Details grid is presented in Tabbed format. More Details added to an Journal, more Tabs we see in here. 
+
+.. image:: _images/demo_detail.png
+	:scale: 70 %
+	:align: center
+	:alt: Invoices items tables
+
+
+
+Data Grid Footer/Header
+-----------------------
+
+Automatically provided is a classic New/Delete/Edit option for any Data Grid. It can exist on the Top/Bottom of some data Grid, hence I call it Footer/Header. It can also contain other buttons or a menu, which is a code driven, so coding is needed.
+
+.. image:: _images/demo_footer.png
+	:scale: 70 %
+	:align: center
+	:alt: Data Grid Footer/Header 
+
+
+Do not want to go further, just a minimum to get us going.
+
+
+Any questions?
+--------------
+
+So now that we covered the first thing we see on the Demo application, any questions?
+
+
+All of the above is driven by the Builder GUI. We might be saying no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover for all scenarios possible. Or a team of dedicated developers.
+
+I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code for now. Both mentioned features require some coding experience. Not much, bit still needed.
+
+ 
+
+
+Ok, how do I start?
+===================
+
+If no questions, I think we should first start with building some tables. Since we are doing Invoices, lets start with this. It is sort of top to bottom approach!
+
+
+Invoices
+--------
+
+For an invoice, we need a Customer, some Product and somewhere to store invoiced data. Like an Journal. To be fair, Journal is just a name. We do not really need to stick to the Jam.py Demo application naming! Rename anything to whatever floats your boat!
+
+.. image:: _images/demo_journal.png
+	:scale: 70 %
+	:align: center
+	:alt: Editing Journal
+
+
+We can rename Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always advisable to use "Find" built-in option to search where some Name is used.
+
+"Master field" field seen above is a Jam.py feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as Master(Journals)-Detail relation.
+I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master field" Jam.py feature we can do much more. We will get to this latter.
+
+Only Invoices and Tracks are using "Master field". 
+
+The Demo Invoices table:
+
+.. image:: _images/item_editor_dialog.png
+	:scale: 80 %
+	:align: center
+	:alt: Invoices table
+
+We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook database`_, we see the relation Customers - Invoices! 
+
+This means we can create the table but with no Customers one, we cant really achieve what is needed for Invoices to function correctly. 
+
+With no Customers table our Invoices table would look like this:
+
+
+.. image:: _images/item_editor_dialog_blank.png
+	:scale: 80 %
+	:align: center
+	:alt: Invoices table with no Customers
+
+It is exactly the same thing, same old table. However, it would not display any data! It does not know what to display yet.
+
+Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holly Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does.
+ 
+
+As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
+
+Also worth mentioning is that Invoices do contain a tiny code for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
+
+Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is an "View" option on the right hand side. 
+
+
+
+.. image:: _images/demo_inv_view.png
+	:scale: 80 %
+	:align: center
+	:alt: Invoices table view
+
+Here we control the layout, sorting and summary fields, as well as fields visibility on the Demo data grid. On the Form tab, we see a number of other options, but most importantly the "View detail" option, with selected "Invoice table". We can select as many Details as we like, providing they exist. If no detail is selected, there would be nothing to display. Somehow counter-intuitive on the first instance, however we are controlling the visibility with this option, not more than that.
+
+.. image:: _images/demo_inv_form.png
+	:scale: 80 %
+	:align: center
+	:alt: Invoices table view form
+
+
+Similar for Edit option. Exclude or select for editing whatever is necessary, as well as details needed for editing. While on it, we can also control how to present the edit form in the sense of tabs or bands. This is done on enlarged "Plus" icon. I would encourage to play with this options, it is quite subjective what and how something should be presented.  
+
+.. image:: _images/demo_inv_edit_form.png
+	:scale: 70 %
+	:align: center
+	:alt: Invoices table edit form
+
+
+.. _Item Editor dialog: https://jampyapplicationbuilder.com/docs/admin/items/item_editor_dialog
+
+
+Customers
+---------
+
+Back to Customers, if we visited `Tutorial. Part 1. First project`_ in Doc's, I hope it is pretty much clear how to create a simple CRM. Hence, Demo application has Customers table as well, which is consumed by the Invoices table.
+
+
+Here is how Customers table looks like:
+
+ 
+.. image:: _images/demo_customers.png
+	:scale: 80 %
+	:align: center
+	:alt: Customers table
+
+
+It is a simple table with no lookups to some other tables, like Invoices for example. Because it is derived from the `Chinook database`_, we can see that Demo is missing the Employees table, so the SupportRepid is not used anywhere. That is fine. No harm done. We might argue that Customers table can be split in more tables, like Country, State or similar. While on it, please see `Tutorial. Part 2. File and image fields`_ for adding Image field. We did touch base with the `View/Edit`_ option on Invoices, no need for repeating. 
+
+
+Now that we have two tables in place, we can set the "Lookup fields" in Invoices in a similar fashion as in `Tutorial. Part 1. First project`_.
+
+We did not touch the third table yet, which is the "Invoice items". This is the part of `Tutorial. Part 3. Details`_
+
+.. _Tutorial. Part 1. First project: https://jampyapplicationbuilder.com/docs/intro/tutorial01/index.html
+
+.. _Tutorial. Part 2. File and image fields: https://jampyapplicationbuilder.com/docs/intro/tutorial02/index.html
+
+.. _Tutorial. Part 3. Details: https://jampyapplicationbuilder.com/docs/intro/tutorial03/index.html
+
+ 
+
+Invoice items
+-------------
+
+To automatically add some details to some other table, with no code what so ever, we need to use Jam.py Details feature.
+
+Why would we do that? Well, we could opt for coding. It is available feature and used mostly for Imported tables, which do not contain additional fields Jam.py is using. 
+
+However, Demo application is demonstrating how Jam.py is functioning, so why not using it. 
+
+Basically, since the Invoice Table is a detail, it has the master_rec_id field that stores a reference to invoice that has this record, we can show the user an invoice that contains the current sold record. Clear as mud?
+
+The Details Group differs from other default tables slightly:
+
+.. image:: _images/demo_details_group.png
+	:scale: 80 %
+	:align: center
+	:alt:  Detail Group
+
+
+See the additional fields? The fields in question are master_rec_id and master_id. This fields do not exist in any legacy systems. None of the applications out there are using it. However, let's not be afraid of this feature. As mentioned, we can and we will achieve the Jam.py functionality with a bit of code for legacy systems without this fields. 
+
+In addition, the option "Visible" is unchecked. It makes no sense in setting the Details as visible, since we edit/view them within the Invoices only. It is possible to set it as visible, though.
+
+Just like before, the "Invoice Table" is referencing two tables, "Tracks" and "Customers". 
+
+
+.. image:: _images/demo_details.png
+	:scale: 80 %
+	:align: center
+	:alt:  Invoice Items
+
+
+Of course, this was the "blank" Invoice Table with no referencing (lookups), to the above two tables. It would not show anything. The reason why we using "Customers" table and not the Invoices, InvoiceId from `Chinook database`_ diagram, is the presentation. Is is more nicely presented with the customer last name on the screen than with some meaningless number as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
+
+
+
+.. image:: _images/demo_blank_details.png
+	:scale: 80 %
+	:align: center
+	:alt:  Invoice Items with no lookups
+
+
+Now we execute `Tutorial. Part 3. Details`_
+
+
+.. _Tutorial. Part 3. Details: https://jampyapplicationbuilder.com/docs/intro/tutorial03/index.html
+
+ 
+How did we go?
+--------------
+
+So, did we manage to get the Invoices with details up? It is quite common for the first timers to miss the "Details" button on the right hand side of Invoices in `builder.html`_.
+
+On the `CRM`_ example, the Details is a "to-do'list". If all went ok, we should have a project page similar to Demo. 
+
+
+
+.. _CRM: https://jampyapplicationbuilder.com/docs/intro/tutorial03/index.html
+
+
+Click on!
+----------
+
+With the expectations and basics covered, we can double click on any Invoices row. If all good, we see one invoice with the invoice items included.
+
+ 
+.. image:: _images/demo_inv_edit.png
+	:scale: 80 %
+	:align: center
+	:alt:  Edit Invoice 
+
+If nothing was touched or changed, this is how it looks like. Job done. All created automatically, no code yet! Except for "Tax" and "Total".
+
+
+Your 1st task!
+--------------
+
+As mentioned, we can edit anything directly in the data grid! The changes will be picked immediately and saved in the database.
+
+Your first task is to find the option which enables editing in the data grid.
+
+It looks like this:
+
+.. image:: _images/demo_inv_edit_field.png
+	:scale: 70 %
+	:align: center
+	:alt:  Edit Invoice  
+
+
+And why not reshuffling the Invoices edit form a bit?
+
+To look similar to this:
+
+.. image:: _images/demo_inv_1.png
+	:scale: 70 %
+	:align: center
+	:alt:  Edit Invoice  
+
+Very good, we are getting there! 
+
+I am not sure if more info is needed about the data grid and forms layout. Just note that the Menu is created from the `builder.html`_ Groups layout, so whatever is showing here first, it will be shown as first on the Menu.
+
+If we quickly want to change the application starting view to ie Customers, we just change the Groups order.
+
+Maybe we can go now through a code.
+
+
+A little code
+=============
+
+
+If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
+
+The official documentation has heaps of code applicable to Demo application. Here will try to explain where exactly the code is used is a bit about why. 
+
+
+Invoices
+--------
+
+In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that more major players like PowerApps have that. Sure, they also have a bottomless financing, if you follow my drift.
+
+Here is the code for Demo version 1.5.30 which can be found on "Client module" after selecting Invoices:
+
+.. code-block:: js
+
+ 
+        function on_field_get_text(field) {
+            if (field.field_name === 'customer' && field.value) {
+                return field.owner.firstname.lookup_text + ' ' + field.lookup_text;
+            }
+        }
+
+        function on_field_get_html(field) {
+            if (field.field_name === 'total') {
+                if (field.value > 10) {
+                    return '<strong>' + field.display_text + '</strong>';
+                }
+            }
+        }
+
+        function on_field_changed(field, lookup_item) {
+            var item = field.owner,
+                rec;
+            if (field.field_name === 'taxrate') {
+                rec = item.invoice_table.rec_no;
+                item.invoice_table.disable_controls();
+                try {
+                    item.invoice_table.each(function(t) {
+                        t.edit();
+                        t.calc(t);
+                        t.post();
+                    });
+                }
+                finally {
+                    item.invoice_table.rec_no = rec;
+                    item.invoice_table.enable_controls();
+                }
+            }
+        }
+
+        function on_detail_changed(item, detail) {
+            var fields = [
+                {"total": "total"}, 
+                {"tax": "tax"}, 
+                {"subtotal": "amount"}
+            ];  
+            item.calc_summary(detail, fields);
+        }
+
+        function on_before_post(item) {
+            var rec = item.invoice_table.rec_no;
+            item.invoice_table.disable_controls();
+            try {
+                item.invoice_table.each(function(t) {
+                    t.edit();
+                    t.customer.value = item.customer.value;
+                    t.post();
+                });    
+            }
+            finally {
+                item.invoice_table.rec_no = rec;
+                item.invoice_table.enable_controls();
+            }
+        }
+
+
+You'll find that the most important function and commonly used is **on_field_changed**.
+
+
+
+
+
