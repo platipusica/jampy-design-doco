@@ -347,7 +347,7 @@ Again, we touching only the additional code applicable for Demo, the default one
 Invoices
 --------
 
-In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that more major players like PowerApps have that. Sure, they also have a bottomless financing, if you follow my drift.
+In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that major players, like PowerApps, have that. Sure, they also have a bottomless financing, if you follow my drift.
 
 Here is the code for Demo version 1.5.30 which can be found on "Client module" after selecting Invoices:
 
