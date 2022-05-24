@@ -340,7 +340,8 @@ A little code
 
 If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
 
-The official documentation has heaps of code applicable to Demo application. Here will try to explain where exactly the code is used is a bit about why. 
+The official documentation has heaps of code applicable to Demo application. Here will try to explain where exactly the code is used and a bit about why.
+Again, we touching only the additional code applicable for Demo, the default one which comes with a blank and empty project is not discussed.
 
 
 Invoices
@@ -413,7 +414,8 @@ Here is the code for Demo version 1.5.30 which can be found on "Client module" a
         }
 
 
-You'll find that the most important function and commonly used is **on_field_changed**.
+You'll find that the most important function and the most commonly used is **on_field_changed** from the above.
+
 
 
 
