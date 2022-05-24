@@ -43,7 +43,7 @@ So now that we know what the Demo application is all about, we can dive into mor
 What to expect?
 ================
 
-Low code is what everyone talks about. Below is what Jam.py provides with no coding needed at all, at least not for this Demo. The code does exist, it is there. Otherwise the application would no work at all. However, this only means that no coding is required by us to build similar applications. Because the code exist, and is available to us, this also means we can adapt the existing code for our requirements. Mostly, it is a copy/paste from this Demo, with some minor changes for the application we are building. This is important to understand. Jam.py is providing many bells and whistles, or so called batteries, out of shelf. However, Jam.py is not "Out of Shelf Application"! It is a framework, so we build applications within the constraints of the framework. 
+Low code is what everyone talks about. Below is what Jam.py provides with no coding needed at all, at least not for this Demo. The code does exist, it is there. Otherwise the application would not work at all. However, this only means that no coding is required by us to build similar applications. Because the code is there, and is available to us, this also means we can adapt the existing code for our requirements. Mostly, it is a copy/paste from this Demo, with some minor changes for the application we are building. This is important to understand. Jam.py is providing many bells and whistles, or so called batteries, out of shelf. However, Jam.py is not "Out of Shelf Application"! It is a framework, so we build applications within the constraints of the framework. 
 
 Just like Django's MVC. When building applications with Django, we operate within the similar constraints. Both frameworks are flexible enough for the job at hand. The main difference is the task, or the application. Django could build the Jam.py application, but it would be overkill, since Jam.py is way more specialised in doing so. Jam.py is a specialised framework. It is the right tool for the right job. Let's see what can we expect from it.
 
@@ -66,7 +66,7 @@ Data Grid(s)
 
 
 The Demo Invoices data grid is so called Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned off. If some none default button is needed, it can be added with a code though.
-Did I mentioned search for any field, and sorting for any field? It's automated.
+Did I mention search for any field, and sorting for any field? It's automated.
 
 What is also done by Jam.py with no code is a summary for any numerical field or a number of records for other fields.
 As seen, the Invoices data grid is presented as Tab. As we open more, more Tabs will appear here.  
@@ -112,7 +112,7 @@ So now that we covered the first thing we see on the Demo application, any quest
 
 All of the above is driven by the Builder GUI. We might be saying no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover for all scenarios possible. Or a team of dedicated developers.
 
-I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code for now. Both mentioned features require some coding experience. Not much, bit still needed.
+I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code for now. Both mentioned features require some coding experience. Not much, but still needed.
 
  
 
@@ -126,7 +126,7 @@ If no questions, I think we should first start with building some tables. Since 
 Invoices
 --------
 
-For an invoice, we need a Customer, some Product and somewhere to store invoiced data. Like an Journal. To be fair, Journal is just a name. We do not really need to stick to the Jam.py Demo application naming! Rename anything to whatever floats your boat!
+For an invoice, we need a Customer, some Product and somewhere to store invoiced data. Like a Journal. To be fair, Journal is just a name. We do not really need to stick to the Jam.py Demo application naming! Rename anything to whatever floats your boat!
 
 .. image:: _images/demo_journal.png
 	:scale: 70 %
@@ -162,7 +162,7 @@ With no Customers table our Invoices table would look like this:
 
 It is exactly the same thing, same old table. However, it would not display any data! It does not know what to display yet.
 
-Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holly Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does.
+Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does.
  
 
 As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
@@ -259,7 +259,7 @@ Just like before, the "Invoice Table" is referencing two tables, "Tracks" and "C
 	:alt:  Invoice Items
 
 
-Of course, this was the "blank" Invoice Table with no referencing (lookups), to the above two tables. It would not show anything. The reason why we using "Customers" table and not the Invoices, InvoiceId from `Chinook database`_ diagram, is the presentation. Is is more nicely presented with the customer last name on the screen than with some meaningless number as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
+Of course, this was the "blank" Invoice Table with no referencing (lookups), to the above two tables. It would not show anything. The reason why we using "Customers" table and not the Invoices, InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the customer last name on the screen than with some meaningless number as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
 
 
 
@@ -280,7 +280,7 @@ How did we go?
 
 So, did we manage to get the Invoices with details up? It is quite common for the first timers to miss the "Details" button on the right hand side of Invoices in `builder.html`_.
 
-On the `CRM`_ example, the Details is a "to-do'list". If all went ok, we should have a project page similar to Demo. 
+On the `CRM`_ example, the Details is a "to-do-list". If all went ok, we should have a project page similar to Demo. 
 
 
 
@@ -338,7 +338,7 @@ A little code
 =============
 
 
-If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
+If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
 
 The official documentation has heaps of code applicable to Demo application. Here will try to explain where exactly the code is used is a bit about why. 
 
