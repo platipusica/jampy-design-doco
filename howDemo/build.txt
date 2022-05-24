@@ -305,7 +305,7 @@ With the expectations and basics covered, we can double click on any Invoices ro
 
 If nothing was touched or changed, this is how it looks like. Job done. All created automatically, no code yet! Except for "Tax" and "Total".
 
-See how almost everything related to Customer is greyed out? This is because of the `Master fields`_! Only one field on the Invoices table is not using "Master field" and this is a Customer field. Hence, only that field won’t be greyed out, because we are using it to define all other fields on the Form. For sure we are not updating the "Invoice Date" from anywhere, it is defined with a little code. Same with "Tax", "SubTotal" and "Total".
+See how almost everything related to Customer is greyed out? This is because of the `Master field`_! Only one field on the Invoices table is not using "Master field" and this is a Customer field. Hence, only that field won’t be greyed out, because we are using it to define all other fields on the Form. For sure we are not updating the "Invoice Date" from anywhere, it is defined with a little code. Same with "Tax", "SubTotal" and "Total".
 
 
 Your 1st task!
