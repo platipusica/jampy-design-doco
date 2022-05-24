@@ -35,7 +35,7 @@ To better understand the actual database, here is the original _`Chinook databas
 	:align: center
 	:alt: Chinook Database
 
-Why is the above diagram important? Because it is demonstrating the tables Primary and Foreign Keys, which are essentially a table Lookups used within Jam.py. More about that latter.
+Why is the above diagram important? Because it is demonstrating the tables Primary and Foreign Keys, which are essentially a table `Lookup fields`_ used within Jam.py. More about that latter.
 
 So now that we know what the Demo application is all about, we can dive into more details. First, what can we actually expect from Jam.py?
 
@@ -65,11 +65,11 @@ Data Grid(s)
 ------------
 
 
-The Demo Invoices data grid is so called Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned off. If some none default button is needed, it can be added with a code though.
+The Demo Invoices data grid is called a Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned off. If some none default button is needed, it can be added with a code though.
 Did I mention search for any field, and sorting for any field? It's automated.
 
 What is also done by Jam.py with no code is a summary for any numerical field or a number of records for other fields.
-As seen, the Invoices data grid is presented as Tab. As we open more, more Tabs will appear here.  
+As seen, the Invoices data grid is presented as Tab. As we open more grids, more Tabs will appear here automatically. Tabs Caption can be changed with a code. What we see initially is the default.
 
 .. image:: _images/demo_master.png
 	:scale: 70 %
@@ -79,7 +79,8 @@ As seen, the Invoices data grid is presented as Tab. As we open more, more Tabs 
 More Data Grid(s)
 -----------------
 
-The Demo Invoices data has a Details grid. This are Invoices items details in Demo Application. They are created automatically and can contain summary fields and sorting. The Total field visible is a code! What is not visible is editing directly in the grid! There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? Will get there.
+The Demo Invoices data has a Details grid. This are Invoices items details. They are created automatically and can contain summary fields and sorting. The "Total" field visible is a code! What is not visible is editing directly in the grid! 
+There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? Will get there.
 
 As above grid, each Details grid is presented in Tabbed format. More Details added to an Journal, more Tabs we see in here. 
 
@@ -90,10 +91,10 @@ As above grid, each Details grid is presented in Tabbed format. More Details add
 
 
 
-Data Grid Footer/Header
+Data Grid Header/Footer
 -----------------------
 
-Automatically provided is a classic New/Delete/Edit option for any Data Grid. It can exist on the Top/Bottom of some data Grid, hence I call it Footer/Header. It can also contain other buttons or a menu, which is a code driven, so coding is needed.
+Automatically provided is a classic New/Delete/Edit option for any Data Grid. It can exist on the Top/Bottom of some data Grid, hence I call it Header/Footer. It can also contain other buttons or a menu, which is a code driven, so coding is needed.
 
 .. image:: _images/demo_footer.png
 	:scale: 70 %
@@ -101,7 +102,7 @@ Automatically provided is a classic New/Delete/Edit option for any Data Grid. It
 	:alt: Data Grid Footer/Header 
 
 
-Do not want to go further, just a minimum to get us going.
+Ok, do not want to go further, just a minimum to get us going.
 
 
 Any questions?
@@ -112,7 +113,7 @@ So now that we covered the first thing we see on the Demo application, any quest
 
 All of the above is driven by the Builder GUI. We might be saying no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover for all scenarios possible. Or a team of dedicated developers.
 
-I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code for now. Both mentioned features require some coding experience. Not much, but still needed.
+I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code. Both mentioned features require some coding experience. Not much, but still needed.
 
  
 
@@ -120,7 +121,7 @@ I am ignoring the Reports and Analytics for now, visible on Demo application. Co
 Ok, how do I start?
 ===================
 
-If no questions, I think we should first start with building some tables. Since we are doing Invoices, lets start with this. It is sort of top to bottom approach!
+If no questions (cough, cough), I think we should first start with building some tables. Since we are doing Invoices, lets start with this. It is sort of top to bottom approach!
 
 
 Invoices
@@ -136,12 +137,15 @@ For an invoice, we need a Customer, some Product and somewhere to store invoiced
 
 We can rename Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always advisable to use "Find" built-in option to search where some Name is used.
 
-"Master field" field seen above is a Jam.py feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as Master(Journals)-Detail relation.
+On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of automation. When we create a new table in Journals group, these two records will be created automatically. We can think of this as a table Template.
+
+"Master field" field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as Master(Journals)-Detail relation.
 I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master field" Jam.py feature we can do much more. We will get to this latter.
 
-Only Invoices and Tracks are using "Master field". 
+Only Invoices and Tracks are using _`Master field`. 
 
 The Demo Invoices table:
+
 
 .. image:: _images/item_editor_dialog.png
 	:scale: 80 %
@@ -160,9 +164,10 @@ With no Customers table our Invoices table would look like this:
 	:align: center
 	:alt: Invoices table with no Customers
 
+
 It is exactly the same thing, same old table. However, it would not display any data! It does not know what to display yet.
 
-Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does.
+Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
  
 
 As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
@@ -215,7 +220,7 @@ Here is how Customers table looks like:
 It is a simple table with no lookups to some other tables, like Invoices for example. Because it is derived from the `Chinook database`_, we can see that Demo is missing the Employees table, so the SupportRepid is not used anywhere. That is fine. No harm done. We might argue that Customers table can be split in more tables, like Country, State or similar. While on it, please see `Tutorial. Part 2. File and image fields`_ for adding Image field. We did touch base with the `View/Edit`_ option on Invoices, no need for repeating. 
 
 
-Now that we have two tables in place, we can set the "Lookup fields" in Invoices in a similar fashion as in `Tutorial. Part 1. First project`_.
+Now that we have two tables in place, we can set the _`Lookup fields` in Invoices in a similar fashion as in `Tutorial. Part 1. First project`_.
 
 We did not touch the third table yet, which is the "Invoice items". This is the part of `Tutorial. Part 3. Details`_
 
@@ -250,7 +255,7 @@ See the additional fields? The fields in question are master_rec_id and master_i
 
 In addition, the option "Visible" is unchecked. It makes no sense in setting the Details as visible, since we edit/view them within the Invoices only. It is possible to set it as visible, though.
 
-Just like before, the "Invoice Table" is referencing two tables, "Tracks" and "Customers". 
+Just like before with Incoices table, but not with Customers, the "Invoice Table" is referencing two tables, "Tracks" and "Customers". 
 
 
 .. image:: _images/demo_details.png
@@ -259,7 +264,7 @@ Just like before, the "Invoice Table" is referencing two tables, "Tracks" and "C
 	:alt:  Invoice Items
 
 
-Of course, this was the "blank" Invoice Table with no referencing (lookups), to the above two tables. It would not show anything. The reason why we using "Customers" table and not the Invoices, InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the customer last name on the screen than with some meaningless number as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
+If this table was the "blank" Invoice Table with no `Lookup fields`_ to the above two tables, it would not show anything. The reason why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the customer last name on the screen than with some meaningless number (integer), as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
 
 
 
@@ -299,6 +304,8 @@ With the expectations and basics covered, we can double click on any Invoices ro
 	:alt:  Edit Invoice 
 
 If nothing was touched or changed, this is how it looks like. Job done. All created automatically, no code yet! Except for "Tax" and "Total".
+
+See how almost everything related to Customer is greyed out? This is because of the `Master fields`_! Only one field on the Invoices table is not using "Master field" and this is a Customer field. Hence, only that field won’t be greyed out, because we are using it to define all other fields on the Form. For sure we are not updating the "Invoice Date" from anywhere, it is defined with a little code. Same with "Tax", "SubTotal" and "Total".
 
 
 Your 1st task!
