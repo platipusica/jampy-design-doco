@@ -79,7 +79,7 @@ As seen, the Invoices data grid is presented as Tab. As we open more grids, more
 More Data Grid(s)
 -----------------
 
-The Demo Invoices data has a Details grid. This are Invoices items details. They are created automatically and can contain summary fields and sorting. The "Total" field visible is a code! What is not visible is editing directly in the grid! 
+The Demo Invoices data has a Details grid. This are the `Invoice items`_ details. They are created automatically and can contain summary fields and sorting. The "Total" field visible is a code! What is not visible is editing directly in the grid! 
 There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? Will get there.
 
 As above grid, each Details grid is presented in Tabbed format. More Details added to an Journal, more Tabs we see in here. 
