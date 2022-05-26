@@ -135,14 +135,20 @@ For an invoice, we need a Customer, some Product and somewhere to store invoiced
 	:alt: Editing Journal
 
 
-We can rename Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always advisable to use "Find" built-in option to search where some Name is used.
+We can rename Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always 
+advisable to use "Find" built-in option to search where some Name is used.
 
-On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of automation. When we create a new table in Journals group, these two records will be created automatically. We can think of this as a table Template.
+On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of automation. When we create a new table in Journals group, these 
+two records will be created automatically. We can think of this as a table Template.
 
-"Master field" field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as Master(Journals)-Detail relation.
-I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master field" Jam.py feature we can do much more. We will get to this latter.
+"Master field" field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. 
+This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a 'Lookup field'_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
 
-Only Invoices and Tracks are using _`Master field`. 
+I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are 
+from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master 
+field" Jam.py feature we can do much more. We will get to this latter.
+
+Only Invoices, Invoices Items, and Tracks are using _`Master field` in Demo application. 
 
 The Demo Invoices table:
 
@@ -152,7 +158,8 @@ The Demo Invoices table:
 	:align: center
 	:alt: Invoices table
 
-We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook database`_, we see the relation Customers - Invoices! 
+We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook database`_, we see the relation 
+Customers - Invoices! 
 
 This means we can create the table but with no Customers one, we cant really achieve what is needed for Invoices to function correctly. 
 
@@ -264,7 +271,14 @@ Just like before with Incoices table, but not with Customers, the "Invoice Table
 	:alt:  Invoice Items
 
 
-If this table was the "blank" Invoice Table with no `Lookup fields`_ to the above two tables, it would not show anything. The reason why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the customer last name on the screen than with some meaningless number (integer), as on the diagram. We are using the power Jam.py feature - lookups, as much as we can. 
+If this table was the "blank" Invoice Items table with no `Lookup fields`_ to the above two tables, it would not show anything. The reason why we using 
+"Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the 
+customer last name on the screen than with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which ultimately 
+identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely "Albums" and 
+"Artist".
+Same mantra, we look at the database diagram. We "dive" deep from "Invoice Items" to "Tracks" to "Albums" and finally to "Artists".
+
+We are using the power Jam.py feature - lookups, as much as we can. 
 
 
 
