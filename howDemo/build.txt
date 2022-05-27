@@ -271,14 +271,20 @@ Just like before with Incoices table, but not with Customers, the "Invoice Table
 	:alt:  Invoice Items
 
 
-If this table was the "blank" Invoice Items table with no `Lookup fields`_ to the above two tables, it would not show anything. The reason why we using 
-"Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented with the 
-customer last name on the screen than with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which ultimately 
-identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely "Albums" and 
-"Artist".
+If below table screenshot was the "blank" Invoice Items table, with no `Lookup fields`_ to the above two tables, it would not show anything. The reason 
+why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented 
+with the customer last name on the screen than with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which 
+ultimately identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely 
+"Albums" and "Artists".
+
 Same mantra, we look at the database diagram. We "dive" deep from "Invoice Items" to "Tracks" to "Albums" and finally to "Artists".
 
-We are using the power Jam.py feature - lookups, as much as we can. 
+We are using the power Jam.py feature - lookups, as much as we can to minimise coding. Just imagine the SQL needed to "join" the three tables! To provide the exact SQL, here is what Jam.py generates automatically as the last SQL quiery wen we open Invoices:
+
+.. code-block:: sql
+
+
+	SELECT "DEMO_INVOICE_TABLE"."ID", "DEMO_INVOICE_TABLE"."DELETED", "DEMO_INVOICE_TABLE"."MASTER_ID", "DEMO_INVOICE_TABLE"."MASTER_REC_ID", "DEMO_INVOICE_TABLE"."TRACK", "DEMO_INVOICE_TABLE"."QUANTITY", "DEMO_INVOICE_TABLE"."UNITPRICE", "DEMO_INVOICE_TABLE"."AMOUNT", "DEMO_INVOICE_TABLE"."TAX", "DEMO_INVOICE_TABLE"."TOTAL", "DEMO_INVOICE_TABLE"."INVOICE_DATE", "DEMO_INVOICE_TABLE"."CUSTOMER", DEMO_TRACKS_43."NAME" AS TRACK_LOOKUP, DEMO_TRACKS_43_ALBUM."TITLE" AS ALBUM_LOOKUP, DEMO_TRACKS_43_ALBUM_ARTIST."NAME" AS ARTIST_LOOKUP, DEMO_CUSTOMERS_329."LASTNAME" AS CUSTOMER_LOOKUP FROM "DEMO_INVOICE_TABLE" AS "DEMO_INVOICE_TABLE" OUTER LEFT JOIN "DEMO_TRACKS" AS DEMO_TRACKS_43 ON "DEMO_INVOICE_TABLE"."TRACK" = DEMO_TRACKS_43."ID" OUTER LEFT JOIN "DEMO_ALBUMS" AS DEMO_TRACKS_43_ALBUM ON DEMO_TRACKS_43."ALBUM" = DEMO_TRACKS_43_ALBUM."ID" OUTER LEFT JOIN "DEMO_ARTISTS" AS DEMO_TRACKS_43_ALBUM_ARTIST ON DEMO_TRACKS_43_ALBUM."ARTIST" = DEMO_TRACKS_43_ALBUM_ARTIST."ID" OUTER LEFT JOIN "DEMO_CUSTOMERS" AS DEMO_CUSTOMERS_329 ON "DEMO_INVOICE_TABLE"."CUSTOMER" = DEMO_CUSTOMERS_329."ID" WHERE "DEMO_INVOICE_TABLE"."DELETED"=0 AND "DEMO_INVOICE_TABLE"."MASTER_ID"=16 AND "DEMO_INVOICE_TABLE"."MASTER_REC_ID"=464 ORDER BY DEMO_TRACKS_43_ALBUM."TITLE", DEMO_TRACKS_43."NAME"
 
 
 
@@ -286,6 +292,7 @@ We are using the power Jam.py feature - lookups, as much as we can.
 	:scale: 80 %
 	:align: center
 	:alt:  Invoice Items with no lookups
+
 
 
 Now we execute `Tutorial. Part 3. Details`_
