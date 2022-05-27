@@ -174,12 +174,12 @@ With no Customers table our Invoices table would look like this:
 
 It is exactly the same thing, same as above one would think. Not really. It would not display any data because Jam.py would assume that all of Customers data is coming from one, and only one table which is Invoices table.
 
-HOwever, from the diagram, the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
+However, from the diagram, the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
  
 
 As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
 
-Also worth mentioning is that Invoices do contain a tiny code for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
+Also worth mentioning is that Invoices do contain a `tiny code`_ for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
 
 Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is an "View" option on the right hand side. 
 
@@ -305,7 +305,7 @@ We are using the power Jam.py feature - lookups, as much as we can to minimise c
     "DEMO_INVOICE_TABLE"."DELETED"=0 AND "DEMO_INVOICE_TABLE"."MASTER_ID"=16 AND "DEMO_INVOICE_TABLE"."MASTER_REC_ID"=464 
     ORDER BY DEMO_TRACKS_43_ALBUM."TITLE", DEMO_TRACKS_43."NAME"
 
-There we go! We can easily copy/paste the above SQL query into some utility to browse the data in demo.sqlite database.
+There we go! We can easily copy/paste the above SQL query into some utility to browse the data in demo.sqlite database. Just imagine coding this type of query for all possible combinations of tables. 
 
 
 
@@ -398,7 +398,7 @@ Invoices
 
 In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that major players, like PowerApps, have that. Sure, they also have a bottomless financing, if you follow my drift.
 
-Here is the code for Demo version 1.5.30 which can be found on "Client module" after selecting Invoices:
+Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client module" after selecting Invoices:
 
 .. code-block:: js
 
@@ -463,7 +463,38 @@ Here is the code for Demo version 1.5.30 which can be found on "Client module" a
         }
 
 
-You'll find that the most important function and the most commonly used is **on_field_changed** from the above.
+You'll find that one of the most important function and the most commonly used is **on_field_changed** from the above:
+
+.. code-block:: js
+
+        function on_field_changed(field, lookup_item) {     <- 1.
+            var item = field.owner,                         <- 2.
+                rec;
+            if (field.field_name === 'taxrate') {           <- 3.
+                rec = item.invoice_table.rec_no;
+                item.invoice_table.disable_controls();
+                try {                                       <- 4.
+                    item.invoice_table.each(function(t) {
+                        t.edit();
+                        t.calc(t);
+                        t.post();
+                    });
+                }
+                finally {                                   <- 5.
+                    item.invoice_table.rec_no = rec;
+                    item.invoice_table.enable_controls();
+                }
+            }
+        }
+
+Understanding the **on_field_changed** is hugely important. It provides a mechanism to control what happens when some **input** on the application is **changed**.
+
+Steps:
+
+1.
+In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now), and we are hoping to change the relevant `Lookup field`_. Which is a lookup to a different table, right? We are changing “Tax Rate” in Invoices table, but at the same time expect the changes in “Invoices Items”.
+
+
 
 TBC
 
