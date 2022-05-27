@@ -172,9 +172,9 @@ With no Customers table our Invoices table would look like this:
 	:alt: Invoices table with no Customers
 
 
-It is exactly the same thing, same old table. However, it would not display any data! It does not know what to display yet.
+It is exactly the same thing, same as above one would think. Not really. It would not display any data because Jam.py would assume that all of Customers data is coming from one, and only one table which is Invoices table.
 
-Clearly, from the diagram the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
+HOwever, from the diagram, the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
  
 
 As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
@@ -277,21 +277,35 @@ with the customer last name on the screen than with some meaningless number. In 
 ultimately identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely 
 "Albums" and "Artists".
 
-Same mantra, we look at the database diagram. We "dive" deep from "Invoice Items" to "Tracks" to "Albums" and finally to "Artists".
-
-We are using the power Jam.py feature - lookups, as much as we can to minimise coding. Just imagine the SQL needed to "join" the three tables! To provide the exact SQL, here is what Jam.py generates automatically as the last SQL quiery wen we open Invoices:
-
-.. code-block:: sql
-
-
-	SELECT "DEMO_INVOICE_TABLE"."ID", "DEMO_INVOICE_TABLE"."DELETED", "DEMO_INVOICE_TABLE"."MASTER_ID", "DEMO_INVOICE_TABLE"."MASTER_REC_ID", "DEMO_INVOICE_TABLE"."TRACK", "DEMO_INVOICE_TABLE"."QUANTITY", "DEMO_INVOICE_TABLE"."UNITPRICE", "DEMO_INVOICE_TABLE"."AMOUNT", "DEMO_INVOICE_TABLE"."TAX", "DEMO_INVOICE_TABLE"."TOTAL", "DEMO_INVOICE_TABLE"."INVOICE_DATE", "DEMO_INVOICE_TABLE"."CUSTOMER", DEMO_TRACKS_43."NAME" AS TRACK_LOOKUP, DEMO_TRACKS_43_ALBUM."TITLE" AS ALBUM_LOOKUP, DEMO_TRACKS_43_ALBUM_ARTIST."NAME" AS ARTIST_LOOKUP, DEMO_CUSTOMERS_329."LASTNAME" AS CUSTOMER_LOOKUP FROM "DEMO_INVOICE_TABLE" AS "DEMO_INVOICE_TABLE" OUTER LEFT JOIN "DEMO_TRACKS" AS DEMO_TRACKS_43 ON "DEMO_INVOICE_TABLE"."TRACK" = DEMO_TRACKS_43."ID" OUTER LEFT JOIN "DEMO_ALBUMS" AS DEMO_TRACKS_43_ALBUM ON DEMO_TRACKS_43."ALBUM" = DEMO_TRACKS_43_ALBUM."ID" OUTER LEFT JOIN "DEMO_ARTISTS" AS DEMO_TRACKS_43_ALBUM_ARTIST ON DEMO_TRACKS_43_ALBUM."ARTIST" = DEMO_TRACKS_43_ALBUM_ARTIST."ID" OUTER LEFT JOIN "DEMO_CUSTOMERS" AS DEMO_CUSTOMERS_329 ON "DEMO_INVOICE_TABLE"."CUSTOMER" = DEMO_CUSTOMERS_329."ID" WHERE "DEMO_INVOICE_TABLE"."DELETED"=0 AND "DEMO_INVOICE_TABLE"."MASTER_ID"=16 AND "DEMO_INVOICE_TABLE"."MASTER_REC_ID"=464 ORDER BY DEMO_TRACKS_43_ALBUM."TITLE", DEMO_TRACKS_43."NAME"
-
-
 
 .. image:: _images/demo_blank_details.png
 	:scale: 80 %
 	:align: center
 	:alt:  Invoice Items with no lookups
+
+
+
+Same mantra, we look at the database diagram. We "dive" deep from "Invoice Items" to "Tracks" to "Albums" and finally to "Artists".
+
+We are using the power Jam.py feature - lookups, as much as we can to minimise coding. Just imagine the SQL needed to "join" the three tables! To provide the exact SQL, here is what Jam.py generates automatically as the last SQL query when we open Invoices:
+
+.. code-block:: sql
+
+
+    SELECT "DEMO_INVOICE_TABLE"."ID", "DEMO_INVOICE_TABLE"."DELETED", "DEMO_INVOICE_TABLE"."MASTER_ID", 
+    "DEMO_INVOICE_TABLE"."MASTER_REC_ID", "DEMO_INVOICE_TABLE"."TRACK", "DEMO_INVOICE_TABLE"."QUANTITY", 
+    "DEMO_INVOICE_TABLE"."UNITPRICE", "DEMO_INVOICE_TABLE"."AMOUNT", "DEMO_INVOICE_TABLE"."TAX", 
+    "DEMO_INVOICE_TABLE"."TOTAL", "DEMO_INVOICE_TABLE"."INVOICE_DATE", "DEMO_INVOICE_TABLE"."CUSTOMER", 
+    DEMO_TRACKS_43."NAME" AS TRACK_LOOKUP, DEMO_TRACKS_43_ALBUM."TITLE" AS ALBUM_LOOKUP, DEMO_TRACKS_43_ALBUM_ARTIST."NAME" 
+    AS ARTIST_LOOKUP, DEMO_CUSTOMERS_329."LASTNAME" AS CUSTOMER_LOOKUP FROM "DEMO_INVOICE_TABLE" AS "DEMO_INVOICE_TABLE" 
+    OUTER LEFT JOIN "DEMO_TRACKS" AS DEMO_TRACKS_43 ON "DEMO_INVOICE_TABLE"."TRACK" = DEMO_TRACKS_43."ID" OUTER LEFT JOIN 
+    "DEMO_ALBUMS" AS DEMO_TRACKS_43_ALBUM ON DEMO_TRACKS_43."ALBUM" = DEMO_TRACKS_43_ALBUM."ID" OUTER LEFT JOIN 
+    "DEMO_ARTISTS" AS DEMO_TRACKS_43_ALBUM_ARTIST ON DEMO_TRACKS_43_ALBUM."ARTIST" = DEMO_TRACKS_43_ALBUM_ARTIST."ID" OUTER 
+    LEFT JOIN "DEMO_CUSTOMERS" AS DEMO_CUSTOMERS_329 ON "DEMO_INVOICE_TABLE"."CUSTOMER" = DEMO_CUSTOMERS_329."ID" WHERE 
+    "DEMO_INVOICE_TABLE"."DELETED"=0 AND "DEMO_INVOICE_TABLE"."MASTER_ID"=16 AND "DEMO_INVOICE_TABLE"."MASTER_REC_ID"=464 
+    ORDER BY DEMO_TRACKS_43_ALBUM."TITLE", DEMO_TRACKS_43."NAME"
+
+There we go! We can easily copy/paste the above SQL query into some utility to browse the data in demo.sqlite database.
 
 
 
@@ -324,6 +338,8 @@ With the expectations and basics covered, we can double click on any Invoices ro
 	:align: center
 	:alt:  Edit Invoice 
 
+
+
 If nothing was touched or changed, this is how it looks like. Job done. All created automatically, no code yet! Except for "Tax" and "Total".
 
 See how almost everything related to Customer is greyed out? This is because of the `Master field`_! Only one field on the Invoices table is not using "Master field" and this is a Customer field. Hence, only that field won’t be greyed out, because we are using it to define all other fields on the Form. For sure we are not updating the "Invoice Date" from anywhere, it is defined with a little code. Same with "Tax", "SubTotal" and "Total".
@@ -344,6 +360,8 @@ It looks like this:
 	:alt:  Edit Invoice  
 
 
+
+
 And why not reshuffling the Invoices edit form a bit?
 
 To look similar to this:
@@ -352,6 +370,9 @@ To look similar to this:
 	:scale: 70 %
 	:align: center
 	:alt:  Edit Invoice  
+
+
+
 
 Very good, we are getting there! 
 
