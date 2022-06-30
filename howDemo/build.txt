@@ -466,9 +466,12 @@ Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client m
             }
         }
 
-As seen, the Client module contains five JavaScript functions. 
+As seen, the Client module contains five JavaScript functions. First two functions deal with text formating. 
+The *on_detail_changed* is using Jam.py built in function `calc_summary`_. 
 
-You'll find that one of the most important function and the most commonly used is **on_field_changed** from the above:
+.. _calc_summary: https://jampyapplicationbuilder.com/docs/refs/client/item/m_calc_summary.html
+
+Lastly, one of the most important function and the most commonly used is **on_field_changed** from the above:
 
 .. code-block:: js
 
