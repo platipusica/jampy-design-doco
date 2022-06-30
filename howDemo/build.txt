@@ -500,7 +500,7 @@ Understanding the **on_field_changed** is hugely important. It provides a mechan
 Steps:
 
 1.
-In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now), and we are hoping to change the relevant `Lookup field`_. Which is a lookup to a different table, right? We are changing “Tax Rate” in Invoices table, but at the same time expect the changes in “Invoices Items”.
+In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now), and we are hoping to change the relevant `Lookup fields`_. Which is a lookup to a different table, right? We are changing “Tax Rate” in Invoices table, but at the same time expect the changes in “Invoices Items”.
 
 
 
