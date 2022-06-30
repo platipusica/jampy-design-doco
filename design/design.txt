@@ -2,7 +2,47 @@
 Getting Started
 ===============
 
-The first thing to understand is the Jam.py terminology: the difference between Catalogs (Catalogues), Journals and Details Groups.
+Top 5 Questions
+================
+
+1. What is Jam.py?
+------------------
+
+Jam.py is a Rapid Application Development framework. The word rapid should be
+stressed. 
+
+2. Why using Jam.py?
+---------------------
+
+- If you are already working with the databases, then Jam.py is a no-brainier.
+- The development tool is free. Ne need for anything more than a browser.
+- Leverage the existing skill-set. With Python and SQL experience, you’ll be productive in no time.
+- Simple infrastructure, especially for developers.
+- Deployment complexity is greatly reduced. Jam.py itself is only a few megabytes in size.
+
+3. Why not to use Jam.py?
+-------------------------------
+
+If not using databases, then it probably doesn’t make sense to use Jam.py. 
+
+4. Does it scale?
+------------------
+
+Yes. That is absolutely true with containers.
+
+5. What can I use it for?
+--------------------------
+
+Data-centric application – anything to do with the database, for example
+reporting, CRUD.
+
+
+Terminology
+============
+
+
+
+One of the first thing to understand is the Jam.py terminology: the difference between Catalogs (Catalogues), Journals and Details Groups.
 
 Excellent Article by Marco Fioretti @ Linux Magazine:
 
