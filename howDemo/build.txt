@@ -141,14 +141,18 @@ advisable to use "Find" built-in option to search where some Name is used.
 On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of automation. When we create a new table in Journals group, these 
 two records will be created automatically. We can think of this as a table Template.
 
-"Master field" field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice. 
-This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a 'Lookup field'_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
+_`Master field` field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice.
+
+.. note::
+	`Master fields are not real fields in the database, they get populated when we select a value in the Lookup field.`
+
+This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a 'Lookup fields'_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
 
 I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are 
 from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master 
 field" Jam.py feature we can do much more. We will get to this latter.
 
-Only Invoices, Invoices Items, and Tracks are using _`Master field` in Demo application. 
+Only Invoices, Invoices Items, and Tracks are using "Master field" in Demo application. 
 
 The Demo Invoices table:
 
@@ -172,7 +176,7 @@ With no Customers table our Invoices table would look like this:
 	:alt: Invoices table with no Customers
 
 
-It is exactly the same thing, same as above one would think. Not really. It would not display any data because Jam.py would assume that all of Customers data is coming from one, and only one table which is Invoices table.
+It is exactly the same thing, same as above one would think. Not really. It would not display any data because Jam.py would assume that all of Customers data is coming from one, and only one table, which is Invoices table. It is also true that all fields would have the Integer Type, which is not quite right. It is presented here just as an example and it is not the right way of doing it.
 
 However, from the diagram, the Invoices is pulling some data from Customers and "Invoice Items" table. That is the Holy Grail of any application building. Pulling data from here and there, and showing the result with no code, or low code, is exactly what Jam.py does. We call that a `Lookup fields`_.
  
@@ -181,7 +185,7 @@ As seen, on the right hand side checked options are "Visible", "Soft Delete", "H
 
 Also worth mentioning is that Invoices do contain a `tiny code`_ for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
 
-Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is an "View" option on the right hand side. 
+Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is an "View Form" option on the right hand side. 
 
 
 
@@ -198,7 +202,7 @@ Here we control the layout, sorting and summary fields, as well as fields visibi
 	:alt: Invoices table view form
 
 
-Similar for Edit option. Exclude or select for editing whatever is necessary, as well as details needed for editing. While on it, we can also control how to present the edit form in the sense of tabs or bands. This is done on enlarged "Plus" icon. I would encourage to play with this options, it is quite subjective what and how something should be presented.  
+Similar for Edit option. Exclude or select for editing whatever is necessary, as well as details needed for editing. While on it, we can also control how to present the edit form in the sense of tabs or bands. This is done on "Plus" icon on the left hand side. I would encourage to play with this options, it is quite subjective what and how something should be presented.  
 
 .. image:: _images/demo_inv_edit_form.png
 	:scale: 70 %
@@ -212,7 +216,7 @@ Similar for Edit option. Exclude or select for editing whatever is necessary, as
 Customers
 ---------
 
-Back to Customers, if we visited `Tutorial. Part 1. First project`_ in Doc's, I hope it is pretty much clear how to create a simple CRM. Hence, Demo application has Customers table as well, which is consumed by the Invoices table.
+Back to Customers, if we visited `Tutorial. Part 1. First project`_ in the Doc's, I hope it is pretty much clear how to create a simple CRM. Hence, Demo application has Customers table as well, which is consumed by the Invoices table.
 
 
 Here is how Customers table looks like:
@@ -462,6 +466,7 @@ Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client m
             }
         }
 
+As seen, the Client module contains five JavaScript functions. 
 
 You'll find that one of the most important function and the most commonly used is **on_field_changed** from the above:
 
