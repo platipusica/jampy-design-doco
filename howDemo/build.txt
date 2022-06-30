@@ -309,7 +309,9 @@ We are using the power Jam.py feature - lookups, as much as we can to minimise c
     "DEMO_INVOICE_TABLE"."DELETED"=0 AND "DEMO_INVOICE_TABLE"."MASTER_ID"=16 AND "DEMO_INVOICE_TABLE"."MASTER_REC_ID"=464 
     ORDER BY DEMO_TRACKS_43_ALBUM."TITLE", DEMO_TRACKS_43."NAME"
 
-There we go! We can easily copy/paste the above SQL query into some utility to browse the data in demo.sqlite database. Just imagine coding this type of query for all possible combinations of tables. 
+There we go! We can easily copy/paste the above SQL query into some utility to browse the data in demo.sqlite database. Just imagine coding this type of query for all possible combinations of tables. Btw, this SQL extract is possible by changing the Jam.py `source code`_.
+
+.. _source code: https://groups.google.com/g/jam-py/c/twlRyMYHMwc/m/c5sbpTQJBQAJ
 
 
 
