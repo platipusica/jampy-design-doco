@@ -16,7 +16,7 @@ stressed.
 
 - If you are already working with the databases, then Jam.py is a no-brainier.
 - The development tool is free. Ne need for anything more than a browser.
-- Leverage the existing skill-set. With Python and SQL experience, you’ll be productive in no time.
+- Leverage the existing skill-set. With some Python and JS experience, you’ll be productive in no time.
 - Simple infrastructure, especially for developers.
 - Deployment complexity is greatly reduced. Jam.py itself is only a few megabytes in size.
 
