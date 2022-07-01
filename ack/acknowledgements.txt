@@ -1,0 +1,13 @@
+Acknowledgements
+================
+
+Thanks to many contributors on the mailing list. Especially:
+
+* to Andrew Yushev, author of ``Jam.py``, who
+  worked tirelessy all this years.
+
+
+Copyright
+=========
+
+This document has been placed in the public domain.
