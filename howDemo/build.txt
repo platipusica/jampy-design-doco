@@ -510,6 +510,20 @@ in Invoices table, but at the same time expect the changes in â€œInvoices Itemsâ
 2.
 In plain, down to Earth language, we define some "shortcuts" here. See how *item* is repeating in the code? Hence, a "shortcut".
 
+.. note::
+
+	When copy/paste the code, it is not obvious that "item" is not there as it should be. So the best is to look at the code 
+	we *know* that is working. Like customers.js@Demo, etc...
+	
+Consider this example:
+
+.. code-block:: js
+
+	function on_field_changed(field) {
+    		if (item.field_name === 'pattern_type') {
+
+That is not going to work. Simple because it is missing **"var item = field.owner"**.
+
 3.
 This is where the magic happens. We "test" the field name if is the required one. If not, nothing happens and goes straight to Step 6, which is "the end". Because this is typical "if" clause, better use "try" and  "finally" in it, steps 4. and 5. respectively. 
 
@@ -523,11 +537,16 @@ Then we  "try" to update all records with a nice function **".each(...)"**. Whic
 And "finally", we show the results back with **"item... = rec"** and enable the buttons, etc. with **"...enable_controls"**.
 
 6. 
-If the field name was not the one we are after, exit the clause here. 
+If the field name was not the one we are after, exit the "if" clause here. 
 
 
 
-TBC
+
+So, how was it?!
+---------------
+
+Is the above to much? Or easy to follow and apply in some other scenario? 
+
 
 
 
