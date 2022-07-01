@@ -146,7 +146,7 @@ _`Master field` field seen above is also a feature. In Demo application, Invoice
 .. note::
 	`Master fields are not real fields in the database, they get populated when we select a value in the Lookup field.`
 
-This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a 'Lookup fields'_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
+This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a `Lookup fields`_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
 
 I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are 
 from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master 
@@ -543,7 +543,7 @@ If the field name was not the one we are after, exit the "if" clause here.
 
 
 So, how was it?!
----------------
+-----------------
 
 Is the above to much? Or easy to follow and apply in some other scenario? 
 
