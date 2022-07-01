@@ -494,15 +494,36 @@ Lastly, one of the most important function and the most commonly used is **on_fi
                     item.invoice_table.rec_no = rec;
                     item.invoice_table.enable_controls();
                 }
-            }
+            }                                               <- 6.
         }
 
-Understanding the **on_field_changed** is hugely important. It provides a mechanism to control what happens when some **input** on the application is **changed**.
+Understanding the **on_field_changed** is hugely important. It provides a mechanism to control what happens when some **input** on
+the application is **changed**.
 
 Steps:
 
 1.
-In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now), and we are hoping to change the relevant `Lookup fields`_. Which is a lookup to a different table, right? We are changing “Tax Rate” in Invoices table, but at the same time expect the changes in “Invoices Items”.
+In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now),
+and we are hoping to change the relevant `Lookup fields`_. Which is a lookup to a different table, right? We are changing “Tax Rate”
+in Invoices table, but at the same time expect the changes in “Invoices Items”.
+
+2.
+In plain, down to Earth language, we define some "shortcuts" here. See how *item* is repeating in the code? Hence, a "shortcut".
+
+3.
+This is where the magic happens. We "test" the field name if is the required one. If not, nothing happens and goes straight to Step 6, which is "the end". Because this is typical "if" clause, better use "try" and  "finally" in it, steps 4. and 5. respectively. 
+
+With *rec = ...* we define all records needed changing, after the "taxrate" changes. 
+With *...disable_controls" we disable all buttons, etc. temporary, as we do not want something actioned on while working on changing records.
+
+4.
+Then we  "try" to update all records with a nice function ".each(...)". Which does "edit", "calc" and finally "post", everything back via API. This is the "POST" part, correct? Without it, the data would not be saved.
+
+5.
+And "finally", we show the results back with *item... = rec* and enable the buttons, etc. with "...enable_controls".
+
+6. 
+If the field name was not the one we are after, exit the clause here. 
 
 
 
