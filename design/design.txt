@@ -73,7 +73,7 @@ Catalogs (Catalogues)
 
 .. pull-quote:: 
 
-    `Once tables are created in Catalogs, they cant be moved to some other group that easily. There is a` `special`_ `utility that does that. In a newer Jam.py version, moving the tables enabled by default, no need for any utility.`
+    `Once tables are created in Catalogs, they cant be moved to some other group that easily. There is a` `special`_ `utility that does that. In a newer Jam.py version, moving the tables is enabled by default, no need for any utility.`
 
 
 .. _special: https://groups.google.com/g/jam-py/c/APG-O1z7dF0/m/J4o3PWW8AwAJ
