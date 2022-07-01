@@ -1,0 +1,10 @@
+=================
+Acknowledgements
+=================
+
+Here we acknowledge people who influenced ``Jam.py`` development or made a contribution themselves.
+
+.. toctree::
+   :maxdepth: 1
+
+   acknowledgements
