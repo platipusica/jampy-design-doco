@@ -2,8 +2,16 @@
 Getting Started
 ===============
 
+“I want to put a ding in the universe.” Steve Jobs
+
+
 Top 5 Questions
 ================
+
+Before we dive into more details, let's answer some simple questions. For sure the below is applicable to many 
+similar products. However, the main difference is that some other products might be "selling" other services. It is a 
+typical "hook, line and sinker" scenario. And fair enough, it's business after all. The Jam.py does not do that. The source code 
+is yours, and it is very well structured. A joy to dig in, and I think Steve would be pleased. Try it. Give it a go.
 
 1. What is Jam.py?
 ------------------
