@@ -112,7 +112,7 @@ Reports
 .. note::
     `Reports` are `reports based on OpenDocument templates`, more specifically  Calcs ods files.
 
-Professional `look` of reports are developed visually in LibreOffice (LO) Calcs. It is similar `look and feel` as with any other Spreadsheet software. The LO enables us to use graphics, for example as the Company Logo, or it is even possible to insert images from the database itself. 
+Professional `look` of reports is developed visually in LibreOffice (LO) Calcs. It is similar `look and feel` to any other Spreadsheet software. The LO enables us to use graphics, for example as the Company Logo. It is even possible to insert images from the database itself (with watermark, if needed). 
 
 
 .. pull-quote:: 
