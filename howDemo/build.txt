@@ -266,7 +266,7 @@ See the additional fields? The fields in question are master_rec_id and master_i
 
 In addition, the option "Visible" is unchecked. It makes no sense in setting the Details as visible, since we edit/view them within the Invoices only. It is possible to set it as visible, though.
 
-Just like before with Incoices table, but not with Customers, the "Invoice Table" is referencing two tables, "Tracks" and "Customers". 
+Just like before with Invoices table, but not with Customers, the "Invoice Table" is referencing two tables, "Tracks" and "Customers". 
 
 
 .. image:: _images/demo_details.png
@@ -404,7 +404,7 @@ Invoices
 
 In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that major players, like PowerApps, have that. Sure, they also have a bottomless financing, if you follow my drift.
 
-Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client module" after selecting Invoices:
+Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client module", after selecting Invoices:
 
 .. code-block:: js
 
@@ -468,7 +468,7 @@ Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client m
             }
         }
 
-As seen, the Client module contains five JavaScript functions. First two functions deal with text formating. 
+As seen, the Client module contains five JavaScript functions. First two functions deal with text formatting. 
 The *on_detail_changed* is using Jam.py built in function `calc_summary`_. 
 
 .. _calc_summary: https://jampyapplicationbuilder.com/docs/refs/client/item/m_calc_summary.html
@@ -513,7 +513,7 @@ In plain, down to Earth language, we define some "shortcuts" here. See how *item
 .. note::
 
 	When copy/paste the code, it is not obvious that "item" is not there as it should be. So the best is to look at the code 
-	we *know* that is working. Like customers.js@Demo, etc...
+	we *know* that is working. Like customers.js at Demo/Customers Client Module, etc.
 	
 Consider this example:
 
@@ -521,6 +521,8 @@ Consider this example:
 
 	function on_field_changed(field) {
     		if (item.field_name === 'pattern_type') {
+                .
+                .
 
 That is not going to work. Simply because it is missing **"var item = field.owner"**.
 
@@ -528,10 +530,10 @@ That is not going to work. Simply because it is missing **"var item = field.owne
 This is where the magic happens. We "test" the field name if is the required one. If not, nothing happens and goes straight to Step 6, which is "the end". Because this is typical "if" clause, better use "try" and  "finally" in it, steps 4. and 5. respectively. 
 
 With **"rec = ..."** we define all records needing changing, after the "taxrate" changes. 
-With **"...disable_controls"** we disable all buttons, etc. temporary, as we do not want something actioned on while working on changing records.
+With **"...disable_controls"** we disable all buttons (control items) temporary, as we do not want something actioned on while working on changing records.
 
 4.
-Then we  "try" to update all records with a nice function **".each(...)"**. Which does "edit", "calc" and finally "post", everything back via API. This is the "POST" part, correct? Without it, the data would not be saved.
+Then we "try" to update all records with a nice function **".each(...)"**. Which does "edit", "calc" and finally "post", everything back via API. This is the "POST" part, correct? Without it, the data would not be saved.
 
 5.
 And "finally", we show the results back with **"item... = rec"** and enable the buttons, etc. with **"...enable_controls"**.
@@ -540,14 +542,58 @@ And "finally", we show the results back with **"item... = rec"** and enable the 
 If the field name was not the one we are after, exit the "if" clause here. 
 
 
+That is it. With six little steps we did a calculations program. 
+
+.. note::
+    No calculation will happen with a field valued as _`null`.
+
+It is absolutely needed to check the condition before expecting that the calculation will go through.
+
+Error handling!
+---------------
+
+As with above `null`_, when doing something, it is always advisable to use `best practises`:
+
+.. note::
+
+    One of the main obstacles with using **"on_field_changed"** is a infinite loop happening. For example one field changing the field we are expected to "monitor".
+
+The following algorithm can be used to avoid this situation:
+
+.. code-block:: js
+
+        let calculating;
+
+        function on_field_changed(field, lookup_item) {
+             if (!calculating) {
+                calculating = true;
+                try {
+                     // some calculations 
+                }
+                finally {
+                    calculating = false;
+                }
+            }
+        }
+
+For more information please visit the mailgroup _`error thread`.
+
+.. _error thread: https://groups.google.com/g/jam-py/c/_HhCO1Rsoy4/m/wqJeeVp1BgAJ
+
 
 
 So, how was it?
 ---------------
 
-Is the above to much? Or easy to follow and apply in some other scenario? 
+Is the above to much? Or easy to follow and apply in some other scenario?
+
+To expand a bit on **"on_field_changed"**, please visit `Conditional formatting`_ mailgroup thread or search the 
+mailgroup for the same. There are a number of scenarios where to apply **"on_field_changed"**, and this is just a touch 
+of the surface. One possible scenario is changing the password. Again, the best is to search the mailgroup.
 
 
+
+.. _Conditional formatting: https://groups.google.com/g/jam-py/c/qDlZnWfLsrc/m/XXyvOCS1AgAJ
 
 
 

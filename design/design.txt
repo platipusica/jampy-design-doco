@@ -16,33 +16,36 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 1. What is Jam.py?
 ------------------
 
-Jam.py is a Rapid Application Development framework. The word rapid should be
-stressed. 
+    `Jam.py is a Rapid Application Development framework. The word rapid should be stressed.`
 
 2. Why using Jam.py?
 ---------------------
 
-- If you are already working with the databases, then Jam.py is a no-brainier.
-- The development tool is free. Ne need for anything more than a browser.
-- Leverage the existing skill-set. With some Python and JS experience, you’ll be productive in no time.
-- Simple infrastructure, especially for developers.
-- Deployment complexity is greatly reduced. Jam.py itself is only a few megabytes in size.
+- `If you are already working with the databases, then Jam.py is a no-brainier.`
+- `The development tool is free. Ne need for anything more than a browser.`
+- `Leverage the existing skill-set. With some Python and JS experience, you’ll be productive in no time.`
+- `Simple infrastructure, especially for developers.`
+- `Deployment complexity is greatly reduced. Jam.py itself is only a few megabytes in size.`
 
 3. Why not to use Jam.py?
 -------------------------------
 
-If not using databases, then it probably doesn’t make sense to use Jam.py. 
+    `If not using databases, then it probably doesn’t make sense to use Jam.py.`
 
 4. Does it scale?
 ------------------
 
-Yes. That is absolutely true with containers.
+    `Yes. That is absolutely true with containers as well.`
 
 5. What can I use it for?
 --------------------------
 
-Data-centric application – anything to do with the database, for example
-reporting, CRUD.
+    `Data-centric application – anything to do with the database, for example reporting, CRUD.`
+
+
+Hope the above five questions sparked some interest. Nothing wrong with comparing Jam.py with for example Oracle `Apex`_.
+
+.. _Apex: https://groups.google.com/g/jam-py/c/jys302rSK_k/m/Nv_Hiwm1BwAJ 
 
 
 Terminology
