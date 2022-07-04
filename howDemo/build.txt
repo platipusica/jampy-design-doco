@@ -152,7 +152,7 @@ I would leave it here for now but just note that "Master field" can be also achi
 from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master 
 field" Jam.py feature we can do much more. We will get to this latter.
 
-Only Invoices, Invoices Items, and Tracks are using "Master field" in Demo application. 
+Only Invoices, _`Invoices Items`, and Tracks are using "Master field" in Demo application. 
 
 The Demo Invoices table:
 
@@ -533,7 +533,11 @@ With **"rec = ..."** we define all records needing changing, after the "taxrate"
 With **"...disable_controls"** we disable all buttons (control items) temporary, as we do not want something actioned on while working on changing records.
 
 4.
-Then we "try" to update all records with a nice function **".each(...)"**. Which does "edit", "calc" and finally "post", everything back via API. This is the "POST" part, correct? Without it, the data would not be saved.
+Then we "try" to update all records with a nice function **".each(...)"**. Which does "edit", "_`calc`" and finally "post". 
+We use "edit" to open every single record for editing, and "post" to post everything back via API. This is the "POST" part, correct? Without it, the data would not be saved. 
+
+.. note::
+    The function - "calc", does the actual calculation on records. The function is in "Journals/Invoices/InvoiceTable" Client Module.
 
 5.
 And "finally", we show the results back with **"item... = rec"** and enable the buttons, etc. with **"...enable_controls"**.
@@ -542,7 +546,7 @@ And "finally", we show the results back with **"item... = rec"** and enable the 
 If the field name was not the one we are after, exit the "if" clause here. 
 
 
-That is it. With six little steps we did a calculations program. 
+That is it. With six little steps we did a calculations JavaScript program. 
 
 .. note::
     No calculation will happen with a field valued as _`null`.
@@ -576,7 +580,7 @@ The following algorithm can be used to avoid this situation:
             }
         }
 
-For more information please visit the mailgroup _`error thread`.
+For more information please visit the mailgroup `error thread`_.
 
 .. _error thread: https://groups.google.com/g/jam-py/c/_HhCO1Rsoy4/m/wqJeeVp1BgAJ
 
@@ -596,4 +600,55 @@ of the surface. One possible scenario is changing the password. Again, the best 
 .. _Conditional formatting: https://groups.google.com/g/jam-py/c/qDlZnWfLsrc/m/XXyvOCS1AgAJ
 
 
+More code
+==========
 
+As mentioned, the `calc`_ function exists outside the code used in Invoices Journal. Why? Because there might be many Details in some Journals, and placing them in one single place is not flexible enough. Simply put, an function, for example
+**on_field_changed**, would overwrite the same function if there is a need for two same functions.  
+
+Invoices Details
+------------------
+
+Here is what is in the Journals/Invoices/InvoiceTable, note the *on_field_changed* function again:
+
+.. code-block:: js
+
+        function calc(item) {
+            item.amount.value = item.round(item.quantity.value * item.unitprice.value, 2);
+            item.tax.value = item.round(item.amount.value * item.owner.taxrate.value / 100, 2);
+            item.total.value = item.amount.value + item.tax.value;
+        }
+
+        function on_field_changed(field, lookup_item) {
+            var item = field.owner;
+            if (field.field_name === 'track' && lookup_item) {
+                item.unitprice.value = lookup_item.unitprice.value;
+            }
+            else if (field.field_name === 'quantity' || field.field_name === 'unitprice') {
+                calc(item);
+            }
+        }
+
+        function on_view_form_created(item) {
+            var btn = item.add_view_button('Select', {type: 'primary', btn_id: 'select-btn'});
+            btn.click(function() {
+                item.alert('Select the records to add to the invoice and close the from');
+                item.select_records('track');
+            });
+        }
+
+        function on_after_append(item) {
+            item.invoice_date.value = new Date();
+        }
+
+
+Again, it needs to be stressed that *details* can "live" with absolutely no code on Details three within the 
+`builder.html`_! However, when we *attach* the detail to some Journal (`Tutorial. Part 3. Details`_), probably some code is needed there. And that is exactly the above.
+
+Because the details store `Invoices Items`_, so basically products, the `calc`_ code exist here and only here. It is only relevant to Items, right?
+
+ 
+
+We are almost there! 
+
+TBC
