@@ -527,7 +527,7 @@ That is not going to work. Simply because it is missing **"var item = field.owne
 3.
 This is where the magic happens. We "test" the field name if is the required one. If not, nothing happens and goes straight to Step 6, which is "the end". Because this is typical "if" clause, better use "try" and  "finally" in it, steps 4. and 5. respectively. 
 
-With **"rec = ..."** we define all records needed changing, after the "taxrate" changes. 
+With **"rec = ..."** we define all records needing changing, after the "taxrate" changes. 
 With **"...disable_controls"** we disable all buttons, etc. temporary, as we do not want something actioned on while working on changing records.
 
 4.
