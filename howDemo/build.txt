@@ -404,7 +404,7 @@ Invoices
 
 In Invoices, it is quite obvious that some calculations are happening "on the fly". At the moment, Jam.py v5 has no feature to calculate fields automatically, driven by visual application `builder.html`_. The new major Jam.py version might include this option. This might be a put off for some users or a "would be" developers and the reasoning is that major players, like PowerApps, have that. Sure, they also have a bottomless financing, if you follow my drift.
 
-Here is the _`tiny code` for Demo version 1.5.30 which can be found on "Client module", after selecting Invoices:
+Here is the _`tiny code` for _`Demo application version` 1.5.30. The code can be found on "Client module", after selecting Invoices:
 
 .. code-block:: js
 
@@ -642,13 +642,65 @@ Here is what is in the Journals/Invoices/InvoiceTable, note the *on_field_change
         }
 
 
-Again, it needs to be stressed that *details* can "live" with absolutely no code on Details three within the 
-`builder.html`_! However, when we *attach* the detail to some Journal (`Tutorial. Part 3. Details`_), probably some code is needed there. And that is exactly the above.
+It needs to be stressed that *details* can "live" with absolutely no code on Details tree within the 
+`builder.html`_! However, when we *attach* the detail to some Journal (`Tutorial. Part 3. Details`_), probably some code is needed there. And that is exactly the above example.
 
 Because the details store `Invoices Items`_, so basically products, the `calc`_ code exist here and only here. It is only relevant to Items, right?
 
- 
 
-We are almost there! 
+
+The new functions presented here are **on_view_form_created** and **on_after_append**. 
+
+We are almost there with the code! 
+
+
+Server code
+===========
+
+This is where Python programming language kicks in. Everything in Jam.py
+as the Server code is Python. 
+
+Invoices
+---------
+
+The last code remaining for Invoices is the Server Module code. 
+
+If we click on Journals/Invoices "Server module" as on `builder.html`_, this is the code:
+
+.. code-block:: Python
+
+
+        def on_apply(item, delta, params, connection): 
+            tracks = item.task.tracks.copy(handlers=False)
+            changes = {}
+            delta.update_deleted()    
+            for d in delta:
+                for t in d.invoice_table:
+                    if not changes.get(t.track.value):
+                        changes[t.track.value] = 0
+                    if t.rec_inserted():
+                        changes[t.track.value] += t.quantity.value
+                    elif t.rec_deleted():
+                        changes[t.track.value] -= t.quantity.value                
+                    elif t.rec_modified():
+                        changes[t.track.value] += t.quantity.value - t.quantity.old_value
+            ids = list(changes.keys())
+            tracks.set_where(id__in=ids)                
+            tracks.open()
+            for t in tracks:
+                q = changes.get(t.id.value)
+                if q:
+                    t.edit()
+                    t.tracks_sold.value += q
+                    t.post()
+            tracks.apply(connection)
+
+
+It is fairly small chunk of code, which mainly deals with changes, inserts or deletion of Items. The code is relevant for
+`Demo application version`_ at the time of writing, and can be used for many scenarios.
+
+There are more than 60 **on_apply** occurrences in the official documentation since it is the same function name for the Client
+and Server operations.
+Of course, the Client function is JavaScript and Server is Python.   
 
 TBC
