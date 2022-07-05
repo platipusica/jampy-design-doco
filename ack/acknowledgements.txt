@@ -3,8 +3,8 @@ Acknowledgements
 
 Thanks to many contributors on the mailing list. Especially:
 
-* to Andrew Yushev, author of ``Jam.py``, who
-  worked tirelessy all this years.
+* to Andrew Yushev, author of ``Jam.py``
+
 
 
 Copyright

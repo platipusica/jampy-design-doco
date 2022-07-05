@@ -473,7 +473,9 @@ The *on_detail_changed* is using Jam.py built in function `calc_summary`_.
 
 .. _calc_summary: https://jampyapplicationbuilder.com/docs/refs/client/item/m_calc_summary.html
 
-Lastly, one of the most important function and the most commonly used is **on_field_changed** from the above:
+Lastly, one of the most important function and the most commonly used is:
+
+.. js:function:: on_field_changed
 
 .. code-block:: js
 
@@ -497,7 +499,7 @@ Lastly, one of the most important function and the most commonly used is **on_fi
             }                                               <- 6.
         }
 
-Understanding the **on_field_changed** is hugely important. It provides a mechanism to control what happens when some **input** on
+Understanding this function is quite important. It provides a mechanism to control what happens when some **input** on
 the application is **changed**.
 
 Steps:
@@ -648,10 +650,19 @@ It needs to be stressed that *details* can "live" with absolutely no code on Det
 Because the details store `Invoices Items`_, so basically products, the `calc`_ code exist here and only here. It is only relevant to Items, right?
 
 
+The new functions presented here are:
 
-The new functions presented here are **on_view_form_created** and **on_after_append**. 
+.. js:function:: on_view_form_created
+.. js:function:: on_after_append  
 
-We are almost there with the code! 
+
+It is quite obvious what the function **on_view_form_created** does. It creates a "Button" and assigns a function to it so when the button is clicked, it shows the JavaScript message 
+and presents a form to select some products. All of this in just five lines of code.
+
+Function **on_after_append** just adds the current date on a form.
+
+We are almost there with the code! Hold on!
+
 
 
 Server code
@@ -695,12 +706,16 @@ If we click on Journals/Invoices "Server module" as on `builder.html`_, this is 
                     t.post()
             tracks.apply(connection)
 
+Here is where quite important function is introduced:
 
-It is fairly small chunk of code, which mainly deals with changes, inserts or deletion of Items. The code is relevant for
-`Demo application version`_ at the time of writing, and can be used for many scenarios.
+.. js:class:: on_apply
 
 There are more than 60 **on_apply** occurrences in the official documentation since it is the same function name for the Client
-and Server operations.
-Of course, the Client function is JavaScript and Server is Python.   
+and Server operations, JavaScript and Python respectively.
+
+
+It is fairly small chunk of code, which mainly deals with changes, inserts or deletion of Items. The code is relevant for
+`Demo application version`_ at the time of writing. It can be used for many scenarios if slightly modified.
+
 
 TBC
