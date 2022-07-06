@@ -165,7 +165,7 @@ The Demo Invoices table:
 We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook database`_, we see the relation 
 Customers - Invoices! 
 
-This means we can create the table but with no Customers one, we cant really achieve what is needed for Invoices to function correctly. 
+This means we can create the table but with no Customers one, we can't really achieve what is needed for Invoices to function correctly. 
 
 With no Customers table our Invoices table would look like this:
 
@@ -183,9 +183,9 @@ However, from the diagram, the Invoices is pulling some data from Customers and 
 
 As seen, on the right hand side checked options are "Visible", "Soft Delete", "History" and "Edit lock". Refer to `Item Editor dialog`_ for more info.
 
-Also worth mentioning is that Invoices do contain a `tiny code`_ for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
+Also, worth mentioning is that Invoices do contain a `tiny code`_ for calculating "Tax" and "Total" column. It also utilises Jam.py feature to alert the User with a custom message. It does that on Editing only. 
 
-Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is an "View Form" option on the right hand side. 
+Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journals/Invoices, there is a "View Form" option on the right hand side. 
 
 
 
@@ -733,7 +733,7 @@ The relational database engines are quite efficient with the stored procedures. 
 procedure portable to a different database products? Of course not. The good news is, Python is portable. Hence, with using 
 the `Server Code` Jam.py can successfully run on any platform.  
 
-With some other database engines, or even the FrontEnd Applications like MS Access, for the background operations the VisualBasic
+With some other database engines, or even the Front End Applications like MS Access, for the background operations the Visual Basic
 might be used. With MSSQL Server, the database stored procedure can be executed from Access. Either way, the code is needed 
 and it would be not portable to a different platform. It is "locked in" for one and only one database product.
 
@@ -752,7 +752,7 @@ To debug the `stored procedure` within the relational database, is not for faint
 the DBA would agree. Of course, the more experienced professionals would protect their turf. Again, it is 
 business after all. 
 
-However, for a "would be" developer, Python is way more easier to learn and debug. And for the professionals, it is 
+However, for a "would be" developer, Python is way easier to learn and debug. And for the professionals, it is 
 a breeze.
 
 How to debug is completely down to Python experience, and leaving it to the reader to consult official Python resources.
