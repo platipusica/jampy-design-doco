@@ -22,7 +22,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 ---------------------
 
 - `If you are already working with the databases, then Jam.py is a no-brainier.`
-- `The development tool is free. Ne need for anything more than a browser.`
+- `The development tool is free. No need for anything more than a browser.`
 - `Leverage the existing skill-set. With some Python and JS experience, you’ll be productive in no time.`
 - `Simple infrastructure, especially for developers.`
 - `Deployment complexity is greatly reduced. Jam.py itself is only a few megabytes in size.`
@@ -72,11 +72,11 @@ Catalogs (Catalogues)
 .. note::
     `Catalogs are tables that store actual records, like the inventory of a store or the students of some school.`
 
-`Catalogs` are groups of tables that can exist on it's own, as for example in popular Spreadsheets software. Normally, the Spreadsheet is used for automated calculations. Since Jam.py is not a Spreadsheets software, all calculations for table rows is JavaScript code developed by the User/Developer within the Application Builder `Client Module` for an table. When some data is updated, deleted or added to the table, Jam.py can execute calculations or any other server task in the background by the code developed within the `Server Module`. Or, any calculations needed within the browser can be executed by the JavaScript within the `Client  Module`.
+`Catalogs` are groups of tables that can exist on its own, as for example in popular Spreadsheets software. Normally, the Spreadsheet is used for automated calculations. Since Jam.py is not a Spreadsheets software, all calculations for table rows is JavaScript code developed by the User/Developer within the Application Builder `Client Module` for a table. When some data is updated, deleted or added to the table, Jam.py can execute calculations or any other server task in the background by the code developed within the `Server Module`. Or, any calculations needed within the browser can be executed by the JavaScript within the `Client  Module`.
 
 .. pull-quote:: 
 
-    `Once tables are created in Catalogs, they cant be moved to some other group that easily. There is a` `special`_ `utility that does that. In a newer Jam.py version, moving the tables is enabled by default, no need for any utility.`
+    `Once tables are created in Catalogs, they can't be moved to some other group that easily. There is a` `special`_ `utility that does that. In a newer Jam.py version, moving the tables is enabled by default, no need for any utility.`
 
 
 .. _special: https://groups.google.com/g/jam-py/c/APG-O1z7dF0/m/J4o3PWW8AwAJ
@@ -101,7 +101,7 @@ Details
 .. note::
     `Details` store detailed information pertaining to the records in the Journals – such as invoices items details or purchase orders items details.
 
-`Details` are group of tables used only by Journals tables. This are special tables with extended functionality by the default, since extra fields are added every time an Details table is created. The extra fields are used to identify the **owner** record in the Journals tables. This enables Jam.py to find information much quicker than not using extra fields. It is possible to use Details with no extra fields to find exactly the same information by the code. For example, when Importing tables from some `Legacy system`, there would be no such extra field. The solution is to use code for some otherwise missing functionality, which is enabled automatically if used `native` Jam.py Details.
+`Details` are group of tables used only by Journals tables. This are special tables with extended functionality by the default, since extra fields are added every time a Details table is created. The extra fields are used to identify the **owner** record in the Journals tables. This enables Jam.py to find information much quicker than not using extra fields. It is possible to use Details with no extra fields to find exactly the same information by the code. For example, when Importing tables from some `Legacy system`, there would be no such extra field. The solution is to use code for some otherwise missing functionality, which is enabled automatically if used `native` Jam.py Details.
 
 .. pull-quote:: 
 
@@ -150,7 +150,7 @@ Hence, if there is no Details group, with no tables in it, Jam.py can not build 
 Forms, Buttons and other user interaction items
 ------------------------------------------------
 
-The Form is a basic type of interaction with the User. All User interaction is based on JavaScript. Which means some knowledge of JS programming might be needed if, and only if, there is a need to extend provided Jam.py functionality out of the box. Forms are automatically created for any table and default buttons are added. The Form `look` depends on the template created in the `index.html` file. However, since Jam.py v5 is a SPA (Single Page Application), all Forms will look a like, if there is only one template defined.
+The Form is a basic type of interaction with the User. All User interaction is based on JavaScript. Which means some knowledge of JS programming might be needed if, and only if, there is a need to extend provided Jam.py functionality out of the box. Forms are automatically created for any table and default buttons are added. The Form `look` depends on the template created in the `index.html` file. However, since Jam.py v5 is a SPA (Single Page Application), all Forms will look alike, if there is only one template defined.
 
 To add a button on some Form presenting the data, please consult the official documentation. The buttons can be disabled, enabled, not visible at all due to User Role, or some other conditions, etc. 
 
@@ -167,7 +167,7 @@ There are a number of Design decisions to make, namely what is the Authenticatio
 Built in Authentication
 =======================
 
-Jam.py has a built in Authentication based on Users and Roles tables within **admin.sqlite** database. This method works fine for smaller Applications or Proof of  Concept (PoC). However, for larger implementation it might be needed to extend the Users/Roles table for the a Application specific requirements. There might be also an requirement to store the two mentioned tables outside the admin.sqlite database for improved security by using some other database than SQLite3. To copy Users/Roles from a `built in` database to some other Application (e.g. from Development to Test and Prod), export/import of SYS_USERS and SYS_ROLES tables would be needed. All Administrator accounts accessing the Builder interface use `built in` database.
+Jam.py has a built in Authentication based on Users and Roles tables within **admin.sqlite** database. This method works fine for smaller Applications or Proof of  Concept (PoC). However, for larger implementation it might be needed to extend the Users/Roles table for the Application specific requirements. There might be also a requirement to store the two mentioned tables outside the admin.sqlite database for improved security by using some other database than SQLite3. To copy Users/Roles from a `built in` database to some other Application (e.g. from Development to Test and Prod), export/import of SYS_USERS and SYS_ROLES tables would be needed. All Administrator accounts accessing the Builder interface use `built in` database.
 
 
 Non built in Authentication
