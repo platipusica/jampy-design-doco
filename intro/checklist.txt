@@ -92,7 +92,7 @@ Generating Documentation
 
 .. _Sphinx: http://www.sphinx-doc.org/en/stable/
 
-As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documantation:
+As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documentation:
 
     .. code-block:: 
 
