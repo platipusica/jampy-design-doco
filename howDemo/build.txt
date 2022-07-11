@@ -778,7 +778,8 @@ Below sql will check for any code in the Client Modules:
 	sqlite3 admin.sqlite "select id, f_name, f_client_module from sys_items where  f_client_module!='' and f_client_module is not null"
 
 
-Of course, the Developer would need access to the admin.sqlite database to run the SQL against it. 
+Of course, the Developer would need access to the admin.sqlite database to run the SQL against it. The SQL does not take into
+account commented code. 
 
 Here is the list where all `Server code` is on Demo application, hence it can be easily identified within the `builder.html`_:
 
@@ -798,6 +799,10 @@ Here is the list where all `Server code` is on Demo application, hence it can be
 	Note the *ID*! That is exactly the same ID as seen on `builder.html`_! The *Genres* has ID=13, *Tracks* has ID=15, and 
 	so on. Hence, we know how many are there and exact location for each Server Module used within the application.
 
+The commented out code, meaning not used at all for Demo, is code with ID=1 (Jam.py Demo). The code should be uncommented when the 
+`built in`_ Authentication is turned on.
+
+.. _built in: https://jampyapplicationbuilder.com/docs/how_to/authentication/how_to_authenticate_from_custom_users_table.html
 
 ...the End of Code
 ------------------
