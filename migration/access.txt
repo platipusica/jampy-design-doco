@@ -1,0 +1,36 @@
+Migration:
+
+Depending on file size, the conversion might take a few moments! Please wait to see: File is successfully converted! Access Application with your data from here
+
+After the Access file is uploaded and converted with no errors:
+
+- link to Application Builder will show up, which is using the sqlite3 data converted from Access instantly available on the Web! It is super easy and takes no time!If not interested at all in building the Application, please click on Export to download the DB as zip file which contains the sqlite3 file. The converted sqlite3 database has a long name exactly the same as in provided link. This is to increase safety and security for all downloads.
+
+If interested in showing data on the Web:
+The Application Builder link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid JavaScript naming standard, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
+
+Video tutorial - How to publish MS Access Application to Web using Jam.py and SQLite3
+
+Video tutorial - Simple CRM built automatically with Selenium IDE in 2.45minutes, demonstrates the Tutorial. Part 1. First project
+
+New style Demo - Migrated Access Application (expiry on 04 Aug 2022)
+
+After Importing some tables, just replace builder.html with index.html from the link to access your Application. Sometimes the index.html page will not show anything due to CloudFlare issues. Please try after some time. Or start over. One can even set the App password or create users within the Builder. The default App/Builder username/password is admin/111, change it on Project/Users and set Project/Parameters/Safe Mode to restrict access, etc. One can set all lookups to different tables as usual. It should be a fully functional App with all the bells and whistles!
+
+It is important to note that once the Access file is converted and all tables Imported through the builder.html, it is not needed to use this service at all. Immediately use the Export [CTRL+E] option and download the Export file. Than, install the Python Jam.py framework locally or on the server, create the New application, Import the same downloaded file, and point the Application to sqlite database as per creating the New application. That is all.
+
+Notes/Issues:
+
+This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, no need to upload a Front end application, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables.
+
+The process is expecting that the Primary Key exist on all tables. Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. AutoNumber field.
+
+MS Access might have a special character, space, slash/backslash, dash (-),quote('), etc for the table field, as well as table name. The conversion will try to replace those, however, we would advise to fix the issues in MS Access, before attempting the conversion.
+
+The conversion will fail if there are linked tables in MS Access. Please remove any linked tables before attempting the conversion.
+
+The conversion will fail if Access is using utf-16-li, no need to try again. No log or link will be produced and we suggest fixing Access.
+
+There might be an #Error in the Access field, please fix it if conversion fails, and attempt again. The best is to inspect the Log file, sometimes clearly showing the error. If the log file is empty, something went wrong. No need to try again if Access wasn't fixed.
+
+Please do not upload confidential, private or password protected/encrypted database. If conversion to SQLite3 is needed for such data, the tool can be provided on demand. Password protected database conversion might fail, no need to try again.
