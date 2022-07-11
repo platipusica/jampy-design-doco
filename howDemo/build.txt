@@ -808,7 +808,9 @@ The commented out code, meaning not used at all for Demo, is code with ID=1 (Jam
 ------------------
 
 Hope you've enjoyed this Code part! The intention was to explain some bits and pieces which were exclusively developed for Demo 
-application. And, for sure there is more code as seen on the above SQL output. 
+application. For sure there is more code as seen on the above SQL output! However, half of that number is related to Reports.
+And we are not going to Reports yet.
+
 
 
 TBC
