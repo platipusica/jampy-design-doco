@@ -762,5 +762,45 @@ a breeze.
 
 How to debug is completely down to Python experience, and leaving it to the reader to consult official Python resources.
 
+And finally...
+---------------
+
+Below SQL will check for any code in the Application Server Modules (using sqlite3 command line utility):
+
+.. code-block:: sql
+
+	sqlite3 admin.sqlite "select id, f_name,f_server_module  from sys_items where  f_server_module!='' and f_server_module is not null" 
+
+Below sql will check for any code in the Client Modules:
+
+.. code-block:: sql
+
+	sqlite3 admin.sqlite "select id, f_name, f_client_module from sys_items where  f_client_module!='' and f_client_module is not null"
+
+
+Of course, the Developer would need access to the admin.sqlite database to run the SQL against it. 
+
+Here is the list where all `Server code` is on Demo application, hence it can be easily identified within the `builder.html`_:
+
+.. code-block:: sql
+
+	1|jam.py Demo
+	5|Reports
+	13|Genres
+	15|Tracks
+	16|Invoices
+	19|Print invoice
+	20|Customer purchases 
+	22|Customer list
+	25|Mail
+
+
+
+...the End of Code
+------------------
+
+Hope you've enjoyed this Code part! The intention was to explain some bits and pieces which were exclusively developed for Demo 
+application. And, for sure there is more code as seen on the above SQL output. 
+
 
 TBC
