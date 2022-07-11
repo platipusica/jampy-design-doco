@@ -669,7 +669,9 @@ Server code
 ===========
 
 This is where Python programming language kicks in. Everything in Jam.py
-as the Server code is Python. 
+as the Server code is Python.
+
+
 
 Invoices
 ---------
@@ -726,8 +728,10 @@ documentation might be sufficient. However, why doing it we might ask?
 Why Server Code?
 --------------------
 
-To answer the above question, the `Server Code` is needed because it is happening in the background. It is almost exactly 
-as the ``stored procedure``, the relational databases are using.
+.. note::
+	To answer the above question, the `Server Code` is needed because it is happening in the background. It is almost exactly 
+	as the ``stored procedure``, the relational databases are using. It is absolutely possible for an application not to use
+	the ``Server Code`` at all, hence no need for Python. This is the application design choice.
 
 The relational database engines are quite efficient with the stored procedures. But, and there is a but, is the stored 
 procedure portable to a different database products? Of course not. The good news is, Python is portable. Hence, with using 
@@ -742,7 +746,7 @@ Jam.py completely eliminates the above. There is no "lock in" with any specific 
 There is also a question of security. It is quite simple to implement the code which controls the permissions on what
 can be executed by the user. This is almost the Desktop Application territory! 
 
-And there is even more good news! Debugging. 
+And there are even more good news! Debugging. 
 
 
 Debugging
