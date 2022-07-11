@@ -57,6 +57,12 @@ However, for the static files, for example JavaScript libraries, or CSS files, t
 
 The Application Builder Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.
 
+The utility to completely track the application changes, even the database structure, is here:
+
+`Storing jam.py Application in GitLab`_
+
+.. _Storing jam.py Application in GitLab: https://groups.google.com/g/jam-py/c/nsUU5DEdTWQ/m/EwJg5u99AgAJ
+
 Unit Testing 
 ====================
 
