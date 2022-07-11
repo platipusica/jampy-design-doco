@@ -784,7 +784,7 @@ Here is the list where all `Server code` is on Demo application, hence it can be
 
 .. code-block:: sql
 
-	1|jam.py Demo
+	1|Jam.py Demo
 	5|Reports
 	13|Genres
 	15|Tracks
@@ -794,6 +794,9 @@ Here is the list where all `Server code` is on Demo application, hence it can be
 	22|Customer list
 	25|Mail
 
+.. note::
+	Note the *ID*! That is exactly the same ID as seen on `builder.html`_! The *Genres* has ID=13, *Tracks* has ID=15, and 
+	so on. Hence, we know how many are there and exact location for each Server Module used within the application.
 
 
 ...the End of Code
