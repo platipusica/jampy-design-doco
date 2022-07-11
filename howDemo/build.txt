@@ -731,7 +731,8 @@ Why Server Code?
 .. note::
 	To answer the above question, the `Server Code` is needed because it is happening in the background. It is almost exactly 
 	as the ``stored procedure``, the relational databases are using. It is absolutely possible for an application not to use
-	the ``Server Code`` at all, hence no need for Python. This is the application design choice.
+	the `Server Code` at all, hence no need for Python. This is the application design choice. If needed, Jam.py can also 
+	use the database `stored procedures`.
 
 The relational database engines are quite efficient with the stored procedures. But, and there is a but, is the stored 
 procedure portable to a different database products? Of course not. The good news is, Python is portable. Hence, with using 
@@ -760,5 +761,6 @@ However, for a "would be" developer, Python is way easier to learn and debug. An
 a breeze.
 
 How to debug is completely down to Python experience, and leaving it to the reader to consult official Python resources.
+
 
 TBC
