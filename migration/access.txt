@@ -1,6 +1,66 @@
 MS Access migration
 =====================
 
+Congratulations on the decision to `migrate` Access to the Web!
+
+After all, it is moving to the modern JavaScript with Bootstrap and jQuery technology! 
+Which is powered by Python.
+
+Before considering migrating Access (or any proprietary software), to the Web, please review some 
+answers below. Which might help with understanding what to expect.
+
+Top 5 Questions
+================
+
+The MS Access might be a `bread and butter` for many developers out there. Particularly in some 
+specific industries like the Law practices or similar. And fair enough.
+
+However, the RISK is that in some years to come, the developers will retire. I know, I'm one of them.
+Hence, where will the business find people to maintain their expensive application? Maybe they already 
+hired the MSSQL database administrator, since the Access developers told them to do so. The DBA's might be around in years to come, but the Access developers? Or better, THE Access itself?
+
+Hence, the faster we move away from proprietary database AND Front End application, the better. Simply because the technology will be around way after the MS Access is gone. This is business after all, let's put aside the emotions. The HTML is here to stay. Who remembers the Netscape any more? Or Mosaic?
+
+
+1. Complacency
+--------------
+
+.. pull-quote::
+        `Success breeds complacency. Complacency breeds failure. Only the paranoid survive. Andy Grove`
+
+
+      The application might be compliant for some business, however does it run on the Web? Apple Mac? Tablet?
+      If paranoid about the application safety, how come not paranoid about the application future?
+      That is what we are addressing with the migration. The `Future`.
+
+2. VBA?
+-------
+
+   `Does your application rely on heaps of VBA for Business Rules (BR)?`
+
+   The VBA cant be migrated to the Web. The question is what is it used for? 5000 lines of VBA code
+   might be a dinosaur code! It might be done with Python in 200 lines of code. How about 10 lines?
+   
+   Take the ML for example! Or better, search how many jobs openings are out there for the VBA! Paying the VBA 
+   developer $800/day, does not mean the job for life. It only means the company has a dinosaur technology 
+   no one wants to touch internally so they hire a Contractor. 
+
+   The BR might be a way the application authenticate users. Jam.py can reuse the tables used for users, so
+   no issues with that. 
+
+3. Excel?
+---------
+
+    `Does your application depends on Excel or some other Office products?`
+
+    This might be a show stopper, simply because the organisation will not let go of Excel. This might be 
+    particularly true within some Financial institution. The good news is Python can read/write Excel 
+    document formats. For sure Access has better interoperability with those products. It is the Desktop
+    application after all.
+    
+    
+
+
 Depending on file size, the conversion might take a few moments! Please wait to see: File is successfully converted! Access Application with your data from here
 
 After the Access file is uploaded and converted with no errors:
@@ -16,7 +76,7 @@ Video tutorial - Simple CRM built automatically with Selenium IDE in 2.45minutes
 
 New style Demo - Migrated Access Application (expiry on 04 Aug 2022)
 
-After Importing some tables, just replace builder.html with index.html from the link to access your Application. Sometimes the index.html page will not show anything due to CloudFlare issues. Please try after some time. Or start over. One can even set the App password or create users within the Builder. The default App/Builder username/password is admin/111, change it on Project/Users and set Project/Parameters/Safe Mode to restrict access, etc. One can set all lookups to different tables as usual. It should be a fully functional App with all the bells and whistles!
+After Importing some tables, just replace builder.html with index.html from the link to access your Application. Sometimes the index.html page will not show anything due to Load Balancer issues. Please try after some time. Or start over. One can even set the App password or create users within the Builder. The default App/Builder username/password is admin/111, change it on Project/Users and set Project/Parameters/Safe Mode to restrict access, etc. One can set all lookups to different tables as usual. It should be a fully functional App with all the bells and whistles!
 
 It is important to note that once the Access file is converted and all tables Imported through the builder.html, it is not needed to use this service at all. Immediately use the Export [CTRL+E] option and download the Export file. Than, install the Python Jam.py framework locally or on the server, create the New application, Import the same downloaded file, and point the Application to sqlite database as per creating the New application. That is all.
 
