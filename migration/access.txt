@@ -6,14 +6,21 @@ Congratulations on the decision to `migrate` Access to the Web!
 After all, it is moving to the modern JavaScript with Bootstrap and jQuery technology! 
 Which is powered by Python.
 
-Before considering migrating Access (or any proprietary software), to the Web, please review some 
-answers below. Which might help with understanding what to expect.
 
-Top 5 Questions
-================
+Jam.py is not exclusively developed for Access migration. Just like Django (Python) or CodeIgniter (PHP), is not.
+Both products are not specialised for the databases oriented applications, even though one could migrate Access to any of those.
+
+However, Jam.py is specialised.
+
+Before considering migrating Access (or any proprietary software), to the Web with the help of Jam.py, please review some 
+answers below. Which might help with understanding what to expect from Jam.py. 
+
+
+Top Questions
+c
 
 The MS Access might be a `bread and butter` for many developers out there. Particularly in some 
-specific industries like the Law practices or similar. And fair enough.
+specific industries like the Law practices or similar. And fair enough. It is the right tool for the job. 
 
 However, the RISK is that in some years to come, the developers will retire. I know, I'm one of them.
 Hence, where will the business find people to maintain their expensive application? Maybe they already 
@@ -30,35 +37,112 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
 
       The application might be compliant for some business, however does it run on the Web? Apple Mac? Tablet?
-      If paranoid about the application safety, how come not paranoid about the application future?
-      That is what we are addressing with the migration. The `Future`.
+      That is exactly what we are addressing with the migration. The `Future`.
 
 2. VBA?
 -------
 
+.. pull-quote::
    `Does your application rely on heaps of VBA for Business Rules (BR)?`
 
    The VBA cant be migrated to the Web. The question is what is it used for? 5000 lines of VBA code
    might be a dinosaur code! It might be done with Python in 200 lines of code. How about 10 lines?
    
    Take the ML for example! Or better, search how many jobs openings are out there for the VBA! Paying the VBA 
-   developer $800/day, does not mean the job for life. It only means the company has a dinosaur technology 
+   developer $800/day, does not mean the job is for life. It only means the company has a dinosaur technology 
    no one wants to touch internally so they hire a Contractor. 
 
-   The BR might be a way the application authenticate users. Jam.py can reuse the tables used for users, so
-   no issues with that. 
+   What might not be recognised is the speed. The VBA just does not compare with Python. The Developers will argue that 
+   this is due to the quality of code. Not quite. It as just important as garbage collection is, or utilising memory, etc.
+   And this is where Python shines. 
+
+   For example, the BR might be a way the application authenticates users. Jam.py can reuse the Access tables used for users, so
+   no issues with that. When the database is migrated, the users authentication table is there.
+
+   
 
 3. Excel?
 ---------
 
+.. pull-quote::
     `Does your application depends on Excel or some other Office products?`
 
     This might be a show stopper, simply because the organisation will not let go of Excel. This might be 
     particularly true within some Financial institution. The good news is Python can read/write Excel 
     document formats. For sure Access has better interoperability with those products. It is the Desktop
-    application after all.
+    application after all. However, some operations within Access using Excel, might take a long time, sucking up the resources.
+    Not so with Python and Excel. It is super easy to integrate Excel with Jam.py application using `DataTables`_. 
     
+    Good resource for using `Excel with Python`_.
+
+.. _Excel with Python: https://www.pyxll.com/docs/userguide/vba.html
+
+.. _DataTables: https://www.datatables.net
+
+
+4. Queries
+-----------
+
+.. pull-quote::
+    `Most of the "applications" consist of a single hard-coded query or a single linked table.` 
+
+    The above is a quote from `Front-End for MS Access migration?`_ It is an old thread with all points still valid.
+    With Jam.py, one does not write queries. It is absolutely possible to do so, if needed. 
     
+    It is a low-code framework after all! And that can open the whole new world for a group of developers! Because
+    each of them can work simultaneously on some other part of application, being the Forms or the Server procedures,
+    everything is instantly visible to everyone with the right privileges.
+    
+    Hence, everything is simplified. The Jam.py framework will build complex queries just like Access does, with a few
+    clicks of the mouse. Contrary to the Access, this query, infact the complete application, will work on any supported
+    database. Develop the application with the migration tool, and deploy it to preferred database. Simple. No need to 
+    rewrite the queries.
+
+5. Primary Keys
+---------------
+
+
+    The Primary Key (PK), is a must with all relational databases. With no PK, Jam.py cannot reference the Foreign Keys (FK).
+    Not only relevant to Jam.py, Django does not do that either. Since both are sharing similar ORM. So no matter how 
+    we migrate Access to the Web, with which technology, the PK simply must exist. This is even true with Access web 
+    apps and web databases. 
+      
+
+6. Deployment
+-------------
+
+.. pull-quote::
+    `If possible, have the front-ends copied locally on each workstation, for performance reasons.`
+
+    Again, the same source `Front-End for MS Access migration?`_ See how nothing really changed from year 2008?
+
+    Some Access Developers would argue that RDP or Citrix or even VPN is the way to deploy the Front End application
+    to the Web. All this technologies were around in 2008. Nothing new.
+
+    What is new is the Cloud. We can now deploy Jam.py application in a few seconds. Which can serve thousands of users 
+    simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
+    need for installation of anything and costs almost nothing. 
+
+    Regarding Access packaging, some are using one distributable file, sometimes protected with the encryption. Jam.py 
+    can do exactly the same. Even more, one can use SQLCipher to protect the IP. Combining both within an portable 
+    application, which can run from, for example Windows x64 with no installation at all, is a powerful deployment 
+    and secure method. With such approach, the application database might be off-site or even embedded and encrypted with
+    SQLCipher. 
+    This method can provide safe and secure access even from a portable drive in an off-line environment, for example with 
+    no Internet access at all. Only the local area network is needed for more than one user.
+
+.. _Front-End for MS Access migration?: https://stackoverflow.com/questions/221995/front-end-for-ms-access-migration
+
+   
+Where from here?
+================
+
+Hope the above sparked some interest. 
+
+
+Please visit: 
+
+https://jampyapplicationbuilder.com/conv/
 
 
 Depending on file size, the conversion might take a few moments! Please wait to see: File is successfully converted! Access Application with your data from here
