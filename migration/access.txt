@@ -214,6 +214,64 @@ Terms and Conditions
 Now what?
 =========
 
-First of all, thanks for trying the conversion! 
+First of all, thanks for trying the migration! 
+
+Now that the database is converted to SQLite3, let's see what we can do with it. 
+
+Tables
+------
+
+In order to use the automatic displaying of data (automatically with CRUD), the table name is used as table Caption! That is, if the Caption was
+not changed during the table Import.
+
+Hence, if the database table name is ``django_ledger_accountmodel``, than the JavaScript variable Name is also ``django_ledger_accountmodel``!
+And more importantly, the visible table Caption on the Application is ``django_ledger_accountmodel`` as well.
+
+So maybe better to set the table ``Caption`` to ``Account``! 
+
+This is also true for any table column during the table Import. We are working on the new feature to improve this. 
+
+Finally, the application might look like this:
+
+.. image:: _images/django01.png
+	:scale: 80 %
+	:align: center
+	:alt: Django Ledger
 
 
+
+As mentioned, the Linked tables from MS Access is impossible to import, hence they do not exist.
+
+
+
+Indexes
+-------
+
+As stated, the migration does not import indexes. This is due to a number of constraints. The good news is once the data is converted, 
+the indexes can be created within the Builder. The good practise is to index all `lookups` on some table.
+
+Why is this important? Because doing it within the Builder, all indexes are kept and can be recreated on any supported database engine.
+If the indexes exist within the database only, the Builder would not know about it and they would be lost when moving Application 
+to the preferred database.
+
+Foreign Keys
+------------
+
+Similar scenario, after the data is migrated, we can create FK's within the Builder. Again, the Jam.py utilises `lookups` for looking up for data.
+
+
+Users table
+-----------
+
+If already using some MS Access database table for users authentication, the only thing missing is the Role `lookup`. It is quite possible that 
+the role is hard-coded in Access, and this is what we are trying to avoid. Use `lookups` as much as possible.
+
+The process is described in here: `How to authenticate from custom users table`_.
+
+Obviously, it is the best practise to use password hash for storing the passwords. This simply means adding a column with a **Password hash** text to 
+the `Users` or similar table. 
+
+.. _How to authenticate from custom users table: https://jampyapplicationbuilder.com/docs/how_to/authentication/how_to_authenticate_from_custom_users_table.html
+
+.. note::
+    To Be Continued...
