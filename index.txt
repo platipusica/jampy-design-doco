@@ -16,3 +16,5 @@ This Documentation follows official Jam.py documentation, keeping similar concep
 :doc:`"How-to" guides<howto/index>`, here you'll find short answers to "How do I....?" types of questions. 
 
 :doc:`"How was Demo built?" guide<howDemo/index>`, here you'll find my take on how was Demo built.
+
+:doc:`"MS Access migration" guide<migration/index>`, tips for MS Access migration.
