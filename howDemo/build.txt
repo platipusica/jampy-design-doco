@@ -2,7 +2,7 @@
 Demo project
 ============
 
-After downloading the Jam.py package, and starting Demo, the application is accessible with typing 127.0.0.1:8080/index.html or just 127.0.0.1:8080 in the Browser:
+After downloading the Jam.py package, and starting _`Demo`, the application is accessible with typing 127.0.0.1:8080/index.html or just 127.0.0.1:8080 in the Browser:
 
 .. image:: _images/demo.png
 	:scale: 70 %
@@ -162,7 +162,7 @@ The Demo Invoices table:
 	:align: center
 	:alt: Invoices table
 
-We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook database`_, we see the relation 
+We see that Invoices table is referencing a lot from the Customers table! This is where we look at the `Chinook`_ database, we see the relation 
 Customers - Invoices! 
 
 This means we can create the table but with no Customers one, we can't really achieve what is needed for Invoices to function correctly. 
@@ -810,6 +810,104 @@ The commented out code, meaning not used at all for Demo, is code with ID=1 (Jam
 Hope you've enjoyed this Code part! The intention was to explain some bits and pieces which were exclusively developed for Demo 
 application. For sure there is more code as seen on the above SQL output! However, half of that number is related to Reports.
 And we are not going to just Reports yet.
+
+
+index.html
+===========
+
+Here we are introducing the basic index.html structure.
+
+
+Templates
+----------
+
+`Demo`_ application has the "About" and "Jam.py" on the right hand side of the Menu bar. This is a Code as well.
+
+However, it is a bit different to what was discussed above, since the code is related to the index.html file. Btw, this is true for everything else.
+
+If we open index.html file in `builder.html`_ (Task/Project), the below is visible:
+
+
+.. code-block:: html
+
+            <div id="taskmenu" class="navbar">        
+                <div class="navbar-inner">
+                    <ul id="menu" class="nav">
+                    </ul>
+                    <ul id="menu-right" class="nav pull-right">
+                        <!--<li id="admin"><a href="#">Application builder</a></li>-->
+                        <li id="about"><a href="#">About</a></li>                        
+                        <li id="jam"><a href="http://jam-py.com/" target="_blank">Jam.py</a></li>                        
+                    </ul>
+                </div>
+            </div>            
+
+
+Jam.py calls this html block a _`Template`. 
+
+The "About" and "Jam.py" is simply a link, just as "Application builder" is. Which is _`commented` out.
+
+Hence, everything we want to see here is just a matter of adding it as extra lines. It is quite clear that this Template is related to "menu", and 
+it will display on the right hand side. The _`id=` is the most important one, here we see **id** **admin**, **about** and **jam**.
+
+However, this itself is not enough for the proper application functioning. Why? Because the Template does not exist on it's own.
+For example, in Django or Flask, the Template might be using a "built in" functionality, like "for loop" clause. Jam.py does not do that.
+It does not contain any code for Template in the index.html file.
+
+This must the stressed, in Jam.py, there is no need to "program" the Template. It is a simple html. Ingenious. 
+
+
+Template Code
+-------------
+
+The Template Code for "About" and "Jam.py" is in demo.js (Project/Task/Client Module). It is the default code available for any new project:
+
+.. code-block:: javascript
+
+
+            $("#menu-right #admin a").click(function(e) {
+                var admin = [location.protocol, '//', location.host, location.pathname, 'builder.html'].join('');
+                e.preventDefault();
+                window.open(admin, '_blank');
+            });
+            $("#menu-right #about a").click(function(e) {
+                e.preventDefault();
+                task.message(
+                    task.templates.find('.about'),
+                    {title: 'Jam.py framework', margin: 0, text_center: true, 
+                        buttons: {"OK": undefined}, center_buttons: true}
+                );
+            });
+
+The **admin** link will just open the new Window, with the `builder.html`_ page. Cool. So this is how we open any page, ie "Help" page for the 
+application. The example would be help.html. Try it, create one within the application folder and replace builder.html with help.html!
+Obviously, the `commented`_ code prevents this from happening. Uncomment it.
+
+For **about** link, we also see:
+
+.. js:function::  task.templates.find
+
+The function is used to find the **correct** `Template`_ id. In this case the below "about" block in `index.html`_, since the `id=`_ about, which is the 
+**class** name "about":
+
+.. code-block:: html
+
+            <div class="about">
+                <a href="http://jam-py.com/" target="_blank"><h3>Jam.py</h3></a>
+                <h3>Demo application</h3>
+                with <a href="http://chinookdatabase.codeplex.com/" target="_blank">Chinook Database</a>
+                <p>by Andrew Yushev</p>
+                <p>2015-2017</p>
+            </div>
+
+
+That is all to get us going. It should be easy to change the Menu content, and open some pages or a dialogue. 
+
+
+Wrapping up
+-----------
+
+Congrats! Almost everything is covered regarding the Demo functionality! Hope it was not that difficult. 
 
 
 
