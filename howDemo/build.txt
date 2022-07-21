@@ -28,7 +28,7 @@ As mentioned, Demo application is derived from it, it is not a one-to-one mappin
 Demo database
 =============
 
-To better understand the actual database, here is the original _`Chinook database` relational diagram:
+To better understand the actual database, here is the original _`Chinook` relational database diagram:
 
 .. image:: _images/chinook.png
 	:scale: 50 %
@@ -228,7 +228,7 @@ Here is how Customers table looks like:
 	:alt: Customers table
 
 
-It is a simple table with no lookups to some other tables, like Invoices for example. Because it is derived from the `Chinook database`_, we can see that Demo is missing the Employees table, so the SupportRepid is not used anywhere. That is fine. No harm done. We might argue that Customers table can be split in more tables, like Country, State or similar. While on it, please see `Tutorial. Part 2. File and image fields`_ for adding Image field. We did touch base with the `View/Edit`_ option on Invoices, no need for repeating. 
+It is a simple table with no lookups to some other tables, like Invoices for example. Because it is derived from the `Chinook`_ database, we can see that Demo is missing the Employees table, so the SupportRepid is not used anywhere. That is fine. No harm done. We might argue that Customers table can be split in more tables, like Country, State or similar. While on it, please see `Tutorial. Part 2. File and image fields`_ for adding Image field. We did touch base with the `View/Edit`_ option on Invoices, no need for repeating. 
 
 
 Now that we have two tables in place, we can set the _`Lookup fields` in Invoices in a similar fashion as in `Tutorial. Part 1. First project`_.
@@ -276,7 +276,7 @@ Just like before with Invoices table, but not with Customers, the "Invoice Table
 
 
 If below table screenshot was the "blank" Invoice Items table, with no `Lookup fields`_ to the above two tables, it would not show anything. The reason 
-why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook database`_ diagram, is the presentation. It is more nicely presented 
+why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook`_ database diagram, is the presentation. It is more nicely presented 
 with the customer last name on the screen than with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which 
 ultimately identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely 
 "Albums" and "Artists".
