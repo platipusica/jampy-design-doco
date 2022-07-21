@@ -252,7 +252,7 @@ Why would we do that? Well, we could opt for coding. It is available feature and
 
 However, Demo application is demonstrating how Jam.py is functioning, so why not using it. 
 
-Basically, since the Invoice Table is a detail, it has the master_rec_id field that stores a reference to invoice that has this record, we can show the user an invoice that contains the current sold record. Clear as mud?
+Basically, since the Invoice Table is a detail of the master table Invoices, it has the **master_rec_id** field that stores a reference to an invoice. As a master record, we can show an invoice that contains the current item. Clear as mud?
 
 The Details Group differs from other default tables slightly:
 
@@ -809,7 +809,7 @@ The commented out code, meaning not used at all for Demo, is code with ID=1 (Jam
 
 Hope you've enjoyed this Code part! The intention was to explain some bits and pieces which were exclusively developed for Demo 
 application. For sure there is more code as seen on the above SQL output! However, half of that number is related to Reports.
-And we are not going to Reports yet.
+And we are not going to just Reports yet.
 
 
 
