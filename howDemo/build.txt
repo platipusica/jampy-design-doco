@@ -1095,26 +1095,38 @@ Steps:
 
 5. Remember to adjust **inv**, **customer** and **total** for your needs. This is also where `Lookup fields`_ kicks in, the **customer.display_text** will
    display the Customer Name and not the CustomerId as an Integer, which is visible on the Invoices table. 
-   Also worth mentioning is **total.value.toFixed(2)**, which is obviously a value of Total, rounded to two decimals.
+   Also worth mentioning is **total.value.toFixed(2)**, which is obviously a value of Total, rounded to two decimals. Since we dealing with 1/10 of data,
+   some calculations is needed with **(i.rec_no - 1) / 10)**.
 
-6. Start from first. remember **inv**!
+6. Start from first. Remember **inv**!
 
 7. Draw graphics with 'Ten most active customers' Label!
 
-8. Create table with some data under the graphics within the **customer-table** canvas!
+8. Create table with some data under the graphics within the **customer-table** Template! Remember to adjust for the rest of Templates!
 
 9. And finally pass back the Invoices data.
 
-So there you go! With One single block of code we can create indefinite number of graphics utilising `Lookup fields`_ within the ChartJS!
+So there you go! With one single block of code we can create indefinite number of graphics utilising `Lookup fields`_ within the ChartJS!
 
-Wrapping up
------------
+
+
+Cosmetic code
+-------------
 
 Now that we know how to create a graphics for one table, the rest is a copy/paste! Functions **draw_chart** and **lighten** is just cosmetic. Play with it.
 
 .. note::
 
     Changing a code in function draw_chart from a 'pie' to 'bar', will change the graphics!
+
+End of Dashs
+-------------
+
+Once we get a handle of it, creating a Dashboards is a breeze! It is just a matter of adjusting the names of tables and variables. Plus, how much data we
+are presenting, one tenth of it, or one third, etcetera. Of course, there is a bit more about it, but we do not want the information overload! Hope that this 
+is just enough to going! 
+
+
 
 .. note::
     To Be Continued...
