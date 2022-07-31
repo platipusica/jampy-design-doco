@@ -824,8 +824,11 @@ Templates
 `Demo`_ application has the "About" and "Jam.py" on the right hand side of the Menu bar. This is a Code as well.
 
 However, it is a bit different to what was discussed above, since the code is related to the index.html file. Btw, this is true for everything else.
+Everything is based on it. It is the **root** file on any application in Jam.py release 5 or older. In the newer release of Jam.py, the file _`template.html` 
+is introduced. More about that latter on.
 
-If we open index.html file in `builder.html`_ (Task/Project), the below is visible:
+
+If we open _`index.html` file in `builder.html`_ (Task/Project), the below is visible:
 
 
 .. code-block:: html
@@ -847,12 +850,13 @@ Jam.py calls this html block a _`Template`.
 
 The "About" and "Jam.py" is simply a link, just as "Application builder" is. Which is _`commented` out.
 
-Hence, everything we want to see here is just a matter of adding it as extra lines. It is quite clear that this Template is related to "menu", and 
-it will display on the right hand side. The _`id=` is the most important one, here we see **id** **admin**, **about** and **jam**.
+Hence, everything we want to see here is just a matter of adding it as extra lines. It is quite clear that this Template is related to a "menu", and 
+it will display on the right hand side. It clearly indicates *menu-right*!
+The _`id=` is the most important one, here we see **id** **admin**, **about** and **jam**.
 
-However, this itself is not enough for the proper application functioning. Why? Because the Template does not exist on it's own.
+However, this itself is not enough for the proper application functioning. Why? Because the `Template`_ does not exist on it's own.
 For example, in Django or Flask, the Template might be using a "built in" functionality, like "for loop" clause. Jam.py does not do that.
-It does not contain any code for Template in the index.html file.
+It does not contain any code for Template in the `index.html`_ file.
 
 This must the stressed, in Jam.py, there is no need to "program" the Template. It is a simple html. Ingenious. 
 
@@ -879,9 +883,10 @@ The Template Code for "About" and "Jam.py" is in demo.js (Project/Task/Client Mo
                 );
             });
 
-The **admin** link will just open the new Window, with the `builder.html`_ page. Cool. So this is how we open any page, ie "Help" page for the 
-application. The example would be help.html. Try it, create one within the application folder and replace builder.html with help.html!
-Obviously, the `commented`_ code prevents this from happening. Uncomment it.
+The **admin** link will just open the new tab in the browser, with the `builder.html`_ page. Cool. So this is how we open any page, ie a "Help" page for the 
+application. Of course, we would need a help.html file. 
+Try it. Create help.html within the application folder and replace builder.html with help.html!
+Obviously, the `commented`_ code prevents this from happening. Uncomment it first.
 
 For **about** link, we also see:
 
@@ -910,6 +915,206 @@ Wrapping up
 Congrats! Almost everything is covered regarding the Demo functionality! Hope it was not that difficult. 
 
 
+Dashboard
+===========
+
+Now that we've covered the Data Grids functioning, maybe it's a time to have a look at the Demo Dashboard. 
+First to understand is the `Template`_ in `index.html`_ for the Dashboard, and Dashboard only.
+
+
+
+Dashboard template
+------------------
+
+The `Template`_ for Demo Dashboard is a simple two columns table:
+
+
+.. code-block:: html
+
+        <div class="dashboard-view">
+            <div class="row-fluid">                                  <-- the table   -->
+                <div class="span6">                                  <-- column one  -->
+                    <canvas id="cutomers-canvas"></canvas>           <-- graphics one  -->     
+                    <div id="customer-table"></div>                  <-- table under it -->
+                </div>                            
+                <div class="span6">                                  <-- column two  -->
+                    <canvas id="tracks-canvas"></canvas>             <-- graphics two  -->   
+                    <div id="tracks-table"></div>                    <-- table under it  -->
+                </div>                
+            </div>                                                   <-- end of table-->
+        </div>
+
+
+This obviously means one thing: **we need heaps bigger table if we are going to implement many Pie charts or similar!**
+
+Hence, the below Template would create two rows with two columns table:
+
+.. code-block:: html
+
+        <div class="dashboard-view">
+            <div class="row-fluid">
+                <div class="span6">
+                    <canvas id="assets-canvas"></canvas>
+                    <div id="assets-table"></div>
+                </div>
+                <div class="span6">
+                    <canvas id="parts-canvas"></canvas>
+                    <div id="parts-table"></div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <canvas id="parts_table-canvas"></canvas>
+                    <div id="parts_table-table"></div>
+                </div>
+                <div class="span6">
+                    <canvas id="parts_suppliers-canvas"></canvas>
+                    <div id="parts_suppliers-table"></div>
+                </div>
+            </div>
+        </div>
+
+
+The above example is from here `second Demo`_.
+
+.. _second Demo: https://jampy.pythonanywhere.com/
+
+The `Demo`_ `Template`_ above has an _`typo`: **cutomers-canvas** should be **customers-canvas**. We can observe that this is related to a **customer-table**.
+Same with **tracks-canvas**, it is related to a **tracks-table**.
+
+With this two pieces of information, we can build the JavaScript code to show the data. We just need to remember that `index.html`_ file must include:
+
+.. code-block:: html
+
+               <script src="static/js/Chart.min.js"></script>
+
+The file Chart.min.js can exist elsewhere and not in static/js, however, this is where it normally resides. 
+
+
+Dashboard Menu Item
+-------------------
+
+Before we dive into the JS code, it is visible on Demo that the Dashboard exist as an Item on the Menu, called Analytics. This is just an Project/Task/Groups Item on `builder.html`_, where Analytics was created as an place holder for Dashboard virtual table! 
+Now, what is a virtual table we will cover latter on, but just think of it as virtual - it does not exist in the database.
+
+So, when crating a Dashboard from scratch, just replicate what Demo has, one Analytics (or whatever we need to call it), Group Item and one Dashboard virtual table
+within that Item. Simple. Takes 30 seconds to create!
+
+
+
+Dashboard Code
+--------------
+
+As we know, Jam.py uses ChartJS as the Dashboard engine. However, that does not mean much when working with the Jam.py. It is really easy, though.
+
+If we look at the Demo `builder.html`_, and click on Analytics/Dashboard/Client Code, the code has approx 100 lines. But only half of it is actually related to the application!
+
+The rest is copy/paste! Huh, that is assuring, cough, cough!
+
+First, remember the above Dashboard Template, **customers-canvas** and **tracks-canvas**?
+
+To start working on the Dashboard, we need to define this two canvases:
+
+ 
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            show_cusomers(item, item.view_form.find('#cutomers-canvas').get(0).getContext('2d'));
+            show_tracks(item, item.view_form.find('#tracks-canvas').get(0).getContext('2d'));
+        }
+
+The exact `typo`_ exist here as well! The code tells the Application to look at the `index.html`_ for this two canvases, and when found, the JS function
+executes the **show_cusomers** and **show_tracks**, respectively. 
+
+
+Hence, when building more graphics, we would need more functions. From above `second Demo`_, the functions to show four graphics are:
+
+
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            show_assets(item, item.view$('#assets-canvas')[0].getContext('2d')),
+            show_parts(item, item.view$('#parts-canvas')[0].getContext('2d'));
+            show_parts_table(item,item.view$('#parts_table-canvas')[0].getContext('2d'));
+            show_parts_suppliers(item,item.view$('#parts_suppliers-canvas')[0].getContext('2d'));    
+        }
+
+Each JS function normally pulls data from one table only. However, the ChartJS is quite effective and does `Lookup fields`_ too! So no wonder Jam.py is 
+using this library when it nicely utilises the power of lookups! 
+
+.. code-block:: JavaScript
+
+        function show_cusomers(item, ctx) {                                                     <-- step 1             
+            var inv = item.task.invoices.copy({handlers: false});                               <-- step 2
+            inv.open(                                                                           <-- step 3
+                {
+                    fields: ['customer', 'total'], 
+                    funcs: {total: 'sum'},
+                    group_by: ['customer'],
+                    order_by: ['-total'],
+                    limit: 10
+                }, 
+                function() {                                                                    <-- step 4
+                    var labels = [],
+                        data = [],
+                        colors = [];
+                    inv.each(function(i) {                                                      <-- step 5
+                        labels.push(i.customer.display_text);
+                        data.push(i.total.value.toFixed(2));
+                        colors.push(lighten('#006bb3', (i.rec_no - 1) / 10));
+                    });
+                    inv.first();                                                                <-- step 6 
+                    draw_chart(item, ctx, labels, data, colors, 'Ten most active customers');   <-- step 7
+                    inv.create_table(item.view_form.find('#customer-table'),                    <-- step 8
+                        {row_count: 10, dblclick_edit: false});                        
+                }
+            );
+            return inv;                                                                         <-- step 9
+        }
+
+Steps:
+
+1. This is where we define the function name. It must be exact name as in the above function: on_view_form_created
+   Yes, the same `typo`_ in the name! We try to logically name the functions as the name of the database tables.
+
+2. The magic happens here. We define the **var inv** because the table is **invoices** table! Very important, almost all can be used with copy/paste 
+   if we just rename a few instances of **inv** and **invoices**. Taking into account that the table fields will possibly change as well! Do not care for      handlers: false just yet.
+
+3. Remember, the **var inv** is just a "shortcut" (I call it like that, because I like it). Hence, inv.open will open the table **invoices** for access.
+   By opening, we are actually fetching a few fields (`Chinook`_ database fields) :
+
+   - customer and total
+
+   We also using a "built in" ChartJS Function, funcs:
+
+   - to summarise total with function'sum'
+
+   Can we read the rest what is happening? Order and limit? I hope so. It is quite simple, right?
+
+4. This code is copy/paste, it is needed for ChartJS.
+
+5. Remember to adjust **inv**, **customer** and **total** for your needs. This is also where `Lookup fields`_ kicks in, the **customer.display_text** will
+   display the Customer Name and not the CustomerId as an Integer, which is visible on the Invoices table. 
+   Also worth mentioning is **total.value.toFixed(2)**, which is obviously a value of Total, rounded to two decimals.
+
+6. Start from first. remember **inv**!
+
+7. Draw graphics with 'Ten most active customers' Label!
+
+8. Create table with some data under the graphics within the **customer-table** canvas!
+
+9. And finally pass back the Invoices data.
+
+So there you go! With One single block of code we can create indefinite number of graphics utilising `Lookup fields`_ within the ChartJS!
+
+Wrapping up
+-----------
+
+Now that we know how to create a graphics for one table, the rest in copy/paste! Functions **draw_chart** and **lighten** is just cosmetic. Play with it.
+
+.. note::
+
+    Changing a code in function draw_chart from a 'pie' to 'bar', will change the graphics!
 
 .. note::
     To Be Continued...
