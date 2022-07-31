@@ -1110,7 +1110,7 @@ So there you go! With One single block of code we can create indefinite number o
 Wrapping up
 -----------
 
-Now that we know how to create a graphics for one table, the rest in copy/paste! Functions **draw_chart** and **lighten** is just cosmetic. Play with it.
+Now that we know how to create a graphics for one table, the rest is a copy/paste! Functions **draw_chart** and **lighten** is just cosmetic. Play with it.
 
 .. note::
 
