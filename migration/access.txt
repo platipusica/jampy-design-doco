@@ -254,7 +254,7 @@ Using UTF8
 
 The above is all well and true for the English language. Or the Latin alphabet. However, using UTF8 in MS Access is supported, but not supported in `JavaScript naming standard`_.  
 
-Lets consider this scenario:
+Consider this _`scenario`:
 
 .. image:: _images/Italian_Access.png
 	:scale: 80 %
@@ -299,7 +299,122 @@ Finally, the Italian language field from MS Access might look like this:
 As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLite3 for database table :red:`Name` and the :red:`DB field name`. JavaScript naming standard is now fixed for the :red:`Name` :red:`*`.
 
 
- 
+Field Captions
+---------------
+
+There is an utility for MS Access to dump all table fields captions to the CVS file. Why would we do that? Well, almost any database conversion utility 
+will not write the Captions to the new database. Hence, the information might be lost. This is particularly true for a non English Access Front End Application.
+
+In the above `scenario`_, the Access Caption might be **Definición de la patología**. However, the Developer decided not to use Captions at all. Hence, the table Import 
+will use the table name for the Caption, which is fine for this example.
+
+However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done 
+in Access.
+
+
+For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 3`, the CSV file might look like below and the 
+code to update it, is: 
+
+
+.. code-block:: Python
+
+        import sqlite3
+
+        import numpy as np
+
+        captions = np.loadtxt('test.csv', dtype=str, delimiter=',')
+
+        #print(captions)
+
+        #captions = [
+
+        #        ['DEMO_TRACKS', 'NAME', 'Track title 3']
+
+        #    ]
+
+        con = sqlite3.connect('admin.sqlite')
+
+        cursor = con.cursor()
+
+        for table_name, field_name, caption in captions:
+
+            cursor.execute("SELECT ID FROM SYS_ITEMS WHERE DELETED=0 AND F_TABLE_NAME='%s'" % table_name)
+
+            res = cursor.fetchone()
+
+            if res:
+
+                item_id = res[0]
+
+                cursor.execute("SELECT ID FROM SYS_FIELDS WHERE DELETED=0 AND OWNER_REC_ID=%s AND F_DB_FIELD_NAME='%s'" % (item_id, field_name))
+
+                res = cursor.fetchone()
+
+                if res:
+
+                    field_id = res[0]
+
+                    cursor.execute("UPDATE SYS_FIELDS SET F_NAME='%s' WHERE ID=%s" % (caption, field_id))
+
+        con.commit()
+
+        con.close()
+
+
+.. note::
+        To prepare the CSV file, use Excel as "Save As" - "CSV UTF" - very important!
+
+
+Also very important to run dos2unix command on the file in Linux, since it will otherwise do this at the output:
+
+[['\ufeffDEMO_TRACKS, ..]
+
+
+
+
+Deleted Flag
+------------
+
+In order to use a full Jam.py functionality with so called `Deleted Flag`, which basically prevents data to be permanently deleted, we need to 
+add :red:`DELETED` field to the tables. However, this is not required for Jam.py or the Application to function. It is an nice feature to have, 
+specially if the `Foreign Key` enforcing is enabled. Meaning, some data can not be deleted if some other data exist elsewhere as a reference.
+`Deleted Flag` totally eliminates the hustle of enforcing Foreign Keys deletion.
+
+We could easily automate adding the `DELETED` field during the conversion. But than, as it is not required for all tables probably, this is what we can do:
+
+    - we can add a field to any table with a Python code, as per below. 
+
+
+.. note::
+
+        "Order" table is a reserved for Python, so we exclude it. There are other reserved words, please consult the Python or Jam.py documentation.
+
+
+.. code-block:: Python
+
+        import sqlite3 
+
+        connection  = sqlite3.connect("db.sqlite3") 
+
+        cursor      = connection.cursor()  
+
+        tableQuery = "select * from sqlite_master where type = 'table' and name != 'Order' "
+
+        cursor.execute(tableQuery)
+
+        tableList = cursor.fetchall()
+
+        for table in tableList:   
+
+            renameTable = "ALTER TABLE %s"%(table[1]) + " ADD COLUMN DELETED integer"
+
+            print(renameTable)
+
+            cursor.execute(renameTable) 
+
+        connection.close()
+
+Now, we should be able to select the `Deleted Flag` as `deleted` field on the table Import.
 
 Indexes
 -------
