@@ -18,3 +18,6 @@ This Documentation follows official Jam.py documentation, keeping similar concep
 :doc:`"How was Demo built?" guide<howDemo/index>`, here you'll find my take on how was Demo built.
 
 :doc:`"MS Access migration" guide<migration/index>`, tips for MS Access migration.
+
+:doc:`Acknowledgements <ack/index>` to everyone involved in producting this document or helping with Jam.py.
+
