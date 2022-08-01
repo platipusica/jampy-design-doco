@@ -395,7 +395,7 @@ A little code
 
 If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
 
-The official documentation has heaps of code applicable to Demo application. Here will try to explain where exactly the code is used and a bit about why.
+The official documentation has a heaps of code applicable to Demo application. Here will try to explain where exactly the code is used and a bit about why.
 Again, we touching only the additional code applicable for Demo, the default one which comes with a blank and empty project is not discussed.
 
 
@@ -933,19 +933,19 @@ The `Template`_ for Demo Dashboard is a simple two columns table:
 
         <div class="dashboard-view">
             <div class="row-fluid">                                  <-- the table   -->
-                <div class="span6">                                  <-- column one  -->
+                <div class="span6">                                  <-- column #one  -->
                     <canvas id="cutomers-canvas"></canvas>           <-- graphics one  -->     
                     <div id="customer-table"></div>                  <-- table under it -->
                 </div>                            
                 <div class="span6">                                  <-- column two  -->
-                    <canvas id="tracks-canvas"></canvas>             <-- graphics two  -->   
+                    <canvas id="tracks-canvas"></canvas>             <-- graphics #two  -->   
                     <div id="tracks-table"></div>                    <-- table under it  -->
                 </div>                
             </div>                                                   <-- end of table-->
         </div>
 
 
-This obviously means one thing: **we need heaps bigger table if we are going to implement many Pie charts or similar!**
+This obviously means one thing: **we need a heaps bigger table if we are going to implement many Pie charts or similar!**
 
 Hence, the below Template would create two rows with two columns table:
 
@@ -1044,9 +1044,9 @@ using this library when it nicely utilises the power of lookups!
 
 .. code-block:: JavaScript
 
-        function show_cusomers(item, ctx) {                                                     <-- step 1             
-            var inv = item.task.invoices.copy({handlers: false});                               <-- step 2
-            inv.open(                                                                           <-- step 3
+        function show_cusomers(item, ctx) {                                   <-- step 1             
+            var inv = item.task.invoices.copy({handlers: false});             <-- step 2
+            inv.open(                                                         <-- step 3
                 {
                     fields: ['customer', 'total'], 
                     funcs: {total: 'sum'},
@@ -1054,22 +1054,22 @@ using this library when it nicely utilises the power of lookups!
                     order_by: ['-total'],
                     limit: 10
                 }, 
-                function() {                                                                    <-- step 4
+                function() {                                                  <-- step 4
                     var labels = [],
                         data = [],
                         colors = [];
-                    inv.each(function(i) {                                                      <-- step 5
+                    inv.each(function(i) {                                    <-- step 5
                         labels.push(i.customer.display_text);
                         data.push(i.total.value.toFixed(2));
                         colors.push(lighten('#006bb3', (i.rec_no - 1) / 10));
                     });
-                    inv.first();                                                                <-- step 6 
-                    draw_chart(item, ctx, labels, data, colors, 'Ten most active customers');   <-- step 7
-                    inv.create_table(item.view_form.find('#customer-table'),                    <-- step 8
+                    inv.first();                                              <-- step 6 
+                    draw_chart(item, ctx, labels, data, colors, 'Ten .....'); <-- step 7
+                    inv.create_table(item.view_form.find('#customer-table'),  <-- step 8
                         {row_count: 10, dblclick_edit: false});                        
                 }
             );
-            return inv;                                                                         <-- step 9
+            return inv;                                                       <-- step 9
         }
 
 Steps:
