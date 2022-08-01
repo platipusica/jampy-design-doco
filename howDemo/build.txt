@@ -1080,14 +1080,14 @@ Steps:
 2. The magic happens here. We define the **var inv** because the table is **invoices** table! Very important, almost all can be used with copy/paste 
    if we just rename a few instances of **inv** and **invoices**. Taking into account that the table fields will possibly change as well! Do not care for      handlers: false just yet.
 
-3. Remember, the **var inv** is just a "shortcut" (I call it like that, because I like it). Hence, inv.open will open the table **invoices** for access.
+3. Remember, the **var inv** is just a "shortcut" (I call it like that, because I like it). Hence, **inv.open** will open the table **invoices** for access.
    By opening, we are actually fetching a few fields (`Chinook`_ database fields) :
 
    - customer and total
 
    We also using a "built in" ChartJS Function, funcs:
 
-   - to summarise total with function'sum'
+   - to summarise total with function 'sum'
 
    Can we read the rest what is happening? Order and limit? I hope so. It is quite simple, right?
 
@@ -1124,7 +1124,7 @@ End of Dashs
 
 Once we get a handle of it, creating a Dashboards is a breeze! It is just a matter of adjusting the names of tables and variables. Plus, how much data we
 are presenting, one tenth of it, or one third, etcetera. Of course, there is a bit more about it, but we do not want the information overload! Hope that this 
-is just enough to going! 
+is just enough to get going! 
 
 
 
