@@ -1,3 +1,5 @@
+.. include:: .special.rst
+
 MS Access migration
 =====================
 
@@ -158,7 +160,7 @@ After the Access file is uploaded and converted with no errors:
     If interested in showing data on the Web, meaning using Jam.py for the FrontEnd:
 
 
-The Application Builder link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid JavaScript naming standard, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
+The Application Builder link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid `JavaScript naming standard`_, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
 
 Video overview - `Jam.py VS MS Access`_
 
@@ -173,7 +175,7 @@ New style Demo - `Migrated Access Application`_ (expiry on 04 Aug 2022)
 .. _Simple CRM built automatically with Selenium IDE in 2.45minutes: https://www.youtube.com/embed/Sv_IllxQ_RY
 .. _Migrated Access Application: https://jampyapp.pythonanywhere.com/
 .. _Tutorial. Part 1. First project: https://jampyapplicationbuilder.com/docs/intro/tutorial01/index.html
-
+.. _JavaScript naming standard: https://www.w3schools.com/js/js_conventions.asp
 
 After Importing some tables, just replace **builder.html** with **index.html** from the link to access your Application. Sometimes the index.html page will not show anything due to Load Balancer issues. Please try after some time. Or start over. One can even set the App password or create users within the Builder. The default App/Builder username/password is admin/111, change it on Project/Users and set Project/Parameters/Safe Mode to restrict access, etc. One can set all `lookups`_ to different tables as usual. It should be a fully functional App with all the bells and whistles!
 
@@ -230,7 +232,8 @@ not changed during the table Import.
 Hence, if the database table name is ``django_ledger_accountmodel``, than the JavaScript variable Name is also ``django_ledger_accountmodel``!
 And more importantly, the visible table Caption on the Application is ``django_ledger_accountmodel`` as well.
 
-So maybe better to set the table ``Caption`` to ``Account``! 
+So maybe better to set the table ``Caption`` to ``Account``, ``Bank``, etc. See how nicely everything looks like on the screenshot below?
+
 
 This is also true for any table column during the table Import. We are working on the new feature to improve this. 
 
@@ -246,6 +249,57 @@ Finally, the application might look like this:
 The MS Access Linked tables are impossible to import, hence they do not exist.
 
 
+Using UTF8
+-----------
+
+The above is all well and true for the English language. Or the Latin alphabet. However, using UTF8 in MS Access is supported, but not supported in `JavaScript naming standard`_.  
+
+Lets consider this scenario:
+
+.. image:: _images/Italian_Access.png
+	:scale: 80 %
+	:align: center
+	:alt: Italian Access Table
+
+First of all, the Table name is **00_COSTES ALFONSO**. And the list of the tables continues with **01_, 02_, 03_**, etc. 
+Unfortunately, it is also using this as a table name: **00_PRECIOS ICM > GENOCOL_IMAT**.
+
+Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for Access tho. However, any modern framework will reject this practise.
+Including Jam.py. Sorry about that, it is what it is. Not Jam.py fault.
+
+Importing the above table will produce the below:
+
+.. image:: _images/Italian_table.png
+	:scale: 80 %
+	:align: center
+	:alt: Italian jam.py Table
+
+
+The table Import as such will fail. It cannot be imported, and the problems needs to be fixed first.
+
+Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, it cannot do more than that, 
+it's a too big ask.
+
+
+Of course, the Import is not going to work, due to `JavaScript naming standard`_ for the column `Name`.
+
+The solution is to rename **definición_de_la_patología** to **definicion_de_la_patologia**, or similar valid Name. The **DB Field name** can stay as is: Definición_de_la_patología.
+
+
+Finally, the Italian language field from MS Access might look like this:
+
+.. image:: _images/Italian_final.png
+	:scale: 80 %
+	:align: center
+	:alt: Italian Field
+
+
+
+
+As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLite3 for database table :red:`Name` and the :red:`DB field name`. JavaScript naming standard is now fixed for the :red:`Name` :red:`*`.
+
+
+ 
 
 Indexes
 -------

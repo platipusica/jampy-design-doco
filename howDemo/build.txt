@@ -997,7 +997,7 @@ Dashboard Menu Item
 Before we dive into the JS code, it is visible on Demo that the Dashboard exist as an Item on the Menu, called Analytics. This is just an Project/Task/Groups Item on `builder.html`_, where Analytics was created as an place holder for Dashboard virtual table! 
 Now, what is a virtual table we will cover latter on, but just think of it as virtual - it does not exist in the database.
 
-So, when crating a Dashboard from scratch, just replicate what Demo has, one Analytics (or whatever we need to call it), Group Item and one Dashboard virtual table
+So, when creating a Dashboard from scratch, just replicate what Demo has, one Analytics (or whatever we need to call it), Group Item and one Dashboard virtual table
 within that Item. Simple. Takes 30 seconds to create!
 
 
@@ -1009,7 +1009,7 @@ As we know, Jam.py uses ChartJS as the Dashboard engine. However, that does not 
 
 If we look at the Demo `builder.html`_, and click on Analytics/Dashboard/Client Code, the code has approx 100 lines. But only half of it is actually related to the application!
 
-The rest is copy/paste! Huh, that is assuring, cough, cough!
+The rest is copy/paste! Huh, that is assuring. Cough, cough!
 
 First, remember the above Dashboard Template, **customers-canvas** and **tracks-canvas**?
 
