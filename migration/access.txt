@@ -5,7 +5,7 @@ MS Access migration
 
 Congratulations on the decision to `migrate` Access to the Web!
 
-After all, it is moving to the modern JavaScript with Bootstrap and jQuery technology FrontEnd! 
+After all, it is moving to the modern JavaScript with Bootstrap and jQuery technology Front End! 
 Which is powered by Python.
 
 
@@ -28,7 +28,7 @@ However, the **risk** is that in some years to come, the developers will retire.
 Hence, where will the business find people to maintain their expensive application? Maybe they already 
 hired the MSSQL database administrator, since the Access developers told them to do so. The DBA's might be around in years to come, but the Access developers? Or better, THE Access itself?
 
-Hence, the faster we move away from proprietary database AND Front End application, the better. Simply because the technology will be around way after the MS Access is gone. This is business after all, let's put aside the emotions. The HTML is here to stay. Who remembers the Netscape any more? Or Mosaic?
+Hence, the faster we move away from proprietary database AND Front End application, the better. Simply because the technology will be around way after the MS Access is gone. This is business after all, let's put aside the emotions. The HTML is here to stay. Who remembers the Netscape anymore? Or Mosaic?
 
 
 1. Complacency
@@ -48,7 +48,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
         `Does your application rely on heaps of VBA for Business Rules (BR)?`
 
-   The VBA cant be migrated to the Web. The question is what is it used for? 5000 lines of VBA code
+   The VBA can't be migrated to the Web. The question is what is it used for? 5000 lines of VBA code
    might be a dinosaur code! Is it possible to use Python with 200 lines of code? How about 10 lines?
    
    In addition, what might not be recognised is the speed. The VBA just does not compare with Python. The Developers will argue that 
@@ -119,19 +119,19 @@ Hence, the faster we move away from proprietary database AND Front End applicati
     Again, the same source `Front-End for MS Access migration?`_ See how nothing really changed from year 2008?
 
     Some Access Developers would argue that RDP or Citrix or even VPN is the way to deploy the Front End application
-    to the Web. All this technologies were around in 2008. Nothing new.
+    to the Web. All this technology was around in 2008. Nothing new.
 
     What is new is the Cloud.
 
     Back to topic. Regarding the Access packaging, some people are using one distributable file, sometimes protected with the encryption. Jam.py 
-    can do exactly the same. Even more, one can use SQLCipher to protect the IP. Combining both within an portable 
+    can do exactly the same. Even more, one can use SQLCipher to protect the IP. Combining both within a portable 
     application, which can run from, for example Windows x64 with no installation at all, is a powerful deployment 
     and secure method. With such approach, the application database might be off-site or even embedded and encrypted with
     SQLCipher. 
     This method can provide safe and secure access even from a portable drive in an off-line environment, for example with 
     no Internet access at all. Only the local area network is needed for more than one user.
 
-    Regarding Web servers deployment, Jam.py application can be deployed in a few seconds on almost any popular Web server.. Which can serve thousands of users simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
+    Regarding Web servers deployment, Jam.py application can be deployed in a few seconds on almost any popular Web server. Which can serve thousands of users simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
     need for installation of anything and costs almost nothing.
 
 .. _Front-End for MS Access migration?: https://stackoverflow.com/questions/221995/front-end-for-ms-access-migration
@@ -157,7 +157,7 @@ After the Access file is uploaded and converted with no errors:
 - link to Application Builder will show up, which is using the sqlite3 data converted from Access instantly available on the Web! It is super easy and takes no time! **If not interested at all in building the FrontEnd Application**, please click on *Export* to download the DB as zip file which contains the sqlite3 file. The converted sqlite3 database has a long name exactly the same as in provided link. This is to increase safety and security for all downloads.
 
 .. note::
-    If interested in showing data on the Web, meaning using Jam.py for the FrontEnd:
+    If interested in showing data on the Web, meaning using Jam.py for the Front End:
 
 
 The Application Builder link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid `JavaScript naming standard`_, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
@@ -182,7 +182,7 @@ After Importing some tables, just replace **builder.html** with **index.html** f
 
 .. _lookups: https://jampyapplicationbuilder.com/docs/intro/tutorial01/lookup_list.html
 
-It is important to note that once the Access file is converted and all tables Imported through the builder.html, it is not needed to use this service at all. Immediately use the **Export [CTRL+E]** option and download the Export file. Than, install the `Python Jam.py`_ framework locally or on the server, create the `New application`_, `Import`_ the same downloaded file, and point the Application to sqlite database as per creating the New application. That is all.
+It is important to note that once the Access file is converted and all tables Imported through the builder.html, it is not needed to use this service at all. Immediately use the **Export [CTRL+E]** option and download the Export file. Then, install the `Python Jam.py`_ framework locally or on the server, create the `New application`_, `Import`_ the same downloaded file, and point the Application to sqlite database as per creating the New application. That is all.
 
 .. _Python Jam.py: https://jampyapplicationbuilder.com/docs/intro/install.html
 .. _New Application: https://jampyapplicationbuilder.com/docs/intro/new_project.html
@@ -192,7 +192,7 @@ It is important to note that once the Access file is converted and all tables Im
 Notes/Issues
 -------------
 
-This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, **no need to upload a Front end application**, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables.
+This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, **no need to upload a Front End application**, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables.
 
 **The process is expecting that the Primary Key exist on all tables.** Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. **AutoNumber field**.
 
@@ -221,7 +221,7 @@ First of all, thanks for trying the migration!
 Now that the database is converted to SQLite3, let's see what we can do with it. The migration utility just speeds up the process of getting the 
 data on the net. It does not build the FronEnd Application, even though we could easily automate this step.
 
-But than, the FronEnd **look and feel** is subjective. If replicationg the exact MS Access form, it really takes no time to do it manually.
+But than, the Front End **look and feel** is subjective. If replicating the exact MS Access form, it really takes no time to do it manually.
 
 Tables
 ------
@@ -302,18 +302,18 @@ As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLi
 Field Captions
 ---------------
 
-There is an utility for MS Access to dump all table fields captions to the CVS file. Why would we do that? Well, almost any database conversion utility 
+There is a utility for MS Access to dump all table fields captions to the CVS file. Why would we do that? Well, almost any database conversion utility 
 will not write the Captions to the new database. Hence, the information might be lost. This is particularly true for a non English Access Front End Application.
 
 In the above `scenario`_, the Access Caption might be **Definición de la patología**. However, the Developer decided not to use Captions at all. Hence, the table Import 
 will use the table name for the Caption, which is fine for this example.
 
-However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done 
+However, please consider the Access application **with** the field captions! This is what we are trying to solve, so we reuse all the hard work already done 
 in Access.
 
 
 For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 3`, the CSV file might look like below and the 
-code to update it, is: 
+code to update it: 
 
 
 .. code-block:: Python
@@ -377,17 +377,17 @@ Deleted Flag
 
 In order to use a full Jam.py functionality with so called `Deleted Flag`, which basically prevents data to be permanently deleted, we need to 
 add :red:`DELETED` field to the tables. However, this is not required for Jam.py or the Application to function. It is an nice feature to have, 
-specially if the `Foreign Key` enforcing is enabled. Meaning, some data can not be deleted if some other data exist elsewhere as a reference.
+specially if the `Foreign Key` enforcing is enabled. Meaning, some data cannot be deleted if some other data exist elsewhere as a reference.
 `Deleted Flag` totally eliminates the hustle of enforcing Foreign Keys deletion.
 
 We could easily automate adding the `DELETED` field during the conversion. But than, as it is not required for all tables probably, this is what we can do:
 
-    - we can add a field to any table with a Python code, as per below. 
+    - we can add a field to any table with a Python code, as per below. The db.sqlite3 is the database converted from Access.
 
 
 .. note::
 
-        "Order" table is a reserved for Python, so we exclude it. There are other reserved words, please consult the Python or Jam.py documentation.
+        "Order" word  is a reserved word for  Python, so we exclude it. There are other reserved words, please consult the Python or Jam.py documentation.
 
 
 .. code-block:: Python
