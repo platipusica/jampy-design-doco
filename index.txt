@@ -19,5 +19,5 @@ This Documentation follows official Jam.py documentation, keeping similar concep
 
 :doc:`"MS Access migration" guide<migration/index>`, tips for MS Access migration.
 
-:doc:`Acknowledgements <ack/index>` to everyone involved in producting this document or helping with Jam.py.
+:doc:`Acknowledgements <ack/index>` to everyone involved in producing this document or helping with Jam.py.
 
