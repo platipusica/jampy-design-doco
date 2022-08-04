@@ -1,6 +1,6 @@
-=======================================
-Jam.py Application Design Tips contents
-=======================================
+===============================
+Jam.py Application Design Tips
+===============================
 
 .. toctree:: 
     :hidden:

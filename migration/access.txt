@@ -144,8 +144,9 @@ Where from here?
 ================
 
 
+To successfully migrate MS Access to Jam.py, the assumption is that at least one knows how to use the Application Builder interface. 
 
-Please visit: 
+If so, please visit: 
 
 https://jampyapplicationbuilder.com/conv/
 
