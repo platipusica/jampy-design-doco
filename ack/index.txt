@@ -6,11 +6,11 @@ Here we acknowledge people who influenced ``Jam.py`` development or made a contr
 
 Especially to:
 
-* Andrew Yushev, author of ``Jam.py``.
+* Andrew Yushev, Ph.D, author of ``Jam.py``.
 * Maxwell Morais, developer and contributor, who created fascinating applications (ERP POC, POS, etc) with ``Jam.py``
   and shared his work, and supported me when having issues with the CSS.
 * Fabio Lenzarini, developer and contributor, who created a multitude of changes regarding database views,
-  languages translations engine with google translator, to name a few. Also shared ERP POC application. 
+  languages translations with google translator engine, to name a few. Also shared ERP POC application. 
 * Alistair Bates, developer and contributor, who helped a number of people over the years and shared his knowledge. 
 * Marko Pandžić, developer who helped with MS Access to SQLite conversion.
 
