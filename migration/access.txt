@@ -59,7 +59,12 @@ Hence, the faster we move away from proprietary database AND Front End applicati
    no issues with that. When the database is migrated, the users authentication table is there and we can use exactly twelve
    lines of Python code, as seen on Demo, to authenticate users with the roles. 
 
-   
+   Also worth mentioning `VBA to Python – 10 Simple Python vs VBA Examples`_. The article touches on some differences and interesting points from a seasoned VBA developer. However, for building the Jam.py application, JavaScript is used as a Front End. Hence the real difference is between JS and VBA, for example showing the MessageBox or conditional formatting and functions. 
+
+
+.. _VBA to Python – 10 Simple Python vs VBA Examples: https://analystcave.com/vba-to-python-10-examples-python-vs-vba/
+
+
 
 3. Excel?
 ---------
@@ -74,6 +79,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
     Not so with Python and Excel. It is super easy to integrate Excel with Jam.py application using `DataTables`_. 
     
     Good resource for using `Excel with Python`_.
+    
 
 .. _Excel with Python: https://www.pyxll.com/docs/userguide/vba.html
 
