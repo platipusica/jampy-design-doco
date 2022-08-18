@@ -75,6 +75,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 	    End If
 	End Sub
 
+
 In JavaScript, Jam.py does that in a similar way:
     
 .. code-block:: JavaScript
