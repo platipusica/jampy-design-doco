@@ -64,7 +64,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
    On that note, the above article touches on VBA code for MessageBox:
    
-.. code-block:: VBA
+.. code-block:: Python
 
         Sub MessageBox()
 	    'Information box
@@ -94,7 +94,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 	        });
     	});
 
-The code above actually does more than displaying the MsgBox! It will upadate all selected records!
+The code above actually does more than displaying the MsgBox! It will upadate all selected records in one go. Imagine writing the VBA code for the same task.
 
 .. _VBA to Python – 10 Simple Python vs VBA Examples: https://analystcave.com/vba-to-python-10-examples-python-vs-vba/
 
