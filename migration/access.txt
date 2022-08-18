@@ -61,10 +61,12 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
    Also worth mentioning `VBA to Python – 10 Simple Python vs VBA Examples`_. The article touches on some differences and interesting points from a seasoned VBA developer. However, for building the Jam.py application, JavaScript is used as a Front End. Hence the real difference is between JS and VBA, for example showing the MessageBox or conditional formatting and functions. 
 
+
    On that note, the above article touches on VBA code for MessageBox:
    
 .. code-block:: VBA
-	Sub MessageBox()
+
+        Sub MessageBox()
 	    'Information box
 	    MsgBox "Hello", vbInformation, "Information"
 	    'Yes / No question
@@ -77,10 +79,12 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
 
 .. pull-quote::
+
 	`In JavaScript, Jam.py does that in a similar way:`
     
 .. code-block:: JavaScript
-	var btn = item.add_view_button('Set invoice paid', {type: 'primary', btn_id: 'paid-btn'});
+
+        var btn = item.add_view_button('Set invoice paid', {type: 'primary', btn_id: 'paid-btn'});
 	    btn.click(function() {
         	item.question('Was the invoice paid?', function () {
 		    item.edit();
