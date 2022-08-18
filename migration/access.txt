@@ -94,6 +94,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 	        });
     	});
 
+The code above actually does more than displaying the MsgBox! It will upadate all selected records!
 
 .. _VBA to Python – 10 Simple Python vs VBA Examples: https://analystcave.com/vba-to-python-10-examples-python-vs-vba/
 
