@@ -65,20 +65,17 @@ Hence, the faster we move away from proprietary database AND Front End applicati
    
 .. code-block:: VBA
 	Sub MessageBox()
- 
 	    'Information box
 	    MsgBox "Hello", vbInformation, "Information"
-
 	    'Yes / No question
 	    If MsgBox("Do you like this tutorial?", vbYesNo, "Question") = vbYes Then
 		Debug.Print "They like it!"
 	    Else
 		Debug.Print "They don't like it!"
 	    End If
-    
 	End Sub
 
-    In JavaScript, Jam.py does that in a similar way:
+In JavaScript, Jam.py does that in a similar way:
     
 .. code-block:: JavaScript
 	var btn = item.add_view_button('Set invoice paid', {type: 'primary', btn_id: 'paid-btn'});
