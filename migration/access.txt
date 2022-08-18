@@ -76,7 +76,8 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 	End Sub
 
 
-In JavaScript, Jam.py does that in a similar way:
+.. pull-quote::
+	`In JavaScript, Jam.py does that in a similar way:`
     
 .. code-block:: JavaScript
 	var btn = item.add_view_button('Set invoice paid', {type: 'primary', btn_id: 'paid-btn'});
