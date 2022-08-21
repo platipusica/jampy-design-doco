@@ -183,13 +183,13 @@ The code above actually does more than displaying the MsgBox! It will upadate al
 
 
 Hope the above sparked some interest. Even though there are probably more reasons why one should or should not try 
-to migrate Access application to the Web. 
+to migrate Access application to the Web. With or without using the migration tool as below is providing. 
    
 Where from here?
 ================
 
 
-To successfully migrate MS Access to Jam.py, the assumption is that at least one knows how to use the Application Builder interface. 
+To successfully migrate MS Access to Jam.py, the assumption is that at least some knowledge exist with using the Jam.py Application Builder interface. 
 
 If so, please visit: 
 
