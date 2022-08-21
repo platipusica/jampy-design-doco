@@ -36,10 +36,15 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
 .. pull-quote::
         `Success breeds complacency. Complacency breeds failure. Only the paranoid survive. Andy Grove`
+    
+      About being paranoid, many MS Access Front End applications are not encrypted! This means the IP (Intellectual Property), is not protected. Even worse! The VBA code might contain email passwords or similar. For example:
+      https://wellsr.com/vba/2020/excel/vba-send-email-with-gmail/
 
+      Is your application cyber safety compliant?
 
       The application might be compliant for some business, however does it run on the Web? Apple Mac? Tablet?
-      That is exactly what we are addressing with the migration. The `Future`.
+      That is exactly what we are addressing with the migration. The `Future` with the `IP and Cyber Safety`. 
+
 
 2. VBA?
 -------
