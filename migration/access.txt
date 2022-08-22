@@ -64,7 +64,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
    no issues with that. When the database is migrated, the users authentication table is there and we can use exactly twelve
    lines of Python code, as seen on Demo, to authenticate users with the roles. 
 
-   Also worth mentioning `VBA to Python – 10 Simple Python vs VBA Examples`_. The article touches on some differences and interesting points from a seasoned VBA developer. However, for building the Jam.py application, JavaScript is used as a Front End. Hence the real difference is between JS and VBA, for example showing the MessageBox or conditional formatting and functions. 
+   Also worth mentioning `VBA to Python – 10 Simple Python vs VBA Examples`_. The article touches on some differences and interesting points from a seasoned VBA developer. However, for building the Jam.py application, JavaScript is used as a Front End. Hence, the real difference is between JS and VBA. For example, showing the MessageBox or conditional formatting and functions. 
 
 
    On that note, the above article touches on VBA code for MessageBox:
@@ -97,9 +97,21 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 		    item.post();
 		    item.apply(true);
 	        });
-    	});
+	    });	
 
 The code above actually does more than displaying the MsgBox! It will upadate all selected records in one go. Imagine writing the VBA code for the same task.
+
+In reality, the MessageBox with JS is Jam.py is something like this:
+
+.. code-block:: JavaScript
+
+        var btn = item.add_view_button('Set invoice paid', {type: 'primary', btn_id: 'paid-btn'});
+	    btn.click(function() {
+	    	-- do something here --
+	        });
+    	
+
+
 
 .. _VBA to Python – 10 Simple Python vs VBA Examples: https://analystcave.com/vba-to-python-10-examples-python-vs-vba/
 
