@@ -277,7 +277,7 @@ Now what?
 First of all, thanks for trying the migration! 
 
 Now that the database is converted to SQLite3, let's see what we can do with it. The migration utility just speeds up the process of getting the 
-data on the net. It does not build the FronEnd Application, even though we could easily automate this step.
+data on the net. It does not build the Front End Application, even though we could easily automate this step.
 
 But than, the Front End **look and feel** is subjective. If replicating the exact MS Access form, it really takes no time to do it manually.
 
