@@ -339,7 +339,7 @@ Reviewing the actual table fields we see that the UTF8 is used for the table fie
 it's a too big ask.
 
 
-Of course, the Import is not going to work, due to `JavaScript naming standard`_ for the column `Name`.
+Of course, the Import is not going to fail, due to `JavaScript naming standard`_ for the column `Name`.
 
 The solution is to rename **definición_de_la_patología** to **definicion_de_la_patologia**, or similar valid Name. The **DB Field name** can stay as is: Definición_de_la_patología.
 
@@ -355,6 +355,14 @@ Finally, the Italian language field from MS Access might look like this:
 
 
 As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLite3 for database table :red:`Name` and the :red:`DB field name`. JavaScript naming standard is now fixed for the :red:`Name` :red:`*`.
+
+In short, for any non-English language, or Latin alphabet, like the below Hebrew language, the :red:`Name` :red:`*` must be changed to Latin alphabet:
+
+.. image:: _images/hebrew.png
+	:scale: 80 %
+	:align: center
+	:alt: Hebrew Name
+
 
 
 Field Captions
