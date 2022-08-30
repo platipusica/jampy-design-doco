@@ -279,7 +279,14 @@ First of all, thanks for trying the migration!
 Now that the database is converted to SQLite3, let's see what we can do with it. The migration utility just speeds up the process of getting the 
 data on the net. It does not build the Front End Application, even though we could easily automate this step.
 
-But than, the Front End **look and feel** is subjective. If replicating the exact MS Access form, it really takes no time to do it manually.
+But than, the Front End **look and feel** is subjective. If replicating the exact MS Access form as close as possible, it really takes no time to do it manually.
+
+Before doing that, the best is to have a look at the MS Access Relational Diagram. It should clearly show the relations between the tables, as seen on the `Chinook`_ database.
+
+For Access application with no Relation Diagram within it, it is still possible to look at the queries design. Each query would probably mean some sort of relation between two or more tables. Hence, in Jam.py, it is possible to create the Lookup fields to other tables just like MS Access does. 
+
+.. _Chinook: https://jampyapplicationbuilder.com/tips/howDemo/build.html#chinook
+
 
 Tables
 ------
@@ -304,7 +311,7 @@ Finally, the application might look like this:
 
 
 
-The MS Access Linked tables are impossible to import, hence they do not exist.
+The MS Access Linked tables are impossible to import, hence they do not exist. However, we are working hard to enable that feature for linked tables as well.
 
 
 Using UTF8
