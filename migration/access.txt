@@ -312,7 +312,7 @@ Finally, the application might look like this:
 
 
 The MS Access Linked tables are impossible to import, hence they do not exist. However, we are working hard to enable that feature for linked tables as well.
-
+Of course, the MS Access linked tables are just the issue when using the conversion tool provided above. One can always connect to MSSQL server directly from Jam.py Application Builder and Import the tables. 
 
 Using UTF8
 -----------
