@@ -256,7 +256,7 @@ This tool is for the database tables only, it does not convert MS Access file wi
 
 MS Access might have a **special character, space, slash/backslash, dash (-),quote(')**, etc for the **table field, as well as table name**. The conversion will try to replace those, however, we would advise to fix the issues in MS Access, before attempting the conversion.
 
-The conversion will fail if there are **linked tables in MS Access**. Please remove any linked tables before attempting the conversion.
+The conversion will fail if there are **non-ODBC linked tables in MS Access**. Please remove any linked tables before attempting the conversion. The ODBC linked tables are supported.
 
 The conversion will fail if Access is using utf-16-li, no need to try again. No log or link will be produced and we suggest fixing Access.
 
