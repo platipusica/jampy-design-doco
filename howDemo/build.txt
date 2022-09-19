@@ -65,11 +65,11 @@ Data Grid(s)
 ------------
 
 
-The Demo Invoices data grid is called a Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned off. If some none default button is needed, it can be added with a code though.
+The Demo Invoices data grid is called a Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned on/off. If some none default button is needed, it can be added with a code though.
 Did I mention search for any field, and sorting for any field? It's automated.
 
 What is also done by Jam.py with no code is a summary for any numerical field or a number of records for other fields.
-As seen, the Invoices data grid is presented as Tab. As we open more grids, more Tabs will appear here automatically. Tabs Caption can be changed with a code. What we see initially is the default.
+As seen, the Invoices data grid is presented as Tab. As we open more grids, more Tabs will appear here automatically. Tabs Caption can be changed with a code. What we see initially, is the no code default.
 
 .. image:: _images/demo_master.png
 	:scale: 70 %
@@ -94,7 +94,7 @@ As above grid, each Details grid is presented in Tabbed format. More Details add
 Data Grid Header/Footer
 -----------------------
 
-Automatically provided is a classic New/Delete/Edit option for any Data Grid. It can exist on the Top/Bottom of some data Grid, hence I call it Header/Footer. It can also contain other buttons or a menu, which is a code driven, so coding is needed.
+Automatically provided is a classic New/Delete/Edit option for any Data Grid. It can exist on the Top/Bottom of some data Grid, hence I call it Header/Footer. It can also contain other buttons or a menu, which is a code driven, so coding is needed for non default buttons.
 
 .. image:: _images/demo_footer.png
 	:scale: 70 %
@@ -108,12 +108,12 @@ Ok, do not want to go further, just a minimum to get us going.
 Any questions?
 --------------
 
-So now that we covered the first thing we see on the Demo application, any questions?
+So now that we've covered the first thing we see on the Demo application, any questions?
 
 
 All of the above is driven by the Builder GUI. We might be saying no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover for all scenarios possible. Or a team of dedicated developers.
 
-I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code. Both mentioned features require some coding experience. Not much, but still needed.
+I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code. Both, Reports and Analytics features, require some coding experience. Not much, but still needed.
 
  
 
