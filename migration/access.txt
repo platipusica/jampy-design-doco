@@ -346,7 +346,7 @@ Reviewing the actual table fields we see that the UTF8 is used for the table fie
 it's a too big ask.
 
 
-Of course, the Import is not going to fail, due to `JavaScript naming standard`_ for the column `Name`.
+Of course, the Import is not going to fail, due to `JavaScript naming standard`_ for the column :red:`Name`.
 
 The solution is to rename **definición_de_la_patología** to **definicion_de_la_patologia**, or similar valid Name. The **DB Field name** can stay as is: Definición_de_la_patología.
 
@@ -375,14 +375,12 @@ In short, for any non-English language, or non-Latin alphabet, like the below He
 Field Captions
 ---------------
 
-There is a utility for MS Access to dump all table fields captions to the CVS file. Why would we do that? Well, almost any database conversion utility 
-will not write the Captions to the new database. Hence, the information might be lost. This is particularly true for a non English Access Front End Application.
+There is a utility for MS Access to dump all table fields Captions (MS Access optional Descriptions), to the CVS file. Why would we do that? Well, almost all third-party database conversion utilities do not write the Captions to the new database. Hence, the Access information might be lost. This is particularly true for a non English Access Front End Application, where the developers might utilise Captions from the Language table. Hence, the table name would always be the same, only the Captions would dynamically change.
 
-In the above `scenario`_, the Access Caption might be **Definición de la patología**. However, the Developer decided not to use Captions at all. Hence, the table Import 
-will use the table name for the Caption, which is fine for this example.
 
-However, please consider the Access application **with** the field captions! This is what we are trying to solve, so we reuse all the hard work already done 
-in Access.
+In the above Italian language `scenario`_, the Access Caption might be **Definición de la patología**. However, the MS Access Developer decided not to use Captions at all. Hence, the table Import will use the table name for the Caption, which is fine for this example as there are no many non-Latin names.
+
+However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done in Access.
 
 
 For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 3`, the CSV file might look like below and the 
@@ -443,6 +441,23 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 [['\ufeffDEMO_TRACKS, ..]
 
 
+.. note::
+	The good news is, our conversion utility now supports Access Captions and they are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
+
+The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions:
+
+.. code-block:: Python
+	CREATE TABLE `Location` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT -- ردیف
+	,
+	`location` VARCHAR(255) DEFAULT '' -- منطقه
+	,
+	`Edare` VARCHAR(255) DEFAULT '' -- اداره
+	,
+	`Address` VARCHAR(255) DEFAULT '' -- آدرس
+	)
+
+We are working towards enabling Jam.py to read the table and field comments and interpret them as Captions while importing the table. As seen, the `JavaScript naming standard`_ does not apply for the above table, since the table is using Latin language for 
+everything except Captions.
 
 
 Deleted Flag
