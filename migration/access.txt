@@ -447,7 +447,7 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions:
 
 .. code-block:: Python
-	CREATE TABLE `Location` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT -- ردیف
+	CREATE TABLE `Location` -- منطقه (`ID` INTEGER PRIMARY KEY AUTOINCREMENT -- ردیف
 	,
 	`location` VARCHAR(255) DEFAULT '' -- منطقه
 	,
