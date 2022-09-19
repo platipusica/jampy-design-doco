@@ -378,7 +378,7 @@ Field Captions
 There is a utility for MS Access to dump all table fields Captions (MS Access optional Descriptions), to the CVS file. Why would we do that? Well, almost all third-party database conversion utilities do not write the Captions to the new database. Hence, the Access information might be lost. This is particularly true for a non English Access Front End Application, where the developers might utilise Captions from the Language table. Hence, the table name would always be the same, only the Captions would dynamically change.
 
 
-In the above Italian language `scenario`_, the Access Caption might be **Definición de la patología**. However, the MS Access Developer decided not to use Captions at all. Hence, the table Import will use the table name for the Caption, which is fine for this example as there are no many non-Latin names.
+In the above Italian language `scenario`_, the Access Caption might be **Definición de la patología**. The MS Access Developer decided not to use Captions, as they are optional. Hence, the table Import will use the table name for the Caption, which is fine for this example as there are no many non-Latin names.
 
 However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done in Access.
 
