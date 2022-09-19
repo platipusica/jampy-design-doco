@@ -2,7 +2,10 @@
 Jam.py Application Design Tips 
 ==============================
 
-Welcome to Jam.py! If you are new to Jam.py or application development, this is the place to find some tips.
+Welcome to Jam.py! If you are new to Jam.py or low-code Web application development, this is the place to find some tips.
+
+To download a single PDF, please visit:
+https://jampy-application-design-tips.readthedocs.io/_/downloads/en/latest/pdf/
 
 How the documentation is organised
 ==================================
