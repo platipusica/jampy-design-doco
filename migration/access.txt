@@ -380,22 +380,22 @@ Due to translation inconsistencies, it is always advisable to double check the t
 In this example, the "doubt" word probably is not correct, hence leaving to the readers to decide.
 
 .. image:: _images/hebrew_01.png
-	:scale: 60 %
+	:scale: 65 %
 	:align: center
 	:alt: Hebrew Translated
 
 
 
 
-If happy with the way the table looks like, we can proceed with the Import. It is possible to immediately check the result on the Internet, by removing
-builder.html from the browser link.
+If happy with the way the table looks like and DECIMAL(15,4) is changed to CURRENCY data type, we can proceed with the Import. It is possible to
+immediately check the result on the Internet, by removing builder.html from the browser link.
 
 
 
 Field Captions
 ---------------
 
-There is a utility for MS Access to dump all table fields Captions (MS Access optional Descriptions), to the CVS file. Why would we do that? Well, almost all third-party database conversion utilities do not write the Captions to the new database. Hence, the Access information might be lost. This is particularly true for a non English Access Front End Application, where the developers might utilise Captions from the Language table. Hence, the table name would always be the same, only the Captions would dynamically change.
+To expand on UTF8 and field Captions, there is a utility for MS Access to dump all table fields Captions (MS Access optional Descriptions), to the CVS file. Why would we do that? Well, almost all third-party database conversion utilities do not write the Captions to the new database. Hence, the Access information might be lost. This is particularly true for a non English Access Front End Application, where the developers might utilise Captions from the Language table. Hence, the table name would always be the same, only the Captions would dynamically change.
 
 
 In the above Italian language `scenario`_, the Access Caption might be **Definición de la patología**. The MS Access Developer decided not to use Captions, as they are optional. Hence, the table Import will use the table name for the Caption, which is fine for this example as there are no many non-Latin names.
