@@ -66,7 +66,7 @@ The utility to completely track the application changes, even the database struc
 Unit Testing 
 ====================
 
-Jam.py version higher than v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is also possible to use Selenium IDE for the browser.
+Jam.py version higher then v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is also possible to use Selenium IDE for the browser.
 
 Please visit posted video `Jam.py Application Builder automated testing with pytest and Mocha/Chai`_, and
 `Simple CRM with jam.py and Selenium IDE in 2.45minutes!`_.
@@ -204,7 +204,7 @@ Apache Web Server and ``mod_wsgi``
     life of an Apache process, which leads to significant performance
     gains over other server arrangements. In daemon mode, mod_wsgi spawns
     an independent daemon process that handles requests. The daemon
-    process can run as a different user than the web server, possibly
+    process can run as a different user then the web server, possibly
     leading to improved security. The daemon process can be restarted
     without restarting the entire Apache web server, possibly making
     refreshing your codebase more seamless. Consult the mod_wsgi
