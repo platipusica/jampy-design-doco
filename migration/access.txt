@@ -300,7 +300,7 @@ And more importantly, the visible table Caption on the Application is ``django_l
 So maybe better to set the table ``Caption`` to ``Account``, ``Bank``, etc. See how nicely everything looks like on the screenshot below?
 
 
-This is also true for any table column during the table Import. We are working on the new feature to improve this. 
+This is also true for any table column during the table Import. 
 
 Finally, the application might look like this:
 
@@ -365,10 +365,22 @@ As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLi
 
 In short, for any non-English language, or non-Latin alphabet, like the below Hebrew language, the :red:`Name` :red:`*` must be changed to Latin alphabet, and the rest can stay the same:
 
-.. image:: _images/hebrew.png
-	:scale: 80 %
+.. image:: _images/hebrew_01.png
+	:scale: 60 %
 	:align: center
-	:alt: Hebrew Name
+	:alt: Hebrew Translated
+
+Please note the :red:`Primary key field`. Because the :red:`Name` is on Hebrew language, the :red:`Primary Key field` is also on Hebrew and Import
+will fail.
+
+For that reason, we developed the way to translate all necessary items automatically, with 
+no manual intervention needed. 
+The above example with Hebrew language would automatically appear as per below.
+Due to translation inconsistencies, it is always advisable to double check the translated string.
+In this example, the "doubt" word probably is not correct, hence leaving to the readers to decide.
+
+If happy with the way the table looks like, we can proceed with the Import. It is possible to immediately check the result on the Internet, by removing
+builder.html from the browser link.
 
 
 
