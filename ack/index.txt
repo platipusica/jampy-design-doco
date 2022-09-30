@@ -17,7 +17,7 @@ Especially to:
 About the author
 ----------------
 
-Dražen D. Babić is ``Jam.py`` enthusiast, developer and promoter. Dražen was a frequent public speaker at the Stirling 
+Dean Dražen Babić is ``Jam.py`` enthusiast, developer and promoter. Dean was a frequent public speaker at the Stirling 
 Toastmasters Club as CC (ex VPE, ex VPPR), and currently residing in WA.
 
 Copyright
