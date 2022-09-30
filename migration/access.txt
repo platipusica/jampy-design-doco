@@ -99,7 +99,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 	        });
 	    });	
 
-The code above actually does more than displaying the MsgBox! It will upadate all selected records in one go. Imagine writing the VBA code for the same task.
+The code above actually does more then displaying the MsgBox! It will upadate all selected records in one go. Imagine writing the VBA code for the same task.
 
 In reality, the MessageBox with JS in Jam.py is something like this:
 
@@ -186,7 +186,7 @@ In reality, the MessageBox with JS in Jam.py is something like this:
     and secure method. With such approach, the application database might be off-site or even embedded and encrypted with
     SQLCipher. 
     This method can provide safe and secure access even from a portable drive in an off-line environment, for example with 
-    no Internet access at all. Only the local area network is needed for more than one user.
+    no Internet access at all. Only the local area network is needed for more then one user.
 
     Regarding Web servers deployment, Jam.py application can be deployed in a few seconds on almost any popular Web server. Which can serve thousands of users simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
     need for installation of anything and costs almost nothing.
@@ -279,7 +279,7 @@ First of all, thanks for trying the migration!
 Now that the database is converted to SQLite3, let's see what we can do with it. The migration utility just speeds up the process of getting the 
 data on the net. It does not build the Front End Application, even though we could easily automate this step.
 
-But than, the Front End **look and feel** is subjective. If replicating the exact MS Access form as close as possible, it really takes no time to do it manually.
+But then, the Front End **look and feel** is subjective. If replicating the exact MS Access form as close as possible, it really takes no time to do it manually.
 
 Before doing that, the best is to have a look at the MS Access Relational Diagram. It should clearly show the relations between the tables, as seen on the `Chinook`_ database.
 
@@ -294,7 +294,7 @@ Tables
 In order to use the automatic displaying of data (automatically with CRUD), the table name is used as table Caption! That is, if the Caption was
 not changed during the table Import.
 
-Hence, if the database table name is ``django_ledger_accountmodel``, than the JavaScript variable Name is also ``django_ledger_accountmodel``!
+Hence, if the database table name is ``django_ledger_accountmodel``, then the JavaScript variable Name is also ``django_ledger_accountmodel``!
 And more importantly, the visible table Caption on the Application is ``django_ledger_accountmodel`` as well.
 
 So maybe better to set the table ``Caption`` to ``Account``, ``Bank``, etc. See how nicely everything looks like on the screenshot below?
@@ -342,7 +342,7 @@ Importing the above table will produce the below:
 
 The table Import as such will fail. It cannot be imported, and the problems needs to be fixed first.
 
-Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, it cannot do more than that, 
+Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, it cannot do more then that, 
 it's a too big ask.
 
 
@@ -469,7 +469,7 @@ add :red:`DELETED` field to the tables. However, this is not required for Jam.py
 specially if the `Foreign Key` enforcing is enabled. Meaning, some data cannot be deleted if some other data exist elsewhere as a reference.
 `Deleted Flag` totally eliminates the hustle of enforcing Foreign Keys deletion.
 
-We could easily automate adding the `DELETED` field during the conversion. But than, as it is not required for all tables probably, this is what we can do:
+We could easily automate adding the `DELETED` field during the conversion, as it is not required for all tables probably. This is what we can do:
 
     - we can add a field to any table with a Python code, as per below. The db.sqlite3 is the database converted from Access.
 
