@@ -194,7 +194,7 @@ Here we touch the _`View/Edit` option on `builder.html`_. When we click on Journ
 	:align: center
 	:alt: Invoices table view
 
-Here we control the layout, sorting and summary fields, as well as fields visibility on the Demo data grid. On the Form tab, we see a number of other options, but most importantly the "View detail" option, with selected "Invoice table". We can select as many Details as we like, providing they exist. If no detail is selected, there would be nothing to display. Somehow counter-intuitive on the first instance, however we are controlling the visibility with this option, not more than that.
+Here we control the layout, sorting and summary fields, as well as fields visibility on the Demo data grid. On the Form tab, we see a number of other options, but most importantly the "View detail" option, with selected "Invoice table". We can select as many Details as we like, providing they exist. If no detail is selected, there would be nothing to display. Somehow counter-intuitive on the first instance, however we are controlling the visibility with this option, not more then that.
 
 .. image:: _images/demo_inv_form.png
 	:scale: 80 %
@@ -277,7 +277,7 @@ Just like before with Invoices table, but not with Customers, the "Invoice Table
 
 If below table screenshot was the "blank" Invoice Items table, with no `Lookup fields`_ to the above two tables, it would not show anything. The reason 
 why we using "Customers" table and not the "Invoices", InvoiceId from `Chinook`_ database diagram, is the presentation. It is more nicely presented 
-with the customer last name on the screen than with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which 
+with the customer last name on the screen, as compared to with some meaningless number. In this case it is InvoiceId (integer), as on the diagram, which 
 ultimately identifies the Customer by the CustomerID. Similar with Tracks, we are using it to do the Lookup on a completely different tables, namely 
 "Albums" and "Artists".
 
@@ -393,7 +393,7 @@ A little code
 =============
 
 
-If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more than 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
+If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more then 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
 
 The official documentation has a heaps of code applicable to Demo application. Here will try to explain where exactly the code is used and a bit about why.
 Again, we touching only the additional code applicable for Demo, the default one which comes with a blank and empty project is not discussed.
