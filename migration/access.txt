@@ -390,6 +390,14 @@ In this example, the "doubt" word probably is not correct, hence leaving to the 
 If happy with the way the table looks like and DECIMAL(15,4) is changed to CURRENCY data type, we can proceed with the Import. It is possible to
 immediately check the result on the Internet, by removing builder.html from the browser link.
 
+For this particular example with Hebrew language, the Application needs the support for right-to-left language.
+
+This can be achieved by adding to index.html file (on Project\Task):
+
+.. code-block:: Python
+	
+	<html lang="he" dir="rtl">
+
 
 
 Field Captions
