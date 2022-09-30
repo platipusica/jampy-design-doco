@@ -365,13 +365,20 @@ As seen, Jam.py will happily use the UTF8 for the `Caption`. As well as the SQLi
 
 In short, for any non-English language, or non-Latin alphabet, like the below Hebrew language, the :red:`Name` :red:`*` must be changed to Latin alphabet, and the rest can stay the same:
 
-.. image:: _images/hebrew_01.png
-	:scale: 60 %
+.. image:: _images/hebrew.png
+	:scale: 70 %
 	:align: center
-	:alt: Hebrew Translated
+	:alt: Hebrew original
 
 Please note the :red:`Primary key field`. Because the :red:`Name` is on Hebrew language, the :red:`Primary Key field` is also on Hebrew and Import
 will fail.
+
+.. image:: _images/hebrew_01.png
+	:scale: 70 %
+	:align: center
+	:alt: Hebrew Translated
+
+
 
 For that reason, we developed the way to translate all necessary items automatically, with 
 no manual intervention needed. 
