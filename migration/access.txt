@@ -370,7 +370,7 @@ In short, for any non-English language, or non-Latin alphabet, like the below He
 	:align: center
 	:alt: Hebrew original
 
-Please note the :red:`Primary key field` as well. Because the :red:`Name` is on Hebrew language, the :red:`Primary Key field` is also on Hebrew and Import
+Please note the :red:`Primary key field` as well. Because the :red:`Name` is in Hebrew language, the :red:`Primary Key field` is also in Hebrew and Import
 will fail.
 
 For that reason, we developed the way to translate all necessary items automatically, with 
@@ -392,11 +392,19 @@ immediately check the result on the Internet, by removing builder.html from the 
 
 For this particular example with Hebrew language, the Application needs the support for right-to-left language.
 
-This can be achieved by adding to index.html file (on Project\Task):
+This can be achieved by finding below code in index.html file (on Project\Task):
+
+.. code-block:: Python
+	
+	<html lang="en">
+
+
+and replacing it with:
 
 .. code-block:: Python
 	
 	<html lang="he" dir="rtl">
+
 
 
 
