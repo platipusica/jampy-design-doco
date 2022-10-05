@@ -2,6 +2,10 @@
 Jam.py Application Design Tips 
 ==============================
 
+Introduction
+=============
+
+
 Welcome to Jam.py! If you are new to Jam.py or no-code, low-code or more-code Web application development, this is the place to find some tips about the Jam.py. 
 
 .. admonition:: Objectives
