@@ -2,12 +2,27 @@
 Jam.py Application Design Tips 
 ==============================
 
-Welcome to Jam.py! If you are new to Jam.py or low-code Web application development, this is the place to find some tips.
+Welcome to Jam.py! If you are new to Jam.py or no-code, low-code or more-code Web application development, this is the place to find some tips about the Jam.py. 
 
-To download a single PDF, please visit:
+.. admonition:: Objectives
+
+    Installing Python and Jam.py, choosing the database and the Web server and making Application Design decisions.
+
+.. admonition:: Audience
+
+    Web development enthusiasts or developers, with a limited or no experience with the Web development, or deployment.
+
+.. admonition:: Prerequisites
+
+    Some Python and JavaScript knowledge is recommended. The general knowledge about the Command Line prompt, and typing
+    the commands is required.
+
+
+
+To download this document as a single PDF, please visit:
 https://jampy-application-design-tips.readthedocs.io/_/downloads/en/latest/pdf/
 
-How the documentation is organised
+How is the documentation organised
 ==================================
 
 This Documentation follows official Jam.py documentation, keeping similar concepts and looks:
