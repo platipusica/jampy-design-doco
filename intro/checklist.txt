@@ -16,7 +16,7 @@ Get the latest version of Python at https://www.python.org/downloads/ or with yo
 .. admonition:: Python on Windows
 
     If you are just starting with Jam.py and using Windows, you may find
-    :doc:`/howto/windows` useful.
+    :doc:`Install Python </howto/windows>` useful.
 
 
 
