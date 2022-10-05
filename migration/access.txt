@@ -342,11 +342,10 @@ Importing the above table will produce the below:
 
 The table Import as such will fail. It cannot be imported, and the problems needs to be fixed first.
 
-Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, it cannot do more then that, 
-it's a too big ask.
+Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
 
 
-Of course, the Import is not going to fail, due to `JavaScript naming standard`_ for the column :red:`Name`.
+The Import as such is going to fail, due to `JavaScript naming standard`_ for the column :red:`Name`.
 
 The solution is to rename **definición_de_la_patología** to **definicion_de_la_patologia**, or similar valid Name. The **DB Field name** can stay as is: Definición_de_la_patología.
 
