@@ -189,7 +189,8 @@ Please refer to more info in here: `Azure Deployment`_
 Choosing the Web Server
 =======================
 
-Jam.py is providing a lightweight internal Web server for the Development/Testing, just like Django. This means Jam.py is extremely portable and the Application can be shipped `as is`, with just *jam* folder from Jam.py distribution copied into the Application folder. 
+Jam.py is providing a lightweight internal Web server for the Development/Testing, just like Django. This means Jam.py is extremely portable. Application can be shipped `as is`, or so called `click-and-run`, with just *jam* folder from Jam.py distribution copied into the Application folder. 
+Of course, Python still needs to be installed locally.
 
 Apache Web Server and ``mod_wsgi``
 ==================================
@@ -220,14 +221,14 @@ Apache Web Server and ``mod_wsgi``
 
 `mod_wsgi`_ is tightly coupled with Python and quite often shipped as the default Python version installed on the Operation System. When developing Application in an Python Virtual Environment, for example on the Developer's computer, it is possible that Python version does not match the `mod_wsgi` version activated in Apache due to Python mismatch. To solve any problems with Python differences, it is suggested to install *mod_wsgi* for Apache from the Virtual Environment which matches the Development/Test environment.
 
-
+Please visit `Apache on Windows`_ mailgroup thread for using Apache with Windows.
 
 
 .. _Django Docs: https://docs.djangoproject.com/
 .. _Apache: https://httpd.apache.org/
 .. _nginx: https://nginx.org/
 .. _mod_wsgi: https://modwsgi.readthedocs.io/en/develop/
-
+.. _Apache on Windows: https://groups.google.com/g/jam-py/c/PqV05uyKtKE/m/WGm8YJvnCAAJ
 
 IIS Web Server
 ===============
