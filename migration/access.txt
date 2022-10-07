@@ -581,9 +581,10 @@ Some examples
 =============
 
 To make it easier, we started to build the showcase repository with the Applications directly migrated from MS Access.
-Please find the list of some applications available as Templates in Access and migrated to Jam.py. 
+Please find the list of some applications available as Templates in Access and migrated to Jam.py. All source code will be available 
+for download.
 
-- `Personal Account Ledger`_. This Access Template has a feature of typing the negative value for currency. Our migrated project does not allow this.			
+- `Personal Account Ledger`_. This Access Template has a "feature" of typing the negative value for currency. Our migrated project does not allow this "feature".			
 
 - `Northwind Application`_. Currently in the development.
 
