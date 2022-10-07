@@ -575,3 +575,15 @@ the `Users` or similar table.
 
 .. note::
     To Be Continued...
+
+
+Some examples 
+=============
+
+To make it easier, we started to build the showcase repository with the Applications directly migrated from MS Access.
+Please find the list of some applications available as Templates in Access and migrated to Jam.py. 
+
+- `Personal Account Ledger`_. This Access Template has a feature of typing the negative value for currency. Our migrated project does not allow this.
+
+.. _Personal Account Ledger: https://msaccess.pythonanywhere.com
+
