@@ -317,7 +317,11 @@ Of course, the MS Access linked tables are just the issue when using the convers
 Using UTF8
 -----------
 
-The above is all well and true for the English language. Or the Latin alphabet. However, using UTF8 in MS Access is supported, but not supported in `JavaScript naming standard`_.  
+The above is all well and true for the English language. Or the Latin alphabet. However, using UTF8 in MS Access is supported, but not supported in `JavaScript naming standard`_. Unfortunately, this is directly impacting Jam.py tables Import usability. 
+
+.. admonition:: Automatic translation to comply with JavaScript naming standard
+
+        Because of that reason, when using our site for the migration, all non-Latin alphabet is translated to JavaScript naming standard automatically. The below notes are valid for official Jam.py installation downloaded from the Internet, which does not support the automatic translation yet. 
 
 Consider this _`scenario`:
 
@@ -326,7 +330,7 @@ Consider this _`scenario`:
 	:align: center
 	:alt: Italian Access Table
 
-First of all, the Table name is **00_COSTES ALFONSO**. And the list of the tables continues with **01_, 02_, 03_**, etc. 
+The Table name is **00_COSTES ALFONSO**. And the list of the tables continues with **01_, 02_, 03_**, etc. 
 Unfortunately, it is also using this as a table name: **00_PRECIOS ICM > GENOCOL_IMAT**.
 
 Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for Access tho. However, any modern framework will reject this practise.
