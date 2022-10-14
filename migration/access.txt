@@ -595,12 +595,36 @@ for download.
 Personal Account Ledger
 -----------------------
 
-This Access Template has a feature the typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
+This Access Template Personal Account Ledger has a feature the typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
 
 The complete application was developed in a few hours` time.  Below is the approximate process:
 
--	The template was converted by https://jampyapplicationbuilder.com/conv/ to give us all tables needed for the project. 
--	After all tables were imported into Catalogs (Catalogues), the first code was added to restrict adding a negative currency with the `MessageBox`_ displaying the Alert.
+-	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
+-	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since the Access Categories Form has a Drop-down list with the Income and Expense, the Lookup List was created with the same. 
+
+.. image:: _images/Personal03.png
+	:scale: 65 %
+	:align: center
+	:alt: Personal Account Ledger
+
+
+-   By looking at the Access Database Tools Relationships, the `Account Transactions` table `Category field was linked by the Lookup Item to Categories Description field. The `Income or Expense` field was created in the Transaction table and linked to the Categories same field. 
+
+.. image:: _images/Personal01.png
+	:scale: 65 %
+	:align: center
+	:alt: Personal Account Ledger
+
+
+-    The Categories `Income or Expense` was linked to Lookup Value List.
+
+.. image:: _images/Personal02.png
+	:scale: 65 %
+	:align: center
+	:alt: Personal Account Ledger
+
+
+-   The first code was added to restrict adding a negative currency with the `MessageBox`_ displaying the Alert.
 
 
 .. code-block:: JavaScript
@@ -675,13 +699,13 @@ The complete application was developed in a few hours` time.  Below is the appro
             return '<strong>' + field.display_text + '</strong>';
         }
 
--	Then, the Dashboard/Reports was added. Some tlc is still needed for those. 
+-	Then, the Dashboard/Reports was added. Some tlc is still needed for those. The `Dashboard` was covered in "How was Demo built?" topic
 
 .. note::
 
         -	This is all from the actual application Front End point of view. It looks pretty similar to Access, correct?
 
--	All of the above was added to Account Transactions `Client module`. No more code is needed for Access basic Front End. The additional code for Authentication was copy/paste from the https://jampyapp.pythonanywhere.com/ project. Please observe the code and needed tables within the  Builder/Authentication tab. Also, the index.html file was modified and added simple-line-icons support with the Task\project.css. Same copy/paste from the mentioned project.
+-	All of the above was added to Account Transactions `Client module`. No more code is needed for Access basic Front End. The additional code for Authentication was copy/paste from the https://jampyapp.pythonanywhere.com/ project. Please observe the code and needed tables within the  Builder/Authentication tab. Also, the index.html file was modified and added simple-line-icons support with the Task/project.css. Same copy/paste from the mentioned project.
 
 
 -	The `Clone` button  was developed latter to emulate the support for highlighted row copy/paste.
