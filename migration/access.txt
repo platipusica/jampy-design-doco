@@ -43,7 +43,7 @@ Hence, the faster we move away from proprietary database AND Front End applicati
       Is your application cyber safety compliant?
 
       The application might be compliant for some business, however does it run on the Web? Apple Mac? Tablet?
-      That is exactly what we are addressing with the migration. The `Future` with the `IP and Cyber Safety`. 
+      That is exactly what we are also addressing with the migration. The `Future` with the `IP and Cyber Safety`. 
 
 
 2. VBA?
@@ -429,45 +429,25 @@ code to update it:
 .. code-block:: Python
 
         import sqlite3
-
         import numpy as np
-
         captions = np.loadtxt('test.csv', dtype=str, delimiter=',')
-
         #print(captions)
-
         #captions = [
-
         #        ['DEMO_TRACKS', 'NAME', 'Track title 3']
-
         #    ]
-
         con = sqlite3.connect('admin.sqlite')
-
         cursor = con.cursor()
-
         for table_name, field_name, caption in captions:
-
             cursor.execute("SELECT ID FROM SYS_ITEMS WHERE DELETED=0 AND F_TABLE_NAME='%s'" % table_name)
-
             res = cursor.fetchone()
-
             if res:
-
                 item_id = res[0]
-
                 cursor.execute("SELECT ID FROM SYS_FIELDS WHERE DELETED=0 AND OWNER_REC_ID=%s AND F_DB_FIELD_NAME='%s'" % (item_id, field_name))
-
                 res = cursor.fetchone()
-
                 if res:
-
                     field_id = res[0]
-
                     cursor.execute("UPDATE SYS_FIELDS SET F_NAME='%s' WHERE ID=%s" % (caption, field_id))
-
         con.commit()
-
         con.close()
 
 
@@ -519,27 +499,16 @@ We could easily automate adding the `DELETED` field during the conversion, as it
 
 
 .. code-block:: Python
-
         import sqlite3 
-
         connection  = sqlite3.connect("db.sqlite3") 
-
         cursor      = connection.cursor()  
-
         tableQuery = "select * from sqlite_master where type = 'table' and name != 'Order' "
-
         cursor.execute(tableQuery)
-
         tableList = cursor.fetchall()
-
         for table in tableList:   
-
             renameTable = "ALTER TABLE %s"%(table[1]) + " ADD COLUMN DELETED integer"
-
             print(renameTable)
-
             cursor.execute(renameTable) 
-
         connection.close()
 
 Now, we should be able to select the `Deleted Flag` as `deleted` field on the table Import.
