@@ -499,6 +499,7 @@ We could easily automate adding the `DELETED` field during the conversion, as it
 
 
 .. code-block:: Python
+
         import sqlite3 
         connection  = sqlite3.connect("db.sqlite3") 
         cursor      = connection.cursor()  
@@ -609,7 +610,7 @@ The complete application was developed in a few hours` time.  Below is the appro
         }
 
 
--	Then we observed how is Access displaying the Expense/Income formatting in :red:`red` and :green:`green` color. The decision has been made to display the actual Expense/Income text in a coloured way as well as the value.
+-	Then, we observed how is Access displaying the Expense/Income formatting in :red:`red` and :green:`green` color on the _`Data Grid`. The decision has been made to display the actual Expense/Income text in a coloured way as well as the value.
 -	The code was added to accommodate for the above:
 
 
@@ -646,7 +647,7 @@ The complete application was developed in a few hours` time.  Below is the appro
         }
 
 
--	Now the JS function is needed to actually do the positive to negative and vice versa displaying:
+-	The JS function is needed to actually do the displaying of _`positive to negative` values and vice versa:
 
 .. code-block:: JavaScript
 
@@ -684,12 +685,52 @@ The complete application was developed in a few hours` time.  Below is the appro
 -	The `Clone` button  was developed latter to emulate the support for highlighted row copy/paste.
 -	The `Delete` button was disabled with the `MessageBox`_ displaying the Alert, since the deletion is disabled for Publicly accessible application. This is controlled in Task/Account Transaction/Client module, please search for `deleted`, since deletion is actioned on CTRL+DEL as well.
 
+-   After two weeks running and some feedback from the Users, the Account `Transaction`/`Filter` was added. Also, some formatting was developed, particularly for displaying :red:`red` and :green:`green` `Actual Amount` on the Form. This is not the `Data Grid`_ formatting, which was added from the beginning. Hence, consider the above `positive to negative`_ function. The function was missing the CSS needed for the Form. The new function is below:
+
+.. code-block:: JavaScript
+
+        function calculate(item) {
+            if (item.income_or_expense.value) {
+                item.actual_amount.value = item.transaction_amount.value;
+                if (item.income_or_expense.display_text === 'Expense') {
+                    item.actual_amount.value = -item.actual_amount.value;
+                    item.edit_form.find('input.actual_amount').css('color', 'red');    
+                }
+                else {
+                    item.edit_form.find('input.actual_amount').css('color', 'green');    
+                }
+            }
+            else {
+                item.actual_amount.value = 0;
+            }
+        }
+
+-   More formatting was added to resize the fields. Here, we introduced a new Jam.py function for changing the CSS when the Edit/New Form is active:
+
+.. js:function:: on_edit_form_shown
+
+
+.. code-block:: JavaScript
+
+
+        function on_edit_form_shown(item) {
+          item.edit_form.find('input.entry_number').parent().width('40%');
+          item.edit_form.find('input.transaction_amount').parent().width('40%');
+          item.edit_form.find('input.category').parent().width('60%');  
+          item.edit_form.find('input.categories').parent().width('60%');
+          item.edit_form.find('input.income_or_expense').width('60%');
+        }
+
+
+-   History/Edit Lock was added. This is a no code operation done on Project/Parameters.
+-   The Report is missing the `Income/Expense` Parameter.
+
 
 
 Northwind
 ----------
 
-The Northwind template has some VBA attached to it. It is a fairly simple code, from the migration point of view. 
+The Northwind template has some VBA attached to it. It is a fairly simple code, from the migration point of view. Below is the approximate process:
 
 -	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
 -	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since there are a few tables with no `Primary Key`, this are the candidates for the  Lookup List:
