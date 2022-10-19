@@ -28,7 +28,7 @@ However, the **risk** is that in some years to come, the developers will retire.
 Hence, where will the business find people to maintain their expensive application? Maybe they already 
 hired the MSSQL database administrator, since the Access developers told them to do so. The DBA's might be around in years to come, but the Access developers? Or better, THE Access itself?
 
-Hence, the faster we move away from proprietary database AND Front End application, the better. Simply because the technology will be around way after the MS Access is gone. This is business after all, let's put aside the emotions. The HTML is here to stay. Who remembers the Netscape anymore? Or Mosaic?
+Hence, the faster we move away from proprietary database AND Front End application, the better. Simply because the technology will be around way after the MS Access is gone. This is business after all, let's put aside the emotions. The HTML is here to stay. Who remembers the Netscape any more? Or Mosaic?
 
 
 1. Complacency
@@ -188,7 +188,7 @@ In reality, the _`MessageBox` with JS in Jam.py is something like this:
     This method can provide safe and secure access even from a portable drive in an off-line environment, for example with 
     no Internet access at all. Only the local area network is needed for more then one user.
 
-    Regarding Web servers deployment, Jam.py application can be deployed in a few seconds on almost any popular Web server. Which can serve thousands of users simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
+    Regarding Web servers deployment, Jam.py application can be deployed in a few minutes on almost any popular Web server. Which can serve thousands of users simultaneously. Jam.py flagship application is supporting 2000 remote locations, each with 10-20 users. There is no
     need for installation of anything and costs almost nothing.
 
 .. _Front-End for MS Access migration?: https://stackoverflow.com/questions/221995/front-end-for-ms-access-migration
@@ -737,7 +737,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 
 -   History/Edit Lock was added. This is a no code operation done on Project/Parameters.
 -   The Report was missing the `Income/Expense` Parameter. Added. The Reports design and code might be covered latter on.
--   The Filters was added for `Account Transaction` table. However, because of the "combined" Category with the "/" sign, some tweaking was needed. Here is the code added to the `Account Transactions`_ table, and the code to add three buttons. The buttons "Clone", "Filter by type" and "Clear filters", respectively:
+-   The Filters was added for `Account Transaction` table. Because of the "combined" Category with the "/" sign, some tweaking was needed. Here is the code added to the `Account Transactions`_ table, and the code to add three buttons. The buttons "Clone", "Filter by type" and "Clear filters", respectively:
 
 
 .. code-block:: JavaScript
@@ -803,11 +803,30 @@ The complete application was developed in a few hours` time.  Below is the appro
         }
 
 -   More summary was added for `Account Transaction` table. This is a no code operation done on View Form.
--   Added the Export tab to download the latest source code.
+-   Added the Export tab to download the latest source code. The Export feature is available by default on the Application Builder. The Builder is not accessible publicly due to the security reasons. Here is the code added to index.html file below "about" and `Account Transaction` table "function on_page_loaded(task)":
+
+.. code-block:: JavaScript
+
+        <li id="about"><a href="#">About</a></li>                        
+        <li id="export"><a href="#">Export</a></li>
+
+
+.. code-block:: JavaScript
+
+        $("#menu-right #export a").click(function(e) {
+                    var url = [location.protocol, '//', location.host, location.pathname].join('');
+                    url += 'static/internal/AccountTransactions_1.0.6_5.4.114_2022-10-04_15-46-41.zip';
+                    window.open(encodeURI(url));
+        });
+
+
+
+-   Maybe the last feature needed is the CVS (spreadsheet) export/import. This step is fully documented in the official documentation.
+
 
 
 .. note::
-    To Be Continued with/if more feature were added ...
+    To Be Continued when/if more features were added ...
 
 
 Northwind
