@@ -151,9 +151,9 @@ The button in Jam.py is something like this:
     The above is a quote from `Front-End for MS Access migration?`_ It is an old thread with all points still valid.
     With Jam.py, one does not write queries. It is absolutely possible to do so, if needed. 
     
-    It is a low-code framework after all. And that can open the whole new world for a group of developers! Because
+    It is a low-code framework RAD after all. And that can open the whole new world for a group of developers! Because
     each of them can work simultaneously on some other part of application, being the Forms or the Server procedures,
-    everything is instantly visible to everyone with the right privileges.
+    everything is instantly accessible to everyone with the right privileges.
     
     Hence, everything is simplified. The Jam.py framework will build complex queries just like Access does, with a few
     clicks of the mouse. Contrary to the Access, this query, in fact the complete application, will work on any supported
@@ -206,9 +206,9 @@ Where from here?
 ================
 
 
-To successfully migrate MS Access to Jam.py, the assumption is that at least some knowledge exist with using the Jam.py Application Builder interface. 
+To successfully migrate MS Access to Jam.py, the assumption is that at least some knowledge exist with using the Jam.py Application Builder interface. Or, if feeling confident, one can start creating everything from scratch, and then load the data into the tables manually. We think that the below procedure is way more faster method. And, it does not cost anything.
 
-If so, please visit: 
+If agreed, please visit: 
 
 https://jampyapplicationbuilder.com/conv/
 
@@ -220,7 +220,7 @@ After the Access file is uploaded and converted with no errors:
 - link to Application Builder will show up, which is using the sqlite3 data converted from Access instantly available on the Web! It is super easy and takes no time! **If not interested at all in building the FrontEnd Application**, please click on *Export* to download the DB as zip file which contains the sqlite3 file. The converted sqlite3 database has a long name exactly the same as in provided the link. This is to increase safety and security for all downloads.
 
 .. note::
-    If interested in instantly showing data on the Web, meaning using Jam.py for the Front End:
+    If interested in instantly showing data on the Web, meaning using Jam.py for the Front End, please continue with below:
 
 
 The Application Builder from the provided link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid `JavaScript naming standard`_, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
@@ -231,12 +231,15 @@ Video tutorial - `How to publish MS Access Application to Web using Jam.py and S
 
 Video tutorial - `Simple CRM built automatically with Selenium IDE in 2.45minutes`_, demonstrates the `Tutorial. Part 1. First project`_
 
-New style Demo - `Migrated Access Application`_ (expiry on 04 Aug 2022)
+New style Demo - `Jam.py Demo Application`_ (expiry on 04 Jan 2023)
+
+Migrated from Access template - `Migrated from Access template`_ (expiry on 04 Jan 2023)
 
 .. _Jam.py VS MS Access: https://www.youtube.com/watch?v=ZpgEJh80QAs
 .. _How to publish MS Access Application to Web using Jam.py and SQLite3: https://www.youtube.com/embed/eaVjUEYG3Ac
 .. _Simple CRM built automatically with Selenium IDE in 2.45minutes: https://www.youtube.com/embed/Sv_IllxQ_RY
-.. _Migrated Access Application: https://jampyapp.pythonanywhere.com/
+.. _Jam.py Demo Application: https://jampyapp.pythonanywhere.com/
+.. _Migrated from Access template: https://msaccess.pythonanywhere.com/
 .. _Tutorial. Part 1. First project: https://jampyapplicationbuilder.com/docs/intro/tutorial01/index.html
 .. _JavaScript naming standard: https://www.w3schools.com/js/js_conventions.asp
 
@@ -559,7 +562,7 @@ the `Users` or similar table.
 Some migrated examples 
 ======================
 
-To make it easier for a would be Jam.py Users/Developers, we started to build the showcase repository with the Applications directly migrated from MS Access. It is important to understand that one can start completely from scratch and build the application without any conversion or migration tools. We just think it's easier to use tools on our disposal. 
+To make it easier for a would be Jam.py Users/Developers, we started to build the showcase repository with the Applications directly migrated from MS Access. It is important to understand that one can start completely from scratch and build the application without any conversion or migration tools. We just think it's easier to use the tools on our disposal. 
 
 Please find the list of some applications available as Templates in Access and migrated to Jam.py. All source code is available 
 for download on Export tab.
