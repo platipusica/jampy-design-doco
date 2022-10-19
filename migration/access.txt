@@ -101,7 +101,13 @@ Hence, the faster we move away from proprietary database AND Front End applicati
 
 The code above actually does more then displaying the MsgBox! It will update all selected records in one go. Imagine writing the VBA code for the same task.
 
-In reality, the _`MessageBox` with JS in Jam.py is something like this:
+The _`MessageBox` with JS in Jam.py is something like this:
+
+.. code-block:: JavaScript
+
+         item.alert('Successfully sent the mail');
+    	
+The button in Jam.py is something like this:
 
 .. code-block:: JavaScript
 
@@ -109,7 +115,6 @@ In reality, the _`MessageBox` with JS in Jam.py is something like this:
 	    btn.click(function() {
 	    	-- do something here --
 	        });
-    	
 
 
 
