@@ -13,11 +13,13 @@ Especially to:
   languages translations with google translator engine, to name a few. Also shared ERP POC application. 
 * Alistair Bates, developer and contributor, who helped a number of people over the years and shared his knowledge. 
 * Marko Pandžić, developer who helped with MS Access to SQLite conversion.
+* Danijel Kaurin, developer and contributor, who also helped a number of people over the years and shared his knowledge. 
+
 
 About the author
 ----------------
 
-Dean Dražen Babić is ``Jam.py`` enthusiast, developer and promoter. Dean was a frequent public speaker at the Stirling 
+Dean Dražen Babić, BSc, is ``Jam.py`` enthusiast, developer and promoter. Dean was a frequent public speaker at the Stirling 
 Toastmasters Club as CC (ex VPE, ex VPPR), and currently residing in WA.
 
 Copyright
