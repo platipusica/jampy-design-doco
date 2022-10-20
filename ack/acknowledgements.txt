@@ -9,6 +9,7 @@ Thanks to many contributors on the mailing list. Especially to:
 * Fabio Lenzarini, developer and contributor, who created a multitude of changes regarding database views,
   languages translations engine with google translator, to name a few. Also shared ERP POC application. 
 * Alistair Bates, developer and contributor, who helped a number of people over the years and shared his knowledge. 
+* Danijel Kaurin, developer and contributor, who also helped a number of people over the years and shared his knowledge. 
 
 
 
