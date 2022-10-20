@@ -568,7 +568,7 @@ Please find the list of some applications available as Templates in Access and m
 for download on Export tab.
 
 - `Personal Account Ledger`_. 
-
+- `Inventory Transactions`_. 
 - `Northwind Application`_. Planned for the development.
 
 .. _Personal Account Ledger: https://msaccess.pythonanywhere.com
@@ -836,6 +836,27 @@ The complete application was developed in a few hours` time.  Below is the appro
 .. note::
     To Be Continued when/if more features were added ...
 
+
+Inventory transactions
+----------------------
+
+This is interesting template due to a number of reports. There is no VBA at all. However, there is a logic within the reports to reorder the Inventory based on `Reorder Level`, `Current Stock`, and `Target Stock Level`. 
+
+The complete application was developed in a few hours` time.  Below is the approximate process:
+
+-	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
+-	All tables were imported into the Jam.py Application Builder from the provided link after the upload. 
+
+- The Lookup Lists are within the forms, namely:
+
+.. code-block:: JavaScript
+
+        Category
+        Location
+        TransactionType
+
+.. note::
+    To Be Continued when/if more features were added ...
 
 Northwind
 ----------
