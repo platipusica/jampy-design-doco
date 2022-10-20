@@ -686,7 +686,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 
 .. note::
 
-        -	The above is all from the actual application Front End point of view. It looks pretty similar to Access, correct? It this moment of time it is absolutely possible to turn on the "Safe Mode", which is the Authentication.
+        -	The above is all from the actual application Front End point of view. It looks pretty similar to Access, correct? At this moment it is absolutely possible to turn on the "Safe Mode", which is the Authentication.
 
 -	All of the above was added to Account Transactions `Client module`. No more code is needed for Access basic Front End look and feel. The additional code for Authentication was copy/paste from the https://jampyapp.pythonanywhere.com/ project. Please observe the code and needed tables within the  Builder/Authentication tab. Also, the index.html file was modified and added simple-line-icons support with the Task/project.css. Same copy/paste from the mentioned project.
 
