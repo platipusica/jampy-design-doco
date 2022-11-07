@@ -151,7 +151,7 @@ The button in Jam.py is something like this:
     The above is a quote from `Front-End for MS Access migration?`_ It is an old thread with all points still valid.
     With Jam.py, one does not write queries. It is absolutely possible to do so, if needed. 
     
-    It is a low-code framework RAD after all. And that can open the whole new world for a group of developers! Because
+    It is a no-code, low-code or more-code RAD framework after all. And that can open the whole new world for a group of developers! Because
     each of them can work simultaneously on some other part of application, being the Forms or the Server procedures,
     everything is instantly accessible to everyone with the right privileges.
     
@@ -233,13 +233,13 @@ Video tutorial - `Simple CRM built automatically with Selenium IDE in 2.45minute
 
 New style Demo - `Jam.py Demo Application`_ (expiry on 04 Jan 2023)
 
-Migrated from Access template - `Migrated from Access template`_ (expiry on 04 Jan 2023)
+Personal Account Ledger - `Migrated from MS Access template`_ (expiry on 04 Jan 2023)
 
 .. _Jam.py VS MS Access: https://www.youtube.com/watch?v=ZpgEJh80QAs
 .. _How to publish MS Access Application to Web using Jam.py and SQLite3: https://www.youtube.com/embed/eaVjUEYG3Ac
 .. _Simple CRM built automatically with Selenium IDE in 2.45minutes: https://www.youtube.com/embed/Sv_IllxQ_RY
 .. _Jam.py Demo Application: https://jampyapp.pythonanywhere.com/
-.. _Migrated from Access template: https://msaccess.pythonanywhere.com/
+.. _Migrated from MS Access template: https://msaccess.pythonanywhere.com/
 .. _Tutorial. Part 1. First project: https://jampyapplicationbuilder.com/docs/intro/tutorial01/index.html
 .. _JavaScript naming standard: https://www.w3schools.com/js/js_conventions.asp
 
@@ -578,7 +578,7 @@ for download on Export tab.
 Personal Account Ledger
 -----------------------
 
-This Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
+The Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
 
 The complete application was developed in a few hours` time.  Below is the approximate process:
 
@@ -823,7 +823,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 
         $("#menu-right #export a").click(function(e) {
                     var url = [location.protocol, '//', location.host, location.pathname].join('');
-                    url += 'static/internal/AccountTransactions_1.0.6_5.4.114_2022-10-04_15-46-41.zip';
+                    url += 'static/internal/AccountTransactions.zip';
                     window.open(encodeURI(url));
         });
 
@@ -842,12 +842,12 @@ Inventory transactions
 
 This is interesting template due to a number of reports. There is no VBA at all. However, there is a logic within the reports to reorder the Inventory based on `Reorder Level`, `Current Stock`, and `Target Stock Level`. 
 
-The complete application was developed in a few hours` time.  Below is the approximate process:
+The complete application was developed in a few hours` time. Below is the approximate process:
 
 -	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
 -	All tables were imported into the Jam.py Application Builder from the provided link after the upload. 
 
-- The Lookup Lists are within the forms, namely:
+-   The Lookup Lists are within the forms, namely:
 
 .. code-block:: JavaScript
 
@@ -855,16 +855,19 @@ The complete application was developed in a few hours` time.  Below is the appro
         Location
         TransactionType
 
+-   Because how the Access application works, it might be a good decision to convert the Lookup List into tables. That way we might utilise the Jam.py reports and Dashboard features with no additional code needed. The problem with any Lookup Lists is the table relationship, which can not be built with the SQL, and must be addressed with code. This is how `Personal Account Ledger`_ was built.
+
+
 .. note::
     To Be Continued when/if more features were added ...
 
 Northwind
 ----------
 
-The Northwind template has some VBA attached to it. It is a fairly simple code, from the migration point of view. Below is the approximate process:
+The Northwind template has some VBA attached to it. It is a fairly simple code from the migration point of view. Below is the approximate process:
 
 -	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
--	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since there are a few tables with no `Primary Key`, this are the candidates for the  Lookup List:
+-	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since there are a few tables with no `Primary Key`, this are the candidates for the Lookup List or tables:
 
 
 .. code-block:: JavaScript
