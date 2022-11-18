@@ -591,8 +591,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 	:alt: Personal Account Ledger
 
 
--   By looking at the Access Database Tools Relationships, the _`Account Transactions` table `Category` field was linked by the Lookup Item to Categories Description field. The `Income or Expense` field was created in the `Transaction table` and linked to the Categories same field. Also,
-the `actual_amount` field was added, since in Access this is a query field. 
+-   By looking at the Access Database Tools Relationships, the _`Account Transactions` table `Category` field was linked by the Lookup Item to Categories Description field. The `Income or Expense` field was created in the `Transaction table` and linked to the Categories same field. Also, the `actual_amount` field was added, since in Access this is a query field. 
 
 .. image:: _images/Personal01.png
 	:scale: 65 %
