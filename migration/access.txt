@@ -813,6 +813,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 -   More summary was added for `Account Transaction` table. This is a no code operation done on View Form.
 -   Added the Export tab to download the latest source code. The Export feature is available by default on the Application Builder. The Builder is not accessible publicly due to the security reasons. Here is the code added to index.html file below "about" and `Account Transaction` table "function on_page_loaded(task)":
 
+
 .. code-block:: JavaScript
 
         <li id="about"><a href="#">About</a></li>                        
@@ -878,10 +879,19 @@ The Northwind template has some VBA attached to it. It is a fairly simple code f
         Orders_Status
         Orders_Tax_Status
         Purchase_Order_Status
-        Sales_Reports
-        Strings
+
+-  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the Lookup Lists. The only Lookup List created in the beginning of migration was for `Purchase orders` and `Orders` table. Which in Access is hard coded as `Cash`, `Check` and `Credit Card` information (in the sense of export into a csv):
+
+.. code-block:: JavaScript
+
+        Payment Method
+
+Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. It was changed to INTEGER, after the Import, and pointed to a Lookup List.
 
 
+.. note::
+
+    Which opens a question: how to migrate the hard coded text to a Lookup List or even a table?
 
 .. note::
     To Be Continued...
