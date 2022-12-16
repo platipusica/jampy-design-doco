@@ -928,6 +928,136 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
         GROUP BY [Order Details].[Product ID]; 
 
 
+Here is the JS and Python code, respectively, replacing the need for SQL. The button `Purchase` was added just like it exists on MS Access.
+
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            item.paginate = false;
+            item.table_options.new = false;
+            if (!item.lookup_field) {    
+                var email_btn = item.add_view_button('Purchase', {image: 'icon-pencil'});
+                email_btn.click(function() { purchase() });
+            }
+                    item.view_form.find("#edit-btn").hide();
+                    item.view_form.find("#delete-btn").hide();
+                    item.view_form.find("#new-btn").hide();
+        }
+
+        function on_after_open(item) {
+            item.alert('Working!');
+            item.server('get_records', function(records) {
+                records.forEach(function(rec) {
+                    item.append();
+                    item.product_name.value = rec.product_name;
+                    item.target_level.value = rec.target_level;
+                    item.quantity_on_hold.value = rec.quantity_on_hold;
+                    item.quantity_on_order.value = rec.quantity_on_order;
+                    item.quantity_on_hand.value = rec.quantity_on_hand;
+                    item.quantity_purchased.value = rec.quantity_purchased;            
+                    item.quantity_sold.value = rec.quantity_sold;            
+                    item.post();
+                });
+            });
+        }
+        function on_edit_form_created(item) {
+            var title = 'Purchase ';
+            item.edit_options.title = title;
+            item.edit_form.find('#ok-btn')
+                .text('Purchase')
+                .off('click.task')
+                .on('click', function() {
+                    purchase(item);
+                });
+        }
+        function on_field_get_html(field) {
+            let item = field.owner;
+            if (field.field_name === 'quantity_on_hand') {
+                let color = 'green';
+                if (item.quantity_on_hand.display_text < 30) {
+                    color = 'red';
+                }
+                return '<span style="color: ' + color + ';">' + field.display_text + '</span>';
+            }
+        }
+
+.. code-block:: Python
+
+        def get_records(item):
+            res, inventory = [], product = [], ''
+
+            product = item.task.products.copy()
+            #product.set_where(id=41)
+            product.open(fields=['id', 'product_name', 'target_level'], 
+                group_by=['id'], order_by=['id'])
+
+            
+            for p in product:   
+                allocated_inventory = 0
+                target_level = 0
+                product_id = product.id.value
+                target_level += product.target_level.value
+                print(product_id)
+
+                order_details = item.task.order_details.copy()
+                order_details.set_fields('product_id', 'status_id', 'quantity')
+                #order_details.set_where(product_id=product_id, status_id=4);
+                order_details.set_where(product_id=product_id);
+                
+                order_details.open(fields=['product_id', 'quantity', 'status_id'], 
+                    funcs={'quantity': 'sum'}, 
+                    group_by=['product_id'], order_by=['product_id'])
+                for i in order_details:
+                    quantity = 0;
+                    transaction_type = 0
+                    quantity_sold = 0
+                    quantity_purchased = 0
+                    quantity_on_hold = 0
+                    quantity_on_hand = 0
+                    quantity_on_order = 0
+                    quantity_on_back_order = 0
+                    
+                    #print()
+
+                    inv_transactions = item.task.inventory_transactions.copy()            
+                    inv_transactions.set_fields('product_id', 'transaction_type', 'quantity')
+                    inv_transactions.set_where(product_id=product_id, transaction_type__in=[1,2,3])
+                    inv_transactions.open(fields=['product_id', 'transaction_type', 'quantity'],
+                        funcs={'quantity': 'sum'}, 
+                        group_by=['transaction_type'], order_by=['product_id'])
+
+                    for i in inv_transactions:
+                        if inv_transactions.transaction_type.value == 1:
+                            quantity_purchased += inv_transactions.quantity.value
+                        if inv_transactions.transaction_type.value == 2:
+                            quantity_sold += inv_transactions.quantity.value
+                        if inv_transactions.transaction_type.value == 3:
+                            quantity_on_hold += inv_transactions.quantity.value
+                        quantity_on_hand = quantity_purchased - quantity_sold
+                        
+                        purchase_order_details = item.task.purchase_order_details.copy()            
+                        purchase_order_details.set_fields('product_id', 'posted_to_inventory', 'quantity')
+                        purchase_order_details.set_where(product_id=product_id, posted_to_inventory=0)
+                        purchase_order_details.open(fields=['product_id', 'quantity'],
+                            funcs={'id': 'count'}, 
+                            group_by=['product_id'], order_by=['product_id'])
+                        for i in purchase_order_details:
+                            quantity_on_order = purchase_order_details.quantity.value
+                    
+                    res.append(
+                        {
+                            'product_name': i.product_id.display_text,
+                            'target_level': target_level,
+                            'quantity_on_hold': quantity_on_hold,
+                            'quantity_on_hand': quantity_on_hand,
+                            'quantity_purchased': quantity_purchased,
+                            'quantity_sold': quantity_sold,
+                            'quantity_on_order': quantity_on_order
+                        }
+                    )
+                    print(res)
+                
+            return res
 
 .. note::
     To Be Continued...
