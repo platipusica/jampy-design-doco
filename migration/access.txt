@@ -891,7 +891,43 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
 
 .. note::
 
-    Which opens a question: how to migrate the hard coded text to a Lookup List or even a table?
+    Which opens a question: how to migrate the hard coded text to a Lookup List or even a table? A bit latter about that.
+
+- The  biggest challenge was implementing the `Inventory List`. The MS Access query is quite large:
+
+.. code-block:: JavaScript
+
+
+        SELECT Products.ID AS [Product ID], Products.[Product Name], Products.[Product Code], Nz([Quantity Purchased],0) AS [Qty Purchased], Nz([Quantity Sold],0) AS [Qty Sold], Nz([Quantity On Hold],0) AS [Qty On Hold], [Qty Purchased]-[Qty Sold] AS [Qty On Hand], [Qty Purchased]-[Qty Sold]-[Qty On Hold] AS [Qty Available], Nz([Quantity On Order],0) AS [Qty On Order], Nz([Quantity On Back Order],0) AS [Qty On Back Order], Products.[Reorder Level], Products.[Target Level], [Target Level]-[Current Level] AS [Qty Below Target Level], [Qty Available]+[Qty On Order]-[Qty On Back Order] AS [Current Level], IIf([Qty Below Target Level]>0,IIf([Qty Below Target Level]<[Minimum ReOrder Quantity],[Minimum Reorder Quantity],[Qty Below Target Level]),0) AS [Qty To Reorder]
+        FROM ((((Products LEFT JOIN [Inventory Sold] ON Products.ID = [Inventory Sold].[Product ID]) LEFT JOIN [Inventory Purchased] ON Products.ID = [Inventory Purchased].[Product ID]) LEFT JOIN [Inventory On Hold] ON Products.ID = [Inventory On Hold].[Product ID]) LEFT JOIN [Inventory On Order] ON Products.ID = [Inventory On Order].[Product ID]) LEFT JOIN [Products On Back Order] ON Products.ID = [Products On Back Order].[Product ID];
+
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity Sold]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=2))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity Purchased]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=1))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Purchase Order Details].[Product ID] AS [Product ID], Sum([Purchase Order Details].Quantity) AS [Quantity On Order]
+        FROM [Purchase Order Details]
+        WHERE ((([Purchase Order Details].[Posted To Inventory])=False))
+        GROUP BY [Purchase Order Details].[Product ID];
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity On Hold]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=3))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Order Details].[Product ID] AS [Product ID], Sum([Order Details].Quantity) AS [Quantity On Back Order]
+        FROM [Order Details]
+        WHERE ((([Order Details].[Status ID])=4))
+        GROUP BY [Order Details].[Product ID]; 
+
+
 
 .. note::
     To Be Continued...
