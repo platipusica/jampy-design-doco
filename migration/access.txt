@@ -569,10 +569,10 @@ for download on Export tab.
 
 - `Personal Account Ledger`_. 
 - `Inventory Transactions`_. 
-- `Northwind Application`_. Planned for the development.
+- `Northwind Traders Application`_.
 
 .. _Personal Account Ledger: https://msaccess.pythonanywhere.com
-.. _Northwind Application: https://northwind.pythonanywhere.com
+.. _Northwind Traders Application: https://northwind.pythonanywhere.com
 
 
 Personal Account Ledger
@@ -862,8 +862,8 @@ The complete application was developed in a few hours` time. Below is the approx
 .. note::
     To Be Continued when/if more features were added ...
 
-Northwind
-----------
+Northwind Traders
+-----------------
 
 The Northwind template has some VBA attached to it. It is a fairly simple code from the migration point of view. Below is the approximate process:
 
@@ -927,8 +927,24 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
         WHERE ((([Order Details].[Status ID])=4))
         GROUP BY [Order Details].[Product ID]; 
 
+.. note::
+
+        The above SQL will work only in MS Access. Imo, it is impossible to migrate this SQL to SQLite3 or any other database provider. It works only from Access. 
+
 
 Here is the JS and Python code, respectively, replacing the need for SQL. The button `Purchase` was added just like it exists on MS Access.
+
+The important JS function is:
+
+.. js:function:: on_after_open
+
+
+As this JS function is taking the result of `get_records` Server Module function, it is placed in `on_after_open`. This is important to understand,
+because in formal Jam.py Documentation it is sparsely mentioned. Most of the time, the `on_after_open` is used with Master/Detail views.
+There is a topic `How to link two tables`_ in the Docs, which I would encourage to visit.
+
+.. _How to link two tables: https://jampyapplicationbuilder.com/docs/how_to/how_to_link_two_tables.html
+
 
 .. code-block:: JavaScript
 
@@ -980,6 +996,16 @@ Here is the JS and Python code, respectively, replacing the need for SQL. The bu
                 return '<span style="color: ' + color + ';">' + field.display_text + '</span>';
             }
         }
+
+
+The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access.
+Each SQL statement can be recognised by `set_where` function:
+
+.. js:function:: set_where
+
+
+.. note::
+            What is achieved with the Python code is portability. It will execute against any database provider. 
 
 .. code-block:: Python
 
