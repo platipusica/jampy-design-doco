@@ -898,7 +898,7 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
 
 - The biggest challenge was implementing the `Inventory List` Virtual Table, as the MS Access query is quite large:
 
-.. code-block:: JavaScript
+.. code-block:: sql
 
 
         SELECT Products.ID AS [Product ID], Products.[Product Name], Products.[Product Code], Nz([Quantity Purchased],0) AS [Qty Purchased], Nz([Quantity Sold],0) AS [Qty Sold], Nz([Quantity On Hold],0) AS [Qty On Hold], [Qty Purchased]-[Qty Sold] AS [Qty On Hand], [Qty Purchased]-[Qty Sold]-[Qty On Hold] AS [Qty Available], Nz([Quantity On Order],0) AS [Qty On Order], Nz([Quantity On Back Order],0) AS [Qty On Back Order], Products.[Reorder Level], Products.[Target Level], [Target Level]-[Current Level] AS [Qty Below Target Level], [Qty Available]+[Qty On Order]-[Qty On Back Order] AS [Current Level], IIf([Qty Below Target Level]>0,IIf([Qty Below Target Level]<[Minimum ReOrder Quantity],[Minimum Reorder Quantity],[Qty Below Target Level]),0) AS [Qty To Reorder]
@@ -932,7 +932,7 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
 
 .. note::
 
-        The above SQL will work only in MS Access. Imo, it is impossible to migrate this SQL to SQLite3 or any other database provider. It works only from Access. 
+        The above SQL will work only in MS Access. Of course, developing a completely new SQL is possible for any database provider. Jam can use any SQL within the Server Module, however we will demonstrate a pure Jam way of doing it.
 
 
 Here is the JS and Python code, respectively, replacing the need for SQL. The button `Purchase` was added just like it exists on MS Access.
