@@ -569,14 +569,16 @@ for download on Export tab.
 
 - `Personal Account Ledger`_. 
 - `Inventory Transactions`_. 
-- `Northwind Traders Application`_.
+- `Northwind Traders`_.
 
-.. _Personal Account Ledger: https://msaccess.pythonanywhere.com
-.. _Northwind Traders Application: https://northwind.pythonanywhere.com
 
 
 Personal Account Ledger
 -----------------------
+
+The application lives here:
+
+https://msaccess.pythonanywhere.com
 
 The Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
 
@@ -865,6 +867,12 @@ The complete application was developed in a few hours` time. Below is the approx
 Northwind Traders
 -----------------
 
+The application lives here:
+
+https://northwind.pythonanywhere.com
+
+
+
 The Northwind template has some VBA attached to it. It is a fairly simple code from the migration point of view. Below is the approximate process:
 
 -	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
@@ -1090,6 +1098,9 @@ Each SQL statement can be recognised by `set_where` function:
 
 .. note::
             What was achieved with the above Python code is portability. It will execute against any database provider. 
+
+
+- The `set_where` function deserves the separate topic though. For now, it is similar to specifying `WHERE` clause in SQL.
 
 
 **Master/Details Edit**
