@@ -1086,8 +1086,10 @@ Each SQL statement can be recognised by `set_where` function:
                 
             return res
 
+
+
 .. note::
-            What is achieved with the above Python code is portability. It will execute against any database provider. 
+            What was achieved with the above Python code is portability. It will execute against any database provider. 
 
 
 **Master/Details Edit**
