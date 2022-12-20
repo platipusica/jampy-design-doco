@@ -893,7 +893,10 @@ Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. I
 
     Which opens a question: how to migrate the hard coded text to a Lookup List or even a table? A bit latter about that.
 
-- The  biggest challenge was implementing the `Inventory List`. The MS Access query is quite large:
+**Virtual Table**
+
+
+- The biggest challenge was implementing the `Inventory List` Virtual Table, as the MS Access query is quite large:
 
 .. code-block:: JavaScript
 
@@ -998,7 +1001,7 @@ There is a topic `How to link two tables`_ in the Docs, which I would encourage 
         }
 
 
-The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access.
+    The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access.
 Each SQL statement can be recognised by `set_where` function:
 
 .. js:function:: set_where
@@ -1084,6 +1087,68 @@ Each SQL statement can be recognised by `set_where` function:
                     print(res)
                 
             return res
+
+
+
+**Master/Details Edit**
+
+- In order to implement Master/Details functionality, the `PO Detail` and `Order Detail` Group Item was created, and the related tables were imported into this Item Group. This enables the functionality to add Detail to any Master table for viewing and editing.
+
+
+**Master/Details View**
+
+- For Master/Details View only, with no need for editing, there is no need to do anything special other than to add a code to display the Details for a Master table.
+
+    Below is the code which will display for each `Supplier` the relevant `Purchase Order` as Details:
+
+
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            if (!item.lookup_field) {
+                item.table_options.height -= 200;
+                item.purchase_orders = task.purchase_orders.copy();
+                item.purchase_orders.paginate = false;
+                item.purchase_orders.create_table(item.view_form.find('.view-detail'), {
+                    height: 200,
+                    summary_fields: ['submitted_date', 'purchase_order_id'],
+                });
+
+            }
+        }
+
+        var scroll_timeout;
+
+        function on_after_scroll(item) {
+            if (!item.lookup_field && item.view_form.length) {
+                clearTimeout(scroll_timeout);
+                scroll_timeout = setTimeout(
+                    function() {
+                        if (item.rec_count) {
+                            item.purchase_orders.set_where({supplier_id: item.id.value});
+                            item.purchase_orders.set_order_by(['-submitted_date']);
+                            item.purchase_orders.open(true);
+                        }
+                        else {
+                            item.purchase_orders.close();
+                        }
+                    },
+                    100
+                );
+            }
+        }
+
+Here we showing the difference with code used for ie `Suppliers` and `Customers`. It is the similar functionality to display `Orders` as Details for each Customer:
+
+.. image:: _images/js_details.png
+	:scale: 80 %
+	:align: center
+	:alt: Master/Details 
+
+
+.. note::
+
+        As seen, almost the same code is used for all Master/Details Views for `Products`, `Employees` and `Shippers`. It is really simple to add an Detail table to a Master table when knowing the Primary Key.
 
 .. note::
     To Be Continued...
