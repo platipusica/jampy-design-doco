@@ -880,7 +880,7 @@ The Northwind template has some VBA attached to it. It is a fairly simple code f
         Orders_Tax_Status
         Purchase_Order_Status
 
--  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the Lookup Lists. The only Lookup List created in the beginning of migration was for `Purchase orders` and `Orders` table. Which in Access is hard coded as `Cash`, `Check` and `Credit Card` information (in the sense of export into a csv):
+-  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the Lookup Lists. The only Lookup List created in the beginning of migration was for `Purchase orders` and `Orders` table. Which in Access is hard coded as `Cash`, `Check` and `Credit Card` information (in the sense of exporting the data into a csv):
 
 .. code-block:: JavaScript
 
@@ -1001,14 +1001,12 @@ There is a topic `How to link two tables`_ in the Docs, which I would encourage 
         }
 
 
-    The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access.
+The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access. All of this is to populate the list *res* and to return the information back to JavaScript function.
 Each SQL statement can be recognised by `set_where` function:
 
 .. js:function:: set_where
 
 
-.. note::
-            What is achieved with the Python code is portability. It will execute against any database provider. 
 
 .. code-block:: Python
 
@@ -1016,7 +1014,7 @@ Each SQL statement can be recognised by `set_where` function:
             res, inventory = [], product = [], ''
 
             product = item.task.products.copy()
-            #product.set_where(id=41)
+            #product.set_where(id=41)                               # here we can specify just one item for testing
             product.open(fields=['id', 'product_name', 'target_level'], 
                 group_by=['id'], order_by=['id'])
 
@@ -1030,7 +1028,7 @@ Each SQL statement can be recognised by `set_where` function:
 
                 order_details = item.task.order_details.copy()
                 order_details.set_fields('product_id', 'status_id', 'quantity')
-                #order_details.set_where(product_id=product_id, status_id=4);
+                #order_details.set_where(product_id=product_id, status_id=4); # here we can specify just one item for testing
                 order_details.set_where(product_id=product_id);
                 
                 order_details.open(fields=['product_id', 'quantity', 'status_id'], 
@@ -1088,6 +1086,8 @@ Each SQL statement can be recognised by `set_where` function:
                 
             return res
 
+.. note::
+            What is achieved with the above Python code is portability. It will execute against any database provider. 
 
 
 **Master/Details Edit**
@@ -1149,6 +1149,9 @@ Here we showing the difference with code used for ie `Suppliers` and `Customers`
 .. note::
 
         As seen, almost the same code is used for all Master/Details Views for `Products`, `Employees` and `Shippers`. It is really simple to add an Detail table to a Master table when knowing the Primary Key.
+
+
+
 
 .. note::
     To Be Continued...
