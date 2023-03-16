@@ -7,6 +7,30 @@ This list is inspired by the classic article by Joel Spolsky entitled `The Joel 
 .. _The Joel Test 12 Steps to Better Code: https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
 
 
+Built in Code Editor
+====================
+
+For the JS and Python code, Jam.py has a built in `Ace`_ Code Editor. The best is to familiarise with the editor shortcuts
+from here: https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts
+
+Most used ones:
+
+
++---------------+-----------------+----------------------+
+| Windows/Linux |       Mac       |        Action        |
++===============+=================+======================+
+| Tab           | Tab             | Indent               |
++---------------+-----------------+----------------------+
+| Shift-Tab     | Shift-Tab       | Outdent              |
++---------------+-----------------+----------------------+
+| Ctrl-/        | Command-/       | Toggle comment       |
++---------------+-----------------+----------------------+
+| Ctrl-Shift-/  | Command-Shift-/ | Toggle block comment |
++---------------+-----------------+----------------------+
+
+
+.. _Ace: https://ace.c9.io/
+
 Python version
 ==============
 
