@@ -35,7 +35,7 @@ Python version
 ==============
 
 Since Jam.py is a Python Web Framework, we need Python installed on the target Operation System. 
-Get the latest version of Python at https://www.python.org/downloads/ or with your operating system's package manager.
+Get the latest version of Python at https://www.python.org/downloads/ or with your operating system\'\s package manager.
 
 .. admonition:: Python on Windows
 
