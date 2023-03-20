@@ -13,7 +13,7 @@ Built in Code Editor
 For the JS and Python code, Jam.py has a built in `Ace`_ Code Editor. The best is to familiarise with the editor shortcuts
 from here: https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts
 
-Most used ones:
+The most used ones:
 
 
 +---------------+-----------------+----------------------+
