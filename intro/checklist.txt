@@ -280,7 +280,7 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
 
 .. admonition:: Adapted from `Django Docs`_
 
-    `Django Docs`_: Jam.py supports many different database servers and is officially supported with PostgreSQL_, MariaDB_, MySQL_, MSSQL_, Oracle_, Firebird_ and SQLite_ with SQLCipher_.
+    `Django Docs`_: Jam.py supports many different database servers and is officially supported with PostgreSQL_, MariaDB_, MySQL_, MSSQL_, Oracle_, Firebird_, SQLite_ and SQLite with SQLCipher_.
 
     If you are developing a small project or something you don't plan to deploy in
     a production environment, SQLite is generally the best option as it doesn't
@@ -290,14 +290,19 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
     production.
 
 
-    In addition to a database backend, you'll need to make sure your Python
+    In addition to a database backend, we need to make sure the Python
     database bindings are installed.
 
-    * If you're using PostgreSQL, you'll need the `psycopg2`_ package. 
+    * If using PostgreSQL, the ``psycopg2`` package is needed. 
 
-    * If you're using MySQL or MariaDB, you'll need a ``mysqlclient`` for Python 2.x or ``pymysql``  for Python 3.x. 
+    * If using MySQL or MariaDB, the ``mysqlclient`` for Python 2.x or ``mysqlclient``  for Python 3.x is needed. 
 
-    * If you're using Oracle, you'll need a copy of `cx_Oracle`_.
+    * If using MSSQL, the ``pymssql`` is needed.
+
+    * If using Oracle, the `cx_Oracle`_ is needed.
+
+    * If using SQLCipher_,  ``sqlcipher3-binary`` is needed for Linux. There is a standalone DLL for Windows available.
+
 
 .. _PostgreSQL: https://www.postgresql.org/
 .. _MariaDB: https://mariadb.org/
