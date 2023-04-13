@@ -35,9 +35,6 @@ matches the version you installed by executing::
 
     ...\> py --version
 
-.. seealso::
-
-    For more details, see :doc:`python:using/windows` documentation.
 
 About ``pip``
 =============
@@ -103,3 +100,51 @@ Common pitfalls
     ...\> set https_proxy=https://username:password@proxyserver:proxyport
 
 
+* If your Administrator prohibited setting up a virtual environment, it 
+  is still possible to install Jam.py as follows::
+
+    ...\> python -m pip install jam.py
+
+
+    
+  This will download and install the latest Jam.py release.
+
+  After the installation has completed, you can verify your Jam.py installation
+  by executing ``pip list`` in the command prompt.
+
+  However, running ``jam-project.py`` will fail since it is not in the path. Check
+  the installation folder::
+
+    ...\> python -m site --user-site
+
+  The output might be similar to below::
+
+    C:\Users\youruser\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages
+
+
+
+  Replace ``site-packages`` at the end of above line with ``Scripts``::
+
+    ...\> dir C:\Users\youruser\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts
+
+
+  The output might be similar to below::
+
+    ...\> Directory of C:\Users\yourser\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts
+
+        13/04/2023  02:59 PM    <DIR>          .
+        13/04/2023  02:59 PM    <DIR>          ..
+        13/04/2023  02:59 PM             1,087 jam-project.py
+                       1 File(s)          1,087 bytes
+                       2 Dir(s)  177,027,321,856 bytes free
+
+
+
+  Create the new folder somewhere and run ``jam-project`` from from it::
+
+    ...\> python C:\Users\youruser\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts\jam-project.py
+
+
+  Run the new project::
+
+    ...\> python server.py
