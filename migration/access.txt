@@ -888,18 +888,18 @@ The Northwind template has some VBA attached to it. It is a fairly simple code f
         Orders_Tax_Status
         Purchase_Order_Status
 
--  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the Lookup Lists. The only Lookup List created in the beginning of migration was for `Purchase orders` and `Orders` table. Which in Access is hard coded as `Cash`, `Check` and `Credit Card` information (in the sense of exporting the data into a csv):
+-  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the `Lookup Lists`. The only `Lookup List` created in the beginning of migration was for `Purchase orders` and `Orders` tables, `Payment Method` field. Which in Access has hard coded values as `Cash`, `Check` and `Credit Card` information (in the sense of exporting the data into a csv):
 
 .. code-block:: JavaScript
 
         Payment Method
 
-Because of that reason, the `Payment Method` is the VARCHAR Type in MS Access. It was changed to INTEGER, after the Import, and pointed to a Lookup List.
+The `Payment Method` is the VARCHAR Type in MS Access. Hence, to be able to use a `Lookup List`, it was changed to INTEGER after the Import, and pointed to a created `Lookup List`. 
 
 
 .. note::
 
-    Which opens a question: how to migrate the hard coded text to a Lookup List or even a table? A bit latter about that.
+    Which opens a question: how to migrate the hard coded text to a `Lookup List` or even a table? A bit latter about that.
 
 **Virtual Table**
 
@@ -950,8 +950,8 @@ The important JS function is:
 .. js:function:: on_after_open
 
 
-As this JS function is taking the result of `get_records` Server Module function, it is placed in `on_after_open`. This is important to understand,
-because in formal Jam.py Documentation it is sparsely mentioned. Most of the time, the `on_after_open` is used with Master/Detail views.
+As this JS function is taking the result of `get_records` Server Module function, it is placed in ``on_after_open``. This is important to understand,
+because in formal Jam.py Documentation it is sparsely mentioned. Most of the time, the ``on_after_open`` is used with Master/Detail views.
 There is a topic `How to link two tables`_ in the Docs, which I would encourage to visit.
 
 .. _How to link two tables: https://jampyapplicationbuilder.com/docs/how_to/how_to_link_two_tables.html
@@ -1009,8 +1009,8 @@ There is a topic `How to link two tables`_ in the Docs, which I would encourage 
         }
 
 
-The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access. All of this is to populate the list *res* and to return the information back to JavaScript function.
-Each SQL statement can be recognised by `set_where` function:
+The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access. All of this is to populate the list ``res`` and to return the information back to JavaScript function.
+Each SQL statement can be recognised by ``set_where`` function:
 
 .. js:function:: set_where
 
@@ -1097,10 +1097,48 @@ Each SQL statement can be recognised by `set_where` function:
 
 
 .. note::
-            What was achieved with the above Python code is portability. It will execute against any database provider. 
+            What was achieved with the above Python code is portability. It will execute against any database provider. However, performance was not great.
+            Hence, it was decided to develop SQL instead of above code.
+
 
 
 - The `set_where` function deserves the separate topic though. For now, it is similar to specifying `WHERE` clause in SQL.
+
+The SQL developed is much faster than the above code and runs on all supported databases: 
+
+.. code-block:: sql
+
+        SELECT
+          p1.ID AS ID,
+          p1.Product_Name AS Name,
+          COALESCE(
+            (SELECT SUM(od.quantity)
+             FROM order_details od
+             WHERE p1.ID = od.product_id AND od.status_id = 4),
+            0) AS quantity_on_back_order,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 1),
+            0) AS quantity_purchased,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 2),
+            0) AS quantity_sold,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 3),
+            0) AS quantity_on_hold,
+          COALESCE(
+            (SELECT SUM(po1.quantity)
+             FROM purchase_order_details po1
+             WHERE p1.ID = po1.product_id AND po1.posted_to_inventory = 0),
+            0) AS quantity_on_order,
+          p1.target_level AS target_level
+        FROM products p1
+        GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID
 
 
 **Master/Details Edit**
