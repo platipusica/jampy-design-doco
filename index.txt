@@ -26,6 +26,8 @@ Welcome to Jam.py! If you are new to Jam.py or no-code, low-code or more-code We
 To download this document as a single PDF, please visit:
 https://jampy-application-design-tips.readthedocs.io/_/downloads/en/latest/pdf/
 
+The PDF is built instantly after every commit into the repository. Hence, some data on this site might be older than the PDF.  
+
 How is the documentation organised
 ==================================
 
