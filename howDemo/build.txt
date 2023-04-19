@@ -777,7 +777,7 @@ Below sql will check for any code in the Client Modules:
 
 .. code-block:: sql
 
-	sqlite3 admin.sqlite "select id, f_name, f_client_module from sys_items where  f_client_module!='' and f_client_module is not null"
+	sqlite3 admin.sqlite "select id, f_name, f_web_client_module from sys_items where  f_web_client_module!='' and f_web_client_module is not null"
 
 
 Of course, the Developer would need access to the admin.sqlite database to run the SQL against it. The SQL does not take into
