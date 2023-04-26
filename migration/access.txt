@@ -572,6 +572,10 @@ for download on Export tab.
 - `Northwind Traders`_.
 
 
+For mentioned applications, the Export file is available. Download the Export, install the `Python Jam.py`_ framework locally or on the server, create the `New application`_, `Import`_ the same downloaded file, and point the Application to sqlite database as per creating the New application.
+
+
+
 
 Personal Account Ledger
 -----------------------
@@ -904,7 +908,7 @@ The `Payment Method` is the VARCHAR Type in MS Access. Hence, to be able to use 
 **Virtual Table**
 
 
-- The biggest challenge was implementing the `Inventory List` Virtual Table, as the MS Access query is quite large:
+- The biggest challenge was implementing the `Inventory List` Virtual Table, as the MS Access query is quite _`large`:
 
 .. code-block:: sql
 
@@ -1141,6 +1145,9 @@ The SQL developed is much faster than the above code and runs on all supported d
         GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID
 
 
+As seen, this was the iteration process from quite `large`_ Access SQL, to SQL which runs on all supported databases.
+
+
 **Master/Details Edit**
 
 - In order to implement Master/Details functionality, the `PO Detail` and `Order Detail` Group Item was created, and the related tables were imported into this Item Group. This enables the functionality to add Detail to any Master table for viewing and editing.
@@ -1202,6 +1209,57 @@ Here we showing the difference with code used for ie `Suppliers` and `Customers`
         As seen, almost the same code is used for all Master/Details Views for `Products`, `Employees` and `Shippers`. It is really simple to add an Detail table to a Master table when knowing the Primary Key.
 
 
+**Lookup Lists**
+
+There are many `Drop down` lists we could move to a Lookup List, for example for `Order Details` table `Status ID` field has:
+
+.. code-block:: JavaScript
+
+        None
+        Allocated
+        Invoiced
+        Shipped
+        On Order
+        No Stock
+
+Or, as already mentioned, `Purchase orders` and `Orders` table `Payment method` field:
+
+.. code-block:: JavaScript
+
+        Payment Method
+
+
+However, this usually means splitting the table in two tables, `Orders` and `Payment_method`
+for the Lookups.
+Or adding a Lookup List `Payment Method` and pointing `payment_method` to it. Which changes TEXT to INT in the Builder, and stores INT in the database.
+
+In legacy applications, ie. Imported tables from live system, first option is not possible due to table changes.
+However, second option is not possible either, because it will store the INT in a table!
+
+The solution is to store the TEXT in tables, as this is acceptable for Imported tables:
+
+.. code-block:: JavaScript
+
+
+        function on_field_changed(field, lookup_item) {
+            let item = field.owner;
+            if (field.field_name === 'payment_type') {
+                item.payment_type.value = field.display_text;
+            }    
+        }
+        function on_edit_form_created(item) {
+            if (item.payment_type.value === 'Credit Card') {
+                item.payment_type.value = "Credit Card";
+            }
+            else if (item.payment_type.value === 'Cash') {
+                item.payment_type.value = "Cash";
+            }
+            else if (item.payment_type.value === 'Check') {
+                item.payment_type.value = "Check";
+            }
+        }
+
+We still need a Lookup List ie. "Payment Type" with the values, but the stored value is TEXT, and not INT.
 
 
 .. note::
