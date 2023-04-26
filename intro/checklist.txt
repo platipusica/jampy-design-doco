@@ -344,6 +344,3 @@ Database sequences
 ==================
 
 The database sequences are supported and Jam.py is providing an interface to use the `sequence generator`. Not all `sequence generators` can be used as this is specific to the database vendor. The Export file does not store the sequence definition, just the name of the sequence used.
-
-
-
