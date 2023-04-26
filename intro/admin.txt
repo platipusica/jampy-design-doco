@@ -1,0 +1,8 @@
+=====================
+admin.sqlite Database
+=====================
+
+.. raw:: html
+
+   <a href="https://jampyapplicationbuilder.com/jam_schema/Jam.py.html" target="_blank">Mind Map for admin.sqlite database</a>.
+
