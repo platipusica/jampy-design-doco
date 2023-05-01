@@ -1019,13 +1019,15 @@ There is a topic `How to link two tables`_ in the Docs, which I would also encou
         }
 
 
+Next is the Server Module code:
+
+
 The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access. All of this is to populate the list ``res`` and to return the information back to JavaScript function.
 Each SQL statement can be recognised by ``set_where`` function:
 
 .. js:function:: set_where
 
 
-Next is the Server Module code:
 
 .. code-block:: Python
 
@@ -1154,7 +1156,7 @@ The SQL developed is much faster than the above code and runs on all supported d
 
 As seen, this was the iteration process from a quite `large`_ Access SQL, to a much smaller SQL.
 
-So, we dump the server Module code from the above with a new one containing the above SQL:
+So, we dump the Server Module code from the above with a new one containing the above SQL:
 
 .. code-block:: Python
 
@@ -1275,6 +1277,12 @@ Hence, the final ``on_after_open`` looks like this:
             });
         }
 
+This concludes the Virtual Table used for the `Inventory List`. We should be able to build a Dashboard as seen on the MS Access template `Startup`:
+
+
+.. code-block:: JavaScript
+        - Inventory to Reorder
+        - Active Orders
 
 
 **Master/Details Edit**
