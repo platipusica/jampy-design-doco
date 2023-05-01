@@ -113,7 +113,7 @@ Reports
 =======
 
 .. note::
-    `Reports` are `reports based on OpenDocument templates`, more specifically  Calcs ods files.
+    `Reports` are based on OpenDocument templates`, more specifically  Calcs ods files.
 
 Professional `look` of reports is developed visually in LibreOffice (LO) Calcs. It is similar `look and feel` to any other Spreadsheet software. The LO enables us to use graphics, for example as the Company Logo. It is even possible to insert images from the database itself (with watermark, if needed). 
 
@@ -121,6 +121,18 @@ Professional `look` of reports is developed visually in LibreOffice (LO) Calcs. 
 .. pull-quote:: 
 
     `The LibreOffice must be installed on the server OS level which is hosting Jam.py. The containerised LO images do exist on the Internet, if needed to use for the Jam.py container.`
+
+
+Virtual Tables
+===============
+
+Virtual Tables are in-memory datasets. There is no corresponding table in the project database for Virtual Table. The Demo application
+is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, when used with `SELECT` SQL.
+
+More about Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
+
+
+
 
 
 Need more Groups?

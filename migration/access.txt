@@ -868,8 +868,12 @@ The complete application was developed in a few hours` time. Below is the approx
 .. note::
     To Be Continued when/if more features were added ...
 
+.. _NorthwindTraders:
+
 Northwind Traders
 -----------------
+
+
 
 The application lives here:
 
@@ -908,7 +912,7 @@ The `Payment Method` is the VARCHAR Type in MS Access. Hence, to be able to use 
 **Virtual Table**
 
 
-- The biggest challenge was implementing the `Inventory List` Virtual Table, as the MS Access query is quite _`large`:
+- The biggest challenge was implementing the `Inventory List` MS Access SQL query as Virtual Table, since the query is quite _`large`:
 
 .. code-block:: sql
 
