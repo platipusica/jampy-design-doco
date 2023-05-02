@@ -473,7 +473,7 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 
 The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions:
 
-.. code-block:: Python
+.. code-block:: sql
 
 	CREATE TABLE `Location` -- منطقه (`ID` INTEGER PRIMARY KEY AUTOINCREMENT -- ردیف
 	,
@@ -584,7 +584,7 @@ The application lives here:
 
 https://msaccess.pythonanywhere.com
 
-The Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this.
+The Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this due to `validation`_.
 
 The complete application was developed in a few hours` time.  Below is the approximate process:
 
@@ -820,7 +820,7 @@ The complete application was developed in a few hours` time.  Below is the appro
 -   Added the Export tab to download the latest source code. The Export feature is available by default on the Application Builder. The Builder is not accessible publicly due to the security reasons. Here is the code added to index.html file below "about" and `Account Transaction` table "function on_page_loaded(task)":
 
 
-.. code-block:: JavaScript
+.. code-block:: html
 
         <li id="about"><a href="#">About</a></li>                        
         <li id="export"><a href="#">Export</a></li>
@@ -835,8 +835,31 @@ The complete application was developed in a few hours` time.  Below is the appro
         });
 
 
+.. _Validation:
+
+**Validation**
+
+This is the JS code for the transaction amount validation. 
+We also added on the table ``account_transactions``, 
+field `transaction_amount`, on the the Interface Help: `Value should be less then 10000`.
+
+.. code-block:: JavaScript
+
+        function on_field_validate(field) {
+            if (field.field_name === 'transaction_amount' && field.value < 1) {
+                    return 'The amount cant be negative!';
+            }
+            if (field.field_name === 'transaction_amount' && field.value > 10000) {
+                    return 'The value is be less then 10000!';
+            }    
+        }
+
+
+
 
 -   Maybe the last feature needed is the CVS (spreadsheet) export/import. This step is fully documented in the official documentation.
+
+
 
 
 
@@ -863,6 +886,8 @@ The complete application was developed in a few hours` time. Below is the approx
         TransactionType
 
 -   Because how the Access application works, it might be a good decision to convert the Lookup List into tables. That way we might utilise the Jam.py reports and Dashboard features with no additional code needed. The problem with any Lookup Lists is the table relationship, which can not be built with the SQL, and must be addressed with code. This is how `Personal Account Ledger`_ was built.
+
+
 
 
 .. note::
@@ -1281,6 +1306,7 @@ This concludes the Virtual Table used for the `Inventory List`. We should be abl
 
 
 .. code-block:: JavaScript
+
         - Inventory to Reorder
         - Active Orders
 
