@@ -16,6 +16,10 @@ The complete application was developed in a few hours` time.  Below is the appro
 -	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
 -	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since the Access Categories Form has a Drop-down list with the Income and Expense, the Lookup List was created with the same. 
 
+
+Lookup List
+------------
+
 .. image:: _images/Personal03.png
 	:scale: 65 %
 	:align: center
@@ -37,6 +41,9 @@ The complete application was developed in a few hours` time.  Below is the appro
 	:align: center
 	:alt: Personal Account Ledger
 
+
+A little code
+--------------
 
 -   The first code was added to restrict adding a negative currency with the _`MessageBox` displaying the Alert.
 
@@ -242,23 +249,6 @@ The complete application was developed in a few hours` time.  Below is the appro
         }
 
 -   More summary was added for `Account Transaction` table. This is a no code operation done on View Form.
--   Added the Export tab to download the latest source code. The Export feature is available by default on the Application Builder. The Builder is not accessible publicly due to the security reasons. Here is the code added to index.html file below "about" and `Account Transaction` table "function on_page_loaded(task)":
-
-
-.. code-block:: html
-
-        <li id="about"><a href="#">About</a></li>                        
-        <li id="export"><a href="#">Export</a></li>
-
-
-.. code-block:: JavaScript
-
-        $("#menu-right #export a").click(function(e) {
-                    var url = [location.protocol, '//', location.host, location.pathname].join('');
-                    url += 'static/internal/AccountTransactions.zip';
-                    window.open(encodeURI(url));
-        });
-
 
 .. _Validation:
 
@@ -280,6 +270,26 @@ field `transaction_amount`, on the the Interface Help: `Value should be less the
             }    
         }
 
+
+index.html
+----------
+
+-   Added the Export tab to download the latest source code. The Export feature is available by default on the Application Builder. The Builder is not accessible publicly due to the security reasons. Here is the code added to index.html file below "about" and `Account Transaction` table "function on_page_loaded(task)":
+
+
+.. code-block:: html
+
+        <li id="about"><a href="#">About</a></li>                        
+        <li id="export"><a href="#">Export</a></li>
+
+
+.. code-block:: JavaScript
+
+        $("#menu-right #export a").click(function(e) {
+                    var url = [location.protocol, '//', location.host, location.pathname].join('');
+                    url += 'static/internal/AccountTransactions.zip';
+                    window.open(encodeURI(url));
+        });
 
 
 
