@@ -392,7 +392,7 @@ Maybe we can go now through a code.
 A little code
 =============
 
-Before diving in to a code, remember the :doc:`ACE Code Editor shortcuts <../intro/checklist>`!
+Before diving in to a code, remember the :doc:`ACE Code Editor shortcuts </intro/checklist>`!
 
 If one is a beginner with any sort of coding, this might be a bit daunting. However, I can assure you, the developers out there are using copy/paste just like anyone else. So, with a bit of persistence, one can reuse the code from Demo application and get impressive results. This is particularly true for Dashboards, which is a flag Jam.py feature. We included more then 15-20 graphs for some applications, with a minimal change for each. For example, just changing "pie" to "bar" changes the graph appearance.
 
