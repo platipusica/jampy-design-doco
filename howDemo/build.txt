@@ -18,11 +18,10 @@ The Application Builder is accessible with typing 127.0.0.1:8080/_`builder.html`
 	:alt: Application builder of demo project
 
 
-The Application is derived from Open Source Chinook Database. It is an Invoicing example with music tracks as invoiced products,
-Customers, Albums, etc. Basically, the application creates a Customer details, product details, and raises Invoices for Customers. That is it.
+The application is derived from the open-source Chinook database. It is an invoicing example with music tracks as invoiced products, customers, albums, etc. Basically, the application creates customer details, product details, and raises invoices for customers. That's it.
 Cool little application, though.
 
-As mentioned, Demo application is derived from it, it is not a one-to-one mappings of all database fields and relations. We need to start from somewhere, right?
+As mentioned, the demo application is derived from it. It is not a one-to-one mapping of all database fields and relations. We need to start somewhere, right?
 
 
 Demo database
@@ -35,7 +34,7 @@ To better understand the actual database, here is the original _`Chinook` relati
 	:align: center
 	:alt: Chinook Database
 
-Why is the above diagram important? Because it is demonstrating the tables Primary and Foreign Keys, which are essentially a table `Lookup fields`_ used within Jam.py. More about that latter.
+Why is the above diagram important? Because it is demonstrating the table's Primary and Foreign Keys, which are essentially table `Lookup fields`_ used within Jam.py. More about that later.
 
 So now that we know what the Demo application is all about, we can dive into more details. First, what can we actually expect from Jam.py?
 
@@ -43,9 +42,9 @@ So now that we know what the Demo application is all about, we can dive into mor
 What to expect?
 ================
 
-Low code is what everyone talks about. Below is what Jam.py provides with no coding needed at all, at least not for this Demo. The code does exist, it is there. Otherwise the application would not work at all. However, this only means that no coding is required by us to build similar applications. Because the code is there, and is available to us, this also means we can adapt the existing code for our requirements. Mostly, it is a copy/paste from this Demo, with some minor changes for the application we are building. This is important to understand. Jam.py is providing many bells and whistles, or so called batteries, out of shelf. However, Jam.py is not "Out of Shelf Application"! It is a framework, so we build applications within the constraints of the framework. 
+Low code is what everyone talks about. Below is what Jam.py provides with no coding needed at all, at least not for this Demo. The code does exist; it is there. Otherwise, the application would not work at all. However, this only means that no coding is required by us to build similar applications. Because the code is there and available to us, this also means we can adapt the existing code for our requirements. Mostly, it is a copy/paste from this Demo, with some minor changes for the application we are building. This is important to understand. Jam.py provides many bells and whistles or so-called batteries out of the box. However, Jam.py is not an "Out of the Box Application"! It is a framework, so we build applications within the constraints of the framework.
 
-Just like Django's MVC. When building applications with Django, we operate within the similar constraints. Both frameworks are flexible enough for the job at hand. The main difference is the task, or the application. Django could build the Jam.py application, but it would be overkill, since Jam.py is way more specialised in doing so. Jam.py is a specialised framework. It is the right tool for the right job. Let's see what can we expect from it.
+Just like Django's MVC. When building applications with Django, we operate within similar constraints. Both frameworks are flexible enough for the job at hand. The main difference is the task or the application. Django could build the Jam.py application, but it would be overkill, since Jam.py is way more specialized in doing so. Jam.py is a specialized framework. It is the right tool for the right job. Let's see what we can expect from it.
 
 
 DropDown Menu(s)
@@ -65,11 +64,13 @@ Data Grid(s)
 ------------
 
 
-The Demo Invoices data grid is called a Journal. In Accounting, this are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically, with pagination on the bottom and can contain History button, refresh and Filters button. This are the default options, and can be turned on/off. If some none default button is needed, it can be added with a code though.
-Did I mention search for any field, and sorting for any field? It's automated.
+The Demo Invoices data grid is called a Journal. In Accounting, these are General Ledger tables. In databases, this is a Master Table. This grid is presented automatically with pagination at the bottom and can contain a History button, refresh button, and Filters button. These are the default options and can be turned on/off. If a non-default button is needed, it can be added with code, though.
 
-What is also done by Jam.py with no code is a summary for any numerical field or a number of records for other fields.
-As seen, the Invoices data grid is presented as Tab. As we open more grids, more Tabs will appear here automatically. Tabs Caption can be changed with a code. What we see initially, is the no code default.
+Did I mention the search for any field and sorting for any field? It's automated.
+
+What is also done by Jam.py with no code is a summary for any numerical field or the number of records for other fields.
+
+As seen, the Invoices data grid is presented as a tab. As we open more grids, more tabs will appear here automatically. Tab captions can be changed with code. What we see initially is the no-code default.
 
 .. image:: _images/demo_master.png
 	:scale: 70 %
@@ -79,10 +80,11 @@ As seen, the Invoices data grid is presented as Tab. As we open more grids, more
 More Data Grid(s)
 -----------------
 
-The Demo Invoices data has a Details grid. This are the `Invoice items`_ details. They are created automatically and can contain summary fields and sorting. The "Total" field visible is a code! What is not visible is editing directly in the grid! 
-There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? Will get there.
+The Demo Invoices data has a Details grid. These are the `Invoice items`_ details. They are created automatically and can contain summary fields and sorting. The "Total" field visible is a code! What is not visible is editing directly in the grid!
 
-As above grid, each Details grid is presented in Tabbed format. More Details added to an Journal, more Tabs we see in here. 
+There can be any number of details data grids. Now, that is actually pretty impressive. Any number, huh? We'll get there.
+
+Like the above grid, each Details grid is presented in tabbed format. The more Details added to a journal, the more tabs we see here.
 
 .. image:: _images/demo_detail.png
 	:scale: 70 %
@@ -102,7 +104,7 @@ Automatically provided is a classic New/Delete/Edit option for any Data Grid. It
 	:alt: Data Grid Footer/Header 
 
 
-Ok, do not want to go further, just a minimum to get us going.
+Ok, do not want to go any further, just a minimum to get us going.
 
 
 Any questions?
@@ -110,10 +112,9 @@ Any questions?
 
 So now that we've covered the first thing we see on the Demo application, any questions?
 
+All of the above is driven by the Builder GUI. We might be saying it's no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover all possible scenarios. Or a team of dedicated developers.
 
-All of the above is driven by the Builder GUI. We might be saying no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover for all scenarios possible. Or a team of dedicated developers.
-
-I am ignoring the Reports and Analytics for now, visible on Demo application. Concentrating only on no-code or low-code. Both, Reports and Analytics features, require some coding experience. Not much, but still needed.
+I am ignoring the Reports and Analytics for now, visible on the Demo application, and concentrating only on no-code or low-code. Both the Reports and Analytics features require some coding experience. Not much, but still needed.
 
  
 
@@ -121,13 +122,13 @@ I am ignoring the Reports and Analytics for now, visible on Demo application. Co
 Ok, how do I start?
 ===================
 
-If no questions (cough, cough), I think we should first start with building some tables. Since we are doing Invoices, lets start with this. It is sort of top to bottom approach!
+If no questions (cough, cough), I think we should first start with building some tables. Since we are doing Invoices, lets start with this. It is a sort of top-to-bottom approach!
 
 
 Invoices
 --------
 
-For an invoice, we need a Customer, some Product and somewhere to store invoiced data. Like a Journal. To be fair, Journal is just a name. We do not really need to stick to the Jam.py Demo application naming! Rename anything to whatever floats your boat!
+For an invoice, we need a Customer, some Product and somewhere to store invoiced data, like a Journal. To be fair, Journal is just a name. We do not really need to stick to the Jam.py Demo application naming! Rename anything to whatever floats your boat!
 
 .. image:: _images/demo_journal.png
 	:scale: 70 %
@@ -135,24 +136,25 @@ For an invoice, we need a Customer, some Product and somewhere to store invoiced
 	:alt: Editing Journal
 
 
-We can rename Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always 
-advisable to use "Find" built-in option to search where some Name is used.
+We can rename the Journals caption to anything, since this is just a Caption. However, the Name can be used in the code somewhere, so it is always 
+advisable to use the "Find" built-in function to search where some Name is used.
 
-On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of automation. When we create a new table in Journals group, these 
-two records will be created automatically. We can think of this as a table Template.
+On above screenshot we see the “Deleted Flag” and “Record ID”. This is just a bit of built-in functionality. When we create a new table in the Journals group, these two records will be created automatically. We can think of this as a table template.
 
-_`Master field` field seen above is also a feature. In Demo application, Invoices table, it is used to identify which item belongs to which Invoice.
+
+The _`Master field` field seen above is also a feature. In the Demo application Invoices table, it is used to identify which item belongs to which Invoice.
 
 .. note::
 	`Master fields are not real fields in the database, they get populated when we select a value in the Lookup field.`
 
-This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff we might ask? Anything built as a `Lookup fields`_. So we set the "Master Field" to "Customer", for everything related to "Customers" table we are pulling the data from.
+Master fields are virtual fields in Jam.py that get populated based on the value selected in the lookup field. They are not actual columns in the database table, but rather a way to display related information from another table in the UI. When a value is selected in the lookup field, the master field is automatically updated with the corresponding value from the related table. This allows for easy navigation and visualization of related data in the UI.
 
-I would leave it here for now but just note that "Master field" can be also achieved with a code for Imported tables. Usually, the Imported tables are 
-from some other system, like MSSQL or MySQL, hence not created by Jam.py. In this case we can add the table as detail to only one master. With "Master 
-field" Jam.py feature we can do much more. We will get to this latter.
 
-Only Invoices, _`Invoices Items`, and Tracks are using "Master field" in Demo application. 
+This is actually very powerful feature in my books, because it quickly identifies stuff. Which stuff you might ask? Anything built as a `Lookup fields`_. By setting the `Master Field` to `Customer`, we can easily identify all data related to the `Customers` table that we are pulling information from.
+
+I would leave it here for now, but just note that the `Master field` can also be achieved with code for imported tables. Usually, imported tables are from other systems like MSSQL or MySQL, and are not created by Jam.py. In this case, we can add the table as a detail to only one master. With the `Master field` feature in Jam.py, we can do much more. We will get to this later.
+
+Only Invoices, _`Invoices Items`, and Tracks are using the "Master field" in Demo application. 
 
 The Demo Invoices table:
 

@@ -1,0 +1,542 @@
+.. include:: .special.rst
+
+
+.. _NorthwindTraders:
+
+Northwind Traders
+==================
+
+
+
+The application lives here:
+
+https://northwind.pythonanywhere.com
+
+
+
+The Northwind template has some VBA attached to it. It is a fairly simple code from the migration point of view. Below is the approximate process:
+
+-	The template was uploaded to https://jampyapplicationbuilder.com/conv/ to give us all tables and data needed for the project. 
+-	All tables were imported into the Jam.py Application Builder from the provided link after the upload. Since there are a few tables with no `Primary Key`, this are the candidates for the Lookup List or tables:
+
+
+.. code-block:: JavaScript
+
+        Employee_Privileges
+        Inventory_Transaction_Types
+        Order_Details_Status
+        Orders_Status
+        Orders_Tax_Status
+        Purchase_Order_Status
+
+-  For this exercise, we decided to add the `Primary Key` for the above tables, instead of making the `Lookup Lists`. The only `Lookup List` created in the beginning of migration was for `Purchase orders` and `Orders` tables, `Payment Method` field. Which in Access has hard coded values as `Cash`, `Check` and `Credit Card` information (in the sense of exporting the data into a csv):
+
+.. code-block:: JavaScript
+
+        Payment Method
+
+The `Payment Method` is the VARCHAR Type in MS Access. Hence, to be able to use a `Lookup List`, it was changed to INTEGER after the Import, and pointed to a created `Lookup List`. 
+
+
+.. note::
+
+    Which opens a question: how to migrate the hard coded text to a `Lookup List` or even a table? A bit latter about that.
+
+Virtual Table
+--------------
+
+- The biggest challenge was implementing the `Inventory List` MS Access SQL query as Virtual Table, since the query is quite _`large`:
+
+.. code-block:: sql
+
+
+        SELECT Products.ID AS [Product ID], Products.[Product Name], Products.[Product Code], Nz([Quantity Purchased],0) AS [Qty Purchased], Nz([Quantity Sold],0) AS [Qty Sold], Nz([Quantity On Hold],0) AS [Qty On Hold], [Qty Purchased]-[Qty Sold] AS [Qty On Hand], [Qty Purchased]-[Qty Sold]-[Qty On Hold] AS [Qty Available], Nz([Quantity On Order],0) AS [Qty On Order], Nz([Quantity On Back Order],0) AS [Qty On Back Order], Products.[Reorder Level], Products.[Target Level], [Target Level]-[Current Level] AS [Qty Below Target Level], [Qty Available]+[Qty On Order]-[Qty On Back Order] AS [Current Level], IIf([Qty Below Target Level]>0,IIf([Qty Below Target Level]<[Minimum ReOrder Quantity],[Minimum Reorder Quantity],[Qty Below Target Level]),0) AS [Qty To Reorder]
+        FROM ((((Products LEFT JOIN [Inventory Sold] ON Products.ID = [Inventory Sold].[Product ID]) LEFT JOIN [Inventory Purchased] ON Products.ID = [Inventory Purchased].[Product ID]) LEFT JOIN [Inventory On Hold] ON Products.ID = [Inventory On Hold].[Product ID]) LEFT JOIN [Inventory On Order] ON Products.ID = [Inventory On Order].[Product ID]) LEFT JOIN [Products On Back Order] ON Products.ID = [Products On Back Order].[Product ID];
+
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity Sold]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=2))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity Purchased]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=1))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Purchase Order Details].[Product ID] AS [Product ID], Sum([Purchase Order Details].Quantity) AS [Quantity On Order]
+        FROM [Purchase Order Details]
+        WHERE ((([Purchase Order Details].[Posted To Inventory])=False))
+        GROUP BY [Purchase Order Details].[Product ID];
+
+        SELECT [Inventory Transactions].[Product ID], Sum([Inventory Transactions].Quantity) AS [Quantity On Hold]
+        FROM [Inventory Transactions]
+        WHERE ((([Inventory Transactions].[Transaction Type])=3))
+        GROUP BY [Inventory Transactions].[Product ID];
+
+        SELECT [Order Details].[Product ID] AS [Product ID], Sum([Order Details].Quantity) AS [Quantity On Back Order]
+        FROM [Order Details]
+        WHERE ((([Order Details].[Status ID])=4))
+        GROUP BY [Order Details].[Product ID]; 
+
+.. note::
+
+        The above SQL will work only in MS Access. Of course, developing a completely new SQL is possible for any database provider. Jam can use any SQL within the Server Module, however we will demonstrate a pure Jam way of doing it.
+
+
+Here is the JS and Python code, respectively, replacing the need for SQL. The button `Purchase` was added just like it exists on MS Access.
+
+The important JS function is:
+
+.. js:function:: on_after_open
+
+
+As this JS function is taking the result of `get_rows` Server Module function, it is placed in ``on_after_open``. This is important to understand,
+because in formal Jam.py Documentation it is sparsely mentioned. Most of the time, the ``on_after_open`` is used with Master/Detail views. 
+We will touch base more about this function letter on, since it is extremely important to understand how to use it properly.
+
+There is a topic `How to link two tables`_ in the Docs, which I would also encourage to visit.
+
+
+.. _How to link two tables: https://jampyapplicationbuilder.com/docs/how_to/how_to_link_two_tables.html
+
+
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            item.paginate = false;
+            item.table_options.new = false;
+            if (!item.lookup_field) {    
+                var email_btn = item.add_view_button('Purchase', {image: 'icon-pencil'});
+                email_btn.click(function() { purchase() });
+            }
+                    item.view_form.find("#edit-btn").hide();
+                    item.view_form.find("#delete-btn").hide();
+                    item.view_form.find("#new-btn").hide();
+        }
+
+        function on_after_open(item) {
+            item.server('get_records', function(records) {
+                records.forEach(function(rec) {
+                    item.append();
+                    item.product_name.value = rec.product_name;
+                    item.target_level.value = rec.target_level;
+                    item.quantity_on_hold.value = rec.quantity_on_hold;
+                    item.quantity_on_order.value = rec.quantity_on_order;
+                    item.quantity_on_hand.value = rec.quantity_on_hand;
+                    item.quantity_purchased.value = rec.quantity_purchased;            
+                    item.quantity_sold.value = rec.quantity_sold;            
+                    item.post();
+                });
+            });
+        }
+        function on_edit_form_created(item) {
+            var title = 'Purchase ';
+            item.edit_options.title = title;
+            item.edit_form.find('#ok-btn')
+                .text('Purchase')
+                .off('click.task')
+                .on('click', function() {
+                    purchase(item);
+                });
+        }
+        function on_field_get_html(field) {
+            let item = field.owner;
+            if (field.field_name === 'quantity_on_hand') {
+                let color = 'green';
+                if (item.quantity_on_hand.display_text < 30) {
+                    color = 'red';
+                }
+                return '<span style="color: ' + color + ';">' + field.display_text + '</span>';
+            }
+        }
+
+
+Next is the Server Module code:
+
+
+The Python code needs a lot of explanation for a `would be` Python developer. In short, we are looping through three SQL statements, and not six as in MS Access. All of this is to populate the list ``res`` and to return the information back to JavaScript function.
+Each SQL statement can be recognised by ``set_where`` function:
+
+.. js:function:: set_where
+
+
+
+.. code-block:: Python
+
+        def get_records(item):
+            res, inventory = [], product = [], ''
+
+            product = item.task.products.copy()
+            #product.set_where(id=41)                               # here we can specify just one item for testing
+            product.open(fields=['id', 'product_name', 'target_level'], 
+                group_by=['id'], order_by=['id'])
+
+            
+            for p in product:   
+                allocated_inventory = 0
+                target_level = 0
+                product_id = product.id.value
+                target_level += product.target_level.value
+                print(product_id)
+
+                order_details = item.task.order_details.copy()
+                order_details.set_fields('product_id', 'status_id', 'quantity')
+                #order_details.set_where(product_id=product_id, status_id=4); # here we can specify just one item for testing
+                order_details.set_where(product_id=product_id);
+                
+                order_details.open(fields=['product_id', 'quantity', 'status_id'], 
+                    funcs={'quantity': 'sum'}, 
+                    group_by=['product_id'], order_by=['product_id'])
+                for i in order_details:
+                    quantity = 0;
+                    transaction_type = 0
+                    quantity_sold = 0
+                    quantity_purchased = 0
+                    quantity_on_hold = 0
+                    quantity_on_hand = 0
+                    quantity_on_order = 0
+                    quantity_on_back_order = 0
+                    
+                    #print()
+
+                    inv_transactions = item.task.inventory_transactions.copy()            
+                    inv_transactions.set_fields('product_id', 'transaction_type', 'quantity')
+                    inv_transactions.set_where(product_id=product_id, transaction_type__in=[1,2,3])
+                    inv_transactions.open(fields=['product_id', 'transaction_type', 'quantity'],
+                        funcs={'quantity': 'sum'}, 
+                        group_by=['transaction_type'], order_by=['product_id'])
+
+                    for i in inv_transactions:
+                        if inv_transactions.transaction_type.value == 1:
+                            quantity_purchased += inv_transactions.quantity.value
+                        if inv_transactions.transaction_type.value == 2:
+                            quantity_sold += inv_transactions.quantity.value
+                        if inv_transactions.transaction_type.value == 3:
+                            quantity_on_hold += inv_transactions.quantity.value
+                        quantity_on_hand = quantity_purchased - quantity_sold
+                        
+                        purchase_order_details = item.task.purchase_order_details.copy()            
+                        purchase_order_details.set_fields('product_id', 'posted_to_inventory', 'quantity')
+                        purchase_order_details.set_where(product_id=product_id, posted_to_inventory=0)
+                        purchase_order_details.open(fields=['product_id', 'quantity'],
+                            funcs={'id': 'count'}, 
+                            group_by=['product_id'], order_by=['product_id'])
+                        for i in purchase_order_details:
+                            quantity_on_order = purchase_order_details.quantity.value
+                    
+                    res.append(
+                        {
+                            'product_name': i.product_id.display_text,
+                            'target_level': target_level,
+                            'quantity_on_hold': quantity_on_hold,
+                            'quantity_on_hand': quantity_on_hand,
+                            'quantity_purchased': quantity_purchased,
+                            'quantity_sold': quantity_sold,
+                            'quantity_on_order': quantity_on_order
+                        }
+                    )
+                    print(res)
+                
+            return res
+
+
+
+.. note::
+            What was achieved with the above Python code is portability. It will execute against any database provider. However, the performance was not great.
+            Hence, it was decided to develop the SQL instead of the above code.
+
+
+
+- The `set_where` function deserves the separate topic though. For now, it is similar to specifying `WHERE` clause in SQL.
+
+The SQL developed is much faster than the above code and runs on all supported databases as well: 
+
+.. code-block:: sql
+
+        SELECT
+          p1.ID AS ID,
+          p1.Product_Name AS Name,
+          COALESCE(
+            (SELECT SUM(od.quantity)
+             FROM order_details od
+             WHERE p1.ID = od.product_id AND od.status_id = 4),
+            0) AS quantity_on_back_order,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 1),
+            0) AS quantity_purchased,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 2),
+            0) AS quantity_sold,
+          COALESCE(
+            (SELECT SUM(it1.quantity)
+             FROM inventory_transactions it1
+             WHERE p1.ID = it1.product_id AND it1.transaction_type = 3),
+            0) AS quantity_on_hold,
+          COALESCE(
+            (SELECT SUM(po1.quantity)
+             FROM purchase_order_details po1
+             WHERE p1.ID = po1.product_id AND po1.posted_to_inventory = 0),
+            0) AS quantity_on_order,
+          p1.target_level AS target_level
+        FROM products p1
+        GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID
+
+
+As seen, this was the iteration process from a quite `large`_ Access SQL, to a much smaller SQL.
+
+So, we dump the Server Module code from the above with a new one containing the above SQL:
+
+.. code-block:: Python
+
+        def get_records(item):
+            #sql = []
+            res = []
+            rows = []
+            err = ''
+            sql =   """SELECT
+                          p1.ID AS ID,
+                          p1.Product_Name AS Name,
+                          COALESCE(
+                            (SELECT SUM(od.quantity)
+                             FROM order_details od
+                             WHERE p1.ID = od.product_id AND od.status_id = 4),
+                            0) AS quantity_on_back_order,
+                          COALESCE(
+                            (SELECT SUM(it1.quantity)
+                             FROM inventory_transactions it1
+                             WHERE p1.ID = it1.product_id AND it1.transaction_type = 1),
+                            0) AS quantity_purchased,
+                          COALESCE(
+                            (SELECT SUM(it1.quantity)
+                             FROM inventory_transactions it1
+                             WHERE p1.ID = it1.product_id AND it1.transaction_type = 2),
+                            0) AS quantity_sold,
+                          COALESCE(
+                            (SELECT SUM(it1.quantity)
+                             FROM inventory_transactions it1
+                             WHERE p1.ID = it1.product_id AND it1.transaction_type = 3),
+                            0) AS quantity_on_hold,
+                          COALESCE(
+                            (SELECT SUM(po1.quantity)
+                             FROM purchase_order_details po1
+                             WHERE p1.ID = po1.product_id AND po1.posted_to_inventory = 0),
+                            0) AS quantity_on_order,
+                          p1.target_level AS target_level
+                        FROM products p1
+                        GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID"""
+
+            #print(sql)            
+            rows = item.task.execute_select(sql)        
+            
+            for r in rows:
+                quantity_on_hand = 0
+                
+                if r[3] and r[4]:
+                    quantity_on_hand = r[3] - r[4]
+                else:
+                    quantity_on_hand = 0
+                #print(r[0], quantity_on_hand)
+
+                res.append(
+                    {
+                        'product_id': r[0],
+                        'product_name': r[1],
+                        'quantity_on_back_order': r[2],
+                        'quantity_purchased': r[3],
+                        'quantity_on_hand': int(quantity_on_hand),
+                        #'quantity_on_hand': str(quantity_on_hand),
+                        'quantity_sold': r[4],
+                        'quantity_on_hold': r[5],
+                        'quantity_on_order': r[6],
+                        'target_level': r[7]
+                    }
+                )
+            return res
+
+
+
+This is it. We now have a fully functional replacement for MS Access SQL. The effort in writing the Python code
+and the SQL was pretty much the same, except SQL is much faster.
+
+.. note::
+    Or is it?
+
+Well, the SQL is fast, all right. But the ``on_after_open`` is not. This is because for every single record added, deleted, or modified, the controls (DOM elements that display the data), are data aware! Which means checked and appropriately updated. For every-single-row. And that is adding a delay.
+
+So what do we do? We turn off the controls temporary, while we're filling the table, and turn it on after finished.
+
+We do that with:
+
+.. js:function:: disable_controls
+
+and;
+
+.. js:function:: enable_controls
+
+
+Hence, the final ``on_after_open`` looks like this:
+
+.. code-block:: JavaScript
+
+
+        function on_after_open(item) {
+            item.alert('Working!');
+            item.server('get_records', function(records) {
+                item.disable_controls();
+                try {
+                    records.forEach(function(rec) {
+                        item.append();
+                        item.id.value = rec.product_id;            
+                        item.product_name.value = rec.product_name;
+                        item.target_level.value = rec.target_level;
+                        item.quantity_on_hold.value = rec.quantity_on_hold;
+                        item.quantity_on_order.value = rec.quantity_on_order;
+                        item.quantity_on_back_order.value = rec.quantity_on_back_order;
+                        item.quantity_on_hand.value = rec.quantity_on_hand;
+                        item.quantity_purchased.value = rec.quantity_purchased;            
+                        item.quantity_sold.value = rec.quantity_sold;            
+                        item.post();
+                    });
+                    item.first();
+                }
+                finally {
+                    item.enable_controls();
+                }
+            });
+        }
+
+This concludes the Virtual Table used for the `Inventory List`. We should be able to build a Dashboard as seen on the MS Access template `Startup`:
+
+
+.. code-block:: JavaScript
+
+        - Inventory to Reorder
+        - Active Orders
+
+
+Master/Details Edit
+---------------------
+
+- In order to implement Master/Details functionality, the `PO Detail` and `Order Detail` Group Item was created, and the related tables were imported into this Item Group. This enables the functionality to add Detail to any Master table for viewing and editing.
+
+
+Master/Details View
+----------------------
+
+- For Master/Details View only, with no need for editing, there is no need to do anything special other than to add a code to display the Details for a Master table.
+
+    Below is the code which will display for each `Supplier` the relevant `Purchase Order` as Details:
+
+
+.. code-block:: JavaScript
+
+        function on_view_form_created(item) {
+            if (!item.lookup_field) {
+                item.table_options.height -= 200;
+                item.purchase_orders = task.purchase_orders.copy();
+                item.purchase_orders.paginate = false;
+                item.purchase_orders.create_table(item.view_form.find('.view-detail'), {
+                    height: 200,
+                    summary_fields: ['submitted_date', 'purchase_order_id'],
+                });
+
+            }
+        }
+
+        var scroll_timeout;
+
+        function on_after_scroll(item) {
+            if (!item.lookup_field && item.view_form.length) {
+                clearTimeout(scroll_timeout);
+                scroll_timeout = setTimeout(
+                    function() {
+                        if (item.rec_count) {
+                            item.purchase_orders.set_where({supplier_id: item.id.value});
+                            item.purchase_orders.set_order_by(['-submitted_date']);
+                            item.purchase_orders.open(true);
+                        }
+                        else {
+                            item.purchase_orders.close();
+                        }
+                    },
+                    100
+                );
+            }
+        }
+
+Here we showing the difference with code used for ie `Suppliers` and `Customers`. It is the similar functionality to display `Orders` as Details for each Customer:
+
+.. image:: _images/js_details.png
+	:scale: 80 %
+	:align: center
+	:alt: Master/Details 
+
+
+.. note::
+
+        As seen, almost the same code is used for all Master/Details Views for `Products`, `Employees` and `Shippers`. It is really simple to add an Detail table to a Master table when knowing the Primary Key.
+
+
+Lookup Lists
+-------------
+
+
+There are many `Drop down` lists we could move to a Lookup List, for example for `Order Details` table `Status ID` field has:
+
+.. code-block:: JavaScript
+
+        None
+        Allocated
+        Invoiced
+        Shipped
+        On Order
+        No Stock
+
+Or, as already mentioned, `Purchase orders` and `Orders` table `Payment method` field:
+
+.. code-block:: JavaScript
+
+        Payment Method
+
+
+However, this usually means splitting the table in two tables, `Orders` and `Payment_method`
+for the Lookups.
+Or adding a Lookup List `Payment Method` and pointing `payment_method` to it. Which changes TEXT to INT in the Builder, and stores INT in the database.
+
+In legacy applications, ie. Imported tables from live system, first option is not possible due to table changes.
+However, second option is not possible either, because it will store the INT in a table!
+
+The solution is to store the TEXT in tables, as this is acceptable for Imported tables:
+
+.. code-block:: JavaScript
+
+
+        function on_field_changed(field, lookup_item) {
+            let item = field.owner;
+            if (field.field_name === 'payment_type') {
+                item.payment_type.value = field.display_text;
+            }    
+        }
+        function on_edit_form_created(item) {
+            if (item.payment_type.value === 'Credit Card') {
+                item.payment_type.value = "Credit Card";
+            }
+            else if (item.payment_type.value === 'Cash') {
+                item.payment_type.value = "Cash";
+            }
+            else if (item.payment_type.value === 'Check') {
+                item.payment_type.value = "Check";
+            }
+        }
+
+We still need a Lookup List ie. "Payment Type" with the values, but the stored value is TEXT, and not INT.
+
+
+.. note::
+    To Be Continued...
+

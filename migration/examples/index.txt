@@ -1,0 +1,22 @@
+======================
+Some migrated examples
+======================
+
+
+To make it easier for a would be Jam.py Users/Developers, we started to build the showcase repository with the Applications directly migrated from MS Access. It is important to understand that one can start completely from scratch and build the application without any conversion or migration tools. We just think it's easier to use the tools on our disposal. 
+
+Please find the list of some applications available as Templates in Access and migrated to Jam.py. All source code is available 
+for download on Export tab.
+
+For some mentioned applications, the Export file is available. Download the Export, :doc:`install<../../howto/windows>` the ``Jam.py`` framework locally or on the server, create the `New Project`, `Import` the same downloaded file, and point the Application to sqlite database as per creating the New Project.
+
+
+
+
+.. toctree::
+    :maxdepth: 1
+
+    ledger
+    inventory
+    northwind
+
