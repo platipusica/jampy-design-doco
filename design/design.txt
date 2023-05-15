@@ -127,7 +127,8 @@ Virtual Tables
 ===============
 
 Virtual Tables are in-memory datasets. There is no corresponding table in the project database for Virtual Table. The Demo application
-is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, when used with `SELECT` SQL.
+is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, for example when used with the `SELECT` SQL.
+
 
 More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
 
