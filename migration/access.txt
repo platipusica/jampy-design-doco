@@ -3,7 +3,7 @@
 MS Access migration
 =====================
 
-Congratulations on the decision to `migrate` Access to the Web!
+Congratulations on the decision to `migrate` MS Access to the Web!
 
 After all, it is moving to the modern JavaScript with Bootstrap and jQuery technology Front End! 
 Which is powered by Python.
@@ -213,14 +213,13 @@ If agreed, please visit:
 https://jampyapplicationbuilder.com/conv/
 
 
-Depending on file size, the conversion might take a few moments! Please wait to see: File is successfully converted! Access Application with your **data** from here
 
 After the Access file is uploaded and converted with no errors:
 
-- link to Application Builder will show up, which is using the sqlite3 data converted from Access instantly available on the Web! It is super easy and takes no time! **If not interested at all in building the FrontEnd Application**, please click on *Export* to download the DB as zip file which contains the sqlite3 file. The converted sqlite3 database has a long name exactly the same as in provided the link. This is to increase safety and security for all downloads.
+- link to the Application Builder will be emailed, which is using the sqlite3 data converted from Access instantly available on the Web! It is super easy and takes no time! **If not interested at all in building the FrontEnd Application**, please click on *Export* to download the DB as zip file which contains the sqlite3 file. The converted sqlite3 database has a long name exactly the same as in provided the link. This is to increase safety and security for all downloads.
 
 .. note::
-    If interested in instantly showing data on the Web, meaning using Jam.py for the Front End, please continue with below:
+    If interested in instantly showing data on the Web, meaning using Jam.py, please continue with below:
 
 
 The Application Builder from the provided link will set the Database to "DB manual mode". This means your new database is safe from changing the structure, like incidentally deleting the table or similar. If you would like to continue migrating Access to Web with the help of Jam.py framework, import all tables into the "Test Import" Group (click on Test Import/Import button), taking care of all needed DB fields correction or missing info. All fields must have a datatype if not already recognized. The "DB field name" should not be touched, the "Caption" is normally MS Access field caption, and the "Name" must be valid `JavaScript naming standard`_, in short, no spaces, special characters, etc. To help out with the process, here are some videos:
