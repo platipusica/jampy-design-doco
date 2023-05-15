@@ -216,7 +216,8 @@ SAML will be supported in newer major versions other then v5. SAML depends on th
 
 Please visit Demo Application in here: http://auth.jampyapplicationbuilder.com
 
-For username/password and more information plese visit: https://groups.google.com/g/jam-py/c/1qciSkILloU/m/JfRncz89BQAJ
+The default username is: jam@jam.com with the same password. JumpCloud is used as the SSO provider.
+
 
 The SAML authentication code is not publicly available at this time of writing. The code is tested with MS Azure, Shibboleth and  JumpCloud. MS Graph should also work.
 
