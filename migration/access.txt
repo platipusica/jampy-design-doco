@@ -231,9 +231,9 @@ Video tutorial - `How to publish MS Access Application to Web using Jam.py and S
 
 Video tutorial - `Simple CRM built automatically with Selenium IDE in 2.45minutes`_, demonstrates the `Tutorial. Part 1. First project`_
 
-New style Demo - `Jam.py Demo Application`_ (expiry on 04 Jan 2023)
+New style Demo - `Jam.py Demo Application`_ 
 
-Personal Account Ledger - `Migrated from MS Access template`_ (expiry on 04 Jan 2023)
+Personal Account Ledger - `Migrated from MS Access template`_ 
 
 .. _Jam.py VS MS Access: https://www.youtube.com/watch?v=ZpgEJh80QAs
 .. _How to publish MS Access Application to Web using Jam.py and SQLite3: https://www.youtube.com/embed/eaVjUEYG3Ac
