@@ -127,7 +127,8 @@ Virtual Tables
 ===============
 
 Virtual Tables are in-memory datasets. There is no corresponding table in the project database for Virtual Table. The Demo application
-is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, when used with `SELECT` SQL.
+is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, for example when used with the `SELECT` SQL.
+
 
 More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
 
@@ -216,7 +217,8 @@ SAML will be supported in newer major versions other then v5. SAML depends on th
 
 Please visit Demo Application in here: http://auth.jampyapplicationbuilder.com
 
-For username/password and more information plese visit: https://groups.google.com/g/jam-py/c/1qciSkILloU/m/JfRncz89BQAJ
+The default username is: jam@jam.com with the same password. JumpCloud is used as the SSO provider.
+
 
 The SAML authentication code is not publicly available at this time of writing. The code is tested with MS Azure, Shibboleth and  JumpCloud. MS Graph should also work.
 

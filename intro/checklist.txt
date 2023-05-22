@@ -333,6 +333,7 @@ Database views
 The database views are specific to the vendor too, and Jam.py does not support it for now. 
 The same applies as for database triggers.
 However, very similar to Database Views are Jam.py Virtual Tables. 
+More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
 
 
 Database indexes
