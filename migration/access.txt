@@ -263,7 +263,7 @@ Notes/Issues
 
 This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, **no need to upload a Front End application**, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables.
 
-**The process is expecting that the Primary Key exists on all tables.** Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. **AutoNumber field**.
+**The process is expecting that the Primary Key exists on all tables. The simple INTEGER is not a Primary Key. The Log File will indicate this.** Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. **AutoNumber field**.
 
 MS Access might have a **special character, space, slash/backslash, dash (-),quote(')**, etc for the **table field, as well as table name**. The conversion will try to replace those, however, we would advise to fix the issues in MS Access, before attempting the conversion.
 
