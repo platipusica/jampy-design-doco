@@ -208,17 +208,19 @@ For example, if the User does not exist in the Application database, it can be c
 Please refer to more info in here: https://groups.google.com/g/jam-py/c/Q2iqvSA1zTM/m/o8HKxhvSCgAJ
 
 .. note::
-    It is worth using SSL with all connection to LDAP or AD.
+    It is worth using SSL with all connections to LDAP or AD.
 
 SAML or SSO Authentication
 ---------------------------
 
 SAML will be supported in newer major versions other then v5. SAML depends on the DNS service and the SSL Certificates issued for the Application name. It is a large implementation for mostly commercial environment. 
 
-Please visit Demo Application in here: http://auth.jampyapplicationbuilder.com
+Please visit Demo Application in here: https://auth.jampyapplicationbuilder.com
 
 The default username is: jam@jam.com with the same password. JumpCloud is used as the SSO provider.
 
+To test the SAML attributes released from the provider, use https://auth.jampyapplicationbuilder.com application with the 
+same username and password. It should be possible to cross authenticate for this two applications.
 
 The SAML authentication code is not publicly available at this time of writing. The code is tested with MS Azure, Shibboleth and  JumpCloud. MS Graph should also work.
 
