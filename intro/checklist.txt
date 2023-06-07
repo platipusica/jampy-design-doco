@@ -28,6 +28,7 @@ The most used shortcuts:
 | Ctrl-Shift-/  | Command-Shift-/ | Toggle block comment |
 +---------------+-----------------+----------------------+
 
+It is absolutely possible to extend the ACE editor for AutoCompletition or Themes.
 
 .. _Ace: https://ace.c9.io/
 
@@ -54,14 +55,23 @@ This is particularly true with the Apache Web server and mod_wsgi module, when t
 Standard Python library is used to create a virtual environment. After creation, 
 the new environment must be "sourced", and all packages installed with pip:
 
-   .. code-block:: console
+.. code-block:: console
 
-    source ~/Downloads/py3.9/bin/activate
-    pip install jam.py
-    pip install pandas
+    $ python3 -m venv project-name
+
+    $ source project-name/bin/activate
+
+    $ pip install jam.py
 
 
-The above command will install jam.py and pandas packages into ``~/Downloads/py3.9/lib/python3.9/site-packages/`` directory. We can have as many virtual environments as needed.
+If installing from source, for example downloaded zip archive from Github, unzip the archive, navigate to the folder and install with pip:
+
+.. code-block:: console
+
+    $ pip install .
+
+
+We can have as many virtual environments as needed.
 
 .. note::
     It is advisable to have Production and Development environments. 
