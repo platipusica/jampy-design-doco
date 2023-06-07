@@ -605,7 +605,7 @@ For more information please visit the mailgroup `error thread`_.
 So, how was it?
 ---------------
 
-Is the above to much? Or easy to follow and apply in some other scenario?
+Is the above too much? Or easy to follow and apply in some other scenario?
 
 To expand a bit on **"on_field_changed"**, please visit `Conditional formatting`_ mailgroup thread or search the 
 mailgroup for the same. There are a number of scenarios where to apply **"on_field_changed"**, and this is just a touch 
