@@ -289,12 +289,11 @@ The SQL developed is much faster than the above code and runs on all supported d
 
 As seen, this was the iteration process from a quite `large`_ Access SQL, to a much smaller SQL.
 
-So, we dump the Server Module code from the above with a new one containing the above SQL:
+Hence, we replace the Server Module code from the above with a new one containing the above SQL:
 
 .. code-block:: Python
 
         def get_records(item):
-            #sql = []
             res = []
             rows = []
             err = ''
@@ -330,7 +329,6 @@ So, we dump the Server Module code from the above with a new one containing the 
                         FROM products p1
                         GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID"""
 
-            #print(sql)            
             rows = item.task.execute_select(sql)        
             
             for r in rows:
@@ -340,7 +338,6 @@ So, we dump the Server Module code from the above with a new one containing the 
                     quantity_on_hand = r[3] - r[4]
                 else:
                     quantity_on_hand = 0
-                #print(r[0], quantity_on_hand)
 
                 res.append(
                     {
@@ -366,20 +363,28 @@ and the SQL was pretty much the same, except SQL is much faster.
 .. note::
     Or is it?
 
-Well, the SQL is fast, all right. But the ``on_after_open`` is not. This is because for every single record added, deleted, or modified, the controls (DOM elements that display the data), are data aware! Which means checked and appropriately updated. For every-single-row. And that is adding a delay.
 
-So what do we do? We turn off the controls temporary, while we're filling the table, and turn it on after finished.
+Slow Virtual Table?
+---------------------
+
+The SQL is fast. However, the ``on_after_open``, or simply put, displaying the data is not. This is because for every single record added, deleted, or modified, the controls (DOM elements that display the data), are data aware! Which means checked and appropriately updated for every-single-row. 
+And that is adding a significant delay.
+
+So what do we do? We "disable" the controls temporary, while we're "filling" the table. We "enable" the controls after finished.
 
 We do that with:
 
 .. js:function:: disable_controls
 
-and;
+and:
 
 .. js:function:: enable_controls
 
 
-Hence, the final ``on_after_open`` looks like this:
+In the official :ref:`Demo<DemoProject>`, the same principle is used when ``Tax`` field is modified to recalculate all Items tax on :ref:`Invoice<Invoices>`.  
+
+
+The final ``on_after_open`` looks like this:
 
 .. code-block:: JavaScript
 
@@ -387,8 +392,8 @@ Hence, the final ``on_after_open`` looks like this:
         function on_after_open(item) {
             item.alert('Working!');
             item.server('get_records', function(records) {
-                item.disable_controls();
-                try {
+                item.disable_controls();                      // <-- disable DOM controls
+                try {                                         // <-- try is a bast practise with JS
                     records.forEach(function(rec) {
                         item.append();
                         item.id.value = rec.product_id;            
@@ -405,10 +410,11 @@ Hence, the final ``on_after_open`` looks like this:
                     item.first();
                 }
                 finally {
-                    item.enable_controls();
+                    item.enable_controls();                  // <-- enable DOM controls
                 }
             });
         }
+
 
 This concludes the Virtual Table used for the `Inventory List`. We should be able to build a Dashboard as seen on the MS Access template `Startup`:
 

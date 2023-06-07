@@ -1,3 +1,5 @@
+.. _DemoProject:
+
 ============
 Demo project
 ============
@@ -402,6 +404,8 @@ The official documentation has a heaps of code applicable to Demo application. H
 Again, we touching only the additional code applicable for Demo, the default one which comes with a blank and empty project is not discussed.
 
 
+.. _Invoices:
+
 Invoices
 --------
 
@@ -487,19 +491,19 @@ Lastly, one of the most important function and the most commonly used is:
                 rec;
             if (field.field_name === 'taxrate') {           <- 3.
                 rec = item.invoice_table.rec_no;
-                item.invoice_table.disable_controls();
-                try {                                       <- 4.
+                item.invoice_table.disable_controls();      <- 4.
+                try {                                       <- 5.
                     item.invoice_table.each(function(t) {
                         t.edit();
                         t.calc(t);
                         t.post();
                     });
                 }
-                finally {                                   <- 5.
+                finally {                                   <- 6.
                     item.invoice_table.rec_no = rec;
-                    item.invoice_table.enable_controls();
+                    item.invoice_table.enable_controls();   <- 7.
                 }
-            }                                               <- 6.
+            }                                               <- 8.
         }
 
 Understanding this function is quite important. It provides a mechanism to control what happens when some **input** on
@@ -508,17 +512,17 @@ the application is **changed**.
 Steps:
 
 1.
-In this case we are looking to “monitor” the “taxrate” field, let’s say because it is important (no better explanation for now),
-and we are hoping to change the relevant `Lookup fields`_. Which is a lookup to a different table, right? We are changing “Tax Rate”
-in Invoices table, but at the same time expect the changes in “Invoices Items”.
+In this case we are looking to “monitor” the “taxrate” field, because it will affect all Items tax after changing it.
+We need to change the relevant `Lookup fields`_. Which is a lookup to a different table, right? We are changing “Tax Rate”
+in Invoice table, but at the same time expect the changes in "Invoices Items".
 
 2.
-In plain, down to Earth language, we define some "shortcuts" here. See how *item* is repeating in the code? Hence, a "shortcut".
+We define some "shortcuts" here. See how *item* is repeating in the code? Hence, a "shortcut".
 
 .. note::
 
 	When copy/paste the code, it is not obvious that "item" is not there as it should be. So the best is to look at the code 
-	we *know* that is working. Like customers.js at Demo/Customers Client Module, etc.
+	we *know* that is working. Like Demo/Customers Client Module, etc.
 	
 Consider this example:
 
@@ -538,20 +542,27 @@ With **"rec = ..."** we define all records needing changing, after the "taxrate"
 With **"...disable_controls"** we disable all buttons (control items) temporary, as we do not want something actioned on while working on changing records.
 
 4.
-Then we "try" to update all records with a nice function **".each(...)"**. Which does "edit", "_`calc`" and finally "post". 
-We use "edit" to open every single record for editing, and "post" to post everything back via API. This is the "POST" part, correct? Without it, the data would not be saved. 
+Disable DOM controls temporarily. We are doing this to significantly speed up the displaying of data.
+
+5.
+Then we "try" to update all records with a function **".each(...)"**. Which does "edit", "_`calc`" and finally "post". 
+We use "edit" to open every single record for editing, and "post" to post everything back via API. This is the "POST" part. Without it, the data would not be saved. 
 
 .. note::
     The function - "calc", does the actual calculation on records. The function is in "Journals/Invoices/InvoiceTable" Client Module.
 
-5.
+6.
+Enable DOM controls.
+
+7.
 And "finally", we show the results back with **"item... = rec"** and enable the buttons, etc. with **"...enable_controls"**.
 
-6. 
+
+8. 
 If the field name was not the one we are after, exit the "if" clause here. 
 
 
-That is it. With six little steps we did a calculations JavaScript program. 
+That is it. With above steps, we created the JavaScript calculations. 
 
 .. note::
     No calculation will happen with a field valued as _`null`.
@@ -932,7 +943,6 @@ Dashboard template
 
 The `Template`_ for Demo Dashboard is a simple two columns table:
 
-
 .. code-block:: html
 
         <div class="dashboard-view">
@@ -991,6 +1001,7 @@ With this two pieces of information, we can build the JavaScript code to show th
 .. code-block:: html
 
                <script src="static/js/Chart.min.js"></script>
+
 
 The file Chart.min.js can exist elsewhere and not in static/js, however, this is where it normally resides. 
 
