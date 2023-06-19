@@ -344,8 +344,7 @@ Consider this _`scenario`:
 The Table name is **00_COSTES ALFONSO**. And the list of the tables continues with **01_, 02_, 03_**, etc. 
 Unfortunately, it is also using this as a table name: **00_PRECIOS ICM > GENOCOL_IMAT**.
 
-Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for Access tho. However, any modern framework will reject this practise.
-Including Jam.py. Sorry about that, it is what it is. Not Jam.py fault.
+Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for the Access though. However, any modern framework will reject such a practise. Including Jam.py.
 
 Importing the above table will produce the below:
 
@@ -355,9 +354,13 @@ Importing the above table will produce the below:
 	:alt: Italian jam.py Table
 
 
-The table Import as such will fail. It cannot be imported, and the problems needs to be fixed first.
+Such a table Import fail. It cannot be imported, and the problems needs to be fixed first.
 
-Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
+.. note::
+    The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access first. 
+
+
+Secondly, the table field used with UTF8: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
 
 
 The Import as such is going to fail, due to `JavaScript naming standard`_ for the column :red:`Name`.
@@ -406,7 +409,7 @@ immediately check the result on the Internet, by removing builder.html from the 
 
 For this particular example with Hebrew language, the Application needs the support for right-to-left language.
 
-This can be achieved by finding below code in index.html file (on Project\Task):
+This can be achieved by finding below code in index.html file (on Project/Task):
 
 .. code-block:: Python
 	
@@ -472,9 +475,9 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 
 
 .. note::
-	The good news is, our conversion utility now supports Access Captions and they are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
+	The good news is, our conversion utility now supports Access optional Description. They are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
 
-The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions:
+The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions. Each Caption starts with :red:`- -` , which is a comment in SQLit3:
 
 .. code-block:: html
 
