@@ -263,7 +263,7 @@ Notes/Issues
 
 This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, **no need to upload a Front End application**, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables. **The ODBC linked tables are supported.**
 
-**The process is expecting that the Primary Key exists on all tables. The simple INTEGER is not a Primary Key. The Log File will indicate this.** Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. **AutoNumber field**.
+**The process is expecting that the Primary Key exists on all tables. The simple INTEGER is not a Primary Key. The Log File will indicate this.** Please address and fix this issue before attempting the conversion. Use only one `Numeric Field` as the Primary Key, ie. **AutoNumber field**.
 
 MS Access might have a **special character, space, slash/backslash, dash (-),quote(')**, etc for the **table field, as well as table name**. The conversion will try to replace those, however, we would advise to fix the issues in MS Access, before attempting the conversion.
 
@@ -541,10 +541,19 @@ to the preferred database.
 Foreign Keys
 ------------
 
-Similar scenario, after the data is migrated, we can create FK's within the Builder. Again, the Jam.py utilises `lookups` for looking up for data.
+Similar scenario, after the data is migrated, we can create a FK's within the Builder. Again, the Jam.py utilises `lookups` for looking up for data.
 
+However, if the Access tables did not use a Foreign Keys, this will be an issue. Consider this scenario:
 
+.. image:: _images/fk1.png
+	:scale: 80 %
+	:align: center
+	:alt: No FK Table
 
+All fields in this Access table do not utilise a Foreign Key. This is clearly visible when we click on the field. If the Foreign Key is used, 
+the Access Lookup would open. In addition, if we utilise MS Access `Database Tools/Analyse Table` option, the Wizard would suggest to split the table in
+a number of new ones. 
+Hence, the migration to Web of such table will not produce the expected result, since the values are `hard coded`. The solution is to split the table with MS Access Wizard.
 
 Users table
 -----------
