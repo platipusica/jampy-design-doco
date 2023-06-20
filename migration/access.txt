@@ -359,6 +359,25 @@ Such a table Import fail. It cannot be imported, and the problems needs to be fi
 .. note::
     The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access first. 
 
+We might use Python for this task:
+
+.. code-block:: Python
+
+        import sqlite3 
+
+        connection  = sqlite3.connect("database.sqlite3") 
+        cursor      = connection.cursor()  
+        tableQuery = "select * from sqlite_master where type = 'table' and name != 'Order' and name != 'sqlite_sequence'"
+        cursor.execute(tableQuery)
+        tableList = cursor.fetchall()
+        for table in tableList:   
+            t_orig = table[1]
+            t_fix = t_orig[3:]
+            renameTable = 'ALTER TABLE "'+t_orig+"\" RENAME TO "+t_fix+""
+            cursor.execute(renameTable) 
+        connection.close()
+
+
 
 Secondly, the table field used with UTF8: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
 
@@ -437,7 +456,7 @@ However, please consider the Access application **with** the field captions! Thi
 
 
 For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 3`, the CSV file might look like below and the 
-code to update it: 
+Python code to update it: 
 
 
 .. code-block:: Python
