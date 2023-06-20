@@ -270,6 +270,14 @@ field `transaction_amount`, on the the Interface Help: `Value should be less the
             }    
         }
 
+In June 2023, added date validation to above code, and the Order by `Entry Date` as DESC:
+
+.. code-block:: JavaScript
+
+            if (field.field_name === 'entry_date' && field.value > Date.now()) {
+                    return 'The date can not be in future!';
+            }    
+
 
 index.html
 ----------
