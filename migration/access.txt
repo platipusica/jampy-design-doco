@@ -357,9 +357,11 @@ Importing the above table will produce the below:
 Such a table Import fail. It cannot be imported, and the problems needs to be fixed first.
 
 .. note::
-    The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access first. 
+    The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access. 
 
-We might use Python for this task:
+The migration utility will replace the starting numbers if they exist.
+
+Or, we might use Python for this task:
 
 .. code-block:: Python
 
