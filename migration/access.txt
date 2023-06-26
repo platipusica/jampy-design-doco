@@ -433,8 +433,16 @@ In the above Italian language `scenario`_, the Access Caption might be **Definic
 However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done in Access.
 
 
-For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 3`, the CSV file might look like below and the 
+For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 1`, the TEST.CSV file might look like below and the 
 code to update it: 
+
++---------------+-----------------+----------------------+
+| DEMO_TRACKS,  | NAME1,          | Track title 1        |
++---------------+-----------------+----------------------+
+| DEMO_TRACKS,  | NAME2,          | Track title 2        |
++---------------+-----------------+----------------------+
+| DEMO_TRACKS,  | NAME3,          | Track title 3        |
++---------------+-----------------+----------------------+
 
 
 .. code-block:: Python
@@ -442,9 +450,13 @@ code to update it:
         import sqlite3
         import numpy as np
         captions = np.loadtxt('test.csv', dtype=str, delimiter=',')
-        #print(captions)
+        print(captions)
+	# this will output:
         #captions = [
-        #        ['DEMO_TRACKS', 'NAME', 'Track title 3']
+        #        ['DEMO_TRACKS', 'NAME1', 'Track title 1']
+        #        ['DEMO_TRACKS', 'NAME2', 'Track title 2']
+	# .
+	# .
         #    ]
         con = sqlite3.connect('admin.sqlite')
         cursor = con.cursor()
