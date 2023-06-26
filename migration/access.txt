@@ -263,7 +263,7 @@ Notes/Issues
 
 This tool is for the database tables only, it does not convert MS Access file with no tables in it. Hence, **no need to upload a Front End application**, which probably connects to SQL Server or some other database(s). Output will be empty, or it will contain only a few tables. **The ODBC linked tables are supported.**
 
-**The process is expecting that the Primary Key exists on all tables. The simple INTEGER is not a Primary Key. The Log File will indicate this.** Please address and fix this issue before attempting the conversion. Only Use One Numeric Field as the Primary Key, ie. **AutoNumber field**.
+**The process is expecting that the Primary Key exists on all tables. The simple INTEGER is not a Primary Key. The Log File will indicate this.** Please address and fix this issue before attempting the conversion. Use only one `Numeric Field` as the Primary Key, ie. **AutoNumber field**.
 
 MS Access might have a **special character, space, slash/backslash, dash (-),quote(')**, etc for the **table field, as well as table name**. The conversion will try to replace those, however, we would advise to fix the issues in MS Access, before attempting the conversion.
 
@@ -344,8 +344,7 @@ Consider this _`scenario`:
 The Table name is **00_COSTES ALFONSO**. And the list of the tables continues with **01_, 02_, 03_**, etc. 
 Unfortunately, it is also using this as a table name: **00_PRECIOS ICM > GENOCOL_IMAT**.
 
-Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for Access tho. However, any modern framework will reject this practise.
-Including Jam.py. Sorry about that, it is what it is. Not Jam.py fault.
+Which just proves that MS Access will accept anything we throw on it. Is this a good practice? It is for the Access though. However, any modern framework will reject such a practise. Including Jam.py.
 
 Importing the above table will produce the below:
 
@@ -355,9 +354,34 @@ Importing the above table will produce the below:
 	:alt: Italian jam.py Table
 
 
-The table Import as such will fail. It cannot be imported, and the problems needs to be fixed first.
+Such a table Import fail. It cannot be imported, and the problems needs to be fixed first.
 
-Reviewing the actual table fields we see that the UTF8 is used for the table field: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
+.. note::
+    The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access. 
+
+The migration utility will replace the starting numbers if they exist.
+
+Or, we might use Python for this task:
+
+.. code-block:: Python
+
+        import sqlite3 
+
+        connection  = sqlite3.connect("database.sqlite3") 
+        cursor      = connection.cursor()  
+        tableQuery = "select * from sqlite_master where type = 'table' and name != 'Order' and name != 'sqlite_sequence'"
+        cursor.execute(tableQuery)
+        tableList = cursor.fetchall()
+        for table in tableList:   
+            t_orig = table[1]
+            t_fix = t_orig[3:]
+            renameTable = 'ALTER TABLE "'+t_orig+"\" RENAME TO "+t_fix+""
+            cursor.execute(renameTable) 
+        connection.close()
+
+
+
+Secondly, the table field used with UTF8: **definición_de_la_patología**. Note how the original MS Access field used is **Definición de la patología** with spaces? The conversion replaced spaces with the underscore automatically. It does that for the table name as well. However, read on.
 
 
 The Import as such is going to fail, due to `JavaScript naming standard`_ for the column :red:`Name`.
@@ -406,7 +430,7 @@ immediately check the result on the Internet, by removing builder.html from the 
 
 For this particular example with Hebrew language, the Application needs the support for right-to-left language.
 
-This can be achieved by finding below code in index.html file (on Project\Task):
+This can be achieved by finding below code in index.html file (on Project/Task):
 
 .. code-block:: Python
 	
@@ -433,8 +457,8 @@ In the above Italian language `scenario`_, the Access Caption might be **Definic
 However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done in Access.
 
 
-For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 1`, the TEST.CSV file might look like below and the 
-code to update it: 
+For example, if the MS Access table DEMO_TRACKS has a field `NAME` and the Caption for the field `Track title 1`, the TEST.CSV file might look like below and the Python code to update it: 
+
 
 +---------------+-----------------+----------------------+
 | DEMO_TRACKS,  | NAME1,          | Track title 1        |
@@ -484,11 +508,11 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 
 
 .. note::
-	The good news is, our conversion utility now supports Access Captions and they are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
+	The good news is, our conversion utility now supports Access optional Description. They are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
 
-The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions:
+The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions. Each Caption starts with :red:`- -` , which is a comment in SQLit3:
 
-.. code-block:: sql
+.. code-block:: html
 
 	CREATE TABLE `Location` -- منطقه (`ID` INTEGER PRIMARY KEY AUTOINCREMENT -- ردیف
 	,
@@ -550,10 +574,19 @@ to the preferred database.
 Foreign Keys
 ------------
 
-Similar scenario, after the data is migrated, we can create FK's within the Builder. Again, the Jam.py utilises `lookups` for looking up for data.
+Similar scenario, after the data is migrated, we can create a FK's within the Builder. Again, the Jam.py utilises `lookups` for looking up for data.
 
+However, if the Access tables did not use a Foreign Keys, this will be an issue. Consider this scenario:
 
+.. image:: _images/fk1.png
+	:scale: 80 %
+	:align: center
+	:alt: No FK Table
 
+All fields in this Access table do not utilise a Foreign Key. This is clearly visible when we click on the field. If the Foreign Key is used, 
+the Access Lookup would open. In addition, if we utilise MS Access `Database Tools/Analyse Table` option, the Wizard would suggest to split the table in
+a number of new ones. 
+Hence, the migration to Web of such table will not produce the expected result, since the values are `hard coded`. The solution is to split the table with MS Access Wizard.
 
 Users table
 -----------
