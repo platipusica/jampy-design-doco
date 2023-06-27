@@ -457,7 +457,7 @@ In the above Italian language `scenario`_, the Access Caption might be **Definic
 However, please consider the Access application **with** the field captions! This is what we are trying to resolve, so we reuse all the hard work already done in Access.
 
 
-For example, if the MS Access table ``DEMO_TRACKS`` has a field ``NAME`` and the Caption for the field ``Track title 1``, the TEST.CSV file might look like below and the Python code to update it: 
+For example, if the MS Access table ``DEMO_TRACKS`` has a field ``NAME1`` and the Caption for the field ``Track title 1``, the TEST.CSV file might look like below and the Python code to update it: 
 
 
 +---------------+-----------------+----------------------+
@@ -510,7 +510,7 @@ Also very important to run dos2unix command on the file in Linux, since it will 
 .. note::
 	The good news is, our conversion utility now supports Access optional Caption. They are written directly into the SQLite3 database as comments. All popular SQLite3 utilities, like “DB Browser for SQLite” or "SQLiteman", can read the database schema with the comments.
 
-The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions. Each Caption starts with :red:`- -` , which is a comment in SQLit3:
+The below is an example for Arabic language where MS Access utilises the optional Description, which Jam.py might use for Captions. Each Caption starts with :red:`- -` , which is a comment in SQLite3:
 
 .. code-block:: html
 
