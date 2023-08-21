@@ -1,4 +1,4 @@
-i.. include:: .special.rst
+.. include:: .special.rst
 
 MS Access migration
 =====================
@@ -198,19 +198,40 @@ The button in Jam.py is something like this:
 
 .. _Front-End for MS Access migration?: https://stackoverflow.com/questions/221995/front-end-for-ms-access-migration
 
-7. Dreaded "Compile Error"!
-----------------------------
+7. Compile Error
+------------------------------
 
 .. code-block:: JavaScript
-        "The code on this project must be updated for use on 64-bit systems."
+
+        The code in this project must be updated for use on 64-bit systems.
 
             
 .. image:: _images/VBA_Access_64bits.JPG
 	:scale: 80 %
 	:align: center
-	:alt: The code on this project must be updated for use on 64-bit systems
+	:alt: The code in this project must be updated for use on 64-bit systems
+
+Self explanatory error. 
 
 
+8. Cannot open the database
+------------------------------
+
+.. code-block:: JavaScript
+
+        Cannot open the database created with a previous version of your application.
+
+            
+.. image:: _images/Prev_version_Access_64bits.JPG
+	:scale: 80 %
+	:align: center
+	:alt: Cannot open the database created with a previous version of your application
+
+Not so self explanatory error. 
+
+
+Conclusion
+--------------
 
 
 Hope the above sparked some interest. Even though there are probably more reasons why one should or should not try 
