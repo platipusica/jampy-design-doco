@@ -305,7 +305,7 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
 
     * If using PostgreSQL, the ``psycopg2`` package is needed. 
 
-    * If using MySQL or MariaDB, the ``mysqlclient`` for Python 2.x or ``mysqlclient``  for Python 3.x is needed. 
+    * If using MySQL or MariaDB, the ``MySQLdb`` for Python 2.x or ``mysqlclient``  for Python 3.x is needed, as well as database development files. 
 
     * If using MSSQL, the ``pymssql`` is needed.
 

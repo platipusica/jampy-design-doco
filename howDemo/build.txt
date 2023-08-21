@@ -106,7 +106,8 @@ Automatically provided is a classic New/Delete/Edit option for any Data Grid. It
 	:alt: Data Grid Footer/Header 
 
 
-Ok, do not want to go any further, just a minimum to get us going.
+Ok, do not want to go any further, just a minimum to get us going. Adding the Buttons, Multiple Details as Tabs, or changing the look and feel 
+is not discussed yet.  
 
 
 Any questions?
@@ -116,7 +117,7 @@ So now that we've covered the first thing we see on the Demo application, any qu
 
 All of the above is driven by the Builder GUI. We might be saying it's no big deal, but it actually is a big deal! Because to code this from the beginning, like with Django, one would need years and years of coding experience to cover all possible scenarios. Or a team of dedicated developers.
 
-I am ignoring the Reports and Analytics for now, visible on the Demo application, and concentrating only on no-code or low-code. Both the Reports and Analytics features require some coding experience. Not much, but still needed.
+I am ignoring the Reports and Analytics for now. Only concentrating on no-code or low-code. The Reports and Analytics require some coding experience. Not much, but still needed.
 
  
 
