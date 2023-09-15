@@ -360,6 +360,7 @@ Finally, the application might look like this:
 The MS Access linked tables (by ODBC at.al), are now possible to import. There are some constraints though, not all datatypes can be recognised due to the ODBC connection.
 Of course, the MS Access linked tables are just the issue when using the conversion tool provided above. One can always connect to MSSQL server directly from Jam.py Application Builder and Import the tables. 
 
+
 Using UTF8
 -----------
 
@@ -560,6 +561,25 @@ The below is an example for Arabic language where MS Access utilises the optiona
 
 We are working towards enabling Jam.py to read the table and field comments and interpret them as Captions while importing the table. As seen, the `JavaScript naming standard`_ does not apply for the above table, since the table is using Latin language for 
 everything except Captions.
+
+
+
+Reserved Words
+--------------
+
+In JavaScript and Python, there are a number of reserved words that can not be used. However, MS Access might happily use those. 
+Simply add some character to the  :red:`Name` :red:`*`, and leave the database Table Name as is. For example:
+
+  
++---------------+-----------------+-----------+----------+
+| Caption *     | Privileges      | Active    | Order    |
++---------------+-----------------+-----------+----------+
+| Name *        | privileges_f    | active_f  | order_f  |
++---------------+-----------------+-----------+----------+
+| Table Name    | privileges      | active    | order    |
++---------------+-----------------+-----------+----------+
+
+
 
 
 Deleted Flag
