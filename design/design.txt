@@ -219,7 +219,7 @@ Please visit Demo Application in here: https://auth.jampyapplicationbuilder.com
 
 The default username is: jam@jam.com with the same password. JumpCloud is used as the SSO provider.
 
-To test the SAML attributes released from the provider, use https://auth.jampyapplicationbuilder.com application with the 
+To test the SAML attributes released from the provider, use https://demo.jampyapplicationbuilder.com application with the 
 same username and password. It should be possible to cross authenticate for this two applications.
 
 The SAML authentication code is not publicly available at this time of writing. The code is tested with MS Azure, Shibboleth and  JumpCloud. MS Graph should also work.
