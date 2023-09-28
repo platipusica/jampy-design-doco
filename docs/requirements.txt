@@ -1,2 +1,2 @@
 sphinx_copybutton
-sphinx_sitemap
+sphinx_sitemap==2.5.0
