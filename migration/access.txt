@@ -390,7 +390,7 @@ Importing the above table will produce the below:
 	:alt: Italian jam.py Table
 
 
-Such a table Import fail. It cannot be imported, and the problems needs to be fixed first.
+Such a table Import might fail. It cannot be imported, and the problems need to be fixed first.
 
 .. note::
     The first issue is the table name starting with **00_, 01_, 02_...**, due to a `JavaScript naming standard`_. The solution is to rename the tables to remove **00_, 01_, 02_...** in Access. 
