@@ -279,6 +279,45 @@ In June 2023, added date validation to above code, and the Order by `Entry Date`
             }    
 
 
+.. _Api:
+
+API
+----
+
+
+In November 2023, added API endpoint on Task/Server:
+
+.. code-block:: Python
+
+            def on_ext_request(task, request, params):
+                reqs = request.split('/')
+                if reqs[2] == 'expenses':
+                    result = task.account_transactions.expenses(task, params)
+                    return result
+
+The table ``account_transactions``  has the Server Module, which will return Total for the ``Actual Amount``:
+
+.. code-block:: Python
+
+            from jam.common import cur_to_str
+
+            def expenses(item, params):
+                inv = item.task.account_transactions.copy()    
+                inv.open()
+                total = 0
+                for i in inv:
+                    total += i.actual_amount.value
+                total = cur_to_str(total)
+                return(total)
+
+The API can be accessed with:
+
+.. code-block:: html
+
+        curl -k https://msaccess.pythonanywhere.com/ext/expenses -d "[]" -H  "Content-Type: application/json"
+
+
+
 index.html
 ----------
 
