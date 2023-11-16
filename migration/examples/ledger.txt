@@ -317,6 +317,31 @@ The API can be accessed with:
         curl -k https://msaccess.pythonanywhere.com/ext/expenses -d "[]" -H  "Content-Type: application/json"
 
 
+Now that we have API in place, it is trivial to use it in any other ``Jam.py`` application within the Server Module:
+
+
+.. code-block:: Python
+
+
+            try:
+            # For Python 3.0 and later
+                from urllib.request import urlopen
+            except ImportError:
+                # Fall back to Python 2's urllib2
+                from urllib2 import urlopen
+            import json
+            import time
+
+            url = 'https://msaccess.pythonanywhere.com/ext'
+
+            def send(url, request, params):
+                a = urlopen(url + '/' + request, data=str.encode(json.dumps(params)))
+                r = json.loads(a.read().decode())
+                return r['result']['data']
+
+            result = send(url, 'expenses', [])
+            print(result)
+
 
 index.html
 ----------
