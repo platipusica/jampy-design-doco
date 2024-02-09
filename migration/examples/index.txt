@@ -14,7 +14,7 @@ For some mentioned applications, the Export file is available. Download the Expo
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 3
 
     ledger
     inventory
