@@ -340,9 +340,13 @@ Database triggers are specific to the database vendor and Jam.py does not suppor
 Database views
 ==============
 
-The database views are specific to the vendor too, and Jam.py does not support it for now. 
-The same applies as for database triggers.
-However, very similar to Database Views are Jam.py Virtual Tables. 
+The database views are specific to the vendor too, and Jam.py does not support it for now. That is, it does not support 
+a View creation or modification. It does support the View access though. If the View is needed, we can create an 
+table with the same View name and needed fields, providing the Builder Project Database option is set to "DB manual mode".
+
+Same as for database triggers, the Application Export file will not contain any information about the Views. 
+
+Very similar to Database Views are Jam.py Virtual Tables. 
 More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
 
 
