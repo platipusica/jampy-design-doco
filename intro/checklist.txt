@@ -337,12 +337,15 @@ Database triggers
 
 Database triggers are specific to the database vendor and Jam.py does not support creation of triggers within the Application Builder. It is absolutely possible to use triggers, however, when moving the Application into the ie. Production, the Application Export file will not contain any information about the triggers and they need to be recreated manually.
 
+
+.. _DBViews:
+
 Database views
 ==============
 
 The database views are specific to the vendor too, and Jam.py does not support it for now. That is, it does not support 
 a View creation or modification. It does support the View access though. If the View is needed, we can create an 
-table with the same View name and needed fields, providing the Builder Project Database option is set to "DB manual mode".
+table with the same View name and needed fields, providing the Builder Project Database option is set to "DB manual mode" when doing it.
 
 Same as for database triggers, the Application Export file will not contain any information about the Views. 
 

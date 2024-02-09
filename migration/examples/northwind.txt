@@ -428,7 +428,7 @@ This concludes the Virtual Table used for the `Inventory List`. We should be abl
 Using a DB Views
 ----------------
 
-It is absolutely possible to use the DB View instead of Virtual Tables. 
+It is absolutely possible to use the :ref:`DB Views<DBViews>` instead of Virtual Tables. 
 The `smaller`_ SQL would need to be modified for ``quantity_on_hand`` calculation.
 However, because the SQL is executing on the server side, we did not see any benefits 
 with using the SQL view for this example.
