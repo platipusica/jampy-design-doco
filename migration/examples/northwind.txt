@@ -431,6 +431,9 @@ Master/Details Edit
 - In order to implement Master/Details functionality, the `PO Detail` and `Order Detail` Group Item was created, and the related tables were imported into this Item Group. This enables the functionality to add Detail to any Master table for viewing and editing.
 
 
+.. _DetailsView:
+
+
 Master/Details View
 ----------------------
 
