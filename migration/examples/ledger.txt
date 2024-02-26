@@ -278,14 +278,14 @@ In June 2023, added date validation to above code, and the Order by `Entry Date`
                     return 'The date can not be in the future!';
             }    
 
-<<<<<<< HEAD
 In Jan 2024, added Master/Detail for Categories:
 
 Master/Detail
 --------------
 
-- For Master/Details View only, there is no need to do anything special other than to add a simple code to display the Details for a Master table. Please see the :ref:`Northwind Traders<NorthwindTraders>` :ref:`Master/Detail View<DetailsView>` example.
-=======
+- For Master/Detail View only, there is no need to do anything special other than to add a simple code to display the Detail for a Master table. Please see the :ref:`Northwind Traders<NorthwindTraders>` :ref:`Master/Detail View<DetailsView>` example.
+
+
 In February 2024, added ``Read Only`` on Editing for `Categories` table, `Income or Expense` field. Also added formatting.
 
 
@@ -299,8 +299,6 @@ In February 2024, added ``Read Only`` on Editing for `Categories` table, `Income
             }     
 
         }
-
->>>>>>> 04763bf2bdc66e79594e20716ba268ff4c44c885
 
 
 .. _Api:
@@ -371,6 +369,7 @@ For example, on :ref:`NorthwindTraders<NorthwindTraders>`, we created a table ``
 with the field ``Value``. The value of this field is populated by the `Server Code` within the same table.
 The code is executed by the button `Fetch from API`.
 
+
 index.html
 ----------
 
@@ -394,6 +393,7 @@ index.html
 
 
 -   Maybe the last feature needed is the CVS (spreadsheet) export/import. This step is fully documented in the official documentation.
+
 
 
 
