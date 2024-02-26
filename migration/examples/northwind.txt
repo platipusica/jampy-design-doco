@@ -287,7 +287,7 @@ The SQL developed is much faster than the above code and runs on all supported d
         GROUP BY p1.ID, p1.Product_Name, p1.target_level ORDER BY p1.ID
 
 
-As seen, this was the iteration process from a quite `large`_ Access SQL, to a much smaller SQL.
+As seen, this was the iteration process from a quite `large`_ Access SQL, to a much _`smaller` SQL.
 
 Hence, we replace the Server Module code from the above with a new one containing the above SQL:
 
@@ -423,6 +423,15 @@ This concludes the Virtual Table used for the `Inventory List`. We should be abl
 
         - Inventory to Reorder
         - Active Orders
+
+
+Using a DB Views
+----------------
+
+It is absolutely possible to use the :ref:`DB Views<DBViews>` instead of Virtual Tables. 
+The `smaller`_ SQL would need to be modified for ``quantity_on_hand`` calculation.
+However, because the SQL is executing on the server side, we did not see any benefits 
+with using the SQL view for this example.
 
 
 Master/Details Edit

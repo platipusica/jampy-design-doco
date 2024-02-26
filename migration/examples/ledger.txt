@@ -278,12 +278,29 @@ In June 2023, added date validation to above code, and the Order by `Entry Date`
                     return 'The date can not be in the future!';
             }    
 
+<<<<<<< HEAD
 In Jan 2024, added Master/Detail for Categories:
 
 Master/Detail
 --------------
 
 - For Master/Details View only, there is no need to do anything special other than to add a simple code to display the Details for a Master table. Please see the :ref:`Northwind Traders<NorthwindTraders>` :ref:`Master/Detail View<DetailsView>` example.
+=======
+In February 2024, added ``Read Only`` on Editing for `Categories` table, `Income or Expense` field. Also added formatting.
+
+
+.. code-block:: JavaScript
+
+        function on_edit_form_created(item) {
+            if (item.is_new()) {
+                item.income_or_expense.read_only = false;
+            }   else {
+                item.income_or_expense.read_only = true;
+            }     
+
+        }
+
+>>>>>>> 04763bf2bdc66e79594e20716ba268ff4c44c885
 
 
 .. _Api:
@@ -350,6 +367,10 @@ Now that we have API in place, it is trivial to use it in any other ``Jam.py`` a
             print(result)
 
 
+For example, on :ref:`NorthwindTraders<NorthwindTraders>`, we created a table ``api_call``,
+with the field ``Value``. The value of this field is populated by the `Server Code` within the same table.
+The code is executed by the button `Fetch from API`.
+
 index.html
 ----------
 
@@ -373,7 +394,6 @@ index.html
 
 
 -   Maybe the last feature needed is the CVS (spreadsheet) export/import. This step is fully documented in the official documentation.
-
 
 
 
