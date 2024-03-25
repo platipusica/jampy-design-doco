@@ -1,6 +1,11 @@
 Inventory transactions
 ======================
 
+The application lives here:
+
+https://assetinventory.pythonanywhere.com
+
+
 This is interesting template due to a number of reports. There is no VBA at all. However, there is a logic within the reports to reorder the Inventory based on `Reorder Level`, `Current Stock`, and `Target Stock Level`. 
 
 The complete application was developed in a few hours` time. Below is the approximate process:
