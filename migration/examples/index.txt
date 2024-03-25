@@ -17,6 +17,6 @@ For some mentioned applications, the Export file is available. Download the Expo
     :maxdepth: 3
 
     ledger
-    inventory
     northwind
+    inventory
 
