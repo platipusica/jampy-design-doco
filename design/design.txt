@@ -191,7 +191,7 @@ Non built in Authentication
 
 To extend the Authentication with the Application database and Users/Roles tables is easy. Please consult the official Jam.py Documentation how to do that. The benefits for doing it is the ability to use the database backup or export, which will contain all information specific to the Application, in one or more backup/export files. There is no need to export/import SYS_USERS/SYS_ROLES tables, unless there are a large number of Administrator accounts who are accessing the Builder interface.
 
-With non `built in` Authentication, the Application can, as an option, use a custom Python password hashing within the `Task/\Server Module`. It is also possible to develop custom password complexity, or password lifetime, which does not exist with `build in` method.
+With non `built in` Authentication, the Application can, as an option, use a custom Python password hashing within the `Task/\Server Module`. It is also possible to develop custom password complexity, or password lifetime, which does not exist with `built in` method.
 
 
 External Authentication
