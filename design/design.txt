@@ -33,7 +33,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 -------------------------------
 
 - `If not using databases, then it probably doesn’t make sense to use Jam.py.`
-- `Jam.py within a browser as all JavaScript. This means there is a limited html elements on a page.`
+- `Jam.py within a browser as all JavaScript. This means there are a limited number of html elements on a page.`
 
 4. Does it scale?
 ------------------
