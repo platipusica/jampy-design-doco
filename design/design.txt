@@ -16,7 +16,9 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 1. What is Jam.py?
 ------------------
 
-    `Jam.py is a Rapid Application Development framework. The word rapid should be stressed.`
+- `Jam.py is a Rapid Application Development framework. The word rapid should be stressed.`
+- `Jam.py is a SPA (Single Page Application).`
+    
 
 2. Why using Jam.py?
 ---------------------
@@ -30,7 +32,8 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 3. Why not to use Jam.py?
 -------------------------------
 
-    `If not using databases, then it probably doesn’t make sense to use Jam.py.`
+- `If not using databases, then it probably doesn’t make sense to use Jam.py.`
+- `Jam.py within a browser as all JavaScript. This means there is a limited html elements on a page.`
 
 4. Does it scale?
 ------------------
