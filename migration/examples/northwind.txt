@@ -575,7 +575,7 @@ Analytics
 ----------
 
 This is where Python and JavaScript shines and the chapter almost needs a separate article, due to Python and JavaScript libraries introduction.
-To name a few, Python is using `pandas`_, `matplotlib`_, `numpy`_, and JavaScript is using `PivotJS`_ and `ChartJS`_.
+To name a few, the application is using Python libraries `pandas`_, `matplotlib`_, `numpy`_, and JavaScript is using `PivotJS`_ and `ChartJS`_.
 
 .. _pandas: https://pandas.pydata.org/
 .. _matplotlib: https://matplotlib.org/
