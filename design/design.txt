@@ -1,4 +1,3 @@
-===============
 Getting Started
 ===============
 
@@ -69,7 +68,7 @@ We will reference the above article:
 
 
 Catalogs (Catalogues)
-=====================
+---------------------
 
 
 .. note::
@@ -85,7 +84,7 @@ Catalogs (Catalogues)
 .. _special: https://groups.google.com/g/jam-py/c/APG-O1z7dF0/m/J4o3PWW8AwAJ
 
 Journals
-========
+--------
 
 .. note::
     `Journals store information about events or transactions pertaining to the records in the Catalogs – such as invoices or purchase orders.`
@@ -99,7 +98,7 @@ One Journals table can contain as many Details tables as needed. Journals table 
 
 
 Details
-=======
+-------
 
 .. note::
     `Details` store detailed information pertaining to the records in the Journals – such as invoices items details or purchase orders items details.
@@ -113,7 +112,7 @@ Details
 
 
 Reports
-=======
+-------
 
 .. note::
     `Reports` are based on OpenDocument templates`, more specifically  Calcs ods files.
@@ -127,7 +126,7 @@ Professional `look` of reports is developed visually in LibreOffice (LO) Calcs. 
 
 
 Virtual Tables
-===============
+---------------
 
 Virtual Tables are in-memory datasets. There is no corresponding table in the project database for Virtual Table. The Demo application
 is using it for sending an email to `Customers`. IMO, can be used to replace the need for Database Views, for example when used with the `SELECT` SQL.
@@ -138,7 +137,7 @@ More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTrad
 
 
 Need more Groups?
-=================
+-----------------
 
 Any other Group item not covered by the above can be created. For instance, on official Jam.py Demo Application, there is an Item called `Dashboard`, which is a table within the `Analytics` Group. The Dashboard is used for exactly that, presenting some statistics as graphs. Quite similar to any Spreadsheet software, except the JavaScript code is needed to create those graphs.
 Analytics is just storing the Dashboard as a placeholder, since not related to any other Item Groups.
@@ -147,7 +146,7 @@ Analytics is just storing the Dashboard as a placeholder, since not related to a
     It is possible to rename any existing Item, or delete or make them invisible when accessing the Application.
 
 Wrapping up
-============
+-----------
 
 Now that we know the Jam.py terminology, it is good to start thinking about what we want to do. We might completely ignore the default Item Groups and make some new ones. Or, we can have only one single Group and create everything in there. However, that would not be nicely organized, due to:
 
