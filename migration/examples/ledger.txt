@@ -9,6 +9,24 @@ The application lives here:
 
 https://msaccess.pythonanywhere.com
 
+
+.. note::
+
+        If the Application Export is downloaded from the above link, ie. to try the application by yourself, the first thing needed is to install Python libraries. 
+
+
+Providing the Jam.py is already installed, please execute below for Windows before Importing the downloaded file::
+
+    py -m pip install password_strength
+
+Or Linux::
+
+    pip install password_strength
+
+
+Overview
+--------
+
 The Access Template Personal Account Ledger has a "feature" which enables typing the negative value for currency. Then the actual Expense is automatically converted to Income, since the negative currency becomes a positive value! Our migrated project does not allow for this due to `validation`_.
 
 The complete application was developed in a few hours` time.  Below is the approximate process:
