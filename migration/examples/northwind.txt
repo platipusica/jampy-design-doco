@@ -18,7 +18,7 @@ https://northwind.pythonanywhere.com
         If the Application Export is downloaded from the above link, ie. to try the application by yourself, the first thing needed is to install Python libraries. 
 
 
-Providing the Jam.py is already installed, please execute below for Windows before Importing the downloaded file::
+Providing the Jam.py is already installed and a new application created, please execute below for Windows before Importing the downloaded file::
 
     py -m pip install rfm pandas matplotlib numpy password_strength faker faker_food
 
