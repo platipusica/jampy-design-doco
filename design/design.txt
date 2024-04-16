@@ -277,9 +277,11 @@ To avoid this behaviour, please consult the best practises when importing the li
 Generated Images
 ================
 
-As mentioned, the `Jam.py` application is pure JavaScript. Hence, there is a limited number of html elements on a Single Page Application (SPA). This means we need to `wrap` the image(s), which needs displaying and generally reside on the file system.
+As mentioned, the `Jam.py` application is pure JavaScript. Hence, there is a limited number of html elements on a Single Page Application (SPA). This means we need to `wrap` the file system image(s), which needs displaying. 
 
 Those images are usually created by the Python procedure or similar server code and/or not uploaded to the application.
 The uploaded images need no special attention, since displaying is fully supported by the framework.
 
+For example, the :ref:`Northwind Traders<NorthwindTraders>` application has a generated image on Analytics/RFM Analysis.
+The image is created every time the user visits the `RFM Analysis` and `wrapped` into a JavaScript image for displaying purposes.
 
