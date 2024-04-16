@@ -16,7 +16,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 ------------------
 
 - `Jam.py is a Rapid Application Development framework. The word rapid should be stressed.`
-- `Jam.py is a SPA (Single Page Application).`
+- `Jam.py is a SPA (Single Page Application).`_
     
 
 2. Why using Jam.py?
@@ -48,7 +48,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 Hope the above five questions sparked some interest. Nothing wrong with comparing Jam.py with for example Oracle `Apex`_.
 
 .. _Apex: https://groups.google.com/g/jam-py/c/jys302rSK_k/m/Nv_Hiwm1BwAJ 
-
+.. _Jam.py is a SPA (Single Page Application).: https://www.codecademy.com/article/fecp-what-is-a-spa
 
 Terminology
 ============
@@ -260,11 +260,26 @@ Please refer to more info in here: https://groups.google.com/g/jam-py/c/SYn2R0IL
 Using Python libraries
 ======================
 
-The true power of `Jam.py` is with using Python libraries. Just like some other Python frameworks can use it.
+The true power of `Jam.py` is with using Python libraries. Just like some other Python frameworks.
 
-However, the Python code or the libraries are used within the Jam.py `Server Module`. 
+However, the Python code or the libraries are used within the Jam.py `Server Module`. And only there.
 With the `Server Module`, the source code is logically stored in relation to each part of the application. Just like the JavaScript is within the `Client Module`.
+Of course, `Jam.py` can `call` any `external` Python script as usual.
+
 
 The :ref:`Northwind Traders<NorthwindTraders>` migrated application from MS Access has a lot of code to start with.
 Most of it for is related the RFM Analytics and bulk insert/update.
+
+When deploying the application, the Python libraries must be installed first. Or, the application might fail to function. 
+To avoid this behaviour, please consult the best practises when importing the libraries.
+
+
+Generated Images
+================
+
+As mentioned, the `Jam.py` application is pure JavaScript. Hence, there is a limited number of html elements on a Single Page Application (SPA). This means we need to `wrap` the image(s), which needs displaying and generally reside on the file system.
+
+Those images are usually created by the Python procedure or similar server code and/or not uploaded to the application.
+The uploaded images need no special attention, since displaying is fully supported by the framework.
+
 
