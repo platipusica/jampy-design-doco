@@ -63,6 +63,12 @@ the new environment must be "sourced", and all packages installed with pip:
 
     $ pip install jam.py
 
+For installing the forked (updated), version 5.x:
+
+.. code-block:: console
+
+    $ pip install jam.py-v5
+
 
 If installing from source, for example downloaded zip archive from Github, unzip the archive, navigate to the folder and install with pip:
 
