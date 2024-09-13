@@ -296,7 +296,7 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
 
 .. admonition:: Adapted from `Django Docs`_
 
-    `Django Docs`_: Jam.py supports many different database servers and is officially supported with PostgreSQL_, MariaDB_, MySQL_, MSSQL_, Oracle_, Firebird_, SQLite_ and SQLite with SQLCipher_.
+    `Django Docs`_: Jam.py supports many different database servers and is officially supported with PostgreSQL_, MariaDB_, MySQL_, MSSQL_, Oracle_, Firebird_, IBM_, SQLite_ and SQLite with SQLCipher_.
 
     If you are developing a small project or something you don't plan to deploy in
     a production environment, SQLite is generally the best option as it doesn't
@@ -319,6 +319,8 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
 
     * If using SQLCipher_,  ``sqlcipher3-binary`` is needed for Linux. There is a standalone DLL for Windows available.
 
+    * If using IBM_,  ``ibm_db`` and ``ibm_db_dbi`` is needed.
+
 
 .. _PostgreSQL: https://www.postgresql.org/
 .. _MariaDB: https://mariadb.org/
@@ -330,6 +332,7 @@ As contrary to Django, Jam.py has no models, classes, subclasses and attributes.
 .. _MSSQL: https://www.microsoft.com/en-au/sql-server/sql-server-downloads
 .. _Firebird: https://firebirdsql.org/
 .. _SQLCipher: https://github.com/sqlcipher
+.. _IBM: https://www.ibm.com/support/pages/downloading-ibm-db2-version-115-linux-unix-and-windows
 
 
 Using MySQL on Windows is supported, please visit `MySQL deployment on Windows`_.
