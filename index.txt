@@ -44,5 +44,7 @@ This Documentation follows official Jam.py documentation, keeping similar concep
 
 :doc:`MS Access migration <migration/index>` to Jam.py tips.
 
+:doc:`Users application screenshots <screenshots/index>`.
+
 :doc:`Acknowledgements <ack/index>` to everyone involved in producing this document or helping with Jam.py.
 
