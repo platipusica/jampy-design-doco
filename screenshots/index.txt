@@ -2,7 +2,7 @@
 Users application screenshots
 =============================
 
-Here are some users application screenshots developed by Jam.py:
+Here are some users application screenshots developed with Jam.py:
 
 .. toctree::
    :maxdepth: 2
