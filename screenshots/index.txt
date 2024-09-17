@@ -2,10 +2,10 @@
 Applications screenshots
 =============================
 
-Here are some users application screenshotse developed by Jam.py:
+Here are some users application screenshots developed by Jam.py:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
 .. image:: _Maxwell/Max_01.png
 	:scale: 65 %
