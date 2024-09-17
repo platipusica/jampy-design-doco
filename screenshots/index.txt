@@ -1,5 +1,5 @@
 =============================
-Applications screenshots
+Users application screenshots
 =============================
 
 Here are some users application screenshots developed by Jam.py:
