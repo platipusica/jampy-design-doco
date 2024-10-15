@@ -195,7 +195,7 @@ After running the **server.py** command,  everything is continued in the Web bro
 Debugging
 =========
 
-Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with **print** command as usual.
+Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with the **MS Visual Studio Code" product as usual, providing Debugging option on Parameters is turned `ON`. The **Werkzeug** library can also be used to debug Python code.
 
 
 Profiling
