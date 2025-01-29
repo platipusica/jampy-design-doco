@@ -10,120 +10,136 @@ Here are some users application screenshots developed with Jam.py:
 .. image:: _Maxwell/Max_01.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
-
-
-
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_02.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
-
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_03.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_04.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_05.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_06.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_07.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_08.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_09.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_010.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_011.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_012.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_013.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Maxwell/Max_014.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
 
-
+|
 .. image:: _Ari/Ari_01.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
-
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+|
 .. image:: _Ari/Ari_02.png
 	:scale: 65 %
 	:align: center
-	:alt: Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
+	:alt: Jam.py Sistema Integrado de Gestão - IMS for Brazilian Market (Portuguese)
 
-
+|
 .. image:: _Fabio/Fabio_01.png
 	:scale: 65 %
 	:align: center
-	:alt: SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
-
+	:alt: Jam.py SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+|
 .. image:: _Fabio/Fabio_02.png
 	:scale: 65 %
 	:align: center
-	:alt: SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+	:alt: Jam.py SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+
+|
 .. image:: _Fabio/Fabio_03.png
 	:scale: 65 %
 	:align: center
-	:alt: SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+	:alt: Jam.py SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+|
 .. image:: _Fabio/Fabio_04.jpg
 	:scale: 65 %
 	:align: center
-	:alt: SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
+	:alt: Jam.py SoftUp Enterprise Manager - IMS for Italian Market (Italian, English)
 
-
+|
 .. image:: _Paul/Paul_01.jpg
 	:scale: 65 %
 	:align: center
-	:alt: Geodata
+	:alt: Jam.py Geodata
+|
 .. image:: _Paul/Paul_02.jpg
 	:scale: 65 %
 	:align: center
-	:alt: Geodata
+	:alt: Jam.py Geodata
+|
 .. image:: _Paul/Paul_03.jpg
 	:scale: 65 %
 	:align: center
-	:alt: Geodata
-
+	:alt: Jam.py Geodata
+|
 .. image:: _Tony/Tony_01.png
 	:scale: 65 %
 	:align: center
-	:alt: Warehouse App
+	:alt: Jam.py Warehouse App
+|
 .. image:: _Tony/Tony_03.png
 	:scale: 65 %
 	:align: center
-	:alt: Warehouse App
+	:alt: Jam.py Warehouse App
+|
 .. image:: _Tony/Tony_02.png
 	:scale: 65 %
 	:align: center
-	:alt: Warehouse App
-
+	:alt: Jam.py Warehouse App
+|
 
 
