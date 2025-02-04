@@ -1,0 +1,12 @@
+===============
+"How-to" guides
+===============
+
+Here you'll find short answers to "How do I....?" types of questions. 
+
+TBC
+
+.. toctree::
+   :maxdepth: 1
+
+   windows   

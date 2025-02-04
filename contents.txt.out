@@ -1,0 +1,22 @@
+===============================
+Jam.py Application Design Tips
+===============================
+
+.. toctree:: 
+    :hidden:
+    :maxdepth: 3
+
+    index
+
+.. toctree:: 
+    :maxdepth: 3
+
+    intro/index
+    design/index
+    howto/index
+    howDemo/index
+    migration/index
+    screenshots/index
+    ack/index
+
+

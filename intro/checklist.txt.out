@@ -1,0 +1,375 @@
+======================
+Development Checklist
+======================
+
+This list is inspired by the classic article by Joel Spolsky entitled `The Joel Test 12 Steps to Better Code`_. 
+
+.. _The Joel Test 12 Steps to Better Code: https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+
+
+Built in Code Editor
+====================
+
+For the JS and Python code, Jam.py has a built in `Ace`_ Code Editor. The best is to familiarise with the editor shortcuts
+from here: https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts
+
+The most used shortcuts:
+
+
++---------------+-----------------+----------------------+
+| Windows/Linux |       Mac       |        Action        |
++===============+=================+======================+
+| Tab           | Tab             | Indent               |
++---------------+-----------------+----------------------+
+| Shift-Tab     | Shift-Tab       | Outdent              |
++---------------+-----------------+----------------------+
+| Ctrl-/        | Command-/       | Toggle comment       |
++---------------+-----------------+----------------------+
+| Ctrl-Shift-/  | Command-Shift-/ | Toggle block comment |
++---------------+-----------------+----------------------+
+
+It is absolutely possible to extend the ACE editor for AutoCompletition or Themes.
+
+.. _Ace: https://ace.c9.io/
+
+Python version
+==============
+
+Since Jam.py is a JavaScript and Python Web Framework, we need Python installed on the target Operation System. 
+Get the latest version of Python at https://www.python.org/downloads/ or with your operating system\'\s package manager.
+
+.. admonition:: Python on Windows
+
+    If you are just starting with Jam.py and using Windows, you may find
+    :doc:`How to install Jam.py on Windows <../howto/windows>` useful.
+
+
+
+Using Python Virtual Environments
+=================================
+
+Virtual environment is strongly encouraged for any Python development. When compiling Python from source, we would normally install all binaries in some folder, so we can use different Python versions for different projects.
+
+This is particularly true with the Apache Web server and mod_wsgi module, when the module is compiled against specific Python version, and loaded as per Apache procedure.
+
+Standard Python library is used to create a virtual environment. After creation, 
+the new environment must be "sourced", and all packages installed with pip:
+
+.. code-block:: console
+
+    $ python3 -m venv project-name
+
+    $ source project-name/bin/activate
+
+    $ pip install jam.py
+
+For installing the forked (updated), version 5.x:
+
+.. code-block:: console
+
+    $ pip install jam.py-v5
+
+
+If installing from source, for example downloaded zip archive from Github, unzip the archive, navigate to the folder and install with pip:
+
+.. code-block:: console
+
+    $ pip install .
+
+
+We can have as many virtual environments as needed.
+
+.. note::
+    It is advisable to have Production and Development environments. 
+
+
+
+Using the Source Control
+=========================
+
+Using Source Control is encouraged with Jam.py Export functionality. Since all Jam.py code is stored in the internal database, it is possible to only Source Control the admin.sqlite database, or it's content by exporting the tables.
+
+However, for the static files, for example JavaScript libraries, or CSS files, the best approach would be using Export which fetches all objects into one compressed file. It is possible to create an automated Export, for example:
+
+`Automated config backup`_
+
+.. _Automated config backup: https://groups.google.com/g/jam-py/c/glB3nPUmiLw/m/6891Js5KAwAJ
+
+The Application Builder Export file will not contain the Application database content or structure. Because everything in Jam.py is developed inside the Application Builder, it is not possible to create different branch for the Application only. This is the main difference comparing to Django.
+
+The utility to completely track the application changes, even the database structure, is here:
+
+`Storing jam.py Application in GitLab`_
+
+.. _Storing jam.py Application in GitLab: https://groups.google.com/g/jam-py/c/nsUU5DEdTWQ/m/EwJg5u99AgAJ
+
+Unit Testing 
+====================
+
+Jam.py version higher then v5 is using `pytest`_ and `Chai`_/`Mocha`_. It is also possible to use Selenium IDE for the browser.
+
+Please visit posted video `Jam.py Application Builder automated testing with pytest and Mocha/Chai`_, and
+`Simple CRM with jam.py and Selenium IDE in 2.45minutes!`_.
+
+All necessary tools and libraries for testing should be installed in the same Python virtual environment where Jam.py libraries are.
+
+.. _pytest: https://docs.pytest.org/en/latest/
+
+.. _Chai: https://www.chaijs.com/
+
+.. _Mocha: https://mochajs.org/
+
+.. _Jam.py Application Builder automated testing with pytest and Mocha/Chai: https://www.youtube.com/watch?v=ftGkrxNEwTw
+
+.. _Simple CRM with jam.py and Selenium IDE in 2.45minutes!: https://www.youtube.com/watch?v=Sv_IllxQ_RY&t=14s
+
+
+Continuous Integration (CI)
+===========================
+
+It is possible to use Continuous Integration as we would with Django. 
+
+
+
+Generating Documentation 
+========================
+
+`Sphinx`_ is used as an defacto Python standard. It is very simple to start with using what is already provided with Jam.py.
+
+.. _Sphinx: http://www.sphinx-doc.org/en/stable/
+
+As a bare minimum, the below files and folders are copied from Jam.py Docs directory into a new directory to create new Documentation:
+
+    .. code-block:: 
+
+        conf.py       index.txt  Makefile    README.md
+        contents.txt  make.bat   prepare.py  set_scale.py
+
+        intro:
+        checklist.txt  index.txt
+
+        _static:
+        favicon.ico  jquery.js
+
+        _templates:
+        jamdocs
+
+
+
+Modify all files for your preference and build the documentation. For example, the below command will build one **single** html file:
+
+.. code-block:: console
+
+    $  make singlehtml
+
+
+For more professional look, the **latexpdf** option might be used.
+
+
+.. code-block:: console
+
+    $  make latexpdf
+
+.. note::
+    **Latex** libraries are quite large and the installation is on the OS level. **Sphinx** can be installed inside Python virtual environment.
+
+
+
+Limited introduction to the tool 
+========================================
+
+Jam.py is using **jam-project.py** with no options to create a new project, and **server.py** to run the project on default port 8080, optionally providing the port number. 
+
+Django is using a few different commands, for example **manage.py** with options, or **django-admin** with options, etc.
+
+Hence, there are no options to run management commands from the code in Jam.py as in Django.
+
+
+After running the **server.py** command,  everything is continued in the Web browser, e.g.:
+
+
+.. code-block:: console
+
+    http://127.0.0.1:8080/builder.html
+    
+Debugging
+=========
+
+Since Jam.py is mostly JavaScript based, most of Debugging work is done via browser debug console. It is possible to debug the Server side Python code with the **MS Visual Studio Code" product as usual, providing Debugging option on Parameters is turned `ON`. The **Werkzeug** library can also be used to debug Python code.
+
+
+Profiling
+=========
+
+It is strongly suggested not to run production Applications with the **server.py** command only. Instead, a proper Web server should be configured. Most of the Web server speed benefits are from compressed content sent from the Web server to the User browser, which is particularly true for CSS and JavaScript files.
+In addition, Jam.py has a special **static** folder where all images files and documents are remaining, and this files are served by the Web server bypassing the Apache mod_wsgi or similar Python interface for other Web servers.
+Serving the **static** might be possible with a separate Web server, similar to Django tactics. Jam.py has no utility as `collectstatic` Django command, and rsync might be used in this scenario.
+
+
+Containers
+==========
+
+To use a container with Jam.py is easy. However, the decision has to be made if the Application will use Reports based on LibreOffice (LO), since packaging complete LO might be prohibitive due to a container size.
+If not using LO, but plain CSV export or other mechanisms for reporting, the container size is small and fast to build. Special consideration needs to be made about hosting the Application database and separate Jam.py admin.sqlite and langs.sqlite internal database.
+
+Please refer to more info in here: `Use external database for admin e langs`_
+
+It is also possible to run Jam.py Application as an Azure Web Application, or AWS Functions, hence server less. 
+
+Please refer to more info in here: `Azure Deployment`_
+
+
+
+.. _Use external database for admin e langs: https://github.com/jam-py/jam-py/issues/208
+
+.. _Azure Deployment: https://groups.google.com/g/jam-py/c/yBp-is_XT-I/m/OMvZBcX1AQAJ
+
+
+=======================
+Choosing the Web Server
+=======================
+
+Jam.py is providing a lightweight internal Web server for the Development/Testing, just like Django. This means Jam.py is extremely portable. Application can be shipped `as is`, or so called `click-and-run`, with just *jam* folder from Jam.py distribution copied into the Application folder. 
+Of course, Python still needs to be installed locally.
+
+Apache Web Server and ``mod_wsgi``
+==================================
+
+.. admonition:: Adapted from `Django Docs`_
+
+    `Django Docs`_: If you want to use Jam.py on a production site, use `Apache`_ with
+    `mod_wsgi`_. mod_wsgi operates in one of two modes: embedded
+    mode or daemon mode. In embedded mode, mod_wsgi is similar to
+    mod_perl -- it embeds Python within Apache and loads Python code into
+    memory when the server starts. Code stays in memory throughout the
+    life of an Apache process, which leads to significant performance
+    gains over other server arrangements. In daemon mode, mod_wsgi spawns
+    an independent daemon process that handles requests. The daemon
+    process can run as a different user then the web server, possibly
+    leading to improved security. The daemon process can be restarted
+    without restarting the entire Apache web server, possibly making
+    refreshing your codebase more seamless. Consult the mod_wsgi
+    documentation to determine which mode is right for your setup. Make
+    sure you have Apache installed with the mod_wsgi module activated.
+    Jam.py will work with any version of Apache that supports mod_wsgi.
+
+
+    If you can't use mod_wsgi for some reason, fear not: Jam.py supports many other
+    deployment options. It works very well with `nginx`_. Additionally, Jam.py follows the WSGI spec
+    (:pep:`3333`), which allows it to run on a variety of server platforms.
+
+
+`mod_wsgi`_ is tightly coupled with Python and quite often shipped as the default Python version installed on the Operation System. When developing Application in an Python Virtual Environment, for example on the Developer's computer, it is possible that Python version does not match the `mod_wsgi` version activated in Apache due to Python mismatch. To solve any problems with Python differences, it is suggested to install *mod_wsgi* for Apache from the Virtual Environment which matches the Development/Test environment.
+
+Please visit `Apache on Windows`_ mailgroup thread for using Apache with Windows.
+
+
+.. _Django Docs: https://docs.djangoproject.com/
+.. _Apache: https://httpd.apache.org/
+.. _nginx: https://nginx.org/
+.. _mod_wsgi: https://modwsgi.readthedocs.io/en/develop/
+.. _Apache on Windows: https://groups.google.com/g/jam-py/c/PqV05uyKtKE/m/WGm8YJvnCAAJ
+
+IIS Web Server
+===============
+
+Using IIS Web with FastCGI is supported. Please visit `JamPy deployment on Microsoft IIS`_ for more information.
+
+.. _JamPy deployment on Microsoft IIS: https://groups.google.com/g/jam-py/c/RWj-OyCNLnQ/m/nVme6y7tCwAJ
+
+
+CPanel
+======
+
+Using CPanel is supported. Please visit `Success with cPanel v82.0.12 and Jam.py`_ for more information.
+
+.. _Success with cPanel v82.0.12 and Jam.py: https://groups.google.com/g/jam-py/c/tkuc-dudmTA/m/0GL6mSEJCAAJ
+
+
+=======================
+Choosing the Database
+=======================
+
+Similar to Django, Jam.py attempts to support as many features as possible for supported databases. However, not all database backends are alike, and Jam.py design decisions were made on which features to support.
+
+As contrary to Django, Jam.py has no models, classes, subclasses and attributes. Since Jam.py is exclusively using Application Builder, there is no code to develop `model` to database table relationship, or table fields specified as `class` attributes.
+
+.. admonition:: Adapted from `Django Docs`_
+
+    Jam.py supports many different database servers. For example PostgreSQL_, MariaDB_, MySQL_, MSSQL_, Oracle_, Firebird_, IBM_, SQLite_ and SQLite with SQLCipher_.
+
+    If you are developing a small project or something you don't plan to deploy in
+    a production environment, SQLite is generally the best option as it doesn't
+    require running a separate server. However, SQLite has many differences from
+    other databases, so if you are working on something substantial, it's
+    recommended to develop with the same database that you plan on using in
+    production.
+
+
+    In addition to a database backend, we need to make sure the Python
+    database bindings are installed.
+
+    * If using PostgreSQL, the ``psycopg2`` package is needed. 
+
+    * If using MySQL or MariaDB, the ``MySQLdb`` for Python 2.x is needed. For Python 3.x, the  ``mysql-connector-python`` and ``mysqlclient`` is needed, as well as database client development files. 
+
+    * If using MSSQL, the ``pymssql`` is needed.
+
+    * If using Oracle, the `cx_Oracle`_ is needed.
+
+    * If using SQLCipher_,  ``sqlcipher3-binary`` is needed for Linux. There is a standalone DLL for Windows available.
+
+    * If using IBM_,  ``ibm_db`` and ``ibm_db_dbi`` is needed.
+
+
+.. _PostgreSQL: https://www.postgresql.org/
+.. _MariaDB: https://mariadb.org/
+.. _MySQL: https://www.mysql.com/
+.. _psycopg2: https://www.psycopg.org/
+.. _SQLite: https://www.sqlite.org/
+.. _cx_Oracle: https://oracle.github.io/python-cx_Oracle/
+.. _Oracle: https://www.oracle.com/
+.. _MSSQL: https://www.microsoft.com/en-au/sql-server/sql-server-downloads
+.. _Firebird: https://firebirdsql.org/
+.. _SQLCipher: https://github.com/sqlcipher
+.. _IBM: https://www.ibm.com/support/pages/downloading-ibm-db2-version-115-linux-unix-and-windows
+
+
+Using MySQL on Windows is supported, please visit `MySQL deployment on Windows`_.
+
+Even though Jam.py supports all databases from the above, there is no guarantee that some specific and/or propriety database functionality is supported. Here we name a few.
+
+.. _MySQL deployment on Windows: https://www.radishlogic.com/coding/python-3/installing-mysqldb-for-python-3-in-windows/
+
+Database triggers
+==================
+
+Database triggers are specific to the database vendor and Jam.py does not support creation of triggers within the Application Builder. It is absolutely possible to use triggers, however, when moving the Application into the ie. Production, the Application Export file will not contain any information about the triggers and they need to be recreated manually.
+
+
+.. _DBViews:
+
+Database views
+==============
+
+The database views are specific to the vendor too, and Jam.py does not support it for now. That is, it does not support 
+a View creation or modification. It does support the View access though. If the View is needed, we can create an 
+table with the same View name and needed fields, providing the Builder Project Database option is set to "DB manual mode" when doing it.
+
+Same as for database triggers, the Application Export file will not contain any information about the Views. 
+
+Very similar to Database Views are Jam.py Virtual Tables. 
+More about the Virtual Table is covered in :ref:`Northwind Traders<NorthwindTraders>`.
+
+
+Database indexes
+================
+
+Indexes creation/deletion is supported with Jam.py. The indexes information is stored in the Application Export file if the indexes were created by Application Builder interface. Not all vendor specific index functionality is supported, ie. Oracle `function based` index, etc. The Primary Key creation will result in creating an index.
+When working with `legacy` databases, meaning the tables were Imported and not created by the Application Builder, Jam.py does not import indexes information. This might lead into lost indexes if moving the Application to different environment by Jam.py Export/Import utility.
+
+
+Database sequences
+==================
+
+The database sequences are supported and Jam.py is providing an interface to use the `sequence generator`. Not all `sequence generators` can be used as this is specific to the database vendor. The Export file does not store the sequence definition, just the name of the sequence used.

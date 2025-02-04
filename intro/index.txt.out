@@ -1,0 +1,14 @@
+=====================
+Development Checklist
+=====================
+
+Here we discuss some Jam.py Development environment issues and Python ecosystem.
+
+.. toctree::
+   :maxdepth: 1
+
+   checklist
+   admin   
+
+
+
