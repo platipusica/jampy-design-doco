@@ -3,8 +3,13 @@ admin.sqlite Database
 =====================
 
 
-The `Mind Map`_ for admin.sqlite database describes the Jam.py database engine schema. The intention was to quickly find the information needed, 
+The `Mind Map`_ for admin.sqlite database describes the Jam.py V5 database engine schema. The intention was to quickly find the information needed, 
 as well as the code.
 
-.. _Mind Map: https://jampyapplicationbuilder.com/jam_schema/Jam.py.html
+.. image:: image.png
+	:target: ../_static/Jam.py.html_files/image.png
+
+
+.. raw:: html
+   :file: ../_static/Jam.py.html
 
