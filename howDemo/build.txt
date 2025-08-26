@@ -480,6 +480,19 @@ The *on_detail_changed* is using Jam.py built in function `calc_summary`_.
 
 .. _calc_summary: https://jampyapplicationbuilder.com/docs/refs/client/item/m_calc_summary.html
 
+Firstly, the function used to concatenate two or more fields is:
+
+.. js:function:: on_field_get_text
+ 
+The function is documented in official Docs.
+
+Next, the function to, let's say, make something in bold is:
+
+
+.. js:function:: on_field_get_html
+
+Also documented in official Docs.
+
 Lastly, one of the most important function and the most commonly used is:
 
 .. js:function:: on_field_changed
