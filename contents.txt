@@ -7,6 +7,7 @@ Jam.py Application Design Tips
     :maxdepth: 3
 
     index
+    design
 
 .. toctree:: 
     :maxdepth: 3
