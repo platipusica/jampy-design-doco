@@ -960,12 +960,12 @@ The `Template`_ for Demo Dashboard is a simple two columns table:
 
         <div class="dashboard-view">
             <div class="row-fluid">                                  <-- the table   -->
-                <div class="span6">                                  <-- column #one  -->
+                <div class="span6">                                  <-- column number one  -->
                     <canvas id="cutomers-canvas"></canvas>           <-- graphics one  -->     
                     <div id="customer-table"></div>                  <-- table under it -->
                 </div>                            
                 <div class="span6">                                  <-- column two  -->
-                    <canvas id="tracks-canvas"></canvas>             <-- graphics #two  -->   
+                    <canvas id="tracks-canvas"></canvas>             <-- graphics number two  -->   
                     <div id="tracks-table"></div>                    <-- table under it  -->
                 </div>                
             </div>                                                   <-- end of table-->
