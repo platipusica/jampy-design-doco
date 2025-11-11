@@ -6,7 +6,9 @@ Introduction
 =============
 
 
-Welcome to Jam.py V5! If you are new to Jam.py or no-code, low-code or more-code Web application development, this is the place to find some tips about the Jam.py. 
+Welcome to Jam.py V5! If you are new to Jam.py or no-code, low-code or more-code Web application development, this is the place to find some tips about the Jam.py.
+
+The new Jam.py v7 has been released. Some minor changes are needed in this document to reflect the differences with v5.
 
 .. admonition:: Objectives
 
