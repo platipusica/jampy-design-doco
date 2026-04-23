@@ -17,7 +17,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 
 - `Jam.py is a Rapid Application Development framework. The word rapid should be stressed.`
 - `Jam.py V5 is a SPA (Single Page Application).`_
-- `Jam.py V7 has routing. Hence not an SPA.
+- `Jam.py V7 has routing. Hence, not an SPA.`
     
 
 2. Why using Jam.py?
@@ -49,7 +49,7 @@ is yours, and it is very well structured. A joy to dig in, and I think Steve wou
 Hope the above five questions sparked some interest. Nothing wrong with comparing Jam.py with for example Oracle `Apex`_.
 
 .. _Apex: https://groups.google.com/g/jam-py/c/jys302rSK_k/m/Nv_Hiwm1BwAJ 
-.. _Jam.py is a SPA (Single Page Application).: https://www.codecademy.com/article/fecp-what-is-a-spa
+.. _Jam.py v5 is a SPA (Single Page Application).: https://www.codecademy.com/article/fecp-what-is-a-spa
 
 Terminology
 ============
