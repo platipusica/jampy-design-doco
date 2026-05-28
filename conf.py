@@ -299,3 +299,11 @@ latex_use_xindy = False
 latex_elements = {
     "preamble": "\\usepackage[UTF8]{ctex}\n",
 }
+
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "platipusica", # Username
+    "github_repo": "jampy-design-doco", # Repo name
+    "github_version": "master", # Version
+    "conf_py_path": "/", # Path in the checkout to the docs root
+}
