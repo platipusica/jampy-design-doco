@@ -3,7 +3,7 @@
 Demo project
 ============
 
-After downloading the Jam.py package, and starting _`Demo`, the application is accessible with typing 127.0.0.1:8080/index.html or just 127.0.0.1:8080 in the Browser:
+After downloading the Jam.py package (remember, this is Jam.py V5, repo is here: https://github.com/jam-py-v5/jam-py MASTER branch, **not DEVELOP**), and starting _`Demo`, the application is accessible with typing 127.0.0.1:8080/index.html or just 127.0.0.1:8080 in the Browser:
 
 .. image:: _images/demo_jampy.png
 	:scale: 70 %
