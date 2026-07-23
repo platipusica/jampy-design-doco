@@ -30,7 +30,7 @@ import shlex
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 #extensions = ['sphinx_sitemap','sphinx_copybutton']
-extensions = ['sphinx_copybutton']
+extensions = ['sphinx_copybutton', 'sphinxcontrib.googleanalytics']
 html_baseurl = 'https://jampyapplicationbuilder.com/tips/'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -116,10 +116,13 @@ html_theme = 'sphinx_rtd_theme'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
+googleanalytics_id = 'G-H4X13LET9F'
+googleanalytics_enabled = True
+
 #html_theme_options = {}
 html_theme_options = {
-    'analytics_id': 'G-H4X13LET9F',  #  Provided by Google in your dashboard
-    'analytics_anonymize_ip': False,
+#    'analytics_id': 'G-H4X13LET9F',  #  Provided by Google in your dashboard
+#    'analytics_anonymize_ip': False,
     'logo_only': False
 }
 
